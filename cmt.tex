@@ -214,8 +214,7 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
 \begin{itemize}
   \item [1.] Firstly, we leave to the reader to check that classical first order models are a (trivial) special cases of the models introduced above.
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
-  The unit ball is the whole of $M$.
-
+  The unit ball is the whole of $M$. 
   The function $n_{\mbox-}$ is constantly $1$, and $t_{\psi(x,y)}$ is the term $y$.
 
   \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding functions are irrelevant.
@@ -223,18 +222,15 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   The sets $L_{\rm rel}$, $L_{\rm fun}$ and the arity function ${\rm Ar}(\mbox-)$ are arbitrary.
   The interpretation of the symbols is arbitrary but we require that the functions $r^M$, for all $r\in L$, range in the interval $[-1,1]$.
   As unit ball take the whole of $M$.
-
   The function $n_{\mbox-}$ is constant $1$, and $t_{\psi(x,y)}$ is (trivially) the term $y$.
 
-  \item [3.] Also any {\sc bbhu}-premodel $M$ is a model as those of Section~\ref{uno}.
-  A {\sc bbhu}-premodel $M$ is a pseudometric space of diameter $1$.
-  There are possibly functions symbols and relations (other than the metric $d(x,y)$).
-  All relations take values in the interval $[0,1]$.
-  Again, as unit ball take the whole of $M$.
-  The function $n_{\mbox-}$ is constant $1$, and $t_{\psi(x,y)}$ is (trivially) the term $y$.
+  \item [3.] Any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
+  The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
+  As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
+  As $U=M$, we can set $t_{\psi(x,y)}$ to be the term $y$.
   
-  (The following may require some cleaning.)\\
-  In a {\sc bbhu}-premodel functins are required to be uniformly continuous with a modulus of uniform continuity fixed by the language.
+  (The following requires some cleaning or could as well be ometted.)\\
+  In a {\sc bbhu}-premodel functions are required to be uniformly continuous with a modulus of uniform continuity fixed by the language.
   We can reproduce this condition is our language by adding a for every modulus of uniform continuity $\delta:{\mathds R}^+\to {\mathds R}^+$, and every $\varepsilon\in{\mathds R}^+$, a predicate $r_\varepsilon$ such that 
 
   \ceq{\hfill r_\varepsilon^M(x,y,z,w)}{=}
@@ -592,33 +588,5 @@ For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let
 
 Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Example: {\sc bbhu} models. (Needs further checking.)}
-
-A {\sc bbhu} (pre)models is (psudo)metric spaces of diameter $1$.
-Predicates take vaues in the unit interval and function are uniformly continuous with a modulus of uniform continuity fixed by the language.
-That is, for every function symbol $f$, there is a strictly increasing function $\delta:{\mathds R}^+\to {\mathds R}^+$ such that for every $\varepsilon\in{\mathds R}^+$ 
-
-\ceq{\hfill d(x,y)\le\delta(\varepsilon)}{\rightarrow}{d(fx,fy)\le\varepsilon}
-
-
-Let $N$ be a {\sc bbhu} premodel.
-Consider a model $M$ with as predicates $d(x,y)$ and, for every modulus of uniform continuity $\delta$, and evey positive $\varepsilon$, a predicate $r_\varepsilon$ such that 
-
-\ceq{\hfill r_\varepsilon^M(x,y,z,w)}{=}
-{\left\{
-\begin{array}[]{ll}
-  \varepsilon\cdot d(z,w) & \textrm{if } d(x,y)\le\delta(\varepsilon)\\
-  0 & \textrm{otherwise }\\
-\end{array}
-\right.}
-
-Let $n_{r_\varepsilon(x,y,fx,fy)}=1$, then the function interpreted in the models (as defined in Section~\ref{uno}) are uniformly continuous with modulo $\delta$.
-
-Finally let $t_{\mbox-}$ be trivial: i.e.\@ $t_{\varphi(x,y}=y$ for every $\varphi(x,y)$.
 
 \end{document} 
