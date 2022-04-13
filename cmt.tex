@@ -98,12 +98,12 @@ A \emph{signature\/} or \emph{language\/} $L$ consists of the following data\nob
 \begin{itemize}
 \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
 \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
-\item[3.] the functions $n_{\mbox-}:L_{\rm at}\to\mathds N$ and $t_{\mbox-}:L\to L_{\rm trm}$.
+\item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$.
 \end{itemize}
 \end{definition}
 
 The functions in 3 above are called \emph{bounding functions.}
-The meaning of $L$, $L_{\rm at}$ and $L_{\rm trm}$ in 4 is clarified below.
+The meaning of $L_{\rm at}$ in 4 is clarified below.
 
 \begin{definition}A \emph{structure\/} or \emph{model\/} $M$ of signature $L$ consists of the following data\nobreak
 \begin{itemize}
@@ -114,7 +114,7 @@ The meaning of $L$, $L_{\rm at}$ and $L_{\rm trm}$ in 4 is clarified below.
 \end{definition}
 
 The set $U$ in 3 above is called the \emph{unit ball\/} of $M$.
-Again, this can be ignored for the time being.
+It will not play any role till Definition~\ref{def_semantic}.
 The axioms for the unit ball are stated in Definition~\ref{def_unitball} where we will also clarify the role of the bounding functions.
 
 The syntax and semantic of \emph{terms} is defined just as in classical first-order logic.
@@ -176,31 +176,32 @@ If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^
 \begin{itemize}
 \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
 \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
-\item[vi.] \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\max\big\{0,\psi[x/b]^M\big\} :\ b\in M\big\}$}.
+\item[vi.] \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\ b\in U\big\}$}.
 \end{itemize}
 \end{minipage}
 \end{definition}
 \medskip
 
-Note that the cutoff in condition vi of the definition above is necessary because formulas are, in principle, unbounded.
+Fact~\ref{fact_finiteness} we prove that the infimum in vi is finite.
 
 For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^M$.
 
-Finally, we complete the definition of structure by giving a meaning to the unit ball and to the bounding functions.
-However, the requirements below are only needed in Section~\ref{ultrapws} for the construction of ultrapower to work properly.
+Finally, we complete the definition of structure by giving a meaning to the unit ball and to the bounding function.
 
 \begin{definition}\label{def_unitball}
   The unit ball $U$ is required to satisfy the following axioms 
   \begin{itemize}
-  \item[1.] $M=\{t^M:\ t\in L_{\rm trm}(U) \textrm{ a closed term } \}$;
-  \item[2.] $M\models|\varphi(a)|\le n_{\varphi(x)}$ for every $a\in U^{|x|}$ and every $\varphi(x)\in L_{\rm at}$;
-  \item[3.] for every formula $\psi(x,y)\in L$ and for every $a\in U$\smallskip
-  
-  \hfil$\displaystyle M\models\exists y\,\psi(a,y)\le0\ \ \Rightarrow\ \ M\models\psi(a,t_{\psi(x,y)}(b))\ \le\ 0$ for some $b\in U^{|z|}$
+  \item[1.] $M=\big\{t^M:\ t\in L_{\rm trm}(U) \textrm{ a closed term }\big\}$;
+  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in U^{|x|}$ and every $\varphi(x)\in L_{\rm at}$;
   \end{itemize}
 \end{definition}
 
-For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be distinct from $x,y$.
+With an easy proof by induction on the syntax we obtain the following.
+
+\begin{fact}\label{fact_finiteness}
+  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in U^{|x|}$.\qed
+\end{fact}
+
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
@@ -215,7 +216,7 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   \item [1.] Firstly, we leave to the reader to check that classical first order models are a (trivial) special cases of the models introduced above.
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
   The unit ball is the whole of $M$. 
-  The function $n_{\mbox-}$ is constantly $1$, and $t_{\psi(x,y)}$ is the term $y$.
+  The function $n_{\mbox-}$ is constantly $1$.
   To obtain the full strength of firt order logic one has to add equality as a predicate which is abset from our language.
 
   \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding functions are irrelevant.
@@ -223,7 +224,7 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   The sets $L_{\rm rel}$, $L_{\rm fun}$ and the arity function ${\rm Ar}(\mbox-)$ are arbitrary.
   The interpretation of the symbols is arbitrary but we require that the functions $r^M$, for all $r\in L$, range in the interval $[-1,1]$.
   As unit ball take the whole of $M$.
-  The function $n_{\mbox-}$ is constant $1$, and $t_{\psi(x,y)}$ is (trivially) the term $y$.
+  The function $n_{\mbox-}$ is constant $1$.
 
   \item [3.] Any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
   The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
@@ -318,12 +319,12 @@ When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
 
 Let $I$ be an infinite set.
 Let $\langle M_i:i\in I\rangle$ be a sequence of models with unit balls $U_i$.
-Note that all models are required to have the same bounding functions (as these are part of the language).
+Note that all models are required to have the same bounding function (as these are part of the language).
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
 Write \emph{$U$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}U_i$ such that $\hat a\,i\in U_i$.
-We define the structure \emph{$N$\/} as follows
+We define the structure \emph{$N$\/} with unit ball $U$ as follows
 \begin{itemize}
   \item[1.] the elements of $N$ are functions $\hat c: I\to \bigcup_{i\in I}M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in U^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
   \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of  $N$ then
@@ -333,6 +334,8 @@ We define the structure \emph{$N$\/} as follows
   \end{itemize}
 \end{itemize}
 \end{definition}
+
+Note that $U$ satisfies the axioms in Definition~\ref{def_unitball}.
 
 The limit in 2b of Definition~\ref{def_ultraproduct} exists because $F$ is an ultrafilter and it is finite because all $U_i$ have the same bounding functions.
 In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$ is bounded by $n_{\varphi(x)}$, where $\varphi(x)=r(t_1(x),\dots,t_n(x))$.
@@ -347,9 +350,10 @@ Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}
 \end{proposition}
 
 \begin{proof}
-If $\varphi(x)$ is atomic holds by definition.
+This is just the usual run-of-the-mill proof.
 We proceed by induction on the syntax of $\varphi(x)$.
-We only spell out the proof for the infimum quantifier.
+If $\varphi(x)$ is atomic holds by definition.
+We spell out the proof for the infimum quantifier.
 Assume inductively that
 
 \ceq{\hfill \varphi^N\big(\hat a,\hat b\big)}
@@ -364,61 +368,45 @@ We want to prove that
 
 By the interpretation of the infimum quantifier, this amounts to prove that
 
-\ceq{\hfill\inf\Big\{\max\big\{0,\ \varphi\big(\hat a,\hat b\big)^N\big\}\ :\ \hat b\in N\Big\}}
+\ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in U\big\}}
 {=}
-{\lim_{i\uparrow F}\inf\Big\{\max\big\{0,\ \varphi\big(\hat ai,b\big)^{M_i}
-\big\}:\,b\in M_i\Big\}}
+{\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i\big\}}
 
-For simplicity, assume that $\varphi\big(\hat a,\hat b\big)^N$ and $\varphi\big(\hat ai,b\big)^{M_i}$ are non negative.
-First we prove the $\le$ inequality which is the run-of-the-mill half of the proof.
+First we prove the $\le$ inequality.
 Let $r$ be an arbitrary positive real number.
 
-\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
+\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in U\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
 
 \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r},
 
-\ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in M_i\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in U_i\Big\}}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in M_i\Big\}}{<}{r}.
+\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in U_i\Big\}}{<}{r}.
 
 \smallskip
 This proves the $\ge$ inequality.
-The proof of the $\le$ inequality is where the bounding function $t_{\mbox{-}}$ is required.
-Assume that
+As for the $\le$ inequality, assume that
 \smallskip
 
-\ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in M_i^{|x|}\Big\}}
+\ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}
 {<}
 {r.}
 
 Therefore, for some $u\in F$
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in M_i^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
 
-Without loss of generality we can assume that $\hat a\in U$. 
-Hence, writing $t(z)$ for $t_{\varphi(x,y)}(z)$ we have
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,t(c)\big)^{M_i}:\,c\in U_i^{|z|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in U^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Therefore,\ for\ some\ }\hat c\in U^{|z|}\hfill \varphi^{M_i}\big(\hat ai,t(\hat ci)\big)}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r,}
 
-\ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,t(\hat bi)\big)}{<}{r,}
-
-\ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a,t(\hat b)\big)}{<}{r.}
+\ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{r.}
 
 This proves the desired inequality.
-\end{proof}
-
-
-\begin{fact}
-  The model $N$ defined above has unit ball $U$.
-\end{fact}
-
-\begin{proof}
-  The claim about $U$ and $n_{\mbox{-}}$ follows immediately from the definition of $N$, see 2b above.
-  As for $t_{\mbox{-}}$, the clain follows from \L\v{o}\'s Theorem.
 \end{proof}
 
 
@@ -529,7 +517,7 @@ Implication $\Rightarrow$ in \textit{a} uses 2 and the equivalence in \textit{b}
 
 \begin{remark}
 In the Tarski-Vaught test for classical logic it is not necessary to require that $M$ is a substructure of $N$ as this is a consequence of the test.
-In the continuous case this is necessary by the lack of equality.\qed
+In the continuous case this is necessary by the lack of a predicate for equality.\qed
 %Still, we may drop this assumption when $M$ is metric complete. In fact, we can apply 2 as follows. For every function symbol $f$ and every $a\in M^{<\omega}$ the formula $d(fa,x)<\varepsilon$ has a witness in $M$ for all $\varepsilon\in{\mathds R}^+$. Hence $f{a}\in M$ follows from completeness.
 \end{remark}
 
@@ -544,7 +532,7 @@ For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinali
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Saturation}
 
-Throughout this section $M$ is a model with unit ball $U$ and bounding functions $n_{\mbox{-}},t_{\mbox{-}}$.
+Throughout this section $M$ is a model with unit ball $U$ and bounding function $n_{\mbox{-}}$.
 
 Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
