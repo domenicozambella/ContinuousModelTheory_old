@@ -216,6 +216,7 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
   The unit ball is the whole of $M$. 
   The function $n_{\mbox-}$ is constantly $1$, and $t_{\psi(x,y)}$ is the term $y$.
+  To obtain the full strength of firt order logic one has to add equality as a predicate which is abset from our language.
 
   \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding functions are irrelevant.
   
@@ -227,21 +228,21 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   \item [3.] Any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
   The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
   As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
-  As $U=M$, we can set $t_{\psi(x,y)}$ to be the term $y$.
+  % As $U=M$, we can set $t_{\psi(x,y)}$ to be the term $y$.
   
-  (The following requires some cleaning or could as well be ometted.)\\
-  In a {\sc bbhu}-premodel functions are required to be uniformly continuous with a modulus of uniform continuity fixed by the language.
-  We can reproduce this condition is our language by adding a for every modulus of uniform continuity $\delta:{\mathds R}^+\to {\mathds R}^+$, and every $\varepsilon\in{\mathds R}^+$, a predicate $r_\varepsilon$ such that 
+  % (The following requires some cleaning or could as well be ometted.)\\
+  % In a {\sc bbhu}-premodel functions are required to be uniformly continuous with a modulus of uniform continuity fixed by the language.
+  % We can reproduce this condition is our language by adding a for every modulus of uniform continuity $\delta:{\mathds R}^+\to {\mathds R}^+$, and every $\varepsilon\in{\mathds R}^+$, a predicate $r_\varepsilon$ such that 
 
-  \ceq{\hfill r_\varepsilon^M(x,y,z,w)}{=}
-  {\left\{
-  \begin{array}[]{ll}
-    \varepsilon\cdot d(z,w) & \textrm{if } d(x,y)\le\delta(\varepsilon)\\
-    0 & \textrm{otherwise }\\
-  \end{array}
-  \right.}
+  % \ceq{\hfill r_\varepsilon^M(x,y,z,w)}{=}
+  % {\left\{
+  % \begin{array}[]{ll}
+  %   \varepsilon\cdot d(z,w) & \textrm{if } d(x,y)\le\delta(\varepsilon)\\
+  %   0 & \textrm{otherwise }\\
+  % \end{array}
+  % \right.}
   
-  If we require $n_{r_\varepsilon(x,y,fx,fy)}=1$, then the function interpreted in the models (as defined in Section~\ref{uno}) are uniformly continuous with modulo $\delta$.
+  % If we require $n_{r_\varepsilon(x,y,fx,fy)}=1$, then the function interpreted in the models (as defined in Section~\ref{uno}) are uniformly continuous with modulo $\delta$.
 
 
 
@@ -256,10 +257,10 @@ For clarity, we stress that the variables occurring in $t_{\psi(x,y)}(z)$ may be
   The unit ball of $M$ is $U=\{a\in M: \|a\|=1\}$.
 
   (Need be completed)\\
-  Let $\varphi(x)$ be an atomic formula.
-  This has form $\|t(x)\|$ for some $t(x)\in L_{\rm trm}$.  
-  Note that $\sup\{\|t(a)\|: a\in U^{|x|}\}$ does not depend on $M$.
-  Therefore we can set it to be $n_{\varphi(x)}$
+  % Let $\varphi(x)$ be an atomic formula.
+  % This has form $\|t(x)\|$ for some $t(x)\in L_{\rm trm}$.  
+  % Note that $\sup\{\|t(a)\|: a\in U^{|x|}\}$ does not depend on $M$.
+  % Therefore we can set it to be $n_{\varphi(x)}$
 
 \end{itemize}
 
@@ -369,7 +370,7 @@ By the interpretation of the infimum quantifier, this amounts to prove that
 \big\}:\,b\in M_i\Big\}}
 
 For simplicity, assume that $\varphi\big(\hat a,\hat b\big)^N$ and $\varphi\big(\hat ai,b\big)^{M_i}$ are non negative.
-First we prove the $\le$ inequality i.e., the run-of-the-mill half of the equality.
+First we prove the $\le$ inequality which is the run-of-the-mill half of the proof.
 Let $r$ be an arbitrary positive real number.
 
 \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
@@ -521,7 +522,7 @@ Then the following are equivalent:
 
   \ceq{b.}{\Leftrightarrow}{} there is $b\in M^{|x|}$ such that $M\models\varphi(b)<r$
 
-  \ceq{}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<\varepsilon.}
+  \ceq{}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
 
 Implication $\Rightarrow$ in \textit{a} uses 2 and the equivalence in \textit{b} uses the induction hypothesis.
 \end{proof}
@@ -547,12 +548,12 @@ Throughout this section $M$ is a model with unit ball $U$ and bounding functions
 
 Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
-We say that $p(x)\le 0$ is \emph{uniformly finitely satisfied in $M$\/} if for every formula $\psi(x)$ that is a disjunction of formulas in $p(x)$, there is an $a\in U^{|z|}$ such that $M\models\psi\big(t(a)\big)\le0$, where $t(z)\in L_{\rm trm}$ is a term which only depends on $p(x)$.  
+We say that $p(x)\le 0$ is \emph{finitely satisfied (in $U$)\/} if for every formula $\psi(x)$ that is a disjunction of formulas in $p(x)$, there is an $a\in U^{|x|}$ such that $M\models\psi(a)\le0$.  
 
-We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)\subseteq L(A)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that $M\models p(a)\le0$.
+We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)\subseteq L(A)$ as in 1 and 2 below, there is an $a\in U^{|x|}$ such that $M\models p(a)\le0$.
 \begin{itemize}
   \item[1.] $A\subseteq M$ has cardinality $<\lambda$;
-  \item[2.] $p(x)\le0$ is uniformly finitely satisfied in $M$.
+  \item[2.] $p(x)\le0$ is finitely satisfied in $U$.
 \end{itemize}
 If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
 
