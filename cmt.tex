@@ -6,7 +6,7 @@
 \usepackage{comment}
 \usepackage{tikz}
 \usepackage{xcolor}
-
+\usepackage{datetime2} 
 \usepackage{hyperref}
 
 \usepackage[margin=1in]{geometry}
@@ -82,6 +82,7 @@
 \linespread{1.15}
 \begin{document}
 \title{Continuous model theory without the hassle}
+\hfill\texttt{Branch:~semplicissimo \ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,7 +92,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Formulas and their interpretation}\label{uno}
 
-The following definition does not differ from classical first-order logic but for the third clause (which you may ignore til the end of the section).
+The following definition extends that of classical first-order logic with cluses 3 and 4.
 
 \begin{definition}\label{signature}
 A \emph{signature\/} or \emph{language\/} $L$ consists of the following data\nobreak
@@ -99,23 +100,26 @@ A \emph{signature\/} or \emph{language\/} $L$ consists of the following data\nob
 \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
 \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
 \item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$.
+\item[4.] a distingished unary relation symbol $u$.
 \end{itemize}
 \end{definition}
 
-The functions in 3 above are called \emph{bounding functions.}
-The meaning of $L_{\rm at}$ in 4 is clarified below.
+The function in 3 above is called the \emph{bounding function.}
+The meaning of $L_{\rm at}$ clarified below.
 
 \begin{definition}A \emph{structure\/} or \emph{model\/} $M$ of signature $L$ consists of the following data\nobreak
 \begin{itemize}
 \item[1.] for every  $f\in L_{\rm fun}$, a function $f^M:\ M^{{\rm Ar}(f)}\to M$;
 \item[2.] for every $r\in L_{\rm rel}$, a function $r^M:\ M^{{\rm Ar}(r)}\to{\mathds R}$;
-\item[3.] a subset $U\subseteq M$.   
+\item[3.] a function $u^M:M\to\{0,1\}$.   
 \end{itemize}
 \end{definition}
 
-The set $U$ in 3 above is called the \emph{unit ball\/} of $M$.
-It will not play any role till Definition~\ref{def_semantic}.
-The axioms for the unit ball are stated in Definition~\ref{def_unitball} where we will also clarify the role of the bounding functions.
+We write $uM$ for the set $\{a\in M: u^Ma=0\}$.
+We call this the \emph{unit ball\/} of $M$.
+It will not play any role till Definition~\hyperref[def_semantic]{\ref*{def_semantic}.vi}.
+The axioms that the unit ball has to saisfy are in Definition~\ref{def_unitball}.
+These axioms also clarify the role of the bounding function.
 
 The syntax and semantic of \emph{terms} is defined just as in classical first-order logic.
 We write \emph{$L_{\rm trm}$\/} for the set of terms in the language $L$.
@@ -123,9 +127,9 @@ Atomic formulas are defined as in classical first-order logic.
 They have the form $r\,t$, where $r$ is a relation symbol and $t$ is a tuple of terms.
 The set of atomic formulas is denoted by \emph{$L_{\rm at}$.}
 The set of all formulas is denoted as usual by \emph{L,} the same symbol as the language.
-This is defined inductively from the atomic formulas using the following connectives.
+Formulas are defined inductively from the atomic one using the following connectives.
 
-The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{1,+,\wedge\big\}\cup{\mathds R}$, where $+$ and $\wedge$ are binary connectives, the elements of ${\mathds R}$ are unary connectives, $1$ is a logical constant (i.e.\@ a zero-ary connective).
+The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{+,\,\cdot\,,\wedge\,\big\}\cup{\mathds R}$, where $+$, $\,\cdot\,$, and $\wedge$ are binary connectives, the elements of ${\mathds R}$ are logical constants (i.e.\@ a zero-ary connectives).
 There is also the infimum \emph{quantifier\/} $\displaystyle\bigwedge_x$.
 
 \begin{definition}\label{def_formulas}
@@ -134,15 +138,15 @@ The inductive definition of formula is as follows
 \begin{minipage}[t]{.4\textwidth}
 \begin{itemize}
 \item[i.] atomic formulas are formulas
-\item[ii.] $1$ is a formula;
+\item[ii.] $\alpha$ is a formula for every $\alpha\in{\mathds R}$;
 \item[iii.] $\varphi+\psi$ is a formula; 
 \end{itemize}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{.4\textwidth}
 \begin{itemize}
-\item[iv.] $\varphi\wedge\psi$ is a formula;
-\item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
+\item[iv.] $\varphi\cdot\psi$ is a formula;
+\item[v.] $\varphi\wedge\psi$ is a formula;
 \item[vi.] $\displaystyle\bigwedge_x\varphi$ is a formula.
 \end{itemize}
 \end{minipage}
@@ -165,41 +169,41 @@ We write $t^M$ for the element obtained interpreting function symbols and parame
 \begin{definition}\label{def_semantic}
 If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
 
-\begin{minipage}[t]{.4\textwidth}
+\begin{minipage}[t]{.5\textwidth}
 \begin{itemize}
 \item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
-\item[ii.] $1^M\ =\ 1$;
+\item[ii.] $\alpha^M\ =\ \alpha$;
 \item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
 \end{itemize}
 \end{minipage}
-\begin{minipage}[t]{.59\textwidth}
+\begin{minipage}[t]{.4\textwidth}
 \begin{itemize}
-\item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
+\item[iv.] $(\varphi\cdot\psi)^M\ =\ \varphi^M\cdot\psi^M$;
 \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
-\item[vi.] \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\ b\in U\big\}$}.
+\item[vi.] \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in (uM)\big\}$}.
 \end{itemize}
 \end{minipage}
 \end{definition}
 \medskip
 
-In Fact~\ref{fact_finiteness} we prove that the infimum in (vi) is ineed finite, so that the definition is well-given.
+In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) of the definition above is ineed finite, so that the definition is well-given.
 
 For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^M$.
 
-Finally, we complete the definition of structure by giving the axiomatic meaning of the unit ball and of the bounding function.
+Finally, we complete the definition of structure by giving the axiomatics of the unit ball and of the bounding function.
 
 \begin{definition}\label{def_unitball}
   The unit ball $U$ is required to satisfy the following axioms 
   \begin{itemize}
-  \item[1.] $M=\big\{t^M:\ t\in L_{\rm trm}(U) \textrm{ a closed term }\big\}$;
-  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in U^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
+  \item[1.] $M=\big\{t^M:\ t\in L_{\rm trm}(uM) \textrm{ a closed term }\big\}$;
+  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in (uM)^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
   \end{itemize}
 \end{definition}
 
-With an easy proof by induction on the syntax we obtain the following.
+A straightforeward proof by induction on the syntax yields the following.
 
 \begin{fact}\label{fact_finiteness}
-  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in U^{|x|}$.\qed
+  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in(uM)^{|x|}$.\qed
 \end{fact}
 
 
@@ -255,7 +259,7 @@ With an easy proof by induction on the syntax we obtain the following.
   The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
   Our model $M$ is a Banach space.
   The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
-  The unit ball of $M$ is $U=\{a\in M: \|a\|=1\}$.
+  The unit ball of $M$ is $uM=\{a\in M: \|a\|\le1\}$.
 
   (Need be completed)\\
   % Let $\varphi(x)$ be an atomic formula.
@@ -282,6 +286,13 @@ So, when convenient we may use weak inequalities to denote conditions.
 
 The negation of a condition is called a \emph{co-conditions}.
 So, $\varphi(x)\neq0$, $\varphi(x)<0$ or $\varphi(x)>0$ are co-conditions.
+
+\begin{remark}
+  It is easy to see that conditions and co-conditions are cosed under logical disjunction and logical conjunction.
+  Condition are also closed under universal quanfication over the unit ball.
+  Closure under existential quanfication is a more subtle point.
+  It is not true in general but it can be ensured by a small amount of saturation (cf.~Fact~\ref{fact_existential}).
+\end{remark}
 
 A set of conditions is called a \emph{type\/} or, when $x$ is the empty tuple, a \emph{theory.}
 For $p(x)\subseteq L(M)$, we define
@@ -318,19 +329,20 @@ if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of 
 When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
 
 Let $I$ be an infinite set.
-Let $\langle M_i:i\in I\rangle$ be a sequence of models with unit balls $U_i$.
+Let $\langle M_i:i\in I\rangle$ be a sequence of models.
 Note that all models are required to have the same bounding function (as these are part of the language).
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
-Write \emph{$U$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}U_i$ such that $\hat a\,i\in U_i$.
-We define the structure \emph{$N$\/} with unit ball $U$ as follows
+Write \emph{$U$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}(uM_i)$ such that $\hat a\,i\in(uM_i)$.
+We define the structure \emph{$N$\/}
 \begin{itemize}
   \item[1.] the elements of $N$ are functions $\hat c: I\to \bigcup_{i\in I}M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in U^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
   \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of  $N$ then
   \begin{itemize}
     \item[a.] $f^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=t(\hat a)$ where $t$ is the term obtained composing $f$ with $t_1,\dots,t_n$;
-    \item[b.] $r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$. 
+    \item[b.] $r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$;
+    \item[c.] $uN=U$.
   \end{itemize}
 \end{itemize}
 \end{definition}
@@ -352,7 +364,7 @@ Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}
 \begin{proof}
 This is just the usual run-of-the-mill proof.
 We proceed by induction on the syntax of $\varphi(x)$.
-If $\varphi(x)$ is atomic holds by definition.
+If $\varphi(x)$ is atomic holds the equality above holds by definition.
 We spell out the proof for the infimum quantifier.
 Assume inductively that
 
@@ -368,39 +380,39 @@ We want to prove that
 
 By the interpretation of the infimum quantifier, this amounts to prove that
 
-\ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in U\big\}}
+\ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in(uN)\big\}}
 {=}
-{\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i\big\}}
+{\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
 
 First we prove the $\le$ inequality.
 Let $r$ be an arbitrary positive real number.
 
-\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in U\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
+\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
 
 \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r},
 
 \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in U_i\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in U_i\Big\}}{<}{r}.
+\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{r}.
 
 \smallskip
 This proves the $\ge$ inequality.
 As for the $\le$ inequality, assume that
 \smallskip
 
-\ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}
+\ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
 {<}
 {r.}
 
 Therefore, for some $u\in F$
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in U_i^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
 
-\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in U^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
 
 \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r,}
 
@@ -420,19 +432,15 @@ This proves the desired inequality.
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 From \L\v{o}\'s Theorem we obtain a form of compactness with the usual argument.
-Note however that, w.r.t.\@ classical logic, here we add a requirement of uniformty.
 
 A theory $T\le0$ is finitely consistent if for every $\varphi$, that is a disjunction of sentences in $T$, there is a model $M$ such that $M\models \varphi\le0$.
-Note that require that all these models $M$ have the same bounding fuctions.
+Note that it is implicit that all these models $M$ have the same bounding fuction.
 
 \begin{theorem}[Compactness Theorem]\label{thm_compattezza}
   Every finitely consistent theory is consistent. 
   \end{theorem}
   
   \begin{proof}
-  Let $n_{\mbox{-}},t_{\mbox{-}}$ be some bounding function that witness the uniform finite consistency of $T$.
-  Below by \textit{model\/} we mean a model with those bounding functions.
-  
   We construct a model $N$ of $T\le0$.
   Let $I$ be the set of closed formulas $\xi$ such that $\xi\le0$ holds in some model $M_\xi$.
   For every condition $\varphi\le0$ define $X_\varphi\subseteq I$ as follows
@@ -473,7 +481,7 @@ We say that the map $k:M\to N$ is an \emph{elementary map\/} if
 
 \ceq{\hfill \varphi^M(ka)}{=}{\varphi^N(a)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
 
-We write \emph{$M\equiv N$\/} when $\varnothing:M\to N$ is an elementary map and \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
+We write \emph{$M\equiv N$\/} when $\varnothing:U_M\to N$ is an elementary map and \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
 An \emph{elementary embedding\/} is an total elementary map.
 Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
@@ -481,7 +489,7 @@ Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an
 The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
 
 \begin{corollary}
-  For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $N$.
+  For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $M$.
   Then there is an elementary embedding of $M$ in $N$.\qed
 \end{corollary}
 
@@ -491,28 +499,31 @@ Then the following are equivalent:
 \begin{itemize}
 \item[1.] $M\preceq N$;
 \item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the limit $M\mbox{-}$topology on $N^{|x|}$;
-\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $\varphi(b)<0$ for some $b\in M^{|x|}$.
+\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
 \end{itemize}
 \end{proposition}
 \begin{proof}
-  Equivalence 2$\Leftrightarrow$3 and implication 1$\Rightarrow$2 are clear.
-  To prove 2$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $r\in{\mathds R}$
+  Equivalence 2$\Leftrightarrow$3 is tautological.
+  Implication 1$\Rightarrow$2 is clear.
+  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $r\in{\mathds R}^+$
 
-  \ceq{\hfill M\models\varphi(a)<r}{\Leftrightarrow}{N\models\varphi(ka)<r} \hfill for every $a\in M^{|x|}$
+  \ceq{\hfill M\models\varphi(a)<r}{\Leftrightarrow}{N\models\varphi(a)<r} \hfill for every $a\in M^{|x|}$
   
-  We use the equivalence above as induction hypothesis. 
+  (The restriction to positive $r$ is no loss of generality.)
+  We use the equivalence above as induction hypothesis.
   As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(x)$.
   We leave the case of Riesz connectives to the reader and consider only the case of the infimum quantifier.
 
-  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x)<r}{\Leftrightarrow}{} the set $\varphi(N)<r$ is non empty
+  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<r}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<r$
 
-  \ceq{a.}{\Leftrightarrow}{} there is $b\in M^{|x|}$ such that $N\models\varphi(b)<r$
+  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
 
-  \ceq{b.}{\Leftrightarrow}{} there is $b\in M^{|x|}$ such that $M\models\varphi(b)<r$
+  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
 
-  \ceq{}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
+  \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
 
-Implication $\Rightarrow$ in \textit{a} uses 2 and the equivalence in \textit{b} uses the induction hypothesis.
+We are using that $(ub<1$ and $\varphi(b,a)<r)$ is equivalent to $(ub-1)\cdot\varphi(b,a)<(ub-1)\cdot r$.
+Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
 \end{proof}
 
 \begin{remark}
@@ -530,18 +541,16 @@ For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinali
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Saturation}
-
-Throughout this section $M$ is a model with unit ball $U$ and bounding function $n_{\mbox{-}}$.
+\section{Saturation}\label{saturation}
 
 Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
-We say that $p(x)\le 0$ is \emph{finitely satisfied (in $U$)\/} if for every formula $\psi(x)$ that is a disjunction of formulas in $p(x)$, there is an $a\in U^{|x|}$ such that $M\models\psi(a)\le0$.  
+We say that $p(x)\le 0$ is \emph{finitely satisfied (in $uM$)\/} if for every formula $\psi(x)$ that is a disjunction of formulas in $p(x)$, there is an $a\in(uM)^{|x|}$ such that $M\models\psi(a)\le0$.  
 
-We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)\subseteq L(A)$ as in 1 and 2 below, there is an $a\in U^{|x|}$ such that $M\models p(a)\le0$.
+We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)\subseteq L(A)$ as in 1 and 2 below, there is an $a\in(uM)^{|x|}$ such that $M\models p(a)\le0$.
 \begin{itemize}
   \item[1.] $A\subseteq M$ has cardinality $<\lambda$;
-  \item[2.] $p(x)\le0$ is finitely satisfied in $U$.
+  \item[2.] $p(x)\le0$ is finitely satisfied in $uM$.
 \end{itemize}
 If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
 
@@ -550,32 +559,45 @@ If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
   Then $M$ has a saturated elementary superstructure of cardinality $M$. 
 \end{theorem}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Completeness vs.\@ saturation\quad !` please expand !}
-
-
-The $A$-limit uniformity on $M^{|x|}$ is the uniformity that has the following entourages 
-
-\ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in M^{|x|}\times M^{|x|}\quad :\quad \big|\varphi^M(a)-\varphi^M(b)\big|<\varepsilon\Big\}}
-
-for $\varphi(x)\in L(A)$ and $\varepsilon\in{\mathds R}^+$. It is the coarsest uniformity that makes all formulas in $L(A)$ uniformly continuous.
-
-Let $p(x)\subseteq L(M)$ be a type.
-We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
-
-\begin{fact}
-  Let $\lambda=L(A)$.
-  If $M$ is $\lambda$-saturated then and $p(x)\subseteq L(M)$ is Cauchy, then $p(x)$ is realized in $M$.
+\begin{fact}\label{fact_existential}
+  Let $M$ is $\omega$-saturated.
+  Then for every $\varphi(x)\in L(M)$ the following are equivalent
+  \begin{itemize}
+    \item[1.] there is an $a\in uM$ such that $M\models\ \varphi(a)\le0$;
+    \item[2.] $M\models\displaystyle \bigwedge_x\ \varphi(x)\le0$
+  \end{itemize}
 \end{fact}
+\begin{proof}
+  Only 2$\Rightarrow$1 requires a proof.
+  Let $p(x)=\{\varphi(x)-r: r\in{\mathds R}^+\}$.
+  If 2, then $p(x)\le0$ is finitely satisfied in $uM$.
+  Hence 1 follows by saturation.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Completeness vs.\@ saturation\quad !` please expand !}
+
+% The $A$-limit uniformity on $M^{|x|}$ is the uniformity that has the following entourages 
+
+% \ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in M^{|x|}\times M^{|x|}\quad :\quad \big|\varphi^M(a)-\varphi^M(b)\big|<\varepsilon\Big\}}
+
+% for $\varphi(x)\in L(A)$ and $\varepsilon\in{\mathds R}^+$. It is the coarsest uniformity that makes all formulas in $L(A)$ uniformly continuous.
+
+% Let $p(x)\subseteq L(M)$ be a type.
+% We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
+
+% \begin{fact}
+%   Let $\lambda=L(A)$.
+%   If $M$ is $\lambda$-saturated then and $p(x)\subseteq L(M)$ is Cauchy, then $p(x)$ is realized in $M$.
+% \end{fact}
 
 
-For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let 
+% For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let 
 
 
-Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
+% Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
 
 
 \end{document} 
