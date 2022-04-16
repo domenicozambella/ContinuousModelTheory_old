@@ -99,7 +99,7 @@ A \emph{signature\/} or \emph{language\/} $L$ consists of the following data\nob
 \begin{itemize}
 \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
 \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
-\item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$.
+\item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
 \item[4.] a distingished unary relation symbol $u$.
 \end{itemize}
 \end{definition}
@@ -118,7 +118,7 @@ The meaning of $L_{\rm at}$ clarified below.
 We write $uM$ for the set $\{a\in M: u^Ma=0\}$.
 We call this the \emph{unit ball\/} of $M$.
 It will not play any role till Definition~\hyperref[def_semantic]{\ref*{def_semantic}.vi}.
-The axioms that the unit ball has to saisfy are in Definition~\ref{def_unitball}.
+The unit ball is required to saisfy two axioms which are postponed till Definition~\ref{def_unitball}.
 These axioms also clarify the role of the bounding function.
 
 The syntax and semantic of \emph{terms} is defined just as in classical first-order logic.
@@ -193,7 +193,7 @@ For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|
 Finally, we complete the definition of structure by giving the axiomatics of the unit ball and of the bounding function.
 
 \begin{definition}\label{def_unitball}
-  The unit ball $U$ is required to satisfy the following axioms 
+  The unit ball is required to satisfy the following axioms 
   \begin{itemize}
   \item[1.] $M=\big\{t^M:\ t\in L_{\rm trm}(uM) \textrm{ a closed term }\big\}$;
   \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in (uM)^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
@@ -223,7 +223,7 @@ A straightforeward proof by induction on the syntax yields the following.
   The function $n_{\mbox-}$ is constantly $1$.
   To obtain the full strength of firt order logic one has to add equality as a predicate which is abset from our language.
 
-  \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding functions are irrelevant.
+  \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding function are irrelevant.
   
   The sets $L_{\rm rel}$, $L_{\rm fun}$ and the arity function ${\rm Ar}(\mbox-)$ are arbitrary.
   The interpretation of the symbols is arbitrary but we require that the functions $r^M$, for all $r\in L$, range in the interval $[-1,1]$.
@@ -306,6 +306,78 @@ Beware that $p(x)$ denotes just a set of formulas, the expression $p(x)\le0$ den
 We write \emph{$M\models p(a)\le0$} if $M\models\varphi(a)\le0$ for every $\varphi(x)\in p$.
 We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $a\in M^{|x|}$.
 
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Elementary maps}
+
+The \emph{$A$-limit topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
+The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the $A$-limit topology.
+Equivalently, we can take the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ as a base of open sets.
+
+The $A$-limit topology is a completely regular topology, almost by definition.
+Typically, it is not T$_0$.
+
+We say that the map $k:M\to N$ is an \emph{elementary map\/} if
+
+\ceq{\hfill \varphi^M(ka)}{=}{\varphi^N(a)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
+
+
+An \emph{elementary embedding\/} is an total elementary map.
+Note that we are slightly abusing the word embedding, in fact elementary maps need not be injective.
+
+We write \emph{$M\equiv N$\/} when $\varnothing:M\to N$ is an elementary map.
+In word we say that $M$ and $N$ are \emph{elementarily equivalent.}
+We write \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
+In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
+Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
+
+
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and and let $M\subseteq N$ be a substructure. 
+Fix a tuple of variables $x$ of finite length.
+Then the following are equivalent:
+\begin{itemize}
+\item[1.] $M\preceq N$;
+\item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the limit $M\mbox{-}$topology on $N^{|x|}$;
+\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+  Equivalence 2$\Leftrightarrow$3 is tautological.
+  Implication 1$\Rightarrow$2 is clear.
+  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $r\in{\mathds R}^+$
+
+  \ceq{\hfill M\models\varphi(a)<r}{\Leftrightarrow}{N\models\varphi(a)<r} \hfill for every $a\in M^{|x|}$
+  
+  (The restriction to positive $r$ is no loss of generality.)
+  We use the equivalence above as induction hypothesis.
+  As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(x)$.
+  We leave the case of Riesz connectives to the reader and consider only the case of the infimum quantifier.
+
+  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<r}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<r$
+
+  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
+
+  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
+
+  \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
+
+We are using that $(ub<1$ and $\varphi(b,a)<r)$ is equivalent to $(ub-1)\cdot\varphi(b,a)<(ub-1)\cdot r$.
+Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
+\end{proof}
+
+\begin{remark}
+In the Tarski-Vaught test for classical logic it is not necessary to require that $M$ is a substructure of $N$ as this is a consequence of the test.
+In the continuous case this is necessary by the lack of a predicate for equality.\qed
+%Still, we may drop this assumption when $M$ is metric complete. In fact, we can apply 2 as follows. For every function symbol $f$ and every $a\in M^{<\omega}$ the formula $d(fa,x)<\varepsilon$ has a witness in $M$ for all $\varepsilon\in{\mathds R}^+$. Hence $f{a}\in M$ follows from completeness.
+\end{remark}
+
+\begin{theorem}[Downward L\"owenheim-Skolem] For every $A\subseteq N$ there is a model $A\subseteq M\preceq N$ of cardinality $\le |L(A)|$.
+\end{theorem}
+\begin{proof} (Needs some checking.)
+For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $M$ of the required cardinality that is dense in the  $M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -335,7 +407,8 @@ Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
 Write \emph{$U$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}(uM_i)$ such that $\hat a\,i\in(uM_i)$.
-We define the structure \emph{$N$\/}
+We define the structure \emph{$N$\/} which we call an \emph{ultraproduct\/} of $\langle M_i:i\in I\rangle$.
+A usual, if $M_i=M$ for all $i\in I$, then we say that $N$ is an \emph{ultrapower\/} of $M$.
 \begin{itemize}
   \item[1.] the elements of $N$ are functions $\hat c: I\to \bigcup_{i\in I}M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in U^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
   \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of  $N$ then
@@ -347,7 +420,7 @@ We define the structure \emph{$N$\/}
 \end{itemize}
 \end{definition}
 
-Note that $U$ satisfies the axioms in Definition~\ref{def_unitball}.
+Note that $uN$ satisfies the axioms in Definition~\ref{def_unitball}.
 
 The limit in 2b of Definition~\ref{def_ultraproduct} exists because $F$ is an ultrafilter and it is finite because all $U_i$ have the same bounding functions.
 In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$ is bounded by $n_{\varphi(x)}$, where $\varphi(x)=r(t_1(x),\dots,t_n(x))$.
@@ -421,6 +494,12 @@ Therefore, for some $u\in F$
 This proves the desired inequality.
 \end{proof}
 
+The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
+
+\begin{corollary}
+  For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $M$.
+  Then there is an elementary embedding of $M$ in $N$.\qed
+\end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -464,79 +543,6 @@ Note that it is implicit that all these models $M$ have the same bounding fuctio
   Therefore $\varphi^N\le0$.
   \end{proof}
 
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\section{Elementary maps}
-
-The \emph{$A$-limit topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
-The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the $A$-limit topology.
-Equivalently, we can take the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ as a base of open sets.
-
-The $A$-limit topology is a completely regular topology, almost by definition.
-Typically, it is not T$_0$.
-
-We say that the map $k:M\to N$ is an \emph{elementary map\/} if
-
-\ceq{\hfill \varphi^M(ka)}{=}{\varphi^N(a)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
-
-We write \emph{$M\equiv N$\/} when $\varnothing:U_M\to N$ is an elementary map and \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
-In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
-An \emph{elementary embedding\/} is an total elementary map.
-Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
-
-The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
-
-\begin{corollary}
-  For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $M$.
-  Then there is an elementary embedding of $M$ in $N$.\qed
-\end{corollary}
-
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and and let $M\subseteq N$ be a substructure. 
-Fix a tuple of variables $x$ of finite length.
-Then the following are equivalent:
-\begin{itemize}
-\item[1.] $M\preceq N$;
-\item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the limit $M\mbox{-}$topology on $N^{|x|}$;
-\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
-\end{itemize}
-\end{proposition}
-\begin{proof}
-  Equivalence 2$\Leftrightarrow$3 is tautological.
-  Implication 1$\Rightarrow$2 is clear.
-  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $r\in{\mathds R}^+$
-
-  \ceq{\hfill M\models\varphi(a)<r}{\Leftrightarrow}{N\models\varphi(a)<r} \hfill for every $a\in M^{|x|}$
-  
-  (The restriction to positive $r$ is no loss of generality.)
-  We use the equivalence above as induction hypothesis.
-  As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(x)$.
-  We leave the case of Riesz connectives to the reader and consider only the case of the infimum quantifier.
-
-  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<r}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<r$
-
-  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
-
-  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
-
-  \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
-
-We are using that $(ub<1$ and $\varphi(b,a)<r)$ is equivalent to $(ub-1)\cdot\varphi(b,a)<(ub-1)\cdot r$.
-Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
-\end{proof}
-
-\begin{remark}
-In the Tarski-Vaught test for classical logic it is not necessary to require that $M$ is a substructure of $N$ as this is a consequence of the test.
-In the continuous case this is necessary by the lack of a predicate for equality.\qed
-%Still, we may drop this assumption when $M$ is metric complete. In fact, we can apply 2 as follows. For every function symbol $f$ and every $a\in M^{<\omega}$ the formula $d(fa,x)<\varepsilon$ has a witness in $M$ for all $\varepsilon\in{\mathds R}^+$. Hence $f{a}\in M$ follows from completeness.
-\end{remark}
-
-\begin{theorem}[Downward L\"owenheim-Skolem] For every $A\subseteq N$ there is a model $A\subseteq M\preceq N$ of cardinality $\le |L(A)|$.
-\end{theorem}
-\begin{proof} (Needs some checking.)
-For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $M$ of the required cardinality that is dense in the  $M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
-\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
