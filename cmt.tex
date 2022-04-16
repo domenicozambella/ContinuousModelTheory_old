@@ -333,7 +333,6 @@ We write \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
 Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
 
-
 \begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and and let $M\subseteq N$ be a substructure. 
 Fix a tuple of variables $x$ of finite length.
 Then the following are equivalent:
@@ -414,7 +413,7 @@ A usual, if $M_i=M$ for all $i\in I$, then we say that $N$ is an \emph{ultrapowe
   \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of  $N$ then
   \begin{itemize}
     \item[a.] $f^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=t(\hat a)$ where $t$ is the term obtained composing $f$ with $t_1,\dots,t_n$;
-    \item[b.] $r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$;
+    \item[b.] \smash{$r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$};
     \item[c.] $uN=U$.
   \end{itemize}
 \end{itemize}
@@ -443,7 +442,7 @@ Assume inductively that
 
 \ceq{\hfill \varphi^N\big(\hat a,\hat b\big)}
 {=}
-{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}
+{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
 
 We want to prove that 
 
@@ -564,6 +563,8 @@ If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
   Let $\lambda$ be an inaccessible cardinal larger than $|L|$ and $|M|$.
   Then $M$ has a saturated elementary superstructure of cardinality $M$. 
 \end{theorem}
+
+We conclude with an interesting property of $\omega$-saturated models.
 
 \begin{fact}\label{fact_existential}
   Let $M$ is $\omega$-saturated.
