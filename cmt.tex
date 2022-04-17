@@ -16,7 +16,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-\usepackage[mathcal]{eucal}
+\usepackage[mathcal]{euscript}
 %\usepackage{bbm}
 %\usepackage{latexsym}
 \usepackage{mathrsfs}
@@ -321,7 +321,7 @@ Typically, it is not T$_0$.
 
 We say that the map $k:M\to N$ is an \emph{elementary map\/} if
 
-\ceq{\hfill \varphi^M(ka)}{=}{\varphi^N(a)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
+\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(ka)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
 
 
 An \emph{elementary embedding\/} is an total elementary map.
@@ -550,7 +550,7 @@ Note that it is implicit that all these models $M$ have the same bounding fuctio
 
 Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
-We say that $p(x)\le 0$ is \emph{finitely satisfied (in $uM$)\/} if for every formula $\psi(x)$ that is a disjunction of formulas in $p(x)$, there is an $a\in(uM)^{|x|}$ such that $M\models\psi(a)\le0$.  
+We say that $p(x)\le 0$ is \emph{finitely satisfied (in $uM$)\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in(uM)^{|x|}$ such that $M\models\psi(a)\le0$.  
 
 We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)\subseteq L(A)$ as in 1 and 2 below, there is an $a\in(uM)^{|x|}$ such that $M\models p(a)\le0$.
 \begin{itemize}
@@ -580,6 +580,61 @@ We conclude with an interesting property of $\omega$-saturated models.
   If 2, then $p(x)\le0$ is finitely satisfied in $uM$.
   Hence 1 follows by saturation.
 \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uniformities}
+
+The limit uniformity on ${\EuScript U}^{|x|}$ is the uniformity that has the following entourages 
+
+\ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in{\EuScript U}^{|x|}\times{\EuScript U}^{|x|}\quad :\quad \big|\varphi^{\EuScript U}(a)-\varphi^{\EuScript U}(b)\big|<\varepsilon\Big\}}
+
+for $\varphi(x)\in L({\EuScript U})$ and $\varepsilon\in{\mathds R}^+$. It is the coarsest uniformity that makes all formulas in $L(A)$ uniformly continuous.
+
+% Let $p(x)\subseteq L(M)$ be a type.
+% We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
+
+% \begin{fact}
+%   Let $\lambda=L(A)$.
+%   If $M$ is $\lambda$-saturated then and $p(x)\subseteq L(M)$ is Cauchy, then $p(x)$ is realized in $M$.
+% \end{fact}
+
+
+% For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let 
+
+
+% Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The monster model}
+
+Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of cardinality $\kappa$, an inaccessible cardinal larger than $|L|$.
+(N.B. we always assume $2^\omega\le|L|$.)
+
+\begin{fact}
+  Let $k:{\EuScript U}\to{\EuScript U}$ be such that ${\rm dom\,}k\subseteq u\,{\EuScript U}$ has cardinality $<\kappa$.
+  Then there is an automorphism $h:{\EuScript U}\to{\EuScript U}$ that extends $k$.
+\end{fact}
+
+Let $a\in(u\,{\EuScript U})^{|x|}$. 
+We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
+
+
+\begin{fact}
+  Let $a\in(u\,{\EuScript U})^{|x|}$, where $|x|<\kappa$.
+  Let $A\subseteq{\EuScript U}$ have cardinality $<\kappa$.
+  Then
+
+  \ceq{\hfill p({\EuScript U})\le0}{=}{\big\{ha : h\in{\rm Aut}({\EuScript U}/A)\big\}}
+\end{fact}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
