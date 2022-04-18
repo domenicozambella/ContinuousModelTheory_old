@@ -92,15 +92,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Formulas and their interpretation}\label{uno}
 
-The following definition extends that of classical first-order logic with cluses 3 and 4.
+The following definition extends that of classical first-order logic with clauses 3 and 4.
 
 \begin{definition}\label{signature}
-A \emph{signature\/} or \emph{language\/} $L$ consists of the following data\nobreak
+A \emph{signature\/} or \emph{language\/} $L$ consists of\nobreak
 \begin{itemize}
 \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
 \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
 \item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
-\item[4.] a distingished unary relation symbol $u$.
+\item[4.] a distinguished unary relation symbol $u$.
 \end{itemize}
 \end{definition}
 
@@ -129,7 +129,7 @@ The set of atomic formulas is denoted by \emph{$L_{\rm at}$.}
 The set of all formulas is denoted as usual by \emph{L,} the same symbol as the language.
 Formulas are defined inductively from the atomic one using the following connectives.
 
-The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{+,\,\cdot\,,\wedge\,\big\}\cup{\mathds R}$, where $+$, $\,\cdot\,$, and $\wedge$ are binary connectives, the elements of ${\mathds R}$ are logical constants (i.e.\@ a zero-ary connectives).
+The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{1,+,\wedge\big\}\cup{\mathds R}$, where $+$ and $\wedge$ are binary connectives, the elements of ${\mathds R}$ are unary connectives, $1$ is a logical constant (i.e.\@ a zero-ary connective).
 There is also the infimum \emph{quantifier\/} $\displaystyle\bigwedge_x$.
 
 \begin{definition}\label{def_formulas}
@@ -138,27 +138,26 @@ The inductive definition of formula is as follows
 \begin{minipage}[t]{.4\textwidth}
 \begin{itemize}
 \item[i.] atomic formulas are formulas
-\item[ii.] $\alpha$ is a formula for every $\alpha\in{\mathds R}$;
+\item[ii.] $1$ is a formula;
 \item[iii.] $\varphi+\psi$ is a formula; 
 \end{itemize}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{.4\textwidth}
 \begin{itemize}
-\item[iv.] $\varphi\cdot\psi$ is a formula;
-\item[v.] $\varphi\wedge\psi$ is a formula;
+\item[iv.] $\varphi\wedge\psi$ is a formula;
+\item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
 \item[vi.] $\displaystyle\bigwedge_x\varphi$ is a formula.
 \end{itemize}
 \end{minipage}
 \end{definition}
 \medskip
 
-
 If $\alpha\in{\mathds R}$, we may write \emph{$\alpha$\/} for the formula $\alpha1$.
 We write \emph{${}-\varphi$\/} for $(-1)\varphi$ and \emph{$\varphi-\psi$\/} for $\varphi+(-\psi)$ and we write \emph{$\varphi\vee\psi$\/} for ${}-(-\varphi\wedge-\psi)$.
 Also, \emph{$\varphi^+$\/} and \emph{$\varphi^-$\/} stand for $0\vee\varphi$ respectively $0\vee(-\varphi)$, and we write \emph{$|\varphi|$\/} for $\varphi\vee(-\varphi)$.
 Finally, \smash{\emph{$\displaystyle\bigvee_x\varphi$\/}} 
-stands for  $\displaystyle -\bigwedge_x-\varphi$.
+stands for $\displaystyle -\bigwedge_x-\varphi$.
 
 If $A\subseteq M$, we write $L(A)$ for the language $L$ expanded with a $0$-ary function symbol for every element of $a$.
 As in classical first-order logic, $M$ is canonically expanded to a structure of signature $L(A)$ by setting $a^M=a$ for every $a\in A$.
@@ -167,24 +166,24 @@ Let $M$ be a model and let $t$ be a tuple of closed terms possibly with paramete
 We write $t^M$ for the element obtained interpreting function symbols and parameters in $M$ just as in classical first-order logic.
 
 \begin{definition}\label{def_semantic}
-If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
-
-\begin{minipage}[t]{.5\textwidth}
-\begin{itemize}
-\item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
-\item[ii.] $\alpha^M\ =\ \alpha$;
-\item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
-\end{itemize}
-\end{minipage}
-\begin{minipage}[t]{.4\textwidth}
-\begin{itemize}
-\item[iv.] $(\varphi\cdot\psi)^M\ =\ \varphi^M\cdot\psi^M$;
-\item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
-\item[vi.] \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in (uM)\big\}$}.
-\end{itemize}
-\end{minipage}
-\end{definition}
-\medskip
+  If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
+  
+  \begin{minipage}[t]{.4\textwidth}
+  \begin{itemize}
+  \item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
+  \item[ii.] $1^M\ =\ 1$;
+  \item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
+  \end{itemize}
+  \end{minipage}
+  \begin{minipage}[t]{.59\textwidth}
+  \begin{itemize}
+  \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
+  \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
+  \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in (uM)\big\}$}.
+  \end{itemize}
+  \end{minipage}
+  \end{definition}
+  \medskip
 
 In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) of the definition above is ineed finite, so that the definition is well-given.
 
@@ -221,47 +220,34 @@ A straightforeward proof by induction on the syntax yields the following.
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
   The unit ball is the whole of $M$. 
   The function $n_{\mbox-}$ is constantly $1$.
-  To obtain the full strength of firt order logic one has to add equality as a predicate which is abset from our language.
+  To obtain the full strength of first-order logic one has to add equality as a predicate as it is absent from our logic.
 
-  \item [2.] Secondly, we consider a class of examples that are non trivial (and distant from classical logic) but where unit ball and bounding function are irrelevant.
-  
-  The sets $L_{\rm rel}$, $L_{\rm fun}$ and the arity function ${\rm Ar}(\mbox-)$ are arbitrary.
-  The interpretation of the symbols is arbitrary but we require that the functions $r^M$, for all $r\in L$, range in the interval $[-1,1]$.
-  As unit ball take the whole of $M$.
-  The function $n_{\mbox-}$ is constant $1$.
-
-  \item [3.] Any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
+  \item [2.] Secondly, any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
   The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
   As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
-  % As $U=M$, we can set $t_{\psi(x,y)}$ to be the term $y$.
+
+  \item [3.] Now we consider an example that is non trivial and distant from classical models as from {\sc bbhu}-models: graphs with weighted verteces and edges.
+  The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
+  We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
+  As unit ball take the whole of $M$.
+  The function $n_{\mbox-}$ is constant $1$.
   
-  % (The following requires some cleaning or could as well be ometted.)\\
-  % In a {\sc bbhu}-premodel functions are required to be uniformly continuous with a modulus of uniform continuity fixed by the language.
-  % We can reproduce this condition is our language by adding a for every modulus of uniform continuity $\delta:{\mathds R}^+\to {\mathds R}^+$, and every $\varepsilon\in{\mathds R}^+$, a predicate $r_\varepsilon$ such that 
 
-  % \ceq{\hfill r_\varepsilon^M(x,y,z,w)}{=}
-  % {\left\{
-  % \begin{array}[]{ll}
-  %   \varepsilon\cdot d(z,w) & \textrm{if } d(x,y)\le\delta(\varepsilon)\\
-  %   0 & \textrm{otherwise }\\
-  % \end{array}
-  % \right.}
-  
-  % If we require $n_{r_\varepsilon(x,y,fx,fy)}=1$, then the function interpreted in the models (as defined in Section~\ref{uno}) are uniformly continuous with modulo $\delta$.
-
-
-
-
-
-
-  \item [4.] Finally, let $L$ be the language of Banach spaces. 
+  \item [4.] Finally, and example where the unit ball is non trivial.
+  Let $L$ be the language of Banach spaces. 
   Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
   The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
   Our model $M$ is a Banach space.
   The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
   The unit ball of $M$ is $uM=\{a\in M: \|a\|\le1\}$.
+  If $\varphi(x)$ is the atomic formulas
 
-  (Need be completed)\\
+  \ceq{\hfill\varphi(x)}{=}{\Big\|\sum_{i=1}^n\lambda_i x\,\Big\|}
+  
+  then 
+
+  \ceq{\hfill n_{\varphi(x)}}{=}{\sum_{i=1}^n|\lambda_i|.}
+  
   % Let $\varphi(x)$ be an atomic formula.
   % This has form $\|t(x)\|$ for some $t(x)\in L_{\rm trm}$.  
   % Note that $\sup\{\|t(a)\|: a\in U^{|x|}\}$ does not depend on $M$.
@@ -279,27 +265,35 @@ A straightforeward proof by induction on the syntax yields the following.
 For $\varphi, \psi\in L(M)$ some closed formulas, we write \emph{$M\models\ \varphi\le\psi$} for $\varphi^M\le\psi^M$.
 The meaning of \emph{$M\models\ \varphi=\psi$\/} and of \emph{$M\,\models\ \varphi<\psi$\/} is similar.
 
-Equations of the form $\varphi(x)=0$ are called \emph{conditions}.
-We write $M\models\exists x\,\varphi(x)=0$ if $M\models\varphi(a)=0$ for some $a\in M^{|x|}$.
-Observe that $\varphi(x)=0$ is equivalent to $|\varphi(x)|\le0$ and $\varphi(x)\le0$ is equivalent to $\big(\varphi(x)\vee0\big)=0$.
-So, when convenient we may use weak inequalities to denote conditions.
+Expressions of the form $\varphi(x)\le0$ are called \emph{conditions}.
+We write $M\models\exists x\,\varphi(x)\le0$ if $M\models\varphi(a)\le0$ for some $a\in M^{|x|}$.
+Observe that $\varphi(x)=0$ is equivalent to $|\varphi(x)|\le0$ and that $\varphi(x)\le0$ is equivalent to $\big(\varphi(x)\vee0\big)=0$. 
+So, when convenient we may use weak equalities to denote conditions.
 
 The negation of a condition is called a \emph{co-conditions}.
 So, $\varphi(x)\neq0$, $\varphi(x)<0$ or $\varphi(x)>0$ are co-conditions.
 
-\begin{remark}
-  It is easy to see that conditions and co-conditions are cosed under logical disjunction and logical conjunction.
-  Condition are also closed under universal quanfication over the unit ball.
-  Closure under existential quanfication is a more subtle point.
-  It is not true in general but it can be ensured by a small amount of saturation (cf.~Fact~\ref{fact_existential}).
-\end{remark}
+It is easy to see that conditions are cosed under logical disjunction and logical conjunction.
+
+\ceq{\hfill M\models\varphi\vee\psi\le0}
+{\Leftrightarrow}
+{M\models\varphi\le0 \textrm{ and }M\models\psi\le0}
+
+\ceq{\hfill M\models\varphi\wedge\psi\le0}{\Leftrightarrow}{M\models\varphi\le0 \textrm{ \ or \ }M\models\psi\le0}
+
+Condition are also closed under universal quanfication over the unit ball.
+
+\ceq{\hfill M\models\bigvee_x\varphi(x)\le0}{\Leftrightarrow}{M\models\forall x\ \varphi(x)\le0}
+
+Closure under existential quanfication is a more subtle point.
+It is not true in general but it can be ensured by a small amount of saturation (cf.~Fact~\ref{fact_existential}).
 
 A set of conditions is called a \emph{type\/} or, when $x$ is the empty tuple, a \emph{theory.}
 For $p(x)\subseteq L(M)$, we define
 
 \hfil\emph{$p(x)\le0$}\ \ =\ \ $\big\{\varphi(x)\le0 \quad :\quad  \varphi(x)\in p\big\}.$
 
-Up to equivalence, all type have the form above.
+Up to equivalence, all types have the form above.
 
 Beware that $p(x)$ denotes just a set of formulas, the expression $p(x)\le0$ denotes a type.
 
@@ -310,7 +304,7 @@ We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
-\section{Elementary maps}
+\section{Elementary relations}
 
 The \emph{$A$-limit topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
 The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the $A$-limit topology.
@@ -319,50 +313,48 @@ Equivalently, we can take the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ 
 The $A$-limit topology is a completely regular topology, almost by definition.
 Typically, it is not T$_0$.
 
-We say that the map $k:M\to N$ is an \emph{elementary map\/} if
+We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} if
 
-\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(ka)} \hfill for every $\varphi(x)\in L$ and every $a\in({\rm dom} k)^{|x|}$. 
+\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(b)} \hfill for every $\varphi(x)\in L$ and $a,b\in M^{|x|}, N^{|x|}$ such that $aRb$. 
 
+An \emph{elementary embedding\/} is an elementary relation that is functional, injective and total.
 
-An \emph{elementary embedding\/} is an total elementary map.
-Note that we are slightly abusing the word embedding, in fact elementary maps need not be injective.
-
-We write \emph{$M\equiv N$\/} when $\varnothing:M\to N$ is an elementary map.
+We write \emph{$M\equiv N$\/} when $\varnothing\subseteq M\times N$ is an elementary relation.
 In word we say that $M$ and $N$ are \emph{elementarily equivalent.}
-We write \emph{$M\equiv_A N$\/} if ${\rm id}_A:M\to N$ is an elementary map.
+Let $I_A$ denote the diagonal relation on $A$.
+We write \emph{$M\equiv_A N$\/} if $I_A\subseteq M\times N$ is an elementary relation.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
 Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
 
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and and let $M\subseteq N$ be a substructure. 
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and let $M\subseteq N$ be a substructure. 
 Fix a tuple of variables $x$ of finite length.
 Then the following are equivalent:
 \begin{itemize}
 \item[1.] $M\preceq N$;
-\item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the limit $M\mbox{-}$topology on $N^{|x|}$;
+\item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the $M\mbox{-}$limit topology on $N^{|x|}$;
 \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
 \end{itemize}
 \end{proposition}
 \begin{proof}
   Equivalence 2$\Leftrightarrow$3 is tautological.
   Implication 1$\Rightarrow$2 is clear.
-  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $r\in{\mathds R}^+$
+  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(x)$ that for every $\alpha\in{\mathds R}$
 
-  \ceq{\hfill M\models\varphi(a)<r}{\Leftrightarrow}{N\models\varphi(a)<r} \hfill for every $a\in M^{|x|}$
+  \ceq{\hfill M\models\varphi(a)<\alpha}{\Leftrightarrow}{N\models\varphi(a)<\alpha} \hfill for every $a\in M^{|x|}$
   
-  (The restriction to positive $r$ is no loss of generality.)
   We use the equivalence above as induction hypothesis.
   As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(x)$.
-  We leave the case of Riesz connectives to the reader and consider only the case of the infimum quantifier.
+  We leave the case of the propositional connectives to the reader and consider only the case of the infimum quantifier.
 
-  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<r}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<r$
+  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<\alpha}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<\alpha$
 
-  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
+  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<\alpha)$
 
-  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<r)$
+  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<\alpha)$
 
-  \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<r.}
+  \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<\alpha.}
 
-We are using that $(ub<1$ and $\varphi(b,a)<r)$ is equivalent to $(ub-1)\cdot\varphi(b,a)<(ub-1)\cdot r$.
+We are using that $(ub<1$ and $\varphi(b,a)<\alpha)$ is equivalent to $(ub-1)\vee(\varphi(b,a)-\alpha)\le0$.
 Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
 \end{proof}
 
@@ -457,17 +449,17 @@ By the interpretation of the infimum quantifier, this amounts to prove that
 {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
 
 First we prove the $\le$ inequality.
-Let $r$ be an arbitrary positive real number.
+Let $\alpha$ be an arbitrary positive real number.
 
-\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{r}.
+\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{\alpha}.
 
-\ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r},
+\ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
 
-\ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{r}.
+\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
 
 \smallskip
 This proves the $\ge$ inequality.
@@ -476,19 +468,19 @@ As for the $\le$ inequality, assume that
 
 \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
 {<}
-{r.}
+{\alpha.}
 
 Therefore, for some $u\in F$
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{r}\quad for every $i\in u$.
+\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r}\quad for every $i\in u$.
+\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{r,}
+\ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
 
-\ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{r.}
+\ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{\alpha.}
 
 This proves the desired inequality.
 \end{proof}
@@ -499,6 +491,13 @@ The following corollary of  \L\v{o}\'s Theorem is identical to its classical cou
   For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $M$.
   Then there is an elementary embedding of $M$ in $N$.\qed
 \end{corollary}
+
+We add the following easy remark for future reference.
+
+\begin{remark}
+  Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
+  Then $R$ is an elementary relation.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -576,22 +575,11 @@ We conclude with an interesting property of $\omega$-saturated models.
 \end{fact}
 \begin{proof}
   Only 2$\Rightarrow$1 requires a proof.
-  Let $p(x)=\{\varphi(x)-r: r\in{\mathds R}^+\}$.
+  Let $p(x)=\{\varphi(x)-\alpha: \alpha\in{\mathds R}^+\}$.
   If 2, then $p(x)\le0$ is finitely satisfied in $uM$.
   Hence 1 follows by saturation.
 \end{proof}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Uniformities}
-
-The limit uniformity on ${\EuScript U}^{|x|}$ is the uniformity that has the following entourages 
-
-\ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in{\EuScript U}^{|x|}\times{\EuScript U}^{|x|}\quad :\quad \big|\varphi^{\EuScript U}(a)-\varphi^{\EuScript U}(b)\big|<\varepsilon\Big\}}
-
-for $\varphi(x)\in L({\EuScript U})$ and $\varepsilon\in{\mathds R}^+$. It is the coarsest uniformity that makes all formulas in $L(A)$ uniformly continuous.
 
 % Let $p(x)\subseteq L(M)$ be a type.
 % We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
@@ -606,6 +594,14 @@ for $\varphi(x)\in L({\EuScript U})$ and $\varepsilon\in{\mathds R}^+$. It is th
 
 
 % Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Total and surjective elementary relations}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
