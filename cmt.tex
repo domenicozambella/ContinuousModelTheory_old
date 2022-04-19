@@ -82,7 +82,7 @@
 \linespread{1.15}
 \begin{document}
 \title{Continuous model theory without the hassle}
-\hfill\texttt{Branch:~master \ \DTMnow}\bigskip
+\hfill\texttt{Branch:~el\_rel \ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,11 +147,10 @@ The inductive definition of formula is as follows
 \begin{itemize}
 \item[iv.] $\varphi\wedge\psi$ is a formula;
 \item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
-\item[vi.] $\displaystyle\bigwedge_x\varphi$ is a formula.
+\item[vi.] \smash{$\displaystyle\bigwedge_x\varphi$} is a formula.
 \end{itemize}
 \end{minipage}
 \end{definition}
-\medskip
 
 If $\alpha\in{\mathds R}$, we may write \emph{$\alpha$\/} for the formula $\alpha1$.
 We write \emph{${}-\varphi$\/} for $(-1)\varphi$ and \emph{$\varphi-\psi$\/} for $\varphi+(-\psi)$ and we write \emph{$\varphi\vee\psi$\/} for ${}-(-\varphi\wedge-\psi)$.
@@ -185,7 +184,7 @@ We write $t^M$ for the element obtained interpreting function symbols and parame
   \end{definition}
   \medskip
 
-In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) of the definition above is ineed finite, so that the definition is well-given.
+In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) above is indeed finite, hence that the definition is sound.
 
 For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^M$.
 
@@ -216,7 +215,7 @@ A straightforeward proof by induction on the syntax yields the following.
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{itemize}
-  \item [1.] Firstly, we leave to the reader to check that classical first order models are a (trivial) special cases of the models introduced above.
+  \item [1.] Firstly, we leave to the reader to check that classical first-order models are a (trivial) special cases of the models introduced above.
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
   The unit ball is the whole of $M$. 
   The function $n_{\mbox-}$ is constantly $1$.
@@ -226,7 +225,7 @@ A straightforeward proof by induction on the syntax yields the following.
   The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
   As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
 
-  \item [3.] Now we consider an example that is non trivial and distant from classical models as from {\sc bbhu}-models: graphs with weighted verteces and edges.
+  \item [3.] Now we consider an example that is non trivial and distant both from classical models and from {\sc bbhu}-models: weighted graphs.
   The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
   We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
   As unit ball take the whole of $M$.
@@ -237,7 +236,7 @@ A straightforeward proof by induction on the syntax yields the following.
   Let $L$ be the language of Banach spaces. 
   Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
   The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
-  Our model $M$ is a Banach space.
+  Let $M$ be a Banach space and define a continuous model as follows.
   The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
   The unit ball of $M$ is $uM=\{a\in M: \|a\|\le1\}$.
   If $\varphi(x)$ is the atomic formulas
@@ -283,7 +282,7 @@ It is easy to see that conditions are cosed under logical disjunction and logica
 
 Condition are also closed under universal quanfication over the unit ball.
 
-\ceq{\hfill M\models\bigvee_x\varphi(x)\le0}{\Leftrightarrow}{M\models\forall x\ \varphi(x)\le0}
+\ceq{\hfill M\models\bigvee_x\varphi(x)\le0}{\Leftrightarrow}{M\models\forall x\in u\ \varphi(x)\le0}
 
 Closure under existential quanfication is a more subtle point.
 It is not true in general but it can be ensured by a small amount of saturation (cf.~Fact~\ref{fact_existential}).
@@ -569,8 +568,8 @@ We conclude with an interesting property of $\omega$-saturated models.
   Let $M$ is $\omega$-saturated.
   Then for every $\varphi(x)\in L(M)$ the following are equivalent
   \begin{itemize}
-    \item[1.] there is an $a\in uM$ such that $M\models\ \varphi(a)\le0$;
-    \item[2.] $M\models\displaystyle \bigwedge_x\ \varphi(x)\le0$
+    \item[1.] $M\models\exists x\in u\ \varphi(x)\le0$;
+    \item[2.] \smash{$M\models\displaystyle \bigwedge_x\ \varphi(x)\le0$}
   \end{itemize}
 \end{fact}
 \begin{proof}
@@ -603,6 +602,27 @@ We conclude with an interesting property of $\omega$-saturated models.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Total and surjective elementary relations}
 
+Let $R\subseteq M\times N$.
+Define
+
+\ceq{\hfill \langle R\rangle}{=}{\Big\{\big(t(a),t(b)\big)\ :\quad t(x)\in L_{\rm trm}\quad |x|<\omega\quad a,b\in M^{|x|}\quad aRb\Big\}}
+
+Clearly, if $R$ is elementary, so is $\langle R\rangle$.
+We say that $R$ is bounded if
+
+\ceq{\hfill R}{=}{\big\langle R\ \cap\ (uM\times uN)\big\rangle}
+
+We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
+We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
+
+The following is immediate conseguence of the discrete nature of the unit ball.
+For every $aRb$
+
+\ceq{\hfill a\in uM}{\Leftrightarrow}{b\in uN.}
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -611,13 +631,16 @@ We conclude with an interesting property of $\omega$-saturated models.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The monster model}
 
-Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of cardinality $\kappa$, an inaccessible cardinal larger than $|L|$.
-(N.B. we always assume $2^\omega\le|L|$.)
+Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of cardinality $\kappa$, an inaccessible cardinal larger than $|L|$, where $|L|$ stands for $\max\big\{|L_{\rm fun}|,|L_{\rm rel}|,2^\omega\big\}$.
 
 \begin{fact}
-  Let $k:{\EuScript U}\to{\EuScript U}$ be such that ${\rm dom\,}k\subseteq u\,{\EuScript U}$ has cardinality $<\kappa$.
-  Then there is an automorphism $h:{\EuScript U}\to{\EuScript U}$ that extends $k$.
+  Let $R\subseteq{\EuScript U}^2$ be an elementary relation of cardinality $<\kappa$.
+  Then there is an  $S$ such that $R\subseteq S\in{\rm Tser}({\EuScript U})$.
 \end{fact}
+
+\begin{proof}
+  
+\end{proof}
 
 Let $a\in(u\,{\EuScript U})^{|x|}$. 
 We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
