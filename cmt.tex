@@ -111,11 +111,11 @@ The meaning of $L_{\rm at}$ clarified below.
 \begin{itemize}
 \item[1.] for every  $f\in L_{\rm fun}$, a function $f^M:\ M^{{\rm Ar}(f)}\to M$;
 \item[2.] for every $r\in L_{\rm rel}$, a function $r^M:\ M^{{\rm Ar}(r)}\to{\mathds R}$;
-\item[3.] a function $u^M:M\to\{0,1\}$.   
+\item[3.] a function $u^M:M\to {\mathds R}^+\cup \{0\}$.   
 \end{itemize}
 \end{definition}
 
-We write $uM$ for the set $\{a\in M: u^Ma=0\}$.
+We write $uM$ for the set $\{a\in M: u^Ma\le0\}$.
 We call this the \emph{unit ball\/} of $M$.
 It will not play any role till Definition~\hyperref[def_semantic]{\ref*{def_semantic}.vi}.
 The unit ball is required to saisfy two axioms which are postponed till Definition~\ref{def_unitball}.
@@ -579,6 +579,10 @@ We conclude with an interesting property of $\omega$-saturated models.
   Hence 1 follows by saturation.
 \end{proof}
 
+\hrulefill
+
+Di qui in poi solo esperimenti selvaggi.
+
 
 % Let $p(x)\subseteq L(M)$ be a type.
 % We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
@@ -615,10 +619,11 @@ We say that $R$ is bounded if
 We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
 We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
 
-The following is immediate conseguence of the discrete nature of the unit ball.
-For every $aRb$
 
-\ceq{\hfill a\in uM}{\Leftrightarrow}{b\in uN.}
+
+% For every $aRb$
+
+% \ceq{\hfill?\ \  a\in uM}{\Leftrightarrow}{b\in uN\ \ ?}
 
 
 
