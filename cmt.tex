@@ -330,8 +330,8 @@ Fix a tuple of variables $x$ of finite length.
 Then the following are equivalent:
 \begin{itemize}
 \item[1.] $M\preceq N$;
-\item[2.] $M^{|x|}$ is dense in $N^{|x|}$ w.r.t.\@ the $M\mbox{-}$limit topology on $N^{|x|}$;
-\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
+\item[2.] $(uM)^{|x|}$ is dense in $(uN)^{|x|}$ w.r.t.\@ the (induced) $M\mbox{-}$limit topology on $(uN)^{|x|}$;
+\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(uN)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in(uM)^{|x|}$.
 \end{itemize}
 \end{proposition}
 \begin{proof}
@@ -347,13 +347,10 @@ Then the following are equivalent:
 
   \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<\alpha}{\Leftrightarrow}{} there is a $b\in(uN)$ such that $N\models\varphi(b,a)<\alpha$
 
-  \ceq{}{\Leftrightarrow}{} there is a $b\in N^{|y|}$ such that $N\models (ub<1$ and $\varphi(b,a)<\alpha)$
-
-  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models (ub<1$ and $\varphi(b,a)<\alpha)$
+  \ceq{a.}{\Leftrightarrow}{} there is a $b\in(uM)^{|x|}$ such that $N\models\varphi(b,a)<\alpha)$
 
   \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<\alpha.}
 
-We are using that $(ub<1$ and $\varphi(b,a)<\alpha)$ is equivalent to $(ub-1)\vee(\varphi(b,a)-\alpha)\le0$.
 Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
 \end{proof}
 
