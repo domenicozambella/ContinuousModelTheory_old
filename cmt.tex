@@ -82,7 +82,7 @@
 \linespread{1.15}
 \begin{document}
 \title{Continuous model theory without the hassle}
-\hfill\texttt{Branch:~master \ \DTMnow}\bigskip
+\hfill\texttt{Branch:~palla\_discreta \ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,32 +100,43 @@ A \emph{signature\/} or \emph{language\/} $L$ consists of\nobreak
 \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
 \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
 \item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
-\item[4.] a distinguished unary relation symbol $u$.
 \end{itemize}
 \end{definition}
 
 The function in 3 above is called the \emph{bounding function.}
-The meaning of $L_{\rm at}$ clarified below.
+The definition of $L_{\rm at}$ is given below.
 
-\begin{definition}A \emph{structure\/} or \emph{model\/} $M$ of signature $L$ consists of the following data\nobreak
+\begin{definition}A \emph{structure\/} or \emph{model\/} of signature $L$ consists of\nobreak
 \begin{itemize}
-\item[1.] for every  $f\in L_{\rm fun}$, a function $f^M:\ M^{{\rm Ar}(f)}\to M$;
-\item[2.] for every $r\in L_{\rm rel}$, a function $r^M:\ M^{{\rm Ar}(r)}\to{\mathds R}$;
-\item[3.] a function $u^M:M\to {\mathds R}^+\cup \{0\}$.   
+\item[1.] a set $\bar M$;
+\item[2.] a set $M\subseteq \bar M$.
+\item[3.] for every  $f\in L_{\rm fun}$, a function $f^M:\ \bar M^{{\rm Ar}(f)}\to \bar M$;
+\item[4.] for every $r\in L_{\rm rel}$, a function $r^M:\ \bar M^{{\rm Ar}(r)}\to{\mathds R}$;
 \end{itemize}
 \end{definition}
 
-We write $uM$ for the set $\{a\in M: u^Ma\le0\}$.
-We call this the \emph{unit ball\/} of $M$.
-It will not play any role till Definition~\hyperref[def_semantic]{\ref*{def_semantic}.vi}.
-The unit ball is required to saisfy two axioms which are postponed till Definition~\ref{def_unitball}.
-These axioms also clarify the role of the bounding function.
+The set $M$ is called the \emph{unit ball\/} and is required to saisfy the axioms in Definition~\ref{def_unitball}.
+It will be clear in Definition~\ref{def_semantic} that all our model theory plays inside the unit ball.
+Therefore we feel justified to denote the whole model by the unit ball (in principle different models could share the same unit ball this will never be the case in the following).
 
 The syntax and semantic of \emph{terms} is defined just as in classical first-order logic.
 We write \emph{$L_{\rm trm}$\/} for the set of terms in the language $L$.
 Atomic formulas are defined as in classical first-order logic.
 They have the form $r\,t$, where $r$ is a relation symbol and $t$ is a tuple of terms.
 The set of atomic formulas is denoted by \emph{$L_{\rm at}$.}
+
+Finally, we finish the definition of structure by giving the axiomatics of the unit ball and of the bounding function.
+
+\begin{definition}\label{def_unitball}
+  The unit ball is required to satisfy the following axioms 
+  \begin{itemize}
+  \item[1.] $\bar M=\big\{t^M:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
+  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
+  \end{itemize}
+\end{definition}
+
+
+
 The set of all formulas is denoted as usual by \emph{L,} the same symbol as the language.
 Formulas are defined inductively from the atomic one using the following connectives.
 
@@ -161,11 +172,11 @@ stands for $\displaystyle -\bigwedge_x-\varphi$.
 If $A\subseteq M$, we write $L(A)$ for the language $L$ expanded with a $0$-ary function symbol for every element of $a$.
 As in classical first-order logic, $M$ is canonically expanded to a structure of signature $L(A)$ by setting $a^M=a$ for every $a\in A$.
 
-Let $M$ be a model and let $t$ be a tuple of closed terms possibly with parameters from $M$.
-We write $t^M$ for the element obtained interpreting function symbols and parameters in $M$ just as in classical first-order logic.
+Let $M$ be a model and let $t\in L_{\rm term}(M)$ be a tuple of closed.
+We write $t^M$ for the element of $\bar M$ obtained interpreting function symbols and parameters in $M$ just as in classical first-order logic.
 
 \begin{definition}\label{def_semantic}
-  If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
+  If $\varphi\in L(uM)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
   
   \begin{minipage}[t]{.4\textwidth}
   \begin{itemize}
@@ -178,7 +189,7 @@ We write $t^M$ for the element obtained interpreting function symbols and parame
   \begin{itemize}
   \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
   \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
-  \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in (uM)\big\}$}.
+  \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in M\big\}$}.
   \end{itemize}
   \end{minipage}
   \end{definition}
@@ -188,20 +199,10 @@ In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) above is i
 
 For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^M$.
 
-Finally, we complete the definition of structure by giving the axiomatics of the unit ball and of the bounding function.
-
-\begin{definition}\label{def_unitball}
-  The unit ball is required to satisfy the following axioms 
-  \begin{itemize}
-  \item[1.] $M=\big\{t^M:\ t\in L_{\rm trm}(uM) \textrm{ a closed term }\big\}$;
-  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in (uM)^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
-  \end{itemize}
-\end{definition}
-
 A straightforeward proof by induction on the syntax yields the following.
 
 \begin{fact}\label{fact_finiteness}
-  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in(uM)^{|x|}$.\qed
+  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in M^{|x|}$.\qed
 \end{fact}
 
 
@@ -217,18 +218,18 @@ A straightforeward proof by induction on the syntax yields the following.
 \begin{itemize}
   \item [1.] Firstly, we leave to the reader to check that classical first-order models are a (trivial) special cases of the models introduced above.
   Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
-  The unit ball is the whole of $M$. 
+  The unit ball is the whole of $\bar M$. 
   The function $n_{\mbox-}$ is constantly $1$.
   To obtain the full strength of first-order logic one has to add equality as a predicate as it is absent from our logic.
 
-  \item [2.] Secondly, any {\sc bbhu}-premodel $M$ is also a model as those in Section~\ref{uno} if we take as unit ball the whole of $M$.
+  \item [2.] Secondly, any {\sc bbhu}-premodel is also a model as those in Section~\ref{uno} if we let the unit ball coincide with $\bar M$.
   The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
   As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
 
   \item [3.] Now we consider an example that is non trivial and distant both from classical models and from {\sc bbhu}-models: weighted graphs.
   The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
   We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
-  As unit ball take the whole of $M$.
+  As unit ball take, again,the whole of $\bar M$.
   The function $n_{\mbox-}$ is constant $1$.
   
 
@@ -236,9 +237,9 @@ A straightforeward proof by induction on the syntax yields the following.
   Let $L$ be the language of Banach spaces. 
   Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
   The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
-  Let $M$ be a Banach space and define a continuous model as follows.
+  Let $\bar M$ be a Banach space and define a continuous model as follows.
   The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
-  The unit ball of $M$ is $uM=\{a\in M: \|a\|\le1\}$.
+  The unit ball of is $M=\{a\in M: \|a\|\le1\}$.
   If $\varphi(x)$ is the atomic formulas
 
   \ceq{\hfill\varphi(x)}{=}{\Big\|\sum_{i=1}^n\lambda_i x\,\Big\|}
@@ -305,32 +306,33 @@ We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $
 %%%%%%%%%%%%%%%%%%%
 \section{Elementary relations}
 
-The \emph{$A$-limit topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
-The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the $A$-limit topology.
-Equivalently, we can take the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ as a base of open sets.
+Let $A\subseteq uM$.
+The \emph{$A$-limit topology\/} on $(uM)^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
+The sets $\big\{a\in (uM)^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the $A$-limit topology.
+Equivalently, we could take the sets $\big\{a\in(uM)^{|x|}:\, \varphi^M(a)<0\big\}$ as a base of open sets.
 
 The $A$-limit topology is a completely regular topology, almost by definition.
 Typically, it is not T$_0$.
 
-We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} if
+We say that $R\subseteq uM\times uN$ is an \emph{elementary relation\/} between $M$ and $N$ if for every $\varphi(x)\in L$ 
 
-\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(b)} \hfill for every $\varphi(x)\in L$ and $a,b\in M^{|x|}, N^{|x|}$ such that $aRb$. 
+\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(b)} \hfill for every $a,b\in(uM)^{|x|},(uN)^{|x|}$ such that $aRb$. 
 
 An \emph{elementary embedding\/} is an elementary relation that is functional, injective and total.
 
-We write \emph{$M\equiv N$\/} when $\varnothing\subseteq M\times N$ is an elementary relation.
-In word we say that $M$ and $N$ are \emph{elementarily equivalent.}
-Let $I_A$ denote the diagonal relation on $A$.
-We write \emph{$M\equiv_A N$\/} if $I_A\subseteq M\times N$ is an elementary relation.
+When $\varnothing$ is an elementary relation between $M$ and $N$ we say that these are \emph{elementarily equivalent\/} and write \emph{$M\equiv N$.} 
+We write $I_A$ for the diagonal relation on $A$.
+We write \emph{$M\equiv_A N$\/} if $I_A$ is an elementary relation.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
-Finally, we write \emph{$M\preceq N$\/} for $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
+Finally, we write \emph{$M\preceq N$\/} if $M\subseteq N$ and $M\equiv_M N$ and say that $M$ is an \emph{elementary substructure\/} of $N$.
+By $M\subseteq N$ we mean that $M$ is a substructureof $N$ in the classical sense.
 
 \begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $N$ be a model and let $M\subseteq N$ be a substructure. 
 Fix a tuple of variables $x$ of finite length.
 Then the following are equivalent:
 \begin{itemize}
 \item[1.] $M\preceq N$;
-\item[2.] $(uM)^{|x|}$ is dense in $(uN)^{|x|}$ w.r.t.\@ the (induced) $M\mbox{-}$limit topology on $(uN)^{|x|}$;
+\item[2.] $(uM)^{|x|}$ is dense in $(uN)^{|x|}$ w.r.t.\@ the $uM\mbox{-}$limit topology on $(uN)^{|x|}$;
 \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(uN)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in(uM)^{|x|}$.
 \end{itemize}
 \end{proposition}
