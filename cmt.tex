@@ -578,10 +578,6 @@ We conclude with a convenient property of $\omega$-saturated models.
   Hence 1 follows by saturation.
 \end{proof}
 
-\hrulefill
-
-Di qui in poi solo esperimenti selvaggi.
-
 
 % Let $p(x)\subseteq L(M)$ be a type.
 % We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
@@ -605,24 +601,50 @@ Di qui in poi solo esperimenti selvaggi.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Total and surjective elementary relations}
 
-We define an equivalence relation $\sim_M$ on the unit ball of any given model $M$ a follows
+We define an equivalence relation $\sim_M$ on the unit ball of any given model $M$ as follows
 $$
-a\, \sim_Mb\quad\Leftrightarrow\quad\varphi(a)^M=\varphi^M(b) \quad\textrm{for every }\varphi(x)\in L(M)
+a\, \sim_Mb\quad\Leftrightarrow\quad\varphi(a)^M=\varphi^M(b) \quad\textrm{for every }\varphi(x)\in L(M), \ |x|=1
 $$
 In ther words, $a\,\sim_Mb$ iff $I_M\cup\{(a,b)\}\subseteq M^2$ is an elementary relation.
-If $a'\, \sim_Mb'$ then, as elementary relations are closed under composition, $I_M\cup\big(\{a,a'\}\times\{b,b'\}\big)\subseteq M^2$ is also an elementary relation.
-In general, we have that
+
+As elementary relations are closed under composition,if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big(\{a,a'\}\times\{b,b'\}\big)\subseteq M^2$ is also elementary.
+In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
 $$
-a_i\, \sim_Mb_i\textrm{ for every }i\in(n]\quad\Leftrightarrow\quad\varphi(a_1,\dots,a_n)^M=\varphi^M(b_1,\dots,b_n) \quad\textrm{for every }\varphi(x)\in L(M)
+a_i\, \sim_Mb_i\textrm{ for every }i\in(n]\quad\Leftrightarrow\quad\varphi(a)^M=\varphi^M(b) \quad\textrm{for every }\varphi(x)\in L(M), \ |x|=n
 $$
+From the consideration above we deuce the following.
+\begin{lemma}
+  The relation $(\sim_M)\subseteq M^2$ is a maximal elementary relation. 
+  That is no elementary relation that properly contains $(\sim_M)$.
+\end{lemma}
 
-If $R\subseteq M\times N$ we write $\bar R$ for the relation $(\sim_M)\mathrel{R}(\sim_N)$.
-Clearly, $R\subseteq\bar R$ and, if $R$ is an elementary relation, then so is $\bar R$.
+\begin{proof}
+  The claim above the lemma proves that $(\sim_M)$ is elementary.
+  By the definition of $(\sim_M)$, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
+  Therefore  $(\sim_M)$ is maximal.
+\end{proof}
 
-If $R\subseteq M^2$ is elementary, then $RR^{-1}\subseteq(\sim_M)$.
+\begin{lemma}
+  Let $R\subseteq M\times N$ be total and surjective elementary relation.
+  Then $(\sim_M)\,R=R\,(\sim_N)$ and this is the unique maximal elementary relation containing $R$.
+\end{lemma}
+\begin{proof}
+  It is immediate to verify that $(\sim_M)\,R$ is an elementary relation containing $R$.
+  Let $S$ be any maximal elementary relation containing $R$.
+  By maximality, $(\sim_M)\,S=S$.  
+  As $S$ is a total relation $(\sim_M)\subseteq SS^{-1}$.
+  Therefore, by the lemma above, $(\sim_M)=SS^{-1}$.
+  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$ hence, by maximality $S=(\sim_M)\,R$.
+  A similar argument proves $S=R\,(\sim_N)$.
+\end{proof}
 
-We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
-We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
+% If $R\subseteq M\times N$ we write $\bar R$ for the relation $(\sim_M)\mathrel{R}(\sim_N)$.
+% Clearly, $R\subseteq\bar R$ and, if $R$ is an elementary relation, then so is $\bar R$.
+
+% If $R\subseteq M\times N$ is elementary, then $RR^{-1}\subseteq(\sim_M)$.
+
+% We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
+% We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
 
 
 
@@ -632,6 +654,10 @@ We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain
 
 
 
+
+\hrulefill
+
+Di qui in poi solo esperimenti selvaggi.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
