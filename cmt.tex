@@ -375,7 +375,7 @@ For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinali
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ultrapowers}\label{ultrapws}
+\section{Ultraproducts}\label{ultrapws}
 
 % The content of this section can be generalized to ultraproducts at the cost of an extra index.
 % We opt for the simpler variant as it suffices to prove the existence of saturated elementary extensions.
@@ -506,9 +506,7 @@ We add the following easy remark for future reference.
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-From \L\v{o}\'s Theorem we obtain a form of compactness with the usual argument.
-
-A theory $T\le0$ is finitely consistent if for every $\varphi$, that is a disjunction of sentences in $T$, there is a model $M$ such that $M\models \varphi\le0$.
+From \L\v{o}\'s Theorem we obtain a form of compactness with the usual argument. A theory $T\le0$ is finitely consistent if for every $\varphi$, that is a disjunction of sentences in $T$, there is a model $M$ such that $M\models \varphi\le0$.
 Note that it is implicit that all these models $M$ have the same bounding fuction.
 
 \begin{theorem}[Compactness Theorem]\label{thm_compattezza}
@@ -549,7 +547,7 @@ Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
 We say that $p(x)\le 0$ is \emph{finitely satisfied\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that $M\models\psi(a)\le0$.  
 
-We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in(uM)^{|x|}$ such that $M\models p(a)\le0$.
+We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that $M\models p(a)\le0$.
 \begin{itemize}
   \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<\lambda$;
   \item[2.] $p(x)\le0$ is finitely satisfied in $M$.
@@ -601,47 +599,57 @@ We conclude with a convenient property of $\omega$-saturated models.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Total and surjective elementary relations}
 
-We define an equivalence relation $\sim_M$ on the unit ball of any given model $M$ as follows
-$$
-a\, \sim_Mb\quad\Leftrightarrow\quad\varphi(a)^M=\varphi^M(b) \quad\textrm{for every }\varphi(x)\in L(M), \ |x|=1
-$$
-In ther words, $a\,\sim_Mb$ iff $I_M\cup\{(a,b)\}\subseteq M^2$ is an elementary relation.
+\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-As elementary relations are closed under composition,if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big(\{a,a'\}\times\{b,b'\}\big)\subseteq M^2$ is also elementary.
+We define an equivalence relation $(\sim_{M\!})$ on the unit ball of a given model $M$ as follows
+
+\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(x)\in L(M)$.
+
+In ther words, 
+
+\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{I_M\cup\{(a,b)\}\subseteq M^2}\ \ is an elementary relation.
+
+As elementary relations are closed under composition, if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big\{(a,b),(a',b')\big\}\subseteq M^2$ is also elementary.
 In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
-$$
-a_i\, \sim_Mb_i\textrm{ for every }i\in(n]\quad\Leftrightarrow\quad\varphi(a)^M=\varphi^M(b) \quad\textrm{for every }\varphi(x)\in L(M), \ |x|=n
-$$
-From the consideration above we deuce the following.
+
+\ceq{\hfill a_i\, \sim_Mb_i\textrm{ for every }i\in(n]}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(z)\in L(M)$.
+
+From the consideration above we deduce the following.
 \begin{lemma}
-  The relation $(\sim_M)\subseteq M^2$ is a maximal elementary relation. 
-  That is no elementary relation that properly contains $(\sim_M)$.
+  The relation $(\sim_{M\!})\subseteq M^2$ is a maximal elementary relation. 
+  That is, no elementary relation contains $(\sim_{M\!})$ properly. 
 \end{lemma}
 
 \begin{proof}
-  The claim above the lemma proves that $(\sim_M)$ is elementary.
-  By the definition of $(\sim_M)$, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
-  Therefore  $(\sim_M)$ is maximal.
+  The claim above the lemma proves that $(\sim_{M\!})$ is elementary.
+  By the definition of $(\sim_{M\!})$, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
+  Therefore  $(\sim_{M\!})$ is maximal.
 \end{proof}
 
 \begin{lemma}
   Let $R\subseteq M\times N$ be total and surjective elementary relation.
-  Then $(\sim_M)\,R=R\,(\sim_N)$ and this is the unique maximal elementary relation containing $R$.
+  Then there is a unique maximal elementary relation containing $R$.
+  This maximal elementary relation is equal to both $(\sim_{M\!})\,R$ and $R\,(\sim_{N\!})$.
 \end{lemma}
 \begin{proof}
-  It is immediate to verify that $(\sim_M)\,R$ is an elementary relation containing $R$.
+  It is immediate to verify that $(\sim_{M\!})\,R$ is an elementary relation containing $R$.
   Let $S$ be any maximal elementary relation containing $R$.
-  By maximality, $(\sim_M)\,S=S$.  
-  As $S$ is a total relation $(\sim_M)\subseteq SS^{-1}$.
-  Therefore, by the lemma above, $(\sim_M)=SS^{-1}$.
-  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$ hence, by maximality $S=(\sim_M)\,R$.
-  A similar argument proves $S=R\,(\sim_N)$.
+  By maximality, $(\sim_{M\!})\,S=S$.  
+  As $S$ is a total relation $(\sim_{M\!})\subseteq SS^{-1}$.
+  Therefore, by the lemma above, $(\sim_{M\!})=SS^{-1}$.
+  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$. 
+  Finally, by maximality, we conclude that $S=(\sim_{M\!})\,R$.
+  A similar argument proves that $S=R\,(\sim_{N\!})$.
 \end{proof}
 
-% If $R\subseteq M\times N$ we write $\bar R$ for the relation $(\sim_M)\mathrel{R}(\sim_N)$.
+We write ${\rm Aut}(M)$ for the set of maximal, total and surjective, elementary relations $R\subseteq M^2$.
+The choice of the symbol Aut is motivated by the lemma above.
+In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure $M/{\sim_M}$.  
+
+% If $R\subseteq M\times N$ we write $\bar R$ for the relation $(\sim_{M\!})\mathrel{R}(\sim_{N\!})$.
 % Clearly, $R\subseteq\bar R$ and, if $R$ is an elementary relation, then so is $\bar R$.
 
-% If $R\subseteq M\times N$ is elementary, then $RR^{-1}\subseteq(\sim_M)$.
+% If $R\subseteq M\times N$ is elementary, then $RR^{-1}\subseteq(\sim_{M\!})$.
 
 % We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
 % We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
@@ -671,19 +679,19 @@ Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of card
 
 \begin{fact}
   Let $R\subseteq{\EuScript U}^2$ be an elementary relation of cardinality $<\kappa$.
-  Then there is an  $S$ such that $R\subseteq S\in{\rm Tser}({\EuScript U})$.
+  Then there is a total and surjective elementary relation $S\subseteq{\EuScript U}^2$ containing $R$.
 \end{fact}
 
 \begin{proof}
   
 \end{proof}
 
-Let $a\in(u\,{\EuScript U})^{|x|}$. 
+Let $a\in{\EuScript U}^{|x|}$. 
 We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
 
 
 \begin{fact}
-  Let $a\in(u\,{\EuScript U})^{|x|}$, where $|x|<\kappa$.
+  Let $a\in{\EuScript U}^{|x|}$, where $|x|<\kappa$.
   Let $A\subseteq{\EuScript U}$ have cardinality $<\kappa$.
   Then
 
