@@ -47,7 +47,7 @@
 \newtheoremstyle{plain}% 〈name〉
 {\parskip}% 〈Space above〉1
 {\parskip}% 〈Space below 〉1
-{\color{brown!=20!red!40!black}}% 〈Body font〉
+{\color{brown!20!red!40!black}}% 〈Body font〉
 {}% 〈Indent amount〉2
 {\bfseries}% 〈Theorem head font〉
 {.}% 〈Punctuation after theorem head 〉
@@ -95,12 +95,12 @@
 The following definition extends that of classical first-order logic with clause 3.
 
 \begin{definition}\label{signature}
-A \emph{signature\/} or \emph{language\/} $L$ consists of\nobreak
-\begin{itemize}
-\item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
-\item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
-\item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
-\end{itemize}
+  A \emph{signature\/} or \emph{language\/} $L$ consists of\nobreak
+  \begin{itemize}
+    \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
+    \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
+    \item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
+  \end{itemize}
 \end{definition}
 
 The function in 3 above is called the \emph{bounding function.}
@@ -108,12 +108,12 @@ With $L_{\rm at}$ we denote the set of atomic formulas as defined below.
 
 \begin{definition}\label{def_structure}
   A \emph{structure\/} or \emph{model\/} of signature $L$ consists of\nobreak
-\begin{itemize}
-\item[1.] a set $M$;
-\item[2.] a set $\bar M\supseteq M$;
-\item[3.] for every  $f\in L_{\rm fun}$, a function $f^M:\ \bar M^{{\rm Ar}(f)}\to \bar M$;
-\item[4.] for every $r\in L_{\rm rel}$, a function $r^M:\ \bar M^{{\rm Ar}(r)}\to{\mathds R}$;
-\end{itemize}
+  \begin{itemize}
+    \item[1.] a set $M$;
+    \item[2.] a set $\bar M\supseteq M$;
+    \item[3.] for every  $f\in L_{\rm fun}$, a function $f^M:\ \bar M^{{\rm Ar}(f)}\to \bar M$;
+    \item[4.] for every $r\in L_{\rm rel}$, a function $r^M:\ \bar M^{{\rm Ar}(r)}\to{\mathds R}$;
+  \end{itemize}
 \end{definition}
 
 The set $M$ is the \emph{unit ball\/} of the model and is required to saisfy the axioms in Definition~\ref{def_unitball}.
@@ -136,29 +136,29 @@ The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{
 There is also the infimum \emph{quantifier\/} $\displaystyle\bigwedge_x$.
 
 \begin{definition}\label{def_formulas}
-The inductive definition of formula is as follows
+  The inductive definition of formula is as follows
 
-\begin{minipage}[t]{.4\textwidth}
-\begin{itemize}
-\item[i.] atomic formulas are formulas
-\item[ii.] $1$ is a formula;
-\item[iii.] $\varphi+\psi$ is a formula; 
-\end{itemize}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{.4\textwidth}
-\begin{itemize}
-\item[iv.] $\varphi\wedge\psi$ is a formula;
-\item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
-\item[vi.] \smash{$\displaystyle\bigwedge_x\varphi$} is a formula.
-\end{itemize}
-\end{minipage}
+  \begin{minipage}[t]{.4\textwidth}
+    \begin{itemize}
+      \item[i.] atomic formulas are formulas
+      \item[ii.] $1$ is a formula;
+      \item[iii.] $\varphi+\psi$ is a formula;
+    \end{itemize}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}
+    \begin{itemize}
+      \item[iv.] $\varphi\wedge\psi$ is a formula;
+      \item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
+      \item[vi.] \smash{$\displaystyle\bigwedge_x\varphi$} is a formula.
+    \end{itemize}
+  \end{minipage}
 \end{definition}
 
 If $\alpha\in{\mathds R}$, we may write \emph{$\alpha$\/} for the formula $\alpha1$.
 We write \emph{${}-\varphi$\/} for $(-1)\varphi$ and \emph{$\varphi-\psi$\/} for $\varphi+(-\psi)$ and we write \emph{$\varphi\vee\psi$\/} for ${}-(-\varphi\wedge-\psi)$.
 Also, \emph{$\varphi^+$\/} and \emph{$\varphi^-$\/} stand for $0\vee\varphi$ respectively $0\vee(-\varphi)$, and we write \emph{$|\varphi|$\/} for $\varphi\vee(-\varphi)$.
-Finally, \smash{\emph{$\displaystyle\bigvee_x\varphi$\/}} 
+Finally, \smash{\emph{$\displaystyle\bigvee_x\varphi$\/}}
 stands for $\displaystyle -\bigwedge_x-\varphi$.
 
 If $A\subseteq M$ (that is, $A$ is a subset of the unit ball), we write $L(A)$ for the language $L$ expanded with a $0$-ary function symbol for every element of $a$.
@@ -169,33 +169,33 @@ We write $t^M$ for the element of $\bar M$ obtained interpreting function symbol
 
 \begin{definition}\label{def_semantic}
   If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
-  
+
   \begin{minipage}[t]{.4\textwidth}
-  \begin{itemize}
-  \item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
-  \item[ii.] $1^M\ =\ 1$;
-  \item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
-  \end{itemize}
+    \begin{itemize}
+      \item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
+      \item[ii.] $1^M\ =\ 1$;
+      \item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
+    \end{itemize}
   \end{minipage}
   \begin{minipage}[t]{.59\textwidth}
-  \begin{itemize}
-  \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
-  \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$; 
-  \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in M\big\}$}.
-  \end{itemize}
+    \begin{itemize}
+      \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
+      \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$;
+      \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in M\big\}$}.
+    \end{itemize}
   \end{minipage}
-  \end{definition}
-  \medskip
+\end{definition}
+\medskip
 
 In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) above is indeed finite, hence that the definition is sound.
 
 Finally, we complete Definition~\ref{def_structure} by stating the axioms that the unit ball has to satisfy.
 
 \begin{definition}\label{def_unitball}
-  The unit ball is required to satisfy the following axioms 
+  The unit ball is required to satisfy the following axioms
   \begin{itemize}
-  \item[1.] $\bar M=\big\{t^M:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
-  \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
+    \item[1.] $\bar M=\big\{t^M:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
+    \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
   \end{itemize}
 \end{definition}
 
@@ -219,41 +219,41 @@ A straightforeward proof by induction on the syntax yields the following.
 
 \begin{itemize}
   \item [1.] Firstly, we leave to the reader to check that classical first-order models are a (trivial) special cases of the models introduced above.
-  Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
-  The unit ball is the whole of $\bar M$. 
-  The function $n_{\mbox-}$ is constantly $1$.
-  To obtain the full strength of first-order logic one has to add equality as a predicate as it is absent from our logic.
+        Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
+        The unit ball is the whole of $\bar M$.
+        The function $n_{\mbox-}$ is constantly $1$.
+        To obtain the full strength of first-order logic one has to add equality as a predicate as it is absent from our logic.
 
   \item [2.] Secondly, any {\sc bbhu}-premodel is also a model as those in Section~\ref{uno} if we let the unit ball coincide with $\bar M$.
-  The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
-  As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
+        The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
+        As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
 
   \item [3.] Now we consider an example that is non trivial and distant both from classical models and from {\sc bbhu}-models: weighted graphs.
-  The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
-  We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
-  As unit ball take, again,the whole of $\bar M$.
-  The function $n_{\mbox-}$ is constant $1$.
-  
+        The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
+        We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
+        As unit ball take, again,the whole of $\bar M$.
+        The function $n_{\mbox-}$ is constant $1$.
+
 
   \item [4.] Finally, and example where the unit ball is non trivial.
-  Let $L$ be the language of Banach spaces. 
-  Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
-  The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
-  Let $\bar M$ be a Banach space and define a continuous model as follows.
-  The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
-  The unit ball of is $M=\{a\in M: \|a\|\le1\}$.
-  If $\varphi(x)$ is the atomic formulas
+        Let $L$ be the language of Banach spaces.
+        Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
+        The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
+        Let $\bar M$ be a Banach space and define a continuous model as follows.
+        The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
+        The unit ball of is $M=\{a\in M: \|a\|\le1\}$.
+        If $\varphi(x)$ is the atomic formulas
 
-  \ceq{\hfill\varphi(x)}{=}{\Big\|\sum_{i=1}^n\lambda_i x\,\Big\|}
-  
-  then 
+        \ceq{\hfill\varphi(x)}{=}{\Big\|\sum_{i=1}^n\lambda_i x\,\Big\|}
 
-  \ceq{\hfill n_{\varphi(x)}}{=}{\sum_{i=1}^n|\lambda_i|.}
-  
-  % Let $\varphi(x)$ be an atomic formula.
-  % This has form $\|t(x)\|$ for some $t(x)\in L_{\rm trm}$.  
-  % Note that $\sup\{\|t(a)\|: a\in U^{|x|}\}$ does not depend on $M$.
-  % Therefore we can set it to be $n_{\varphi(x)}$
+        then
+
+        \ceq{\hfill n_{\varphi(x)}}{=}{\sum_{i=1}^n|\lambda_i|.}
+
+        % Let $\varphi(x)$ be an atomic formula.
+        % This has form $\|t(x)\|$ for some $t(x)\in L_{\rm trm}$.  
+        % Note that $\sup\{\|t(a)\|: a\in U^{|x|}\}$ does not depend on $M$.
+        % Therefore we can set it to be $n_{\varphi(x)}$
 
 \end{itemize}
 
@@ -269,7 +269,7 @@ The meaning of \emph{$M\models\ \varphi=\psi$\/} and of \emph{$M\,\models\ \varp
 
 Expressions of the form $\varphi(x)\le0$ are called \emph{conditions}.
 We write $M\models\exists x\,\varphi(x)\le0$ if there is an $a\in M^{|x|}$ such that $M\models\varphi(a)\le0$.
-Observe that $\varphi(x)=0$ is equivalent to $|\varphi(x)|\le0$ and that $\varphi(x)\le0$ is equivalent to $\big(\varphi(x)\vee0\big)=0$. 
+Observe that $\varphi(x)=0$ is equivalent to $|\varphi(x)|\le0$ and that $\varphi(x)\le0$ is equivalent to $\big(\varphi(x)\vee0\big)=0$.
 So, when convenient, we may use equalities to denote conditions.
 
 The negation of a condition is called a \emph{co-conditions}.
@@ -308,35 +308,92 @@ We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $
 %%%%%%%%%%%%%%%%%%%
 \section{Elementary relations}
 
-Let $A\subseteq M$.
-The \emph{limit $A$-topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$. 
-The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
-Note that the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ are a base of open sets of the same topology.
+\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-The limit $A$-topology is a completely regular topology, almost by definition.
-Typically, it is not T$_0$.
-
-We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} between $M$ and $N$ if for every $\varphi(x)\in L$ 
+We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} between $M$ and $N$ if for every $\varphi(x)\in L$
 
 \ceq{\hfill \varphi^M(a)}{=}{\varphi^N(b)} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
 
+We define an equivalence relation \emph{$(\sim_{M\!})$\/} on the unit ball of a given model $M$ as follows
+
+\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(x)\in L(M)$.
+
+In ther words,
+
+\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{I_M\cup\{(a,b)\}\subseteq M^2}\ \ is an elementary relation.
+
+As elementary relations are closed under composition, if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big\{(a,b),(a',b')\big\}\subseteq M^2$ is also elementary.
+In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
+
+\ceq{\hfill a_i\, \sim_Mb_i\textrm{ for every }i\in(n]}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(z)\in L(M)$.
+
+From the consideration above we deduce the following.
+\begin{lemma}
+  The relation $(\sim_{M\!})\subseteq M^2$ is a maximal elementary relation.
+  That is, no elementary relation contains $(\sim_{M\!})$ properly.
+\end{lemma}
+
+\begin{proof}
+  The claim above the lemma proves that $(\sim_{M\!})$ is elementary.
+  By the definition of $(\sim_{M\!})$, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
+  Therefore  $(\sim_{M\!})$ is maximal.
+\end{proof}
+
+\begin{lemma}
+  Let $R\subseteq M\times N$ be total and surjective elementary relation.
+  Then there is a unique maximal elementary relation containing $R$.
+  This maximal elementary relation is equal to both $(\sim_{M\!})\,R$ and $R\,(\sim_{N\!})$.
+\end{lemma}
+\begin{proof}
+  It is immediate to verify that $(\sim_{M\!})\,R$ is an elementary relation containing $R$.
+  Let $S$ be any maximal elementary relation containing $R$.
+  By maximality, $(\sim_{M\!})\,S=S$.
+  As $S$ is a total relation $(\sim_{M\!})\subseteq SS^{-1}$.
+  Therefore, by the lemma above, $(\sim_{M\!})=SS^{-1}$.
+  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$.
+  Finally, by maximality, we conclude that $S=(\sim_{M\!})\,R$.
+  A similar argument proves that $S=R\,(\sim_{N\!})$.
+\end{proof}
+
+We write ${\rm Aut}(M)$ for the set of maximal, total and surjective, elementary relations $R\subseteq M^2$.
+The choice of the symbol Aut is motivated by the lemma above.
+In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure $M/{\sim_M}$.
+
+
+
+
+
+
+
+\section{Elementary substructures}
+
 An \emph{elementary embedding\/} is an elementary relation that is functional, injective and total.
 
-When $\varnothing$ is an elementary relation between $M$ and $N$ we say that these are \emph{elementarily equivalent\/} and write \emph{$M\equiv N$.} 
+When $\varnothing$ is an elementary relation between $M$ and $N$ we say that these are \emph{elementarily equivalent\/} and write \emph{$M\equiv N$.}
 We write $I_A$ for the diagonal relation on $A$.
 We write \emph{$M\equiv_A N$\/} if $I_A$ is an elementary relation.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
 Finally, we write \emph{$M\preceq N$\/} if $M\equiv_M N$ and $\bar M$ is a substructure of $\bar N$ in the classical sense.
 In wards, we say that $M$ is an \emph{elementary substructure\/} of $N$.
 
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $M\subseteq N$ and assume that $\bar M$ is a substructure of $\bar N$. 
-Let $x$ be a single variable.
-Then the following are equivalent:
-\begin{itemize}
-\item[1.] $M\preceq N$;
-\item[2.] $M$ is dense in $N$ w.r.t.\@ the $M\mbox{-}$limit topology on $N$;
-\item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
-\end{itemize}
+
+Let $A\subseteq M$.
+The \emph{limit $A$-topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$.
+The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
+Note that the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ are a base of open sets of the same topology.
+
+The limit $A$-topology is a completely regular topology, almost by definition.
+Typically, it is not T$_0$.
+
+
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $M\subseteq N$ and assume that $\bar M$ is a substructure of $\bar N$.
+  Let $x$ be a single variable.
+  Then the following are equivalent:
+  \begin{itemize}
+    \item[1.] $M\preceq N$;
+    \item[2.] $M$ is dense in $N$ w.r.t.\@ the $M\mbox{-}$limit topology on $N$;
+    \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
+  \end{itemize}
 \end{proposition}
 \begin{proof}
   Equivalence 2$\Leftrightarrow$3 is tautological.
@@ -344,7 +401,7 @@ Then the following are equivalent:
   To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(z)$, where $z$ is a finite tuple, that for every $\alpha\in{\mathds R}$
 
   \ceq{\hfill M\models\varphi(a)<\alpha}{\Leftrightarrow}{N\models\varphi(a)<\alpha} \hfill for every $a\in M^{|z|}$
-  
+
   We use the equivalence above as induction hypothesis.
   As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(z)$.
   We leave the case of the propositional connectives to the reader and consider only the case of the infimum quantifier.
@@ -355,7 +412,7 @@ Then the following are equivalent:
 
   \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<\alpha.}
 
-Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
+  Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
 \end{proof}
 
 % \begin{remark}
@@ -367,7 +424,7 @@ Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalenc
 \begin{theorem}[Downward L\"owenheim-Skolem] For every $A\subseteq N$ there is a model $A\subseteq M\preceq N$ of cardinality $\le |L(A)|$.
 \end{theorem}
 \begin{proof} (Needs some checking.)
-For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $M$ of the required cardinality that is dense in the  $M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
+  For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $M$ of the required cardinality that is dense in the  $M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -396,17 +453,17 @@ Let $\langle M_i:i\in I\rangle$ be a sequence of models.
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
-Write \emph{$N$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
-Such $N$ is the unit ball of a structure \emph{$N$\/} that we call the \emph{ultraproduct\/} of $\langle M_i:i\in I\rangle$ and is defined as follows.
-\begin{itemize}
-  \item[1.] the elements of $\bar N$ are functions $\hat c: I\to \bigcup_{i\in I}\bar M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in M^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
-  \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of $\bar N$ then
+  Write \emph{$N$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
+  Such $N$ is the unit ball of a structure \emph{$N$\/} that we call the \emph{ultraproduct\/} of $\langle M_i:i\in I\rangle$ and is defined as follows.
   \begin{itemize}
-    \item[a.] $f^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=t(\hat a)$ where $t$ is the term obtained composing $f$ with $t_1,\dots,t_n$;
-    \item[b.] \smash{$r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$}.
+    \item[1.] the elements of $\bar N$ are functions $\hat c: I\to \bigcup_{i\in I}\bar M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in M^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
+    \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of $\bar N$ then
+          \begin{itemize}
+            \item[a.] $f^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=t(\hat a)$ where $t$ is the term obtained composing $f$ with $t_1,\dots,t_n$;
+            \item[b.] \smash{$r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$}.
+          \end{itemize}
   \end{itemize}
-\end{itemize}
-A usual, if we have that $M_i=M$ for all $i\in I$, we say that $N$ is an \emph{ultrapower\/} of $M$.
+  A usual, if we have that $M_i=M$ for all $i\in I$, we say that $N$ is an \emph{ultrapower\/} of $M$.
 \end{definition}
 
 Note that the unit ball $N$ satisfies the axioms in Definition~\ref{def_unitball}.
@@ -417,70 +474,70 @@ In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\
 \def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$, 
+  Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$,
 
-\ceq{\hfill \varphi^N\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
+  \ceq{\hfill \varphi^N\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
 
 \end{proposition}
 
 \begin{proof}
-This is just the usual run-of-the-mill proof.
-We proceed by induction on the syntax of $\varphi(x)$.
-If $\varphi(x)$ is atomic holds the equality above holds by definition.
-We spell out the proof for the infimum quantifier.
-Assume inductively that
+  This is just the usual run-of-the-mill proof.
+  We proceed by induction on the syntax of $\varphi(x)$.
+  If $\varphi(x)$ is atomic holds the equality above holds by definition.
+  We spell out the proof for the infimum quantifier.
+  Assume inductively that
 
-\ceq{\hfill \varphi^N\big(\hat a,\hat b\big)}
-{=}
-{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
+  \ceq{\hfill \varphi^N\big(\hat a,\hat b\big)}
+  {=}
+  {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
 
-We want to prove that 
+  We want to prove that
 
-\ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^N}
-{=}
-{\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
+  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^N}
+  {=}
+  {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
 
-By the interpretation of the infimum quantifier, this amounts to prove that
+  By the interpretation of the infimum quantifier, this amounts to prove that
 
-\ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in(uN)\big\}}
-{=}
-{\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
+  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in(uN)\big\}}
+  {=}
+  {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
 
-First we prove the $\le$ inequality.
-Let $\alpha$ be an arbitrary positive real number.
+  First we prove the $\le$ inequality.
+  Let $\alpha$ be an arbitrary positive real number.
 
-\ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{\alpha}.
+  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{\alpha}.
 
-\ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
+  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
 
-\ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+  \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
+  \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
+  \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
 
-\smallskip
-This proves the $\ge$ inequality.
-As for the $\le$ inequality, assume that
-\smallskip
+  \smallskip
+  This proves the $\ge$ inequality.
+  As for the $\le$ inequality, assume that
+  \smallskip
 
-\ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
-{<}
-{\alpha.}
+  \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
+  {<}
+  {\alpha.}
 
-Therefore, for some $u\in F$
+  Therefore, for some $u\in F$
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+  \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
-\ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
+  \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
 
-\ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{\alpha.}
+  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{\alpha.}
 
-This proves the desired inequality.
+  This proves the desired inequality.
 \end{proof}
 
 The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
@@ -510,32 +567,32 @@ From \L\v{o}\'s Theorem we obtain a form of compactness with the usual argument.
 Note that it is implicit that all these models $M$ have the same bounding fuction.
 
 \begin{theorem}[Compactness Theorem]\label{thm_compattezza}
-  Every finitely consistent theory is consistent. 
-  \end{theorem}
-  
-  \begin{proof}
+  Every finitely consistent theory is consistent.
+\end{theorem}
+
+\begin{proof}
   We construct a model $N$ of $T\le0$.
   Let $I$ be the set of closed formulas $\xi$ such that $\xi\le0$ holds in some model $M_\xi$.
   For every condition $\varphi\le0$ define $X_\varphi\subseteq I$ as follows
-  
+
   \ceq{\hfill X_\varphi}{=}{\Big\{\xi\in I\ :\ \xi\le0\ \vdash\ \varphi\le0\Big\}}
-  
+
   Note that $\varphi\le0$ is consistent if and only if $X_\varphi\neq\varnothing$.
   Moreover $X_{\varphi\vee\psi}\ =\ X_\varphi\cap X_\psi$. Then, as $T$  is finitely consistent, the set $B=\big\{X_\varphi\,:\,\varphi\in T\big\}$ has the finite intersection property.
   Extend $B$ to an ultrafilter $F$ on $I$.
   Define
-  
+
   \ceq{\hfill N}{=}{\prod_{\xi\in I}M_\xi}
-  
+
   Check that $N\models T\le0$. Let $\varphi\in T$. By \L\v{o}\'s Theorem,
-  
+
   \ceq{\hfill \varphi^N}%
   {=}%
   {\lim_{\xi\uparrow F}\varphi^{M_\xi}.}
-  
+
   Note that $X_\varphi\subseteq \big\{\xi\ :\ \varphi^{M_\xi}\le0\big\}$ and recall that $X_\varphi\in F$ whenever $\varphi\in T$.
   Therefore $\varphi^N\le0$.
-  \end{proof}
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -545,7 +602,7 @@ Note that it is implicit that all these models $M$ have the same bounding fuctio
 
 Let $p(x)\subseteq L(M)$.
 %We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
-We say that $p(x)\le 0$ is \emph{finitely satisfied\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that $M\models\psi(a)\le0$.  
+We say that $p(x)\le 0$ is \emph{finitely satisfied\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that $M\models\psi(a)\le0$.
 
 We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that $M\models p(a)\le0$.
 \begin{itemize}
@@ -556,7 +613,7 @@ If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
 
 \begin{theorem}[???]
   Let $\lambda$ be an inaccessible cardinal larger than $|L|$ and $|M|$.
-  Then $M$ has a saturated elementary superstructure of cardinality $M$. 
+  Then $M$ has a saturated elementary superstructure of cardinality $M$.
 \end{theorem}
 
 We conclude with a convenient property of $\omega$-saturated models.
@@ -591,78 +648,6 @@ We conclude with a convenient property of $\omega$-saturated models.
 
 % Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Total and surjective elementary relations}
-
-\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
-
-We define an equivalence relation $(\sim_{M\!})$ on the unit ball of a given model $M$ as follows
-
-\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(x)\in L(M)$.
-
-In ther words, 
-
-\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{I_M\cup\{(a,b)\}\subseteq M^2}\ \ is an elementary relation.
-
-As elementary relations are closed under composition, if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big\{(a,b),(a',b')\big\}\subseteq M^2$ is also elementary.
-In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
-
-\ceq{\hfill a_i\, \sim_Mb_i\textrm{ for every }i\in(n]}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(z)\in L(M)$.
-
-From the consideration above we deduce the following.
-\begin{lemma}
-  The relation $(\sim_{M\!})\subseteq M^2$ is a maximal elementary relation. 
-  That is, no elementary relation contains $(\sim_{M\!})$ properly. 
-\end{lemma}
-
-\begin{proof}
-  The claim above the lemma proves that $(\sim_{M\!})$ is elementary.
-  By the definition of $(\sim_{M\!})$, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
-  Therefore  $(\sim_{M\!})$ is maximal.
-\end{proof}
-
-\begin{lemma}
-  Let $R\subseteq M\times N$ be total and surjective elementary relation.
-  Then there is a unique maximal elementary relation containing $R$.
-  This maximal elementary relation is equal to both $(\sim_{M\!})\,R$ and $R\,(\sim_{N\!})$.
-\end{lemma}
-\begin{proof}
-  It is immediate to verify that $(\sim_{M\!})\,R$ is an elementary relation containing $R$.
-  Let $S$ be any maximal elementary relation containing $R$.
-  By maximality, $(\sim_{M\!})\,S=S$.  
-  As $S$ is a total relation $(\sim_{M\!})\subseteq SS^{-1}$.
-  Therefore, by the lemma above, $(\sim_{M\!})=SS^{-1}$.
-  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$. 
-  Finally, by maximality, we conclude that $S=(\sim_{M\!})\,R$.
-  A similar argument proves that $S=R\,(\sim_{N\!})$.
-\end{proof}
-
-We write ${\rm Aut}(M)$ for the set of maximal, total and surjective, elementary relations $R\subseteq M^2$.
-The choice of the symbol Aut is motivated by the lemma above.
-In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure $M/{\sim_M}$.  
-
-% If $R\subseteq M\times N$ we write $\bar R$ for the relation $(\sim_{M\!})\mathrel{R}(\sim_{N\!})$.
-% Clearly, $R\subseteq\bar R$ and, if $R$ is an elementary relation, then so is $\bar R$.
-
-% If $R\subseteq M\times N$ is elementary, then $RR^{-1}\subseteq(\sim_{M\!})$.
-
-% We write ${\rm Tser}(M)$ for the set of elementary relations $R\subseteq M^2$ that are total and surjective.
-% We write  ${\rm Tser}(M/A)$ the set of relations in ${\rm Tser}(M)$ that contain $I_A$.
-
-
-
-% For every $aRb$
-
-% \ceq{\hfill?\ \  a\in uM}{\Leftrightarrow}{b\in uN\ \ ?}
-
-
-
-
 \hrulefill
 
 Di qui in poi solo esperimenti selvaggi.
@@ -683,10 +668,10 @@ Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of card
 \end{fact}
 
 \begin{proof}
-  
+
 \end{proof}
 
-Let $a\in{\EuScript U}^{|x|}$. 
+Let $a\in{\EuScript U}^{|x|}$.
 We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
 
 
@@ -697,6 +682,94 @@ We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\mode
 
   \ceq{\hfill p({\EuScript U})\le0}{=}{\big\{ha : h\in{\rm Aut}({\EuScript U}/A)\big\}}
 \end{fact}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Random variables}
+
+Consider a model with three sorts with domains ${\EuScript A},{\EuScript R},{\EuScript M}$.
+The domain of the first sort consists of a set ${\EuScript A}\subseteq{\EuScript P}(\Omega)$ that is a Boolean algebra under the usual set operations.
+The domain of the second sort ${\EuScript R}$ consists of a set of those functions $f:\Omega\to{\mathds R}$ that are linear combinations of indicator functions of sets in ${\EuScript A}$.
+The third sort ${\EuScript M}$ contains all finitely additive signed measures $\mu$ on ${\EuScript A}$ with bounded values.
+
+The language contains functions for the Boolean operations on ${\EuScript A}$.
+It contains also the functions that make ${\EuScript R}$ and ${\EuScript M}$ two ${\mathds R}$-algebras.
+On ${\EuScript R}$ we also include the functions $\wedge$ and $\vee$ for the pointwise minimum and maximum between to functions.
+
+Finally, there is a predicate $I$ of sort ${\EuScript A}\times{\EuScript R}\times{\EuScript M}$ which we interprete with the function that maps
+$$
+  (A,f,\mu)\ \ \mapsto\ \ \int_A f{\rm d}\mu
+$$
+
+If $\varphi(X)$ is a formula, where $X$ is a variable of sort ${\EuScript A}$, then $\sup_{Y\subseteq X}\varphi(Y)$ is a formula.
+In fact, it is equivalent to $\sup_Y\varphi(Y\cap X)$.
+
+
+\begin{theorem}\label{thm_fRN}
+  [Finitary Radon-Nikodym]
+  Let $\mu,\nu\in{\EuScript M}.$
+  For every $\varepsilon,\delta > 0$ there exist an exceptional set $E\in{\EuScript A}$ and an $f\in{\EuScript R}$ such that
+  \begin{itemize}
+    \item[1.] $\displaystyle\sup_{X\subseteq\neg E}\big|I(X,\nu)- I(X,f,\mu)\big|\le\varepsilon;$
+    \item[2.] $\displaystyle\sup_{X\subseteq E}|I(X, \mu)|\le\delta$.
+  \end{itemize}
+\end{theorem}
+
+We now consider a saturated extension ${}^{*\!\!\!}{\EuScript A},{}^{*\!}{\EuScript R},{}^{*\!}{\EuScript M}$.
+
+A set $E$ is $\mu$-null if $I(X, \mu)=0$ for every $X\subseteq E$.
+
+\begin{corollary}
+  Let $\mu\in{\EuScript M}$.
+  There are a $\mu$-null set $E\in{}^{*\!\!\!}{\EuScript A}$ and An $f\in{}^{*\!}{\EuScript R}$ such that for all $\nu\in{\EuScript M}$ we have $I(X,\nu)=I(X,f,\mu)$ for evey $X\subseteq\neg E$.
+\end{corollary}
+
+\begin{proof}
+  It is easy to see that the theorem above, if applied simultaneously to a finite set of measures $\nu_1,\dots,\nu_n\in{\EuScript M}$, yields a single $f\in{}^{*\!}{\EuScript R}$ such that 1 and 2 hold for all $\nu_i$.
+
+  Recall that conditions are closed under Boolean conjunction and discjunction.
+  Read $\mu,\nu\in{\EuScript M}$ as parameters.
+  Read $E$ and $f$ as variables, then $\,1\, \&\, 2\,$ in the theorem above, is a condition.
+
+  For every $\varepsilon,\delta>0$ and $\nu\in{\EuScript M}$ each of these conditions is consistent.
+  Moreover, as remarked above, any finite conjunctions of these  conditions is also consistent.
+  Therefore, by saturation, there is an $E\in{}^{*\!\!\!}{\EuScript A}$ that satisies all these conditions as $\nu$ ranges over ${\EuScript M}$.
+\end{proof}
+
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+\begin{fact}
+  Let $\mu\in{}^{*\!}{\EuScript M}$ be a nonnegative measure.
+  Let $A\in{}^{*\!\!\!}{\EuScript A}$.
+  Define 
+  
+  \ceq{\hfill m_{\rm i\,}}{=}{\sup\{\mu(X): X\in{\EuScript A},\ X\subseteq A\}}
+
+  \ceq{\hfill m_{\rm e}}{=}{\,\inf\{\mu(X): X\in{\EuScript A}, \  A\subseteq X \}}
+
+  Then for every $m_{\rm i\,}\le r\le m_{\rm e}$ there is a measure $\nu\in{}^{*\!\!\!}{\EuScript A}$ such that $\mu_{\restriction{\EuScript A}}=\nu_{\restriction{\EuScript A}}$ and  $\nu(A)=r$.
+\end{fact}
+
+
+\begin{proof}
+
+It is easy to se that the following type is finitely consistent (read $\nu$ as a variable).
+$$
+\big\{\nu(X)
+=
+\mu(X) : X\in{\EuScript A}\big\}
+\ \ \cup\ \ \
+\big\{\nu(A)=r\big\}.
+$$
+Any $\nu$ realizing this type is as required by the lemma.
+\end{proof}
+
+\begin{corollary}
+  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu\in{\EuScript M}$ is sigma additive then for every $E\in{}^{*\!\!\!}{\EuScript A}$ there are $A,B\in{\EuScript A}$ such that $A\subseteq E\subseteq B$ and $\mu(B\smallsetminus A)=0$.
+\end{corollary}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -725,4 +798,4 @@ We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\mode
 % Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
 
 
-\end{document} 
+\end{document}
