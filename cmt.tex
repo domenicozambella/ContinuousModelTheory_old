@@ -1,6 +1,5 @@
 \documentclass[12pt,letterpaper,oneside,reqno]{amsart}
 
-
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{comment}
@@ -23,7 +22,9 @@
 %\usepackage{stmaryrd}
 \usepackage{stix}
 \usepackage{dsfont}
-
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\renewcommand*{\danger}{\TakeFourierOrnament{66}}
 \parindent0ex
 \parskip1.2ex
 
@@ -107,21 +108,19 @@ The function in 3 above is called the \emph{bounding function.}
 With $L_{\rm at}$ we denote the set of atomic formulas as defined below.
 
 \begin{definition}\label{def_structure}
-  A \emph{structure\/} or \emph{model\/} of signature $L$ consists of\nobreak
+  A \emph{structure\/} or \emph{model\/} ${\EuScript M}$ of signature $L$ consists of\nobreak
   \begin{itemize}
-    \item[1.] a set $M$;
-    \item[2.] a set $\bar M\supseteq M$;
-    \item[3.] for every  $f\in L_{\rm fun}$, a function $f^M:\ \bar M^{{\rm Ar}(f)}\to \bar M$;
-    \item[4.] for every $r\in L_{\rm rel}$, a function $r^M:\ \bar M^{{\rm Ar}(r)}\to{\mathds R}$;
+    \item[1.] a set ${\EuScript M}$;
+    \item[2.] a set $M\subseteq {\EuScript M}$;
+    \item[3.] for every  $f\in L_{\rm fun}$, a function $f^{\EuScript M}:\ {\EuScript M}^{{\rm Ar}(f)}\to {\EuScript M}$;
+    \item[4.] for every $r\in L_{\rm rel}$, a function $r^{\EuScript M}:\ {\EuScript M}^{{\rm Ar}(r)}\to{\mathds R}$;
   \end{itemize}
 \end{definition}
 
 The set $M$ is the \emph{unit ball\/} of the model and is required to saisfy the axioms in Definition~\ref{def_unitball}.
 It will be clear below that the unit ball determines, in a sense, the whole model.
 (E.g.\@ in Definition~\ref{def_semantic} we define the interpretation only of formulas that have parameters in the unit ball.)
-Therefore it feels justified to denote the whole model with the same symbol $M$ used for the unit ball.
-In principle, two models could coincide when restricted to the unit ball and yet be distinct overall.
-This will never be the case below.
+Though, in principle, two models could coincide when restricted to the unit ball and yet be distinct overall, this will never be the case below.
 
 The syntax and semantic of \emph{terms} is as in classical first-order logic.
 We write \emph{$L_{\rm trm}$\/} for the set of terms in the language $L$.
@@ -162,49 +161,49 @@ Finally, \smash{\emph{$\displaystyle\bigvee_x\varphi$\/}}
 stands for $\displaystyle -\bigwedge_x-\varphi$.
 
 If $A\subseteq M$ (that is, $A$ is a subset of the unit ball), we write $L(A)$ for the language $L$ expanded with a $0$-ary function symbol for every element of $a$.
-As in classical first-order logic, the model $M$ is canonically expanded to a structure of signature $L(A)$ by setting $a^M=a$ for every $a\in A$.
+As in classical first-order logic, the model $M$ is canonically expanded to a structure of signature $L(A)$ by setting $a^{\EuScript M}=a$ for every $a\in A$.
 
-Let $M$ be a model and let $t$ be be a tuple of closed terms with parameters in $M$.
-We write $t^M$ for the element of $\bar M$ obtained interpreting function symbols and parameters in $M$ just as in classical first-order logic.
+Let ${\EuScript M}$ be a model and let $t$ be be a tuple of closed terms with parameters in $M$.
+We write $t^{\EuScript M}$ for the element of ${\EuScript M}$ obtained interpreting function symbols and parameters in ${\EuScript M}$ just as in classical first-order logic.
 
 \begin{definition}\label{def_semantic}
-  If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^M$ inductively as follows
+  If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^{\EuScript M}$ inductively as follows
 
   \begin{minipage}[t]{.4\textwidth}
     \begin{itemize}
-      \item[i.] $(r\,t)^M\ =\  r^M\big(t^M\big)$.
-      \item[ii.] $1^M\ =\ 1$;
-      \item[iii.] $(\psi+\xi)^M\ =\ \psi^M+\xi^M$;
+      \item[i.] $(r\,t)^{\EuScript M}\ =\  r^{\EuScript M}\big(t^{\EuScript M}\big)$.
+      \item[ii.] $1^{\EuScript M}\ =\ 1$;
+      \item[iii.] $(\psi+\xi)^{\EuScript M}\ =\ \psi^{\EuScript M}+\xi^{\EuScript M}$;
     \end{itemize}
   \end{minipage}
   \begin{minipage}[t]{.59\textwidth}
     \begin{itemize}
-      \item[iv.] $(\alpha\varphi)^M\ =\ \alpha\varphi^M$;
-      \item[v.] $(\psi\wedge\xi)^M\ =\ \min\big\{\psi^M,\ \xi^M\big\}$;
-      \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^M\ =\ \inf\big\{\psi[x/b]^M :\  b\in M\big\}$}.
+      \item[iv.] $(\alpha\varphi)^{\EuScript M}\ =\ \alpha\varphi^{\EuScript M}$;
+      \item[v.] $(\psi\wedge\xi)^{\EuScript M}\ =\ \min\big\{\psi^{\EuScript M},\ \xi^{\EuScript M}\big\}$;
+      \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^{\EuScript M}\ =\ \inf\big\{\psi[x/b]^{\EuScript M} :\  b\in M\big\}$}.\hfill \smash{\large\danger}
     \end{itemize}
   \end{minipage}
 \end{definition}
 \medskip
 
-In Fact~\ref{fact_finiteness} below we prove that the infimum in (vi) above is indeed finite, hence that the definition is sound.
-
+Note that in (vi) the infimum is taken as $b$ ranges (only) over the unit ball. 
+In Fact~\ref{fact_finiteness} below we prove that this infimum is indeed finite, hence that the definition is sound. 
 Finally, we complete Definition~\ref{def_structure} by stating the axioms that the unit ball has to satisfy.
 
 \begin{definition}\label{def_unitball}
   The unit ball is required to satisfy the following axioms
   \begin{itemize}
-    \item[1.] $\bar M=\big\{t^M:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
-    \item[2.] $|\varphi(a)^M|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
+    \item[1.] ${\EuScript M}=\big\{t^{\EuScript M}:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
+    \item[2.] $|\varphi(a)^{\EuScript M}|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
   \end{itemize}
 \end{definition}
 
-For $\varphi(x)\in L(M)$ we write $\varphi^M$ for the function $\varphi^M:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^M$.
+For $\varphi(x)\in L(M)$ we write $\varphi^{\EuScript M}$ for the function $\varphi^{\EuScript M}:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^{\EuScript M}$.
 
 A straightforeward proof by induction on the syntax yields the following.
 
 \begin{fact}\label{fact_finiteness}
-  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^M|\le n$ for all $a\in M^{|x|}$.\qed
+  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^{\EuScript M}|\le n$ for all $a\in M^{|x|}$.\qed
 \end{fact}
 
 
@@ -220,18 +219,18 @@ A straightforeward proof by induction on the syntax yields the following.
 \begin{itemize}
   \item [1.] Firstly, we leave to the reader to check that classical first-order models are a (trivial) special cases of the models introduced above.
         Classical relations take values in $\{0,1\}$ where $0$ is interpreted as ``true''.
-        The unit ball is the whole of $\bar M$.
+        The unit ball is the whole of ${\EuScript M}$.
         The function $n_{\mbox-}$ is constantly $1$.
         To obtain the full strength of first-order logic one has to add equality as a predicate as it is absent from our logic.
 
-  \item [2.] Secondly, any {\sc bbhu}-premodel is also a model as those in Section~\ref{uno} if we let the unit ball coincide with $\bar M$.
-        The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of $M$.
-        As all relations of $M$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
+  \item [2.] Secondly, any {\sc bbhu}-premodel is also a model as those in Section~\ref{uno} if we let the unit ball coincide with ${\EuScript M}$.
+        The language $L$ contains a relation symbol $d(x,y)$ for a metric and, possibly, symbols for all other functions and relations of ${\EuScript M}$.
+        As all relations of ${\EuScript M}$ (including the metric) take values in the interval $[0,1]$, the function $n_{\mbox-}$ can be set to be the constant $1$.
 
   \item [3.] Now we consider an example that is non trivial and distant both from classical models and from {\sc bbhu}-models: weighted graphs.
         The set $L_{\rm fun}$ is empty and $L_{\rm rel}$ contains only a binary relation $r$.
-        We require that $r^M(a,b)=r^M(b,a)\in[0,1]$.
-        As unit ball take, again,the whole of $\bar M$.
+        We require that $r^{\EuScript M}(a,b)=r^{\EuScript M}(b,a)\in[0,1]$.
+        As unit ball take, again,the whole of ${\EuScript M}$.
         The function $n_{\mbox-}$ is constant $1$.
 
 
@@ -239,7 +238,7 @@ A straightforeward proof by induction on the syntax yields the following.
         Let $L$ be the language of Banach spaces.
         Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
         The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
-        Let $\bar M$ be a Banach space and define a continuous model as follows.
+        Let ${\EuScript M}$ be a Banach space and define a continuous model as follows.
         The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
         The unit ball of is $M=\{a\in M: \|a\|\le1\}$.
         If $\varphi(x)$ is the atomic formulas
@@ -264,7 +263,7 @@ A straightforeward proof by induction on the syntax yields the following.
 %%%%%%%%%%%%%%%%%%%%
 \section{Conditions and types}
 
-For $\varphi, \psi\in L(M)$ some closed formulas, we write \emph{$M\models\ \varphi\le\psi$} for $\varphi^M\le\psi^M$.
+For $\varphi, \psi\in L(M)$ some closed formulas, we write \emph{$M\models\ \varphi\le\psi$} for $\varphi^{\EuScript M}\le\psi^{\EuScript M}$.
 The meaning of \emph{$M\models\ \varphi=\psi$\/} and of \emph{$M\,\models\ \varphi<\psi$\/} is similar.
 
 Expressions of the form $\varphi(x)\le0$ are called \emph{conditions}.
@@ -310,13 +309,14 @@ We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $
 
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
+Let ${\EuScript M}$ and ${\EuScript N}$ be models with unit balls $M$ and $N$, respectively.
 We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} between $M$ and $N$ if for every $\varphi(x)\in L$
 
-\ceq{\hfill \varphi^M(a)}{=}{\varphi^N(b)} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
+\ceq{\hfill \varphi^{\EuScript M}(a)}{=}{\varphi^{\EuScript N}(b)} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
 
 We define an equivalence relation \emph{$(\sim_{M\!})$\/} on the unit ball of a given model $M$ as follows
 
-\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(x)\in L(M)$.
+\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^{\EuScript M}=\varphi^{\EuScript M}(b)}\ \ for every $\varphi(x)\in L(M)$.
 
 In ther words,
 
@@ -325,7 +325,7 @@ In ther words,
 As elementary relations are closed under composition, if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big\{(a,b),(a',b')\big\}\subseteq M^2$ is also elementary.
 In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
 
-\ceq{\hfill a_i\, \sim_Mb_i\textrm{ for every }i\in(n]}{\Leftrightarrow}{\varphi(a)^M=\varphi^M(b)}\ \ for every $\varphi(z)\in L(M)$.
+\ceq{\hfill a_i\, \sim_Mb_i\textrm{ for every }i\in(n]}{\Leftrightarrow}{\varphi(a)^{\EuScript M}=\varphi^{\EuScript M}(b)}\ \ for every $\varphi(z)\in L(M)$.
 
 From the consideration above we deduce the following.
 \begin{lemma}
@@ -373,20 +373,20 @@ When $\varnothing$ is an elementary relation between $M$ and $N$ we say that the
 We write $I_A$ for the diagonal relation on $A$.
 We write \emph{$M\equiv_A N$\/} if $I_A$ is an elementary relation.
 In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
-Finally, we write \emph{$M\preceq N$\/} if $M\equiv_M N$ and $\bar M$ is a substructure of $\bar N$ in the classical sense.
+Finally, we write \emph{$M\preceq N$\/} if $M\equiv_M N$ and ${\EuScript M}$ is a substructure of $\bar N$ in the classical sense.
 In wards, we say that $M$ is an \emph{elementary substructure\/} of $N$.
 
 
 Let $A\subseteq M$.
 The \emph{limit $A$-topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$.
-The sets $\big\{a\in M^{|x|}:\, \varphi^M(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
-Note that the sets $\big\{a\in M^{|x|}:\, \varphi^M(a)<0\big\}$ are a base of open sets of the same topology.
+The sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
+Note that the sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)<0\big\}$ are a base of open sets of the same topology.
 
 The limit $A$-topology is a completely regular topology, almost by definition.
 Typically, it is not T$_0$.
 
 
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $M\subseteq N$ and assume that $\bar M$ is a substructure of $\bar N$.
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $M\subseteq N$ and assume that ${\EuScript M}$ is a substructure of $\bar N$.
   Let $x$ be a single variable.
   Then the following are equivalent:
   \begin{itemize}
@@ -476,7 +476,7 @@ In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\
 \begin{proposition}[\L\v{o}\'s Theorem]
   Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$,
 
-  \ceq{\hfill \varphi^N\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
 
 \end{proposition}
 
@@ -487,26 +487,26 @@ In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\
   We spell out the proof for the infimum quantifier.
   Assume inductively that
 
-  \ceq{\hfill \varphi^N\big(\hat a,\hat b\big)}
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
   {=}
   {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
 
   We want to prove that
 
-  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^N}
+  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
   {=}
   {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
 
   By the interpretation of the infimum quantifier, this amounts to prove that
 
-  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^N\ :\ \hat b\in(uN)\big\}}
+  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
   {=}
   {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
 
   First we prove the $\le$ inequality.
   Let $\alpha$ be an arbitrary positive real number.
 
-  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^N\big(\hat a,\hat b\big)}{<}{\alpha}.
+  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
 
   \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
 
@@ -535,7 +535,7 @@ In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\
 
   \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
 
-  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^N\big(\hat a, \hat b\big)}{<}{\alpha.}
+  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
 
   This proves the desired inequality.
 \end{proof}
@@ -586,12 +586,12 @@ Note that it is implicit that all these models $M$ have the same bounding fuctio
 
   Check that $N\models T\le0$. Let $\varphi\in T$. By \L\v{o}\'s Theorem,
 
-  \ceq{\hfill \varphi^N}%
+  \ceq{\hfill \varphi^{\EuScript N}}%
   {=}%
   {\lim_{\xi\uparrow F}\varphi^{M_\xi}.}
 
   Note that $X_\varphi\subseteq \big\{\xi\ :\ \varphi^{M_\xi}\le0\big\}$ and recall that $X_\varphi\in F$ whenever $\varphi\in T$.
-  Therefore $\varphi^N\le0$.
+  Therefore $\varphi^{\EuScript N}\le0$.
 \end{proof}
 
 
@@ -690,59 +690,119 @@ We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\mode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Random variables}
 
-Consider a model with three sorts with domains ${\EuScript A},{\EuScript R},{\EuScript M}$.
-The domain of the first sort consists of a set ${\EuScript A}\subseteq{\EuScript P}(\Omega)$ that is a Boolean algebra under the usual set operations.
-The domain of the second sort ${\EuScript R}$ consists of a set of those functions $f:\Omega\to{\mathds R}$ that are linear combinations of indicator functions of sets in ${\EuScript A}$.
-The third sort ${\EuScript M}$ contains all finitely additive signed measures $\mu$ on ${\EuScript A}$ with bounded values.
+We define a $3$-sorted structure $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$.
 
+Fix a nonempty set $\Omega$.
+
+The domain of the first sort consists of a Boolean algebra ${\EuScript A}\subseteq{\EuScript P}(\Omega)$.
 The language contains functions for the Boolean operations on ${\EuScript A}$.
-It contains also the functions that make ${\EuScript R}$ and ${\EuScript M}$ two ${\mathds R}$-algebras.
-On ${\EuScript R}$ we also include the functions $\wedge$ and $\vee$ for the pointwise minimum and maximum between to functions.
+% The unit ball is the whole of ${\EuScript A}$.
 
-Finally, there is a predicate $I$ of sort ${\EuScript A}\times{\EuScript R}\times{\EuScript M}$ which we interprete with the function that maps
-$$
-  (A,f,\mu)\ \ \mapsto\ \ \int_A f{\rm d}\mu
-$$
+% On $\Omega$ we define the equivalence relation $\sim_{\EuScript A}$ as follows: $a\sim_{\EuScript A} b$ if $a\in A\leftrightarrow b\in A$ for every $A\in{\EuScript A}$.
+% We make use of $\Omega$ and  $\sim_{\EuScript A}$ in the definitions of $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$ but they will not directly appear in the structure.
 
-If $\varphi(X)$ is a formula, where $X$ is a variable of sort ${\EuScript A}$, then $\sup_{Y\subseteq X}\varphi(Y)$ is a formula.
-In fact, it is equivalent to $\sup_Y\varphi(Y\cap X)$.
+% We now define ${\EuScript R}$ and ${\EuScript M}$.
+% We warn the reader that, at a deeper level these two domain contains the same elements, the difference being only in the syntax.
+
+The domain of the second sort ${\EuScript R}$ contains the functions $f:\Omega\to{\mathds R}$ that are linear combinations of indicator functions of sets in ${\EuScript A}$.
+In the language we include the functions that make ${\EuScript R}$ an ${\mathds R}$-algebra (sum and and multiplications are defined pointwise).
+We also include operations for the pointwise maximum and minimum of two functions.
+% The unit ball, $S$, contains functions that are $\le1$ in absolute value.
+
+The domain of the third sort, ${\EuScript M}$, contains signed measures $\mu:{\EuScript A}\to{\mathds R}$ that are linear combinations of measures of the form $\delta_a$, for $a\in\Omega$.
+These are defined as follows: $\delta_a(A)$ is $1$ if $a\in A$ and $0$ otherwise.
+The language is that of lattice vector spaces.
+% The unit ball, $M$, contains the measures in ${\EuScript M}$ that are $\le1$ in absolute value.
+
+There is a function of sort ${\EuScript R}\times{\EuScript M}\to{\EuScript M}$ that maps $(f,\mu)$ to the measure $f\mu$ obtained multiplying in the natural way $f$ and $\mu$.
+
+Finally, there is a predicate $I$ of sort ${\EuScript A}\times{\EuScript M}$ such that $I(A,\mu)=\mu(A)$.
+
+The unit ball $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$ is $\langle{\EuScript A},R,M\rangle$ where $R$ and $M$ are the functions, respectively measures  that are $\le1$ in absolute value.
+
+\hfil ***
 
 
-\begin{theorem}\label{thm_fRN}
-  [Finitary Radon-Nikodym]
-  Let $\mu,\nu\in{\EuScript M}.$
-  For every $\varepsilon,\delta > 0$ there exist an exceptional set $E\in{\EuScript A}$ and an $f\in{\EuScript R}$ such that
+The following finite version of the Radon-Nikodym theorem is completely trivial.
+For simplicity we state it for measures.
+As the Hahn decomposition theorem holds (trivially) in ${\EuScript M}$, this is no loss of generality.
+
+\begin{fact}\label{thm_fRN}
+  [Discrete Radon-Nikodym]
+  Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$, be non negative.
+  For every $\varepsilon > 0$ there are $E\in{\EuScript A}$ and $f\in R$, the unit ball of ${\EuScript R}$, such that
   \begin{itemize}
-    \item[1.] $\displaystyle\sup_{X\subseteq\neg E}\big|I(X,\nu)- I(X,f,\mu)\big|\le\varepsilon;$
-    \item[2.] $\displaystyle\sup_{X\subseteq E}|I(X, \mu)|\le\delta$.
+    \item[1.] $I(\neg E,|\nu-\varepsilon^{-1}f\mu|)\ =\ 0$
+    \item[2.] $|I(E, \mu)|\le\varepsilon$.
   \end{itemize}
-\end{theorem}
+\end{fact}
 
-We now consider a saturated extension ${}^{*\!\!\!}{\EuScript A},{}^{*\!}{\EuScript R},{}^{*\!}{\EuScript M}$.
+We will use the following version of the fact above.
 
-A set $E$ is $\mu$-null if $I(X, \mu)=0$ for every $X\subseteq E$.
-
-\begin{corollary}
-  Let $\mu\in{\EuScript M}$.
-  There are a $\mu$-null set $E\in{}^{*\!\!\!}{\EuScript A}$ and An $f\in{}^{*\!}{\EuScript R}$ such that for all $\nu\in{\EuScript M}$ we have $I(X,\nu)=I(X,f,\mu)$ for evey $X\subseteq\neg E$.
-\end{corollary}
+\begin{fact}\label{thm_fRN2}
+  [Iterated discrete Radon-Nikodym]
+  Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$.
+  For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$, such that
+  \begin{itemize}
+    \item[0.] $E_n\subseteq E_{n-1}\subseteq {\dots\dots} \subseteq E_1\subseteq E_0=\Omega$
+    \item[1.] $I(E_i\smallsetminus E_{i+1},\ |\nu-2^{-(i+1)}f\mu|)\ =\ 0$
+    \item[2.] $|I(E_{i+1},\ \mu)|\le2^{-(i+1)}$.
+  \end{itemize}
+\end{fact}
 
 \begin{proof}
-  It is easy to see that the theorem above, if applied simultaneously to a finite set of measures $\nu_1,\dots,\nu_n\in{\EuScript M}$, yields a single $f\in{}^{*\!}{\EuScript R}$ such that 1 and 2 hold for all $\nu_i$.
-
-  Recall that conditions are closed under Boolean conjunction and discjunction.
-  Read $\mu,\nu\in{\EuScript M}$ as parameters.
-  Read $E$ and $f$ as variables, then $\,1\, \&\, 2\,$ in the theorem above, is a condition.
-
-  For every $\varepsilon,\delta>0$ and $\nu\in{\EuScript M}$ each of these conditions is consistent.
-  Moreover, as remarked above, any finite conjunctions of these  conditions is also consistent.
-  Therefore, by saturation, there is an $E\in{}^{*\!\!\!}{\EuScript A}$ that satisies all these conditions as $\nu$ ranges over ${\EuScript M}$.
+  Apply inductively the theorem above, with $E_i$ for $\Omega$, to find $E_{i+1}$ and $f_{i+1}$ such that
+  \begin{itemize}
+    \item[1$_i$.] $I(X,|\nu-2^{-(i+1)}f_{i+1}\mu|)\ =\ 0$\quad for every $X\subseteq E_i\smallsetminus E_{i+1}$;
+    \item[2$_i$.] $|I(X, \mu)|\le2^{-(i+1)}$\quad for every $X\subseteq E_{i+1}$;
+    \item[3$_i$.] $f_{i+1}[E_i\smallsetminus E_{i+1}]=\{0\}$.
+  \end{itemize}
+  Note that the last requirement is immediate to satisfy.
+  Finally, let $f=f_1+\dots+f_n$.
 \end{proof}
+
+
+
+% Write $\nu\ll\mu$ if for every $\varepsilon>0$ there is a $\delta>0$ such that $I(X,\mu)\le\delta\Rightarrow I(X,\nu)\le\varepsilon$ for all $X\in$.
+
+
+% \begin{corollary}\label{cor_fRN}
+%   Let $\mu,\nu\in M$ be such that $\nu\ll\mu$.
+%   For every $\varepsilon > 0$ there exist an exceptional set $E\in{\EuScript A}$ and an $f\in S$, the unit ball of ${\EuScript R}$, such that
+%   \begin{itemize}
+%     \item[1.] $I(X,1,\nu)\ =\ I(X,f/\varepsilon,\mu)$ for evey $X\subseteq\neg E$;
+%     \item[2.] $\displaystyle\sup_{X\subseteq E}|I(X, \mu)|\le\varepsilon$.
+%   \end{itemize}
+% \end{corollary}
+
+% We note that 1 \& 2 of Theorem~\ref{thm_fRN} can be expressed by a condition.
+% Infact, if $\varphi(X)$ is a formula, where $X$ is a variable of sort ${\EuScript A}$, then $\sup_{Y\subseteq X}\varphi(Y)$ is a formula --~as it is equivalent to $\sup_Y\varphi(Y\cap X)$.
+% Also, recall that conditions are closed under the Boolean operations of conjunction and disjunction.
+% They are also closed under universal quantification.
+
+We now consider a saturated extension $\langle{}^{*\!\!\!}{\EuScript A},{}^{*\!}{\EuScript R},{}^{*\!}{\EuScript M}\rangle$.
+The following fact is a direct consequence of saturation.
+
+\begin{fact}
+  Let $\mu$ be a bounded finitely additive measure on ${\EuScript A}$, not necessarily in ${\EuScript M}$.
+  Then there is ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ such that $\mu_{\restriction{\EuScript A}}={}^{*\!\!}\mu_{\restriction{\EuScript A}}$.
+\end{fact}
+
+\begin{proof}
+  It suffices to check that the following type is finitely consistent in ${\EuScript A}$ (read $\nu$ as a variable and $\mu(X)$ as a real number)
+  $$
+  \big\{\nu(X)=\mu(X) \ :\ X\in{\EuScript A}\big\},
+  $$
+  which immediate.
+\end{proof}
+
+We can improve on the fact above.
+In fact, we can also control the measure of ${}^{*\!\!}\mu(A)$ for any $A\in{\EuScript A}$.
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{fact}
-  Let $\mu\in{}^{*\!}{\EuScript M}$ be a nonnegative measure.
+  Let $\mu$ be a bounded measure on ${\EuScript A}$, not necessarily in ${\EuScript M}$.
   Let $A\in{}^{*\!\!\!}{\EuScript A}$.
   Define 
   
@@ -750,26 +810,52 @@ A set $E$ is $\mu$-null if $I(X, \mu)=0$ for every $X\subseteq E$.
 
   \ceq{\hfill m_{\rm e}}{=}{\,\inf\{\mu(X): X\in{\EuScript A}, \  A\subseteq X \}}
 
-  Then for every $m_{\rm i\,}\le r\le m_{\rm e}$ there is a measure $\nu\in{}^{*\!\!\!}{\EuScript A}$ such that $\mu_{\restriction{\EuScript A}}=\nu_{\restriction{\EuScript A}}$ and  $\nu(A)=r$.
+  Then for every $m_{\rm i\,}\le r\le m_{\rm e}$ there is a measure ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ such that ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and  ${}^{*\!\!}\mu(A)=r$.
 \end{fact}
 
-
-\begin{proof}
-
-It is easy to se that the following type is finitely consistent (read $\nu$ as a variable).
+\begin{proof}[Proof (sketch)]
+Assume for simplicity that $\mu$ is bounded by $1$.
+It suffices to check that the following type is finitely consistent (read $\nu$ as a variable and $\mu(X)$ as a real number).
 $$
-\big\{\nu(X)
-=
-\mu(X) : X\in{\EuScript A}\big\}
+\big\{\nu(X)=\mu(X) \ :\ X\in{\EuScript A}\big\}
 \ \ \cup\ \ \
 \big\{\nu(A)=r\big\}.
 $$
-Any $\nu$ realizing this type is as required by the lemma.
+In fact, any ${}^{*\!\!}\mu$ realizing this type is as required by the lemma.
+
+Let ${\EuScript A}'\subseteq{\EuScript A}$ be a finite Boolean algebra.
+We define a measure $\nu$ on the Boolean algebra generated by $A,X_1,\dots,X_n$ that satisfies the type above restrected to ${\EuScript A}'\cup\{A\}$.
+Let $X_1,\dots,X_n$ be the atoms of ${\EuScript A}'$.
+Assume $A\notin{\EuScript A}$, to avoid trivialities.
+Then there are some sets $X_i$ such that both $X_i\cap A$ and $X_i\smallsetminus A$ are nonempty.
+Suppose these sets are $X_1,\dots,X_m$.
+For $i\le m$ we define $\nu(X_i\cap A)=\varepsilon\,\mu(X)$ and $\nu(X_i\smallsetminus A)=(1-\varepsilon)\mu(X_i)$, where $0\le\varepsilon\le1$ is specified below.
+For $i>m$ let $\nu(X_i)=\mu(X_i)$.
+Note that $\mu(X_1\cup\dots\cup X_m)\ge m_{\rm e}-m_{\rm i}$.
+Therefore with a suitable $\varepsilon$, we can obtain $\nu(A)=r$.
 \end{proof}
 
+If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a $\sigma$-additive measure then the suppremum and the infimum in the fact above is attained.
+We will use the following.
+
 \begin{corollary}
-  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu\in{\EuScript M}$ is sigma additive then for every $E\in{}^{*\!\!\!}{\EuScript A}$ there are $A,B\in{\EuScript A}$ such that $A\subseteq E\subseteq B$ and $\mu(B\smallsetminus A)=0$.
+  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a bounded $\sigma$-additive measure then for every $A\in{}^{*\!\!\!}{\EuScript A}$ there are $A_{\rm i},A_{\rm e}\in{\EuScript A}$ such that $A_{\rm i}\subseteq A\subseteq A_{\rm e}$ and a measures ${}^{*\!\!}\mu$ such that 
+  ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and ${}^{*\!\!}\mu_{\rm e}(A)=\mu(A_{\rm e})$.  
+  A similar claim holds for $A_{\rm i}$.
+  %We can also require it holds simultaneously for any family of sets $\{A_i:i<\lambda\}\subseteq{}^{*\!\!\!}{\EuScript A}$ of small cardinality (???).
 \end{corollary}
+
+
+
+\begin{theorem}[Radon-Nikodym]
+  Assume ${\EuScript A}$ is a $\sigma$-algebra and let $\nu$ and $\mu$ be bounded $\sigma$-additive measures.
+  Then there is a random variable $f$ such that 
+  $$
+  \int_X f{\rm d}\mu = \int_X {\rm d}\nu
+  $$
+  for every $X\in{\EuScript A}$.
+\end{theorem}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -779,7 +865,7 @@ Any $\nu$ realizing this type is as required by the lemma.
 
 % The $A$-limit uniformity on $M^{|x|}$ is the uniformity that has the following entourages 
 
-% \ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in M^{|x|}\times M^{|x|}\quad :\quad \big|\varphi^M(a)-\varphi^M(b)\big|<\varepsilon\Big\}}
+% \ceq{\hfill V_{\varphi(x),\, \varepsilon}}{=}{\Big\{(a,b)\in M^{|x|}\times M^{|x|}\quad :\quad \big|\varphi^{\EuScript M}(a)-\varphi^{\EuScript M}(b)\big|<\varepsilon\Big\}}
 
 % for $\varphi(x)\in L(A)$ and $\varepsilon\in{\mathds R}^+$. It is the coarsest uniformity that makes all formulas in $L(A)$ uniformly continuous.
 
