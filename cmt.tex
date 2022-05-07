@@ -63,6 +63,8 @@
 \newtheorem{corollary}[theorem]{Corollary}
 
 
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{definitions}[theorem]{Definitions}
 \newtheorem{example}[theorem]{Example}
@@ -369,12 +371,12 @@ In fact any such relation $R$ induces a unique automorphism on the (properly def
 
 An \emph{elementary embedding\/} is an elementary relation that is functional, injective and total.
 
-When $\varnothing$ is an elementary relation between $M$ and $N$ we say that these are \emph{elementarily equivalent\/} and write \emph{$M\equiv N$.}
-We write $I_A$ for the diagonal relation on $A$.
-We write \emph{$M\equiv_A N$\/} if $I_A$ is an elementary relation.
-In words, we say that $M$ and $N$ are elementary equivalent \emph{over $A$.}
-Finally, we write \emph{$M\preceq N$\/} if $M\equiv_M N$ and ${\EuScript M}$ is a substructure of $\bar N$ in the classical sense.
-In wards, we say that $M$ is an \emph{elementary substructure\/} of $N$.
+When $\varnothing$ is an elementary relation between $M$ and $N$, the unit balls of ${\EuScript M}$ and ${\EuScript N}$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{elementarily equivalent\/} and write \emph{${\EuScript M}\equiv {\EuScript N}$.}
+We write $I_A$ for the diagonal relation on a set $A$.
+We write \emph{${\EuScript M}\equiv_A{\EuScript N}$\/} if $I_A$ is an elementary relation.
+In words, we say that ${\EuScript M}$ and ${\EuScript N}$ are elementary equivalent \emph{over $A$.}
+Finally, we write \emph{${\EuScript M}\preceq{\EuScript N}$\/} if ${\EuScript M}\equiv_M{\EuScript N}$ and ${\EuScript M}\subseteq{\EuScript N}$, that is ${\EuScript M}$ is a substructure of ${\EuScript N}$ in the classical sense.
+In words, we say that ${\EuScript M}$ is an \emph{elementary substructure\/} of ${\EuScript N}$.
 
 
 Let $A\subseteq M$.
@@ -386,13 +388,13 @@ The limit $A$-topology is a completely regular topology, almost by definition.
 Typically, it is not T$_0$.
 
 
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let $M\subseteq N$ and assume that ${\EuScript M}$ is a substructure of $\bar N$.
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let ${\EuScript M}\subseteq{\EuScript M}$.
   Let $x$ be a single variable.
   Then the following are equivalent:
   \begin{itemize}
-    \item[1.] $M\preceq N$;
+    \item[1.] ${\EuScript M}\preceq{\EuScript N}$;
     \item[2.] $M$ is dense in $N$ w.r.t.\@ the $M\mbox{-}$limit topology on $N$;
-    \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M^{|x|}$.
+    \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M$.
   \end{itemize}
 \end{proposition}
 \begin{proof}
@@ -720,10 +722,12 @@ Finally, there is a predicate $I$ of sort ${\EuScript A}\times{\EuScript M}$ suc
 
 The unit ball $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$ is $\langle{\EuScript A},R,M\rangle$ where $R$ and $M$ are the functions, respectively measures  that are $\le1$ in absolute value.
 
+The readers can easily convince themselfs that a bounding function exist.
+Its explicit definition is not required in the sequel.
+
 \hfil ***
 
-
-The following finite version of the Radon-Nikodym theorem is completely trivial.
+The following discrete version of the Radon-Nikodym theorem is completely trivial.
 For simplicity we state it for measures.
 As the Hahn decomposition theorem holds (trivially) in ${\EuScript M}$, this is no loss of generality.
 
@@ -732,36 +736,59 @@ As the Hahn decomposition theorem holds (trivially) in ${\EuScript M}$, this is 
   Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$, be non negative.
   For every $\varepsilon > 0$ there are $E\in{\EuScript A}$ and $f\in R$, the unit ball of ${\EuScript R}$, such that
   \begin{itemize}
-    \item[1.] $I(\neg E,|\nu-\varepsilon^{-1}f\mu|)\ =\ 0$
-    \item[2.] $|I(E, \mu)|\le\varepsilon$.
+    \item[1.] $I(E,|\nu-\varepsilon^{-1}f\mu|)\ =\ 0$
+    \item[2.] $|I(\neg E, \mu)|\le\varepsilon$.
   \end{itemize}
 \end{fact}
 
 We will use the following version of the fact above.
+
+% \begin{fact}\label{thm_fRN2}
+%   [Iterated discrete Radon-Nikodym]
+%   Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$.
+%   For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$, such that
+%   \begin{itemize}
+%     \item[0.] $E_n\subseteq E_{n-1}\subseteq {\dots\dots} \subseteq E_1\subseteq E_0=\Omega$
+%     \item[1.] $I\big(E_i\smallsetminus E_{i+1},\ |\nu-2^{-(i+1)}f\mu|\big)\ =\ 0$
+%     \item[2.] $|I(E_{i+1},\ \mu)|\le2^{-(i+1)}$;
+%     \item[3.] $f_{i+1}\big[E_i\smallsetminus E_{i+1}\big]=\{0\}$.
+%   \end{itemize}
+% \end{fact}
+
+% \begin{proof}
+%   Apply inductively the theorem above, with $E_i$ for $\Omega$, to find $E_{i+1}$ and $f_{i+1}$ such that
+%   \begin{itemize}
+%     \item[1$_i$.] $I\big(E_i\smallsetminus E_{i+1},\ |\nu-2^{-(i+1)}f_{i+1}\mu|\big)\ =\ 0$;
+%     \item[2$_i$.] $|I(E_{i+1},\ \mu)|\le2^{-(i+1)}$;
+%     \item[3$_i$.] $f_{i+1}\big[E_i\smallsetminus E_{i+1}\big]=\{0\}$.
+%   \end{itemize}
+%   Finally, let $f=f_1+\dots+f_n$.
+% \end{proof}
+
 
 \begin{fact}\label{thm_fRN2}
   [Iterated discrete Radon-Nikodym]
   Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$.
   For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$, such that
   \begin{itemize}
-    \item[0.] $E_n\subseteq E_{n-1}\subseteq {\dots\dots} \subseteq E_1\subseteq E_0=\Omega$
-    \item[1.] $I(E_i\smallsetminus E_{i+1},\ |\nu-2^{-(i+1)}f\mu|)\ =\ 0$
-    \item[2.] $|I(E_{i+1},\ \mu)|\le2^{-(i+1)}$.
+    \item[0.] the $E_i$ are pairwise disjoint;
+    \item[1.] $I\big(E_i,\ |\nu-2^{-i}f\mu|\big)\ =\ 0$
+    \item[2.] $|I(X,\ \mu)|\le2^{-i}$, where $X=\neg(E_1\cup\dots\cup E_i)$;
+    \item[3.] $f_i[\neg E_i]=\{0\}$.
   \end{itemize}
 \end{fact}
+
 
 \begin{proof}
   Apply inductively the theorem above, with $E_i$ for $\Omega$, to find $E_{i+1}$ and $f_{i+1}$ such that
   \begin{itemize}
-    \item[1$_i$.] $I(X,|\nu-2^{-(i+1)}f_{i+1}\mu|)\ =\ 0$\quad for every $X\subseteq E_i\smallsetminus E_{i+1}$;
-    \item[2$_i$.] $|I(X, \mu)|\le2^{-(i+1)}$\quad for every $X\subseteq E_{i+1}$;
-    \item[3$_i$.] $f_{i+1}[E_i\smallsetminus E_{i+1}]=\{0\}$.
+    \item[1$_i$.] $I\big(E_i,\ |\nu-2^{-i}f_i\mu|\big)\ =\ 0$;
+    \item[2$_i$.] $|I(X,\ \mu)|\le2^{-i}$, where $X=\neg(E_1\cup\dots\cup E_i)$;
+    \item[3$_i$.] $f_i\big[\neg E_i]=\{0\}$.
   \end{itemize}
-  Note that the last requirement is immediate to satisfy.
+  The third condition above is cosmetic and immediate to obtain.
   Finally, let $f=f_1+\dots+f_n$.
 \end{proof}
-
-
 
 % Write $\nu\ll\mu$ if for every $\varepsilon>0$ there is a $\delta>0$ such that $I(X,\mu)\le\delta\Rightarrow I(X,\nu)\le\varepsilon$ for all $X\in$.
 
@@ -806,11 +833,11 @@ In fact, we can also control the measure of ${}^{*\!\!}\mu(A)$ for any $A\in{\Eu
   Let $A\in{}^{*\!\!\!}{\EuScript A}$.
   Define 
   
-  \ceq{\hfill m_{\rm i\,}}{=}{\sup\{\mu(X): X\in{\EuScript A},\ X\subseteq A\}}
+  \ceq{\hfill m_{\rm in\,}}{=}{\sup\{\mu(X): X\in{\EuScript A},\ X\subseteq A\}}
 
-  \ceq{\hfill m_{\rm e}}{=}{\,\inf\{\mu(X): X\in{\EuScript A}, \  A\subseteq X \}}
+  \ceq{\hfill m_{\rm ex}}{=}{\,\inf\{\mu(X): X\in{\EuScript A}, \  A\subseteq X \}}
 
-  Then for every $m_{\rm i\,}\le r\le m_{\rm e}$ there is a measure ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ such that ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and  ${}^{*\!\!}\mu(A)=r$.
+  Then for every $m_{\rm in\,}\le r\le m_{\rm ex}$ there is a measure ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ such that ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and  ${}^{*\!\!}\mu(A)=r$.
 \end{fact}
 
 \begin{proof}[Proof (sketch)]
@@ -831,21 +858,33 @@ Then there are some sets $X_i$ such that both $X_i\cap A$ and $X_i\smallsetminus
 Suppose these sets are $X_1,\dots,X_m$.
 For $i\le m$ we define $\nu(X_i\cap A)=\varepsilon\,\mu(X)$ and $\nu(X_i\smallsetminus A)=(1-\varepsilon)\mu(X_i)$, where $0\le\varepsilon\le1$ is specified below.
 For $i>m$ let $\nu(X_i)=\mu(X_i)$.
-Note that $\mu(X_1\cup\dots\cup X_m)\ge m_{\rm e}-m_{\rm i}$.
+Note that $\mu(X_1\cup\dots\cup X_m)\ge m_{\rm ex}-m_{\rm in}$.
 Therefore with a suitable $\varepsilon$, we can obtain $\nu(A)=r$.
 \end{proof}
 
-If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a $\sigma$-additive measure then the suppremum and the infimum in the fact above is attained.
+If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a $\sigma$-additive measure then the supremum and the infimum in the fact above are attained.
 We will use the following.
 
 \begin{corollary}
-  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a bounded $\sigma$-additive measure then for every $A\in{}^{*\!\!\!}{\EuScript A}$ there are $A_{\rm i},A_{\rm e}\in{\EuScript A}$ such that $A_{\rm i}\subseteq A\subseteq A_{\rm e}$ and a measures ${}^{*\!\!}\mu$ such that 
-  ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and ${}^{*\!\!}\mu_{\rm e}(A)=\mu(A_{\rm e})$.  
-  A similar claim holds for $A_{\rm i}$.
+  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a bounded $\sigma$-additive measure then for every $A\in{}^{*\!\!\!}{\EuScript A}$ there are $A_{\rm in},A_{\rm ex}\in{\EuScript A}$ such that $A_{\rm in}\subseteq A\subseteq A_{\rm ex}$ and a measures ${}^{*\!\!}\mu$ such that 
+  ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and ${}^{*\!\!}\mu(A)=\mu(A_{\rm ex})$.  
+  A similar claim holds for $A_{\rm in}$.
   %We can also require it holds simultaneously for any family of sets $\{A_i:i<\lambda\}\subseteq{}^{*\!\!\!}{\EuScript A}$ of small cardinality (???).
 \end{corollary}
 
-
+\begin{question}
+  Assume ${\EuScript A}$ is a $\sigma$-algebra and let $\mu$ be a bounded $\sigma$-additive measure.
+  Let ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ be as above.
+  Let $f\in{}^{*\!}{\EuScript R}$ be given.
+  We define the function ${}^{\mu\!\!}f:\Omega\to{\mathds R}$ as follows
+  $$
+  {}^{\mu\!\!}f(a)\ =\ \inf\big\{I(A, f\mu)\,/\mu(A) \ :\ A\in{\EuScript A},\ a\in A,\ \mu(A)>0\big\}
+  $$
+  Is it true that for every $A\in{\EuScript A}$ 
+  $$
+  \int_A{}^{\mu\!\!}f{\rm d}\mu\ =\ I(A,f\,{}^{*\!\!}\mu)\ \ ?
+  $$
+\end{question}
 
 \begin{theorem}[Radon-Nikodym]
   Assume ${\EuScript A}$ is a $\sigma$-algebra and let $\nu$ and $\mu$ be bounded $\sigma$-additive measures.
@@ -856,6 +895,9 @@ We will use the following.
   for every $X\in{\EuScript A}$.
 \end{theorem}
 
+\begin{proof}
+  ???????????????????
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
