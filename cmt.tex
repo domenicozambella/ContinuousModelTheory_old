@@ -686,41 +686,41 @@ We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\mode
 \end{fact}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Random variables}
 
-We define a $3$-sorted structure $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$.
+Let ${\EuScript A}$ be a $\sigma$-algebra of subsets of $\Omega$.
+Let ${\EuScript R}$ be the set of all Borel functions $f:\Omega\to{\mathds R}$.
+Let ${\EuScript M}$ be the set of bounded $\sigma$-additive measures on ${\EuScript A}$.
 
-Fix a nonempty set $\Omega$.
+We define a $3$-sorted structure $\langle{\EuScript A},{}^{\circ\!}{\EuScript R},{}^{\circ\!}{\EuScript M}\rangle$.
 
-The domain of the first sort consists of a Boolean algebra ${\EuScript A}\subseteq{\EuScript P}(\Omega)$.
-The language contains functions for the Boolean operations on ${\EuScript A}$.
-% The unit ball is the whole of ${\EuScript A}$.
+The domain of the first sort is ${\EuScript A}$.
+The language contains functions for the Boolean operations.
 
 % On $\Omega$ we define the equivalence relation $\sim_{\EuScript A}$ as follows: $a\sim_{\EuScript A} b$ if $a\in A\leftrightarrow b\in A$ for every $A\in{\EuScript A}$.
-% We make use of $\Omega$ and  $\sim_{\EuScript A}$ in the definitions of $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$ but they will not directly appear in the structure.
+% We make use of $\Omega$ and  $\sim_{\EuScript A}$ in the definitions of $\langle{\EuScript A},{}^{\circ\!}{\EuScript R},{}^{\circ\!}{\EuScript M}\rangle$ but they will not directly appear in the structure.
 
-% We now define ${\EuScript R}$ and ${\EuScript M}$.
+% We now define ${}^{\circ\!}{\EuScript R}$ and ${}^{\circ\!}{\EuScript M}$.
 % We warn the reader that, at a deeper level these two domain contains the same elements, the difference being only in the syntax.
 
-The domain of the second sort ${\EuScript R}$ contains the functions $f:\Omega\to{\mathds R}$ that are linear combinations of indicator functions of sets in ${\EuScript A}$.
-In the language we include the functions that make ${\EuScript R}$ an ${\mathds R}$-algebra (sum and and multiplications are defined pointwise).
+The domain of the second sort ${}^{\circ\!}{\EuScript R}$ contains the functions $f\in{\mathds R}$ that are linear combinations of indicator functions of sets in ${\EuScript A}$.
+In the language we include the functions that make ${}^{\circ\!}{\EuScript R}$ an ${\mathds R}$-algebra (sum and and multiplications are defined pointwise).
 We also include operations for the pointwise maximum and minimum of two functions.
 % The unit ball, $S$, contains functions that are $\le1$ in absolute value.
 
-The domain of the third sort, ${\EuScript M}$, contains signed measures $\mu:{\EuScript A}\to{\mathds R}$ that are linear combinations of measures of the form $\delta_a$, for $a\in\Omega$.
+The domain of the third sort, ${}^{\circ\!}{\EuScript M}$, contains signed measures $\mu:{\EuScript A}\to{\mathds R}$ that are linear combinations of measures of the form $\delta_a$, for $a\in\Omega$.
 These are defined as follows: $\delta_a(A)$ is $1$ if $a\in A$ and $0$ otherwise.
 The language is that of lattice vector spaces.
-% The unit ball, $M$, contains the measures in ${\EuScript M}$ that are $\le1$ in absolute value.
+% The unit ball, $M$, contains the measures in ${}^{\circ\!}{\EuScript M}$ that are $\le1$ in absolute value.
 
-There is a function of sort ${\EuScript R}\times{\EuScript M}\to{\EuScript M}$ that maps $(f,\mu)$ to the measure $f\mu$ obtained multiplying in the natural way $f$ and $\mu$.
+There is a function of sort ${}^{\circ\!}{\EuScript R}\times{}^{\circ\!}{\EuScript M}\to{}^{\circ\!}{\EuScript M}$ that maps $(f,\mu)$ to the measure $f\mu$ obtained multiplying in the natural way $f$ and $\mu$.
 
-Finally, there is a predicate $I$ of sort ${\EuScript A}\times{\EuScript M}$ such that $I(A,\mu)=\mu(A)$.
+Finally, there is a predicate $I$ of sort ${\EuScript A}\times{}^{\circ\!}{\EuScript M}$ such that $I(A,\mu)=\mu(A)$.
 
-The unit ball $\langle{\EuScript A},{\EuScript R},{\EuScript M}\rangle$ is $\langle{\EuScript A},R,M\rangle$ where $R$ and $M$ are the functions, respectively measures  that are $\le1$ in absolute value.
+The unit ball of $\langle{\EuScript A},{}^{\circ\!}{\EuScript R},{}^{\circ\!}{\EuScript M}\rangle$ is $\langle{\EuScript A},R,M\rangle$ where $R$ and $M$ are the set of functions, respectively measures,  that are $\le1$ in absolute value.
 
 The readers can easily convince themselfs that a bounding function exist.
 Its explicit definition is not required in the sequel.
@@ -728,13 +728,13 @@ Its explicit definition is not required in the sequel.
 \hfil ***
 
 The following discrete version of the Radon-Nikodym theorem is completely trivial.
-For simplicity we state it for measures.
-As the Hahn decomposition theorem holds (trivially) in ${\EuScript M}$, this is no loss of generality.
+For simplicity we state it for (nonnegative) measures.
+As the Hahn decomposition theorem holds (trivially) in ${}^{\circ\!}{\EuScript M}$, this is no loss of generality.
 
 \begin{fact}\label{thm_fRN}
   [Discrete Radon-Nikodym]
-  Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$, be non negative.
-  For every $\varepsilon > 0$ there are $E\in{\EuScript A}$ and $f\in R$, the unit ball of ${\EuScript R}$, such that
+  Let $\mu,\nu\in M$, where $M$ is the unit ball of ${}^{\circ\!}{\EuScript M}$, be non negative.
+  For every $\varepsilon > 0$ there are $E\in{\EuScript A}$ and $f\in R$, where $R$ is the unit ball of ${}^{\circ\!}{\EuScript R}$, such that
   \begin{itemize}
     \item[1.] $I(E,|\nu-\varepsilon^{-1}f\mu|)\ =\ 0$
     \item[2.] $|I(\neg E, \mu)|\le\varepsilon$.
@@ -745,7 +745,7 @@ We will use the following version of the fact above.
 
 % \begin{fact}\label{thm_fRN2}
 %   [Iterated discrete Radon-Nikodym]
-%   Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$.
+%   Let $\mu,\nu\in M$, where $M$ is the unit ball of ${}^{\circ\!}{\EuScript M}$.
 %   For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$, such that
 %   \begin{itemize}
 %     \item[0.] $E_n\subseteq E_{n-1}\subseteq {\dots\dots} \subseteq E_1\subseteq E_0=\Omega$
@@ -768,13 +768,12 @@ We will use the following version of the fact above.
 
 \begin{fact}\label{thm_fRN2}
   [Iterated discrete Radon-Nikodym]
-  Let $\mu,\nu\in M$, where $M$ is the unit ball of ${\EuScript M}$.
-  For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$, such that
+  Let $\mu,\nu\in M$ be non negative.
+  For every $n>0$ there are $E_1,\dots,E_n\in{\EuScript A}$ and $f\in R$ such that
   \begin{itemize}
     \item[0.] the $E_i$ are pairwise disjoint;
-    \item[1.] $I\big(E_i,\ |\nu-2^{-i}f\mu|\big)\ =\ 0$
+    \item[1.] $I\big(E_i,\ |\nu-2^if\mu|\big)\ =\ 0$
     \item[2.] $|I(X,\ \mu)|\le2^{-i}$, where $X=\neg(E_1\cup\dots\cup E_i)$;
-    \item[3.] $f_i[\neg E_i]=\{0\}$.
   \end{itemize}
 \end{fact}
 
@@ -782,12 +781,12 @@ We will use the following version of the fact above.
 \begin{proof}
   Apply inductively the theorem above, with $E_i$ for $\Omega$, to find $E_{i+1}$ and $f_{i+1}$ such that
   \begin{itemize}
-    \item[1$_i$.] $I\big(E_i,\ |\nu-2^{-i}f_i\mu|\big)\ =\ 0$;
+    \item[1$_i$.] $I\big(E_i,\ |\nu-2^if_i\mu|\big)\ =\ 0$;
     \item[2$_i$.] $|I(X,\ \mu)|\le2^{-i}$, where $X=\neg(E_1\cup\dots\cup E_i)$;
     \item[3$_i$.] $f_i\big[\neg E_i]=\{0\}$.
   \end{itemize}
-  The third condition above is cosmetic and immediate to obtain.
   Finally, let $f=f_1+\dots+f_n$.
+  The third condition above (which is immediate to obtain) ensures that $f\in R$.
 \end{proof}
 
 % Write $\nu\ll\mu$ if for every $\varepsilon>0$ there is a $\delta>0$ such that $I(X,\mu)\le\delta\Rightarrow I(X,\nu)\le\varepsilon$ for all $X\in$.
@@ -795,7 +794,7 @@ We will use the following version of the fact above.
 
 % \begin{corollary}\label{cor_fRN}
 %   Let $\mu,\nu\in M$ be such that $\nu\ll\mu$.
-%   For every $\varepsilon > 0$ there exist an exceptional set $E\in{\EuScript A}$ and an $f\in S$, the unit ball of ${\EuScript R}$, such that
+%   For every $\varepsilon > 0$ there exist an exceptional set $E\in{\EuScript A}$ and an $f\in S$, the unit ball of ${}^{\circ\!}{\EuScript R}$, such that
 %   \begin{itemize}
 %     \item[1.] $I(X,1,\nu)\ =\ I(X,f/\varepsilon,\mu)$ for evey $X\subseteq\neg E$;
 %     \item[2.] $\displaystyle\sup_{X\subseteq E}|I(X, \mu)|\le\varepsilon$.
@@ -807,11 +806,11 @@ We will use the following version of the fact above.
 % Also, recall that conditions are closed under the Boolean operations of conjunction and disjunction.
 % They are also closed under universal quantification.
 
-We now consider a saturated extension $\langle{}^{*\!\!\!}{\EuScript A},{}^{*\!}{\EuScript R},{}^{*\!}{\EuScript M}\rangle$.
+We now consider a saturated extension of $\langle{\EuScript A},{}^{\circ\!}{\EuScript R},{}^{\circ\!}{\EuScript M}\rangle$ that we denote by $\langle{}^{*\!\!\!}{\EuScript A},{}^{*\!}{\EuScript R},{}^{*\!}{\EuScript M}\rangle$.
 The following fact is a direct consequence of saturation.
 
 \begin{fact}
-  Let $\mu$ be a bounded finitely additive measure on ${\EuScript A}$, not necessarily in ${\EuScript M}$.
+  Let $\mu\in{\EuScript M}$.
   Then there is ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ such that $\mu_{\restriction{\EuScript A}}={}^{*\!\!}\mu_{\restriction{\EuScript A}}$.
 \end{fact}
 
@@ -824,12 +823,12 @@ The following fact is a direct consequence of saturation.
 \end{proof}
 
 We can improve on the fact above.
-In fact, we can also control the measure of ${}^{*\!\!}\mu(A)$ for any $A\in{\EuScript A}$.
+In fact, we can also control the value of ${}^{*\!\!}\mu(A)$ for any $A\in{\EuScript A}$.
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{fact}
-  Let $\mu$ be a bounded measure on ${\EuScript A}$, not necessarily in ${\EuScript M}$.
+  Let $\mu$ be a bounded measure on ${\EuScript A}$, not necessarily in ${}^{\circ\!}{\EuScript M}$.
   Let $A\in{}^{*\!\!\!}{\EuScript A}$.
   Define 
   
@@ -866,19 +865,20 @@ If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a $\sigma$-additive measur
 We will use the following.
 
 \begin{corollary}
-  If ${\EuScript A}$ is a $\sigma$-algebra and $\mu$ is a bounded $\sigma$-additive measure then for every $A\in{}^{*\!\!\!}{\EuScript A}$ there are $A_{\rm in},A_{\rm ex}\in{\EuScript A}$ such that $A_{\rm in}\subseteq A\subseteq A_{\rm ex}$ and a measures ${}^{*\!\!}\mu$ such that 
+  Let $\mu\in{\EuScript M}$.
+  Then for every $A\in{}^{*\!\!\!}{\EuScript A}$ there are $A_{\rm in},A_{\rm ex}\in{\EuScript A}$ such that $A_{\rm in}\subseteq A\subseteq A_{\rm ex}$ and a measures ${}^{*\!\!}\mu$ such that 
   ${}^{*\!\!}\mu_{\restriction{\EuScript A}}=\mu_{\restriction{\EuScript A}}$ and ${}^{*\!\!}\mu(A)=\mu(A_{\rm ex})$.  
   A similar claim holds for $A_{\rm in}$.
   %We can also require it holds simultaneously for any family of sets $\{A_i:i<\lambda\}\subseteq{}^{*\!\!\!}{\EuScript A}$ of small cardinality (???).
 \end{corollary}
 
 \begin{question}
-  Assume ${\EuScript A}$ is a $\sigma$-algebra and let $\mu$ be a bounded $\sigma$-additive measure.
+  Let $\mu\in{\EuScript M}$.
   Let ${}^{*\!\!}\mu\in{}^{*\!}{\EuScript M}$ be as above.
-  Let $f\in{}^{*\!}{\EuScript R}$ be given.
-  We define the function ${}^{\mu\!\!}f:\Omega\to{\mathds R}$ as follows
+  Let $f\in{}^{*\!\!}R$, the unit ball of ${}^{*\!}{\EuScript R}$, be given and assume $f$ is non negative.
+  We define the function ${}^{\mu\!\!}f:\Omega\to{\mathds R}$ as follows (tentative)
   $$
-  {}^{\mu\!\!}f(a)\ =\ \inf\big\{I(A, f\mu)\,/\mu(A) \ :\ A\in{\EuScript A},\ a\in A,\ \mu(A)>0\big\}
+  {}^{\mu\!\!}f(a)\ =\ \inf\big\{\alpha : I(A, f\,{}^{*\!\!}\mu)\le \alpha \mu(A) \ :\ A\in{\EuScript A},\ a\in A\big\}
   $$
   Is it true that for every $A\in{\EuScript A}$ 
   $$
@@ -886,9 +886,9 @@ We will use the following.
   $$
 \end{question}
 
-\begin{theorem}[Radon-Nikodym]
-  Assume ${\EuScript A}$ is a $\sigma$-algebra and let $\nu$ and $\mu$ be bounded $\sigma$-additive measures.
-  Then there is a random variable $f$ such that 
+\begin{theorem}[Radon-Nikodym] 
+  Let $\nu,\mu\in{\EuScript M}$ be such that $\nu\ll\mu$.
+  Then there is an $f\in{\EuScript R}$ such that 
   $$
   \int_X f{\rm d}\mu = \int_X {\rm d}\nu
   $$
