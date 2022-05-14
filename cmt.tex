@@ -357,16 +357,18 @@ From the consideration above we deduce the following.
   A similar argument proves that $S=R\,(\sim_{N\!})$.
 \end{proof}
 
-We write ${\rm Aut}(M)$ for the set of maximal, total and surjective, elementary relations $R\subseteq M^2$.
+We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective, elementary relations $R\subseteq M^2$.
 The choice of the symbol Aut is motivated by the lemma above.
-In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure $M/{\sim_M}$.
+In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_M}$.
+
+Thought in most cases one could dispense with ${\EuScript M}$ in favour of  ${\EuScript M}/{\sim_M}$, in some concrete cases one could have a better grip on the first than on the latter.
 
 
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Elementary substructures}
 
 An \emph{elementary embedding\/} is an elementary relation that is functional, injective and total.
@@ -385,8 +387,7 @@ The sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)\le0\big\}$, as $\varphi
 Note that the sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)<0\big\}$ are a base of open sets of the same topology.
 
 The limit $A$-topology is a completely regular topology, almost by definition.
-Typically, it is not T$_0$.
-
+Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
 
 \begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let ${\EuScript M}\subseteq{\EuScript M}$.
   Let $x$ be a single variable.
@@ -451,105 +452,110 @@ if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of 
 When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
 
 Let $I$ be an infinite set.
-Let $\langle M_i:i\in I\rangle$ be a sequence of models.
+Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of models.
+Let $\langle M_i:i\in I\rangle$ be the corresponding unit balls.
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
-  Write \emph{$N$\/} for the set of all functions $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
-  Such $N$ is the unit ball of a structure \emph{$N$\/} that we call the \emph{ultraproduct\/} of $\langle M_i:i\in I\rangle$ and is defined as follows.
+  We define a structure \emph{${\EuScript N}$\/} that we call the \emph{ultraproduct\/} of $\langle{\EuScript M}_i:i\in I\rangle$.
+  The unit ball of ${\EuScript N}$ is the set \emph{$N$\/} of all functions $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
   \begin{itemize}
-    \item[1.] the elements of $\bar N$ are functions $\hat c: I\to \bigcup_{i\in I}\bar M_i$ such that $\hat c\,i = t(\hat a\,i)$ for some $\hat a\in M^{|x|}$ and some term $t(x)\in L_{\rm trm}$ --- below we write $t(\hat a)$ for $\hat c$;
-    \item[2.] if $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ and $t_1(\hat a),\dots,t_n(\hat a)$ are elements of $\bar N$ then
+    \item[1.] The elements of ${\EuScript N}$ are functions $\hat c: I\to \bigcup_{i\in I}{\EuScript M}_i$ such that $\hat c\,i = t^{{\EuScript M}_i}(\hat a\,i)$ for some $\hat a\in M^{|x|}$ and some term $t(x)\in L_{\rm trm}$.
+    Below we the elemets of ${\EuScript N}$ are denoted by $t^{\EuScript N}(\hat a)$ for $\hat a$ ranging over $N$.
+    \item[2.] Let $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ have arity $n$ and $t^{\EuScript N}$ is a $n$-tuple of elements of ${\EuScript N}$ then we define
           \begin{itemize}
-            \item[a.] $f^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=t(\hat a)$ where $t$ is the term obtained composing $f$ with $t_1,\dots,t_n$;
-            \item[b.] \smash{$r^{N}\big(t_1(\hat a),\dots,t_n(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$}.
+            \item[a.] $f^{\EuScript N}\big(t^{\EuScript N}(\hat a)\big)=(ft)^{\EuScript N}(\hat a)$ where $ft$ is the term obtained composing $f$ with $t$;
+            \item[b.] \smash{$r^{\EuScript N}\big(t^{\EuScript N}(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t(\hat a\,i)\big)$}.
           \end{itemize}
   \end{itemize}
-  A usual, if we have that $M_i=M$ for all $i\in I$, we say that $N$ is an \emph{ultrapower\/} of $M$.
+  A usual, if we have that ${\EuScript M}_i={\EuScript M}$ for all $i\in I$, we say that ${\EuScript N}$ is an \emph{ultrapower\/} of ${\EuScript M}$.
 \end{definition}
+
+The limit in 2b of the definition above exists because $F$ is an ultrafilter and it is finite because all models ${\EuScript M}_i$ have the same bounding functions.
+In fact, the function $i\mapsto r^{M_i}\big(t(\hat a\,i)\big)$ is bounded by $n_{\varphi(x)}$, where $\varphi(x)=r(t(x))$.
 
 Note that the unit ball $N$ satisfies the axioms in Definition~\ref{def_unitball}.
 
-The limit in 2b of Definition~\ref{def_ultraproduct} exists because $F$ is an ultrafilter and it is finite because all models $M_i$ have the same bounding functions.
-In fact, the function $i\mapsto r^{M_i}\big(t_1(\hat a\,i),\dots,t_n(\hat a\,i)\big)$ is bounded by $n_{\varphi(x)}$, where $\varphi(x)=r(t_1(x),\dots,t_n(x))$.
+Note also that, unlike the classical ultrapower construction, here there is no need to quotient the structure ${\EuScript N}$.
 
 \def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-  Let $N$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$,
+  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$,
 
   \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
 
 \end{proposition}
 
 \begin{proof}
-  This is just the usual run-of-the-mill proof.
-  We proceed by induction on the syntax of $\varphi(x)$.
-  If $\varphi(x)$ is atomic holds the equality above holds by definition.
-  We spell out the proof for the infimum quantifier.
-  Assume inductively that
-
-  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
-  {=}
-  {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
-
-  We want to prove that
-
-  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
-  {=}
-  {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
-
-  By the interpretation of the infimum quantifier, this amounts to prove that
-
-  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
-  {=}
-  {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
-
-  First we prove the $\le$ inequality.
-  Let $\alpha$ be an arbitrary positive real number.
-
-  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
-
-  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
-
-  \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
-
-  \smallskip
-  This proves the $\ge$ inequality.
-  As for the $\le$ inequality, assume that
-  \smallskip
-
-  \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
-  {<}
-  {\alpha.}
-
-  Therefore, for some $u\in F$
-
-  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
-
-  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
-
-  This proves the desired inequality.
+  The usual run-of-the-mill proof.
 \end{proof}
+  % We proceed by induction on the syntax of $\varphi(x)$.
+  % If $\varphi(x)$ is atomic holds the equality above holds by definition.
+  % We spell out the proof for the infimum quantifier.
+  % Assume inductively that
+
+  % \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
+  % {=}
+  % {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
+
+  % We want to prove that
+
+  % \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
+  % {=}
+  % {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
+
+  % By the interpretation of the infimum quantifier, this amounts to prove that
+
+  % \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
+  % {=}
+  % {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
+
+  % First we prove the $\le$ inequality.
+  % Let $\alpha$ be an arbitrary positive real number.
+
+  % \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
+
+  % \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
+
+  % \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
+
+  % \smallskip
+  % This proves the $\ge$ inequality.
+  % As for the $\le$ inequality, assume that
+  % \smallskip
+
+  % \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
+  % {<}
+  % {\alpha.}
+
+  % Therefore, for some $u\in F$
+
+  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
+
+  % \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
+
+  % This proves the desired inequality.
 
 The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
 
 \begin{corollary}
-  For every model $M$ and every ultrafilter $F$ on $I$, an infinite set, let $N$ be corresponding ultrapower of $M$.
-  Then there is an elementary embedding of $M$ in $N$.\qed
+  For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
+  Then there is an elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
 \end{corollary}
 
-We add the following easy remark for future reference.
+We add the following remark for future reference.
+It is an easy consequence of \L\v o\'s Theorem.
 
 \begin{remark}
   Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
