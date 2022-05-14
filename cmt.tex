@@ -122,7 +122,7 @@ With $L_{\rm at}$ we denote the set of atomic formulas as defined below.
 The set $M$ is the \emph{unit ball\/} of the model and is required to saisfy the axioms in Definition~\ref{def_unitball}.
 It will be clear below that the unit ball determines, in a sense, the whole model.
 (E.g.\@ in Definition~\ref{def_semantic} we define the interpretation only of formulas that have parameters in the unit ball.)
-Though, in principle, two models could coincide when restricted to the unit ball and yet be distinct overall, this will never be the case below.
+Though, in principle, two models could coincide when restricted to the unit ball and yet be distinct overall, this is an abomination and will be avoided below.
 
 The syntax and semantic of \emph{terms} is as in classical first-order logic.
 We write \emph{$L_{\rm trm}$\/} for the set of terms in the language $L$.
@@ -265,11 +265,11 @@ A straightforeward proof by induction on the syntax yields the following.
 %%%%%%%%%%%%%%%%%%%%
 \section{Conditions and types}
 
-For $\varphi, \psi\in L(M)$ some closed formulas, we write \emph{$M\models\ \varphi\le\psi$} for $\varphi^{\EuScript M}\le\psi^{\EuScript M}$.
-The meaning of \emph{$M\models\ \varphi=\psi$\/} and of \emph{$M\,\models\ \varphi<\psi$\/} is similar.
+For $\varphi, \psi\in L(M)$ some closed formulas, we write \emph{${\EuScript M}\models\ \varphi\le\psi$} for $\varphi^{\EuScript M}\le\psi^{\EuScript M}$.
+The meaning of \emph{${\EuScript M}\models\ \varphi=\psi$\/} and of \emph{$M\,\models\ \varphi<\psi$\/} is similar.
 
 Expressions of the form $\varphi(x)\le0$ are called \emph{conditions}.
-We write $M\models\exists x\,\varphi(x)\le0$ if there is an $a\in M^{|x|}$ such that $M\models\varphi(a)\le0$.
+We write ${\EuScript M}\models\exists x\,\varphi(x)\le0$ if there is an $a\in M^{|x|}$ such that ${\EuScript M}\models\varphi(a)\le0$.
 Observe that $\varphi(x)=0$ is equivalent to $|\varphi(x)|\le0$ and that $\varphi(x)\le0$ is equivalent to $\big(\varphi(x)\vee0\big)=0$.
 So, when convenient, we may use equalities to denote conditions.
 
@@ -278,15 +278,15 @@ So, $\varphi(x)\neq0$, $\varphi(x)<0$ or $\varphi(x)>0$ are co-conditions.
 
 It is easy to see that conditions are cosed under logical disjunction and logical conjunction.
 
-\ceq{\hfill M\models\varphi\vee\psi\le0}
+\ceq{\hfill {\EuScript M}\models\varphi\vee\psi\le0}
 {\Leftrightarrow}
-{M\models\varphi\le0 \textrm{ and }M\models\psi\le0}
+{{\EuScript M}\models\varphi\le0 \textrm{ and }{\EuScript M}\models\psi\le0}
 
-\ceq{\hfill M\models\varphi\wedge\psi\le0}{\Leftrightarrow}{M\models\varphi\le0 \textrm{ \ or \ }M\models\psi\le0}
+\ceq{\hfill {\EuScript M}\models\varphi\wedge\psi\le0}{\Leftrightarrow}{{\EuScript M}\models\varphi\le0 \textrm{ \ or \ }{\EuScript M}\models\psi\le0}
 
 Condition are also closed under universal quanfication (over the unit ball).
 
-\ceq{\hfill M\models\bigvee_x\varphi(x)\le0}{\Leftrightarrow}{M\models\forall x\ \varphi(x)\le0}
+\ceq{\hfill {\EuScript M}\models\bigvee_x\varphi(x)\le0}{\Leftrightarrow}{{\EuScript M}\models\forall x\ \varphi(x)\le0}
 
 Closure under existential quanfication is a more subtle point.
 It is not true in general but it can be ensured by a small amount of saturation (cf.~Fact~\ref{fact_existential}).
@@ -300,8 +300,8 @@ Up to equivalence, all types have the form above.
 
 Beware that $p(x)$ denotes just a set of formulas, the expression $p(x)\le0$ denotes a type.
 
-We write \emph{$M\models p(a)\le0$} if $M\models\varphi(a)\le0$ for every $\varphi(x)\in p$.
-We write \emph{$M\models \exists x\ p(x)\le0$} if $M\models p(a)\le0$ for some $a\in M^{|x|}$.
+We write \emph{${\EuScript M}\models p(a)\le0$} if ${\EuScript M}\models\varphi(a)\le0$ for every $\varphi(x)\in p$.
+We write \emph{${\EuScript M}\models \exists x\ p(x)\le0$} if ${\EuScript M}\models p(a)\le0$ for some $a\in M^{|x|}$.
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -382,7 +382,7 @@ In words, we say that ${\EuScript M}$ is an \emph{elementary substructure\/} of 
 
 
 Let $A\subseteq M$.
-The \emph{limit $A$-topology\/} on $M^{|x|}$ is the initial topology with respect to the functions interpret the formulas in $L(A)$.
+The \emph{limit $A$-topology\/} on $M^{|x|}$ is the initial topology with respect to the functions that interpret the formulas in $L(A)$.
 The sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
 Note that the sets $\big\{a\in M^{|x|}:\, \varphi^{\EuScript M}(a)<0\big\}$ are a base of open sets of the same topology.
 
@@ -395,7 +395,7 @@ Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
   \begin{itemize}
     \item[1.] ${\EuScript M}\preceq{\EuScript N}$;
     \item[2.] $M$ is dense in $N$ w.r.t.\@ the $M\mbox{-}$limit topology on $N$;
-    \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then $N\models\varphi(b)<0$ for some $b\in M$.
+    \item[3.] for every $\varphi(x)\in L(M)$, if $\varphi(N)<0$ is non empty, then ${\EuScript N}\models\varphi(b)<0$ for some $b\in M$.
   \end{itemize}
 \end{proposition}
 \begin{proof}
@@ -403,15 +403,15 @@ Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
   Implication 1$\Rightarrow$2 is clear.
   To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(z)$, where $z$ is a finite tuple, that for every $\alpha\in{\mathds R}$
 
-  \ceq{\hfill M\models\varphi(a)<\alpha}{\Leftrightarrow}{N\models\varphi(a)<\alpha} \hfill for every $a\in M^{|z|}$
+  \ceq{\hfill {\EuScript M}\models\varphi(a)<\alpha}{\Leftrightarrow}{{\EuScript N}\models\varphi(a)<\alpha} \hfill for every $a\in M^{|z|}$
 
   We use the equivalence above as induction hypothesis.
   As $M$ is a substructure of $N$, this equivalence holds for atomic $\varphi(z)$.
   We leave the case of the propositional connectives to the reader and consider only the case of the infimum quantifier.
 
-  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<\alpha}{\Leftrightarrow}{} there is a $b\in N$ such that $N\models\varphi(b,a)<\alpha$
+  \ceq{\hfill N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<\alpha}{\Leftrightarrow}{} there is a $b\in N$ such that ${\EuScript N}\models\varphi(b,a)<\alpha$
 
-  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that $N\models\varphi(b,a)<\alpha$
+  \ceq{a.}{\Leftrightarrow}{} there is a $b\in M^{|x|}$ such that ${\EuScript N}\models\varphi(b,a)<\alpha$
 
   \ceq{b.}{\Leftrightarrow}{M\,\models\,\bigwedge_x\varphi(x)<\alpha.}
 
@@ -476,8 +476,6 @@ In fact, the function $i\mapsto r^{M_i}\big(t(\hat a\,i)\big)$ is bounded by $n_
 
 Note that the unit ball $N$ satisfies the axioms in Definition~\ref{def_unitball}.
 
-Note also that, unlike the classical ultrapower construction, here there is no need to quotient the structure ${\EuScript N}$.
-
 \def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{proposition}[\L\v{o}\'s Theorem]
@@ -488,7 +486,7 @@ Note also that, unlike the classical ultrapower construction, here there is no n
 \end{proposition}
 
 \begin{proof}
-  The usual run-of-the-mill proof.
+  By straightforeward induction.
 \end{proof}
   % We proceed by induction on the syntax of $\varphi(x)$.
   % If $\varphi(x)$ is atomic holds the equality above holds by definition.
@@ -554,107 +552,74 @@ The following corollary of  \L\v{o}\'s Theorem is identical to its classical cou
   Then there is an elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
 \end{corollary}
 
-We add the following remark for future reference.
-It is an easy consequence of \L\v o\'s Theorem.
+Note also that, unlike the classical ultraproduct, here we do not quotient the structure obtained in Definition~\ref{def_ultraproduct}.
+However, we note the following fact which is an easy consequence of \L\v o\'s Theorem.
 
-\begin{remark}
+\begin{fact}
   Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
-  Then $R$ is an elementary relation.
-\end{remark}
+  Then $R$ is an elementary relation.\qed
+\end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Compactness theorem}\label{compactness}
+\section{Saturation}\label{saturation}
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-From \L\v{o}\'s Theorem we obtain a form of compactness with the usual argument. A theory $T\le0$ is finitely consistent if for every $\varphi$, that is a disjunction of sentences in $T$, there is a model $M$ such that $M\models \varphi\le0$.
-Note that it is implicit that all these models $M$ have the same bounding fuction.
-
-\begin{theorem}[Compactness Theorem]\label{thm_compattezza}
-  Every finitely consistent theory is consistent.
-\end{theorem}
-
-\begin{proof}
-  We construct a model $N$ of $T\le0$.
-  Let $I$ be the set of closed formulas $\xi$ such that $\xi\le0$ holds in some model $M_\xi$.
-  For every condition $\varphi\le0$ define $X_\varphi\subseteq I$ as follows
-
-  \ceq{\hfill X_\varphi}{=}{\Big\{\xi\in I\ :\ \xi\le0\ \vdash\ \varphi\le0\Big\}}
-
-  Note that $\varphi\le0$ is consistent if and only if $X_\varphi\neq\varnothing$.
-  Moreover $X_{\varphi\vee\psi}\ =\ X_\varphi\cap X_\psi$. Then, as $T$  is finitely consistent, the set $B=\big\{X_\varphi\,:\,\varphi\in T\big\}$ has the finite intersection property.
-  Extend $B$ to an ultrafilter $F$ on $I$.
-  Define
-
-  \ceq{\hfill N}{=}{\prod_{\xi\in I}M_\xi}
-
-  Check that $N\models T\le0$. Let $\varphi\in T$. By \L\v{o}\'s Theorem,
-
-  \ceq{\hfill \varphi^{\EuScript N}}%
-  {=}%
-  {\lim_{\xi\uparrow F}\varphi^{M_\xi}.}
-
-  Note that $X_\varphi\subseteq \big\{\xi\ :\ \varphi^{M_\xi}\le0\big\}$ and recall that $X_\varphi\in F$ whenever $\varphi\in T$.
-  Therefore $\varphi^{\EuScript N}\le0$.
-\end{proof}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Saturation}\label{saturation}
+In these section we assume the existence of unboundedly many inaccessible cardinals as this simplifies the exposition.
 
 Let $p(x)\subseteq L(M)$.
-%We say that the type $p(x)\le 0$ is \emph{uniform\/} if there is an $n\in{\mathds N}$ such that $M\models |\psi(a)|\le n$ for every $\psi(x)\in p$ and evey $a\in U^{|x|}$.
-We say that $p(x)\le 0$ is \emph{finitely satisfied\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that $M\models\psi(a)\le0$.
+We say that $p(x)\le 0$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models\psi(a)\le0$.
 
-We say that $M$ is \emph{$\lambda\mbox{-}$saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that $M\models p(a)\le0$.
+We say that ${\EuScript M}$ is \emph{saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models p(a)\le0$.
 \begin{itemize}
-  \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<\lambda$;
+  \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<|M|$ and $|x|=1$;
   \item[2.] $p(x)\le0$ is finitely satisfied in $M$.
 \end{itemize}
-If $\lambda$ is the cardinality of $M$ we say that $M$ is \emph{saturated.}
 
-\begin{theorem}[???]
-  Let $\lambda$ be an inaccessible cardinal larger than $|L|$ and $|M|$.
-  Then $M$ has a saturated elementary superstructure of cardinality $M$.
-\end{theorem}
+From \L\v{o}\'s Theorem we obtain that every model embeds elementarily in a saturated one.
+First we prove the following lemma.
 
-We conclude with a convenient property of $\omega$-saturated models.
+\begin{lemma}\label{thm_compattezza}
+  Every model ${\EuScript M}$ embeds elementarily in a model ${\EuScript N}$ that realizes all types as in 1 and 2.
+\end{lemma}
 
-\begin{fact}\label{fact_existential}
-  Let $M$ is $\omega$-saturated.
-  Then for every $\varphi(x)\in L(M)$ the following are equivalent
-  \begin{itemize}
-    \item[1.] $M\models\exists x\ \varphi(x)\le0$;
-    \item[2.] \smash{$M\models\displaystyle \bigwedge_x\ \varphi(x)\le0$}
-  \end{itemize}
-\end{fact}
 \begin{proof}
-  Only 2$\Rightarrow$1 requires a proof.
-  Let $p(x)=\{\varphi(x)-\alpha: \alpha\in{\mathds R}^+\}$.
-  If 2, then $p(x)\le0$ is finitely satisfied in $M$.
-  Hence 1 follows by saturation.
+  Consider the collection of types such that 1 and 2 above.
+  Assume that each type has its own set of variables and let $x$ be the concatenation of all these variables.
+  We denote by $p(x)$ the union of all these types.
+  Let $I$ be the set of formulas $\xi(x)$ such that $\xi(x)\le0$ is satisfied in $M$.
+  For every condition $\varphi(x)\le0$ define $X_\varphi\subseteq I$ as follows
+
+  \ceq{\hfill X_\varphi}{=}{\Big\{\xi(x)\in I\ :\ \xi(M)\le0\ \subseteq\ \varphi(M)\le0\Big\}}
+
+  Note that $\varphi(x)\le0$ is consistent if and only if $X_\varphi\neq\varnothing$ if and only if $\varphi(x)\in X_{\varphi}$.
+  Moreover $X_{\varphi\vee\psi}\ =\ X_\varphi\cap X_\psi$. Then, as $p(x)$  is finitely consistent, the set $B=\big\{X_\varphi\,:\,\varphi(x)\in p\big\}$ has the finite intersection property.
+  Extend $B$ to an ultrafilter $F$ on $I$.
+  Let ${\EuScript N}$ be the ultrapower of ${\EuScript M}$ over $F$.
+  That is the model with unit ball $N=M^I$ obtained as in Definition~\ref{def_ultraproduct}.
+
+  For every formula $\xi(x)\in I$ choose some $a_\xi\in M^{|x|}$ such that $\xi(a_\xi)\le0$.
+  We may confuse $(M^I)^{|x|}$ with $(M^{|x|})^I$ as it simplifies notation.
+  Let $\hat a\in (M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
+  By \L\v o\'s Theorem, for every formula $\varphi(x)$
+
+
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{\xi\uparrow F}\varphi^{M}\big(a_\xi\big).}
+
+  Therefore $\hat a$ realizes $p(x)\le0$ in ${\EuScript N}$.
 \end{proof}
 
+\begin{theorem}
+  Every model ${\EuScript M}$ embeds elementarily in a saturated model.
+\end{theorem}
 
-% Let $p(x)\subseteq L(M)$ be a type.
-% We say that $p(x)\le0$ is \emph{Cauchy\/} (in the $A$-limit uniformity) if for every $\varphi(x)\in L(A)$ and every $\varepsilon\in{\mathds R}^+$ there is a disjunction of formulas in $p(x)$, say $\psi(x)$, such that $\varnothing\neq\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$.
-
-% \begin{fact}
-%   Let $\lambda=L(A)$.
-%   If $M$ is $\lambda$-saturated then and $p(x)\subseteq L(M)$ is Cauchy, then $p(x)$ is realized in $M$.
-% \end{fact}
-
-
-% For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let 
-
-
-% Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
+\begin{proof}
+  As usual
+\end{proof}
 
 \hrulefill
 
@@ -929,7 +894,7 @@ We will use the following.
 % For every $\varphi(x)\in\ L(A)$ and $n\in{\mathds N}$ let 
 
 
-% Suppose $N\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
+% Suppose ${\EuScript N}\models p(a)\le0$ and let $\big(\psi(M)\le0\big)^2\subseteq V_{\varphi(x),\, \varepsilon}$
 
 
 \end{document}
