@@ -314,7 +314,11 @@ We write \emph{${\EuScript M}\models \exists x\ p(x)\le0$} if ${\EuScript M}\mod
 Let ${\EuScript M}$ and ${\EuScript N}$ be models with unit balls $M$ and $N$, respectively.
 We say that $R\subseteq M\times N$ is an \emph{elementary relation\/} between $M$ and $N$ if for every $\varphi(x)\in L$
 
-\ceq{\hfill \varphi^{\EuScript M}(a)}{=}{\varphi^{\EuScript N}(b)} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
+\ceq{\hfill \varphi^{\EuScript M}(a)}{\Leftrightarrow}{\varphi^{\EuScript N}(b)} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
+
+Equivalently if for every $\varphi(x)\in L$
+
+\ceq{\hfill {\EuScript M}\models \varphi(a)\le0}{=}{{\EuScript N}\models \varphi(a)\le0} \hfill for every $a,b\in M^{|x|},N^{|x|}$ such that $aRb$.
 
 We define an equivalence relation \emph{$(\sim_{M\!})$\/} on the unit ball of a given model $M$ as follows
 
@@ -569,8 +573,9 @@ However, we note the following fact which is an easy consequence of \L\v o\'s Th
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-In these section we assume the existence of unboundedly many inaccessible cardinals as this simplifies the exposition.
-We prove directly the existence of saturated extension (monster models), skipping the proof of the compactness theorem as this yield directly what we need.
+From this section on, we assume the existence of unboundedly many inaccessible cardinals as this simplifies the exposition.
+We prove directly the existence of saturated extension (monster models), skipping the proof of the compactness theorem as this yields directly what we need.
+(A compactness theorem could be proved along the same lines.)
 
 Let $p(x)\subseteq L(M)$.
 We say that $p(x)\le 0$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models\psi(a)\le0$.
@@ -623,19 +628,35 @@ First we prove the following lemma.
   As usual, iterate the lemma to construct a chain of length $\lambda$, a sufficiently large inaccessible cardinal.
 \end{proof}
 
-\hrulefill
+We conclude with a convenient property of saturated models.
 
-Di qui in poi solo esperimenti selvaggi.
+\begin{fact}\label{fact_existential}
+  Let $M$ is saturated.
+  Then for every $\varphi(x)\in L(M)$ the following are equivalent
+  \begin{itemize}
+    \item[1.] $M\models\exists x\ \big(\varphi(x)\le0\big)$;
+    \item[2.] \smash{$M\models\displaystyle \bigwedge_x \varphi(x)\;\le\;0$}
+  \end{itemize}
+\end{fact}
+\begin{proof}
+  Only 2$\Rightarrow$1 requires a proof.
+  Let $p(x)=\{\varphi(x)-\alpha: \alpha\in{\mathds R}^+\}$.
+  If 2, then $p(x)\le0$ is finitely satisfied in $M$.
+  Hence 1 follows by saturation.
+\end{proof}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The monster model}
+\section{Homogeneity}
 
 Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of cardinality $\kappa$, an inaccessible cardinal larger than $|L|$, where $|L|$ stands for $\max\big\{|L_{\rm fun}|,|L_{\rm rel}|,2^\omega\big\}$.
+
+Let $a\in{\EuScript U}^{|x|}$.
+We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
+We write ${\rm tp}(a)$ when $A=\varnothing$.
 
 \begin{fact}
   Let $R\subseteq{\EuScript U}^2$ be an elementary relation of cardinality $<\kappa$.
@@ -643,10 +664,8 @@ Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of card
 \end{fact}
 
 \begin{proof}
-  This is the usual back-and-forth construction with a pinch of extra caution.
-
-  Recall that in a saturated model 
-
+  We apply the usual back-and-forth construction with a pinch of extra caution.
+  Below we will make free use of Fact~\ref{fact_existential}.
   Let $a$ be an enumeration of the domain of $R$.
   Let $\bar a=\langle a_i:i<\lambda\rangle$ be an enumeration of all tuples of length $|a|$ such that $aRa_i$.
   As $\kappa$ is inaccessible, $\lambda<\kappa$.
@@ -658,21 +677,22 @@ Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of card
 
   We claim that $q(x,\bar a)\le0$ is finitely consistent.
   A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})$.
-  As $\psi(b,a)\le0$ and $a,\dots,a\,a_1,\dots,a_n$, we conclude that $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})\le0$ is also satisfied.
-  The existence of $c$ follwos from saturation.
+  As $\psi(b,a)\le0$ and $a_1,\dots,a_n\,R\;a,\dots,a$, we conclude that the condition $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})\le0$ is satisfied.
+  The existence of the required element $c$ follows from saturation.
 \end{proof}
 
-Let $a\in{\EuScript U}^{|x|}$.
-We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\models \psi(a)\le0\big\}$.
-
-
-\begin{fact}
+\begin{corollary}
   Let $a\in{\EuScript U}^{|x|}$, where $|x|<\kappa$.
   Let $A\subseteq{\EuScript U}$ have cardinality $<\kappa$.
   Then
 
-  \ceq{\hfill p({\EuScript U})\le0}{=}{\big\{ha : h\in{\rm Aut}({\EuScript U}/A)\big\}}
-\end{fact}
+  \ceq{\hfill p({\EuScript U})\le0}{=}{\big\{b : bRa,\ R\in{\rm Aut}({\EuScript U}/A)\big\}}
+\end{corollary}
+
+
+\hrulefill
+
+Di qui in poi solo esperimenti selvaggi.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
