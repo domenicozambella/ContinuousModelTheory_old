@@ -570,15 +570,18 @@ However, we note the following fact which is an easy consequence of \L\v o\'s Th
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 In these section we assume the existence of unboundedly many inaccessible cardinals as this simplifies the exposition.
+We prove directly the existence of saturated extension (monster models), skipping the proof of the compactness theorem as this yield directly what we need.
 
 Let $p(x)\subseteq L(M)$.
 We say that $p(x)\le 0$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models\psi(a)\le0$.
 
-We say that ${\EuScript M}$ is \emph{saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models p(a)\le0$.
-\begin{itemize}
-  \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<|M|$ and $|x|=1$;
-  \item[2.] $p(x)\le0$ is finitely satisfied in $M$.
-\end{itemize}
+\begin{definition}
+  We say that ${\EuScript M}$ is \emph{saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models p(a)\le0$.
+  \begin{itemize}
+    \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<|M|$ and $|x|=1$;
+    \item[2.] $p(x)\le0$ is finitely satisfied in $M$.
+  \end{itemize}
+\end{definition}
 
 From \L\v{o}\'s Theorem we obtain that every model embeds elementarily in a saturated one.
 First we prove the following lemma.
@@ -607,7 +610,6 @@ First we prove the following lemma.
   Let $\hat a\in (M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
   By \L\v o\'s Theorem, for every formula $\varphi(x)$
 
-
   \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{\xi\uparrow F}\varphi^{M}\big(a_\xi\big).}
 
   Therefore $\hat a$ realizes $p(x)\le0$ in ${\EuScript N}$.
@@ -618,7 +620,7 @@ First we prove the following lemma.
 \end{theorem}
 
 \begin{proof}
-  As usual
+  As usual, iterate the lemma to construct a chain of length $\lambda$, a sufficiently large inaccessible cardinal.
 \end{proof}
 
 \hrulefill
@@ -641,7 +643,23 @@ Throughout the following we fix a saturated model \emph{$\EuScript U$\/} of card
 \end{fact}
 
 \begin{proof}
+  This is the usual back-and-forth construction with a pinch of extra caution.
 
+  Recall that in a saturated model 
+
+  Let $a$ be an enumeration of the domain of $R$.
+  Let $\bar a=\langle a_i:i<\lambda\rangle$ be an enumeration of all tuples of length $|a|$ such that $aRa_i$.
+  As $\kappa$ is inaccessible, $\lambda<\kappa$.
+  Let $b\in{\EuScript U}$.
+  It suffices to prove that there is a $c$ such that $R\cup\{\langle b,c\rangle\}$ is an elementary relation.
+  Let $p(x,z)={\rm tp}(b,a/A)$ and let
+  
+  \ceq{\hfill q(x,\bar z)}{=}{\bigcup_{i<\lambda}p(x,z_i).}
+
+  We claim that $q(x,\bar a)\le0$ is finitely consistent.
+  A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})$.
+  As $\psi(b,a)\le0$ and $a,\dots,a\,a_1,\dots,a_n$, we conclude that $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})\le0$ is also satisfied.
+  The existence of $c$ follwos from saturation.
 \end{proof}
 
 Let $a\in{\EuScript U}^{|x|}$.
