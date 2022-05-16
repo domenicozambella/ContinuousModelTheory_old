@@ -10,7 +10,8 @@
 *.fot
 *.cb
 *.cb2
-aux/
+aux/*
+!aux/*.pdf
 materiale/
 p
 .directory
