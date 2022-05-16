@@ -365,7 +365,7 @@ We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective
 The choice of the symbol Aut is motivated by the lemma above.
 In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_M}$.
 
-Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_M}$, in some concrete cases one could have a better grip on the first than on the latter.
+Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_M}$, in concrete cases one has a better grip on the first than on the latter.
 Therefore below we insist in working with elementary relations in place of elementary maps.
 
 
@@ -396,7 +396,7 @@ Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
 
 \begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let ${\EuScript M}\subseteq{\EuScript M}$.
   Let $x$ be a single variable.
-  Then the following are equivalent:
+  Then the following are equivalent
   \begin{itemize}
     \item[1.] ${\EuScript M}\preceq{\EuScript N}$;
     \item[2.] $M$ is dense in $N$ w.r.t.\@ the $M\mbox{-}$limit topology on $N$;
@@ -484,7 +484,7 @@ Note that the unit ball $N$ satisfies the axioms in Definition~\ref{def_unitball
 \def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$,
+  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$
 
   \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
 
@@ -575,14 +575,14 @@ However, we note the following fact which is an easy consequence of \L\v o\'s Th
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 From this section on, we assume the existence of unboundedly many inaccessible cardinals as this simplifies the exposition.
-We prove directly the existence of saturated extension (monster models), skipping the proof of the compactness theorem as this yields directly what we need.
-(A compactness theorem could be proved along the same lines.)
+We prove directly the existence of saturated extension (monster models), skipping the proof of the compactness theorem as this is not required in the following.
+(The compactness theorem could be proved along the same lines.)
 
 Let $p(x)\subseteq L(M)$.
 We say that $p(x)\le 0$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every disjunction of formulas in $p(x)$, say $\psi(x)$, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models\psi(a)\le0$.
 
 \begin{definition}
-  We say that ${\EuScript M}$ is \emph{saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models p(a)\le0$.
+  We say that ${\EuScript M}$ is \emph{saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in M^{|x|}$ such that ${\EuScript M}\models p(a)\le0$
   \begin{itemize}
     \item[1.] $p(x)\subseteq L(A)$ for some $A\subseteq M$ of cardinality $<|M|$ and $|x|=1$;
     \item[2.] $p(x)\le0$ is finitely satisfied in $M$.
@@ -677,8 +677,8 @@ We write ${\rm tp}(a)$ when $A=\varnothing$.
   \ceq{\hfill q(x,\bar z)}{=}{\bigcup_{i<\lambda}p(x,z_i).}
 
   We claim that $q(x,\bar a)\le0$ is finitely consistent.
-  A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})$.
-  As $\psi(b,a)\le0$ and $a_1,\dots,a_n\,R\;a,\dots,a$, we conclude that the condition $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_1})\le0$ is satisfied.
+  A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})$.
+  As $\psi(b,a)\le0$ and $a_1,\dots,a_n\,R\;a,\dots,a$, we conclude that the condition $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})\le0$ is satisfied.
   The existence of the required element $c$ follows from saturation.
 \end{proof}
 
@@ -881,6 +881,7 @@ We will use the following.
   A similar claim holds for $A_{\rm in}$.
   %We can also require it holds simultaneously for any family of sets $\{A_i:i<\lambda\}\subseteq{}^{*\!\!\!}{\EuScript A}$ of small cardinality (???).
 \end{corollary}
+\end{document}
 
 \begin{question}
   Let $\mu\in{\EuScript M}$.
