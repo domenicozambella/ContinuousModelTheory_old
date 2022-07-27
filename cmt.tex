@@ -84,8 +84,8 @@
 
 \linespread{1.2}
 \begin{document}
-\title{Continuous model theory without the hassle}
-\hfill\texttt{Branch:master \ \DTMnow}\bigskip
+\title{Continuous logic for the discrete logician}
+\hfill\texttt{Branch: Logica-Discreta \ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,121 +93,188 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Formulas and their interpretation}\label{uno}
+\section{A class of structures}\label{uno}
 
-The following definition extends that of classical first-order logic with clause 3.
+\def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-\begin{definition}\label{signature}
-  A \emph{signature\/} or \emph{language\/} $L$ consists of\nobreak
+\begin{definition}\label{def_1}
+  In this notes we deal with 3-sorted%
+  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle M_1,\dots,M_n,\dot M_1,\dots,\dot M_{n'},\mathds{R}\rangle$. The generalization is straightforeward.} 
+  structures of the form ${\EuScript M}=\langle M,\dot M,\mathds{R}\rangle$.
+  The language and its interpretation are subject to the following conditions.
   \begin{itemize}
-    \item[1.] two sets of symbols: \emph{$L_{\rm rel}$\/}, for relations, and \emph{$L_{\rm fun}$}, for functions;
-    \item[2.] an \emph{arity\/} function \emph{\textrm{ Ar}\/} $:\ L_{\rm rel}\cup L_{\rm fun}\ \to\ \omega$;
-    \item[3.] a function $n_{\mbox-}:L_{\rm at}\to\mathds N$;
+  \item[1.] The function may only have one of the following sorts (for any $m,n\in\omega$)
+  \begin{itemize}
+    \item[a.] $\mathds{R}^n\to\mathds{R}$
+    \item[b.] $M^n\times{\dot M}^m\to\textrm{any of } M,\ \dot M,\textrm{ or }\mathds{R}$
+    % \item[c.] $M^n\times{\dot M}^m\to\dot M$
+    % \item[d.] $M^n\times{\dot M}^m\to\mathds{R}$
+  \end{itemize}
+  \item[2.] The functions of sort $\mathds{R}^n\to\mathds{R}$ are \textit{uniformly continuous}.
+  \item[3.] The (functions that interpret the) terms of sort $M^n\to\mathds{R}$ have \textit{bounded\/} range.
+  \item[4.] The relation have sort $\mathds{R}^n$ and are \textit{closed\/} in the usual topology.
   \end{itemize}
 \end{definition}
 
-The function in 3 above is called the \emph{bounding function.}
-With $L_{\rm at}$ we denote the set of atomic formulas as defined below.
+We call $M$ the \emph{unit ball\/} of ${\EuScript M}$.
+The terminology is inspired by the example below.
 
-\begin{definition}\label{def_structure}
-  A \emph{structure\/} or \emph{model\/} ${\EuScript M}$ of signature $L$ consists of\nobreak
+The language is denoted by $\mathds{L}$.
+For simplicity we assume it contains \textit{all\/} functions and relations as in 2 and 4 above.
+
+\begin{definition}
+  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $M^n\to\mathds{R}$ or $\mathds{R}^n\to\mathds{R}$ and parameters in some set $A\subseteq M$.
+  We write \emph{$\mathds{L}(A)$\/} for the set of formulas obtained inductively as follows
   \begin{itemize}
-    \item[1.] a set ${\EuScript M}$;
-    \item[2.] a set $M\subseteq {\EuScript M}$;
-    \item[3.] for every  $f\in L_{\rm fun}$, a function $f^{\EuScript M}:\ {\EuScript M}^{{\rm Ar}(f)}\to {\EuScript M}$;
-    \item[4.] for every $r\in L_{\rm rel}$, a function $r^{\EuScript M}:\ {\EuScript M}^{{\rm Ar}(r)}\to{\mathds R}$;
+  \item[i.] $\mathds{L}(A)$ contains the atomic formula $r(t)$ for every relation symbol $r$ of sort $\mathds{R}^n$, and every $n$-tuple $t$ of terms in $\mathds{T}(A)$.
+  \item[ii.] $\mathds{L}(A)$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$.
+  \item[iii.] $\mathds{L}(A)$ is closed under the quantifier $\forall$ of sort $\mathds{R}$.
+  We are also allowed to restrict the range of $\forall$ to \textit{any\/} definable subset of $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
-The set $M$ is the \emph{unit ball\/} of the model and is required to saisfy the axioms in Definition~\ref{def_unitball}.
-It will be clear below that the unit ball determines, in a sense, the whole model.
-(E.g.\@ in Definition~\ref{def_semantic} we define the interpretation only of formulas that have parameters in the unit ball.)
-Though, in principle, two models could coincide when restricted to the unit ball and yet be distinct overall, this is an abomination and will be avoided below.
+E.g.\@ iii asserts, in particular, that if $\varphi(x,\varepsilon)\in\mathds{L}(A)$ then also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
 
-The syntax and semantic of \emph{terms} is as in classical first-order logic.
-We write \emph{$L_{\rm trm}$\/} for the set of terms in the language $L$.
-Atomic formulas are defined as in classical first-order logic:
-they have the form $r\,t$, where $r$ is a relation symbol and $t$ is a tuple of terms.
-The set of atomic formulas is denoted by \emph{$L_{\rm at}$.}
+\begin{example}[Banach spaces]
+  Given a Banach space  $\dot M$ we define a structure ${\EuScript M}=\langle M,\dot M,\mathds{R}\rangle$ as follows.
+  Let $M=\{a\in \dot M: \|a\|\le1\}$ be the closed unit ball of $\dot M$.
+  Besides the symbols mentioned above, $\mathds{L}$ contains a function symbol for the natural embedding ${\rm id}:M\to \dot M$.
+  It contains also a symbol for the norm $\|\mbox-\|:\dot M\to\mathds{R}$.
+  Finally, $\mathds{L}$ contains the usual symbols of the language of vector spaces.
+  These have sort ${\dot M}^n\to \dot M$, for the appropiate $n$.
 
-The set of all formulas is denoted as usual by \emph{L,} the same symbol as the language.
-Formulas are defined inductively from the atomic formulas using the following connectives.
+  Finally, note that 2 above is immediate.
+  In fact, 2 only mentions terms with domain $M$ and ignores those with domain $\dot M$.
+\end{example}
 
-The \emph{propositional\/}  (or \emph{Riesz\/}) connectives are those in $\big\{1,+,\wedge\big\}\cup{\mathds R}$, where $+$ and $\wedge$ are binary connectives, the elements of ${\mathds R}$ are unary connectives, $1$ is a logical constant (i.e.\@ a zero-ary connective).
-There is also the infimum \emph{quantifier\/} $\displaystyle\bigwedge_x$.
 
-\begin{definition}\label{def_formulas}
-  The inductive definition of formula is as follows
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ultraproducts}\label{ultrapws}
 
-  \begin{minipage}[t]{.4\textwidth}
-    \begin{itemize}
-      \item[i.] atomic formulas are formulas
-      \item[ii.] $1$ is a formula;
-      \item[iii.] $\varphi+\psi$ is a formula;
-    \end{itemize}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{.4\textwidth}
-    \begin{itemize}
-      \item[iv.] $\varphi\wedge\psi$ is a formula;
-      \item[v.] $\alpha\varphi$ is a formula for every $\alpha\in{\mathds R}$;
-      \item[vi.] \smash{$\displaystyle\bigwedge_x\varphi$} is a formula.
-    \end{itemize}
-  \end{minipage}
-\end{definition}
+% The content of this section can be generalized to ultraproducts at the cost of an extra index.
+% We opt for the simpler variant as it suffices to prove the existence of saturated elementary extensions.
 
-If $\alpha\in{\mathds R}$, we may write \emph{$\alpha$\/} for the formula $\alpha1$.
-We write \emph{${}-\varphi$\/} for $(-1)\varphi$ and \emph{$\varphi-\psi$\/} for $\varphi+(-\psi)$ and we write \emph{$\varphi\vee\psi$\/} for ${}-(-\varphi\wedge-\psi)$.
-Also, \emph{$\varphi^+$\/} and \emph{$\varphi^-$\/} stand for $0\vee\varphi$ respectively $0\vee(-\varphi)$, and we write \emph{$|\varphi|$\/} for $\varphi\vee(-\varphi)$.
-Finally, \smash{\emph{$\displaystyle\bigvee_x\varphi$\/}}
-stands for $\displaystyle -\bigwedge_x-\varphi$.
 
-If $A\subseteq M$ (that is, $A$ is a subset of the unit ball), we write $L(A)$ for the language $L$ expanded with a $0$-ary function symbol for every element of $a$.
-As in classical first-order logic, the model $M$ is canonically expanded to a structure of signature $L(A)$ by setting $a^{\EuScript M}=a$ for every $a\in A$.
+We recall some standard definitions about limits.
+Let $I$ be a non-empty set.
+Let $F$ be a filter on $I$.
+If $r:I\to{\mathds R}$ and $\lambda\in{\mathds R}$ we write
 
-Let ${\EuScript M}$ be a model and let $t$ be be a tuple of closed terms with parameters in $M$.
-We write $t^{\EuScript M}$ for the element of ${\EuScript M}$ obtained interpreting function symbols and parameters in ${\EuScript M}$ just as in classical first-order logic.
+\hfil$\displaystyle \lim_{i\uparrow F}r(i)=\lambda$
 
-\begin{definition}\label{def_semantic}
-  If $\varphi\in L(M)$ is a sentence (i.e.\@ a closed formula) we define $\varphi^{\EuScript M}$ inductively as follows
+if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of $\lambda$.
+When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
 
-  \begin{minipage}[t]{.4\textwidth}
-    \begin{itemize}
-      \item[i.] $(r\,t)^{\EuScript M}\ =\  r^{\EuScript M}\big(t^{\EuScript M}\big)$.
-      \item[ii.] $1^{\EuScript M}\ =\ 1$;
-      \item[iii.] $(\psi+\xi)^{\EuScript M}\ =\ \psi^{\EuScript M}+\xi^{\EuScript M}$;
-    \end{itemize}
-  \end{minipage}
-  \begin{minipage}[t]{.59\textwidth}
-    \begin{itemize}
-      \item[iv.] $(\alpha\varphi)^{\EuScript M}\ =\ \alpha\varphi^{\EuScript M}$;
-      \item[v.] $(\psi\wedge\xi)^{\EuScript M}\ =\ \min\big\{\psi^{\EuScript M},\ \xi^{\EuScript M}\big\}$;
-      \item[vi.]  \noindent\smash{$\displaystyle\big(\bigwedge_x\psi\big)^{\EuScript M}\ =\ \inf\big\{\psi[x/b]^{\EuScript M} :\  b\in M\big\}$}.\hfill \smash{\large\danger}
-    \end{itemize}
-  \end{minipage}
-\end{definition}
-\medskip
+Let $I$ be an infinite set.
+Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle M_i,\dot M_i,\mathds{R}\rangle$, that are uniformly bounded.
+That is, the bounds in 3 of Definition~\ref{def_1} are the same for all ${\EuScript M}_i$.
 
-Note that in (vi) the infimum is taken as $b$ ranges (only) over the unit ball. 
-In Fact~\ref{fact_finiteness} below we prove that this infimum is indeed finite, hence that the definition is sound. 
-Finally, we complete Definition~\ref{def_structure} by stating the axioms that the unit ball has to satisfy.
+Let $F$ be an ultrafilter on $I$.
 
-\begin{definition}\label{def_unitball}
-  The unit ball is required to satisfy the following axioms
+\begin{definition}\label{def_ultraproduct}
+  We define a structure \emph{${\EuScript N}=\langle N,\dot N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
   \begin{itemize}
-    \item[1.] ${\EuScript M}=\big\{t^{\EuScript M}:\ t\in L_{\rm trm}(M) \textrm{ a closed term }\big\}$;
-    \item[2.] $|\varphi(a)^{\EuScript M}|\le n_{\varphi(x)}$ for every $a\in M^{|x|}$ and every $\varphi(x)\in L_{\rm at}$.
+    \item[1.] $N$ is the set of the sequences $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
+    \item[2.] $\dot N$ is the set of the sequences $\hat c: I\to \bigcup_{i\in I}\dot M_i$ such that $\hat c\,i = \dot M_i$.
+    \item[3.] If $f$ is a function of sort $M^n\times{\dot M}^m\to M$ then $f^{\EuScript N}(\hat ai,\hat ci)$ is the sequence 
+    $f^{{\EuScript M}_i}(\hat ai,\hat ci)$.
+    \item[4.] Similarly if $f$ is of sort $M^n\times{\dot M}^m\to\dot M$.
+    \item[5.] Finally, if $f$ is a function of sort $M^n\times{\dot M}^m\to\mathds{R}$ then 
+    $$
+    f^{\EuScript N}(\hat ai,\hat ci)=\lim\limits_{i\uparrow F}\ f^{{\EuScript  M}_i}(\hat ai,\hat ci).
+    $$  
   \end{itemize}
+  As usual, if ${\EuScript M}_i={\EuScript M}$ for all $i\in I$, we say that ${\EuScript N}$ is an \emph{ultrapower\/} of ${\EuScript M}$.
 \end{definition}
 
-For $\varphi(x)\in L(M)$ we write $\varphi^{\EuScript M}$ for the function $\varphi^{\EuScript M}:M^{|x|}\to{\mathds R}$ that maps $a\mapsto\varphi(a)^{\EuScript M}$.
+The limit in 5 of the definition above exists because $F$ is an ultrafilter and it is finite because all models ${\EuScript M}_i$ have the same bounds.
 
-A straightforeward proof by induction on the syntax yields the following.
 
-\begin{fact}\label{fact_finiteness}
-  For every formula $\psi(x)$ there is an $n\in{\mathds N}$ such that $|\psi(a)^{\EuScript M}|\le n$ for all $a\in M^{|x|}$.\qed
+\begin{proposition}[\L\v{o}\'s Theorem]
+  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$
+
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
+
+\end{proposition}
+
+\begin{proof}
+  By straightforeward induction.
+\end{proof}
+  % We proceed by induction on the syntax of $\varphi(x)$.
+  % If $\varphi(x)$ is atomic holds the equality above holds by definition.
+  % We spell out the proof for the infimum quantifier.
+  % Assume inductively that
+
+  % \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
+  % {=}
+  % {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
+
+  % We want to prove that
+
+  % \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
+  % {=}
+  % {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
+
+  % By the interpretation of the infimum quantifier, this amounts to prove that
+
+  % \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
+  % {=}
+  % {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
+
+  % First we prove the $\le$ inequality.
+  % Let $\alpha$ be an arbitrary positive real number.
+
+  % \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
+
+  % \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
+
+  % \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
+
+  % \smallskip
+  % This proves the $\ge$ inequality.
+  % As for the $\le$ inequality, assume that
+  % \smallskip
+
+  % \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
+  % {<}
+  % {\alpha.}
+
+  % Therefore, for some $u\in F$
+
+  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  % \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
+
+  % \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
+
+  % This proves the desired inequality.
+
+The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
+
+\begin{corollary}
+  For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
+  Then there is an elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
+\end{corollary}
+
+Note also that, unlike the classical ultraproduct, here we do not quotient the structure obtained in Definition~\ref{def_ultraproduct}.
+However, we note the following fact which is an easy consequence of \L\v o\'s Theorem.
+
+\begin{fact}
+  Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
+  Then $R$ is an elementary relation.\qed
 \end{fact}
-
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
@@ -434,136 +501,6 @@ Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
 \begin{proof} (Needs some checking.)
   For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $M$ of the required cardinality that is dense in the  $M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
 \end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ultraproducts}\label{ultrapws}
-
-% The content of this section can be generalized to ultraproducts at the cost of an extra index.
-% We opt for the simpler variant as it suffices to prove the existence of saturated elementary extensions.
-
-
-Firstly, we recall some standard definitions about limits.
-Let $I$ be a non-empty set.
-Let $F$ be a filter on $I$.
-If $r:I\to{\mathds R}$ and $\lambda\in{\mathds R}$ we write
-
-\hfil$\displaystyle \lim_{i\uparrow F}r(i)=\lambda$
-
-if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of $\lambda$.
-When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
-
-Let $I$ be an infinite set.
-Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of models.
-Let $\langle M_i:i\in I\rangle$ be the corresponding unit balls.
-Let $F$ be an ultrafilter on $I$.
-
-\begin{definition}\label{def_ultraproduct}
-  We define a structure \emph{${\EuScript N}$\/} that we call the \emph{ultraproduct\/} of $\langle{\EuScript M}_i:i\in I\rangle$.
-  The unit ball of ${\EuScript N}$ is the set \emph{$N$\/} of all functions $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
-  \begin{itemize}
-    \item[1.] The elements of ${\EuScript N}$ are functions $\hat c: I\to \bigcup_{i\in I}{\EuScript M}_i$ such that $\hat c\,i = t^{{\EuScript M}_i}(\hat a\,i)$ for some $\hat a\in M^{|x|}$ and some term $t(x)\in L_{\rm trm}$.
-    Below we the elemets of ${\EuScript N}$ are denoted by $t^{\EuScript N}(\hat a)$ for $\hat a$ ranging over $N$.
-    \item[2.] Let $f\in L_{\rm fun}$ and $r\in L_{\rm rel}$ have arity $n$ and $t^{\EuScript N}$ is a $n$-tuple of elements of ${\EuScript N}$ then we define
-          \begin{itemize}
-            \item[a.] $f^{\EuScript N}\big(t^{\EuScript N}(\hat a)\big)=(ft)^{\EuScript N}(\hat a)$ where $ft$ is the term obtained composing $f$ with $t$;
-            \item[b.] \smash{$r^{\EuScript N}\big(t^{\EuScript N}(\hat a)\big)=\lim\limits_{i\uparrow F}\ r^{M_i}\big(t(\hat a\,i)\big)$}.
-          \end{itemize}
-  \end{itemize}
-  A usual, if we have that ${\EuScript M}_i={\EuScript M}$ for all $i\in I$, we say that ${\EuScript N}$ is an \emph{ultrapower\/} of ${\EuScript M}$.
-\end{definition}
-
-The limit in 2b of the definition above exists because $F$ is an ultrafilter and it is finite because all models ${\EuScript M}_i$ have the same bounding functions.
-In fact, the function $i\mapsto r^{M_i}\big(t(\hat a\,i)\big)$ is bounded by $n_{\varphi(x)}$, where $\varphi(x)=r(t(x))$.
-
-Note that the unit ball $N$ satisfies the axioms in Definition~\ref{def_unitball}.
-
-\def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
-
-\begin{proposition}[\L\v{o}\'s Theorem]
-  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$
-
-  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
-
-\end{proposition}
-
-\begin{proof}
-  By straightforeward induction.
-\end{proof}
-  % We proceed by induction on the syntax of $\varphi(x)$.
-  % If $\varphi(x)$ is atomic holds the equality above holds by definition.
-  % We spell out the proof for the infimum quantifier.
-  % Assume inductively that
-
-  % \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
-  % {=}
-  % {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
-
-  % We want to prove that
-
-  % \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
-  % {=}
-  % {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
-
-  % By the interpretation of the infimum quantifier, this amounts to prove that
-
-  % \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
-  % {=}
-  % {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
-
-  % First we prove the $\le$ inequality.
-  % Let $\alpha$ be an arbitrary positive real number.
-
-  % \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
-
-  % \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
-
-  % \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
-
-  % \smallskip
-  % This proves the $\ge$ inequality.
-  % As for the $\le$ inequality, assume that
-  % \smallskip
-
-  % \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
-  % {<}
-  % {\alpha.}
-
-  % Therefore, for some $u\in F$
-
-  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
-
-  % \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
-
-  % This proves the desired inequality.
-
-The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
-
-\begin{corollary}
-  For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
-  Then there is an elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
-\end{corollary}
-
-Note also that, unlike the classical ultraproduct, here we do not quotient the structure obtained in Definition~\ref{def_ultraproduct}.
-However, we note the following fact which is an easy consequence of \L\v o\'s Theorem.
-
-\begin{fact}
-  Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
-  Then $R$ is an elementary relation.\qed
-\end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
