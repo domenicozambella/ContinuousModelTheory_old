@@ -99,20 +99,21 @@
 
 \begin{definition}\label{def_1}
   In this notes we deal with 3-sorted%
-  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle M_1,\dots,M_n,\dot M_1,\dots,\dot M_{n'},\mathds{R}\rangle$. The generalization is straightforeward.} 
-  structures of the form ${\EuScript M}=\langle M,\dot M,\mathds{R}\rangle$.
+  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle M_1,\dots,M_n,\breve M_1,\dots,\breve M_{n'},\mathds{R}\rangle$. The generalization is straightforeward.} 
+  structures of the form ${\EuScript M}=\langle M,\breve M,\mathds{R}\rangle$.
   The language and its interpretation are subject to the following conditions.
   \begin{itemize}
   \item[1.] The function may only have one of the following sorts (for any $m,n\in\omega$)
   \begin{itemize}
     \item[a.] $\mathds{R}^n\to\mathds{R}$
-    \item[b.] $M^n\times{\dot M}^m\to\textrm{any of } M,\ \dot M,\textrm{ or }\mathds{R}$
-    % \item[c.] $M^n\times{\dot M}^m\to\dot M$
-    % \item[d.] $M^n\times{\dot M}^m\to\mathds{R}$
+    \item[b.] $M^n\times{\breve M}^m\to\textrm{any of } M,\ \breve M,\textrm{ or }\mathds{R}$
+    % \item[c.] $M^n\times{\breve M}^m\to\breve M$
+    % \item[d.] $M^n\times{\breve M}^m\to\mathds{R}$
   \end{itemize}
   \item[2.] The functions of sort $\mathds{R}^n\to\mathds{R}$ are \textit{uniformly continuous}.
   \item[3.] The (functions that interpret the) terms of sort $M^n\to\mathds{R}$ have \textit{bounded\/} range.
-  \item[4.] The relation have sort $\mathds{R}^n$ and are \textit{closed\/} in the usual topology.
+  \item[4.] Every element of $\breve M$ is the image of some term of sort $M^n\to\breve M$.  
+  \item[5.] The only relation symbol is the order relation $\le$ on $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
@@ -120,31 +121,29 @@ We call $M$ the \emph{unit ball\/} of ${\EuScript M}$.
 The terminology is inspired by the example below.
 
 The language is denoted by $\mathds{L}$.
-For simplicity we assume it contains \textit{all\/} functions and relations as in 2 and 4 above.
+For simplicity we assume it contains \textit{all\/} functions as in 2 above.
 
 \begin{definition}
   We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $M^n\to\mathds{R}$ or $\mathds{R}^n\to\mathds{R}$ and parameters in some set $A\subseteq M$.
   We write \emph{$\mathds{L}(A)$\/} for the set of formulas obtained inductively as follows
   \begin{itemize}
-  \item[i.] $\mathds{L}(A)$ contains the atomic formula $r(t)$ for every relation symbol $r$ of sort $\mathds{R}^n$, and every $n$-tuple $t$ of terms in $\mathds{T}(A)$.
+  \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le s$ for every pair of terms $t,s\in\mathds{T}(A)$.
   \item[ii.] $\mathds{L}(A)$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$.
-  \item[iii.] $\mathds{L}(A)$ is closed under the quantifier $\forall$ of sort $\mathds{R}$.
-  We are also allowed to restrict the range of $\forall$ to \textit{any\/} definable subset of $\mathds{R}$.
+  \item[iii.] $\mathds{L}(A)$ is closed under the quantifier $\forall$ of sort $\mathds{R}$ possibly relativized to a definable subset of $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
 E.g.\@ iii asserts, in particular, that if $\varphi(x,\varepsilon)\in\mathds{L}(A)$ then also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
 
 \begin{example}[Banach spaces]
-  Given a Banach space  $\dot M$ we define a structure ${\EuScript M}=\langle M,\dot M,\mathds{R}\rangle$ as follows.
-  Let $M=\{a\in \dot M: \|a\|\le1\}$ be the closed unit ball of $\dot M$.
-  Besides the symbols mentioned above, $\mathds{L}$ contains a function symbol for the natural embedding ${\rm id}:M\to \dot M$.
-  It contains also a symbol for the norm $\|\mbox-\|:\dot M\to\mathds{R}$.
+  Given a Banach space  $\breve M$ we define a structure ${\EuScript M}=\langle M,\breve M,\mathds{R}\rangle$ as follows.
+  Let $M=\{a\in \breve M: \|a\|\le1\}$ be the closed unit ball of $\breve M$.
+  Besides the symbols mentioned above, $\mathds{L}$ contains a function symbol for the natural embedding ${\rm id}:M\to \breve M$.
+  It contains also a symbol for the norm $\|\mbox-\|:\breve M\to\mathds{R}$.
   Finally, $\mathds{L}$ contains the usual symbols of the language of vector spaces.
-  These have sort ${\dot M}^n\to \dot M$, for the appropiate $n$.
+  These have sort ${\breve M}^n\to \breve M$, for the appropiate $n\in\{0,1,2\}$.
 
-  Finally, note that 2 above is immediate.
-  In fact, 2 only mentions terms with domain $M$ and ignores those with domain $\dot M$.
+  Finally, note that condition 3 and 4 of Definition~\ref{def_1} are immediatly satisfied.
 \end{example}
 
 
@@ -158,108 +157,112 @@ E.g.\@ iii asserts, in particular, that if $\varphi(x,\varepsilon)\in\mathds{L}(
 % The content of this section can be generalized to ultraproducts at the cost of an extra index.
 % We opt for the simpler variant as it suffices to prove the existence of saturated elementary extensions.
 
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+
 
 We recall some standard definitions about limits.
 Let $I$ be a non-empty set.
 Let $F$ be a filter on $I$.
-If $r:I\to{\mathds R}$ and $\lambda\in{\mathds R}$ we write
+If $r:I\to{\mathds R}$ and $\lambda\in{\mathds R}\cup\{\pm\infty\}$ we write
 
 \hfil$\displaystyle \lim_{i\uparrow F}r(i)=\lambda$
 
 if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of $\lambda$.
-When $r$ is bounded and $F$ is an ultrafilter, such a $\lambda$ always exists.
+When $F$ is an ultrafilter, such a $\lambda$ always exists.
 
 Let $I$ be an infinite set.
-Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle M_i,\dot M_i,\mathds{R}\rangle$, that are uniformly bounded.
+Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle M_i,\breve M_i,\mathds{R}\rangle$, that are uniformly bounded.
 That is, the bounds in 3 of Definition~\ref{def_1} are the same for all ${\EuScript M}_i$.
 
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
-  We define a structure \emph{${\EuScript N}=\langle N,\dot N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
+  We define a structure \emph{${\EuScript N}=\langle N,\breve N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
   \begin{itemize}
     \item[1.] $N$ is the set of the sequences $\hat a: I\to\bigcup_{i\in I}M_i$ such that $\hat a\,i\in M_i$.
-    \item[2.] $\dot N$ is the set of the sequences $\hat c: I\to \bigcup_{i\in I}\dot M_i$ such that $\hat c\,i = \dot M_i$.
-    \item[3.] If $f$ is a function of sort $M^n\times{\dot M}^m\to M$ then $f^{\EuScript N}(\hat ai,\hat ci)$ is the sequence 
-    $f^{{\EuScript M}_i}(\hat ai,\hat ci)$.
-    \item[4.] Similarly if $f$ is of sort $M^n\times{\dot M}^m\to\dot M$.
-    \item[5.] Finally, if $f$ is a function of sort $M^n\times{\dot M}^m\to\mathds{R}$ then 
+    \item[2.] $\breve N$ is the set of the sequences $t(\hat a)$ of the form $t^{{\EuScript M}_i}(\hat ai)$, where $t(x)$ is a term of sort $M^n\to\breve M$.
+    \item[3.] If $f$ is a function of sort $M^n\times{\breve M}^m\to M$ then $f^{\EuScript N}(\hat a,t^{{\EuScript M}_i}\big(\hat c)\big)$ is the sequence 
+    $f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big)$.
+    \item[4.] Similarly when $f$ is of sort $M^n\times{\breve M}^m\to\breve M$.
+    \item[5.] If $f$ is a function of sort $M^n\times{\breve M}^m\to\mathds{R}$ then 
     $$
-    f^{\EuScript N}(\hat ai,\hat ci)=\lim\limits_{i\uparrow F}\ f^{{\EuScript  M}_i}(\hat ai,\hat ci).
-    $$  
+    f^{\EuScript N}\big(\hat a,t(\hat c)\big)\ =\ \lim_{i\uparrow F}f^{{\EuScript  M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big).
+    $$ 
   \end{itemize}
   As usual, if ${\EuScript M}_i={\EuScript M}$ for all $i\in I$, we say that ${\EuScript N}$ is an \emph{ultrapower\/} of ${\EuScript M}$.
 \end{definition}
 
-The limit in 5 of the definition above exists because $F$ is an ultrafilter and it is finite because all models ${\EuScript M}_i$ have the same bounds.
+The limit in 5 of the definition above always exists because $F$ is an ultrafilter.
+It is finite because all models ${\EuScript M}_i$ have the same bounds.
 
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-  Let ${\EuScript N}$ be as above and let $\varphi(x)\in L$. Then for every $\hat a\in N^{|x|}$
+  Let ${\EuScript N}$ be as above and let $\varphi(x)\in\mathds{L}(A)$. Then for every $\hat a\in N^{|x|}$ and $\lambda\in\mathds{R}$
 
-  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai\big).}
+  \ceq{\hfill {\EuScript N}\models\varphi(\hat a, \lambda)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}_i\models\exists \alpha\in A\;\varphi(\hat ai,\alpha)\big\}\in F}\ \for for every neighborhood $A$ of $\lambda$.
 
 \end{proposition}
 
 \begin{proof}
-  By straightforeward induction.
+  We proceed by induction on the syntax of $\varphi(x)$.
+  Assume $\varphi(\hat a,\lambda)$ is atomic, say $t(\hat a,\lambda)\le s(\hat a,\lambda)$.
+  We spell out the proof for the infimum quantifier.
+  Assume inductively that
+
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
+  {=}
+  {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
+
+  We want to prove that
+
+  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
+  {=}
+  {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
+
+  By the interpretation of the infimum quantifier, this amounts to prove that
+
+  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
+  {=}
+  {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
+
+  First we prove the $\le$ inequality.
+  Let $\alpha$ be an arbitrary positive real number.
+
+  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
+
+  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
+
+  \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
+
+  \smallskip
+  This proves the $\ge$ inequality.
+  As for the $\le$ inequality, assume that
+  \smallskip
+
+  \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
+  {<}
+  {\alpha.}
+
+  Therefore, for some $u\in F$
+
+  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
+
+  \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
+
+  \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
+
+  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
+
+  This proves the desired inequality.
 \end{proof}
-  % We proceed by induction on the syntax of $\varphi(x)$.
-  % If $\varphi(x)$ is atomic holds the equality above holds by definition.
-  % We spell out the proof for the infimum quantifier.
-  % Assume inductively that
-
-  % \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
-  % {=}
-  % {\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big).}
-
-  % We want to prove that
-
-  % \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
-  % {=}
-  % {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{M_i}}
-
-  % By the interpretation of the infimum quantifier, this amounts to prove that
-
-  % \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
-  % {=}
-  % {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)\big\}}
-
-  % First we prove the $\le$ inequality.
-  % Let $\alpha$ be an arbitrary positive real number.
-
-  % \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
-
-  % \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
-
-  % \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{M_i}\big(\hat ai,b\big):\,b\in(uM_i)\Big\}}{<}{\alpha}.
-
-  % \smallskip
-  % This proves the $\ge$ inequality.
-  % As for the $\le$ inequality, assume that
-  % \smallskip
-
-  % \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}
-  % {<}
-  % {\alpha.}
-
-  % Therefore, for some $u\in F$
-
-  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{M_i}:\,b\in(uM_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  % \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
-
-  % \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
-
-  % This proves the desired inequality.
 
 The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
 
