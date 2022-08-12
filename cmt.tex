@@ -124,7 +124,7 @@ The language is denoted by $\mathds{L}$.
 For simplicity we assume it contains \textit{all\/} functions as in 2 above.
 
 \begin{definition}
-  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\to\mathds{R}$ or $\mathds{R}^n\to\mathds{R}$ and parameters in some set $A\subseteq \breve M$.
+  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\times\mathds{R}^m\to\mathds{R}$ and parameters in some set $A\subseteq \breve M$.
   We write \emph{$\mathds{L}(A)$\/} for the set of formulas obtained inductively as follows
   \begin{itemize}
   \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le s$ for every pair of terms $t,s\in\mathds{T}(A)$.
@@ -179,8 +179,8 @@ Let $F$ be an ultrafilter on $I$.
 \begin{definition}\label{def_ultraproduct}
   We define a structure \emph{${\EuScript N}=\langle\breve  N,N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
   \begin{itemize}
-    \item[1.] $\breve N$ is the set of the sequences $\hat a: I\to\bigcup_{i\in I}\breve M_i$ such that $\hat a\,i\in \breve M_i$.
-    \item[2.] $N$ is the set of the sequences $t^{\EuScript N}(\hat a)$ of the form $t^{{\EuScript M}_i}(\hat ai)$, where $t(x)$ is a term of sort $\breve M^n\to M$.
+    \item[1.] $\breve N$ comprise the sequences $\hat a: I\to\bigcup_{i\in I}\breve M_i$ such that $\hat a\,i\in \breve M_i$.
+    \item[2.] $N$ comprise the sequences $t^{\EuScript N}(\hat a)$ of the form $t^{{\EuScript M}_i}(\hat ai)$, where $t(x)$ is a term of sort $\breve M^n\to M$.
     \item[3.] If $f$ is a function of sort $\breve M^n\times{M}^m\to \breve M$ then $f^{\EuScript N}(\hat a,t^{{\EuScript N}}\big(\hat c)\big)$ is the sequence 
     $f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big)$.
     \item[4.] Similarly when $f$ is of sort $\breve M^n\times{M}^m\to M$.
@@ -197,7 +197,7 @@ It is finite because all models ${\EuScript M}_i$ have the same bounds.
 
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-  Let ${\EuScript N}$ be as above and let $\varphi(x)\in\mathds{L}(A)$. Then for every $\hat a\in\breve N^{|x|}$ and $\lambda\in\mathds{R}^{|y|}$
+  Let ${\EuScript N}$ be as above and let $\varphi(x,y)\in\mathds{L}(A)$. Then for every $\hat a\in\breve N^{|x|}$ and $\lambda\in\mathds{R}^{|y|}$
 
   \ceq{\hfill {\EuScript N}\models\varphi(\hat a, \lambda)}
   {\Leftrightarrow}
