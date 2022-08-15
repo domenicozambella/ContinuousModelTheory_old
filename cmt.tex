@@ -84,7 +84,7 @@
 
 \linespread{1.2}
 \begin{document}
-\title{Continuous logic for the discrete logician}
+\title{Continuous logic for the classical logician}
 \hfill\texttt{Branch: Logica-Discreta \ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
@@ -98,22 +98,22 @@
 \def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{definition}\label{def_1}
-  In this notes we deal with 3-sorted%
+  In these notes we deal with 3-sorted%
   \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle \breve M_1,\dots,\breve M_n,M_1,\dots,M_{n'},\mathds{R}\rangle$. The generalization is straightforeward.} 
   structures of the form ${\EuScript M}=\langle \breve M,M,\mathds{R}\rangle$.
   The language and its interpretation are subject to the following conditions.
   \begin{itemize}
-  \item[1.] The function may only have one of the following sorts (for any $m,n\in\omega$)
+  \item[1.] Functions may only have one of the following sorts (for any $m,n\in\omega$)
   \begin{itemize}
     \item[a.] $\mathds{R}^n\to\mathds{R}$
     \item[b.] $\breve M^n\times{M}^m\to\textrm{any of } \breve M,\ M,\textrm{ or }\mathds{R}$
     % \item[c.] $\breve M^n\times{M}^m\to M$
     % \item[d.] $\breve M^n\times{M}^m\to\mathds{R}$
   \end{itemize}
-  \item[2.] The functions of sort $\mathds{R}^n\to\mathds{R}$ are \textit{uniformly continuous}.
+  \item[2.] There is a symbol for very (total) continuous functions $\mathds{R}^n\to\mathds{R}$.
   \item[3.] The (functions that interpret the) terms of sort $\breve M^n\to\mathds{R}$ have \textit{bounded\/} range.
   \item[4.] Every element of $M$ is the image of some term of sort $\breve M^n\to M$.  
-  \item[5.] The only relation symbol is the order relation $\le$ on $\mathds{R}$.
+  \item[5.] There is only one predicate; it has sort $\mathds{R}$ and is interpreted as $x\le0$.
   \end{itemize}
 \end{definition}
 
@@ -121,31 +121,36 @@ We call $\breve M$ the \emph{unit ball\/} of ${\EuScript M}$.
 The terminology is inspired by the example below.
 
 The language is denoted by $\mathds{L}$.
-For simplicity we assume it contains \textit{all\/} functions as in 2 above.
 
 \begin{definition}
-  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\times\mathds{R}^m\to\mathds{R}$ and parameters in some set $A\subseteq \breve M$.
+  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\times\mathds{R}^m\to\mathds{R}$ and parameters in $A\subseteq \breve M$.
+  Up to equivalence, these terms have the form $f(t(x),y)$ where $t(x)$ is a tuple of terms of sort $\breve M^{|x|}\to\mathds{R}$, the variables $y$ have sort $\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
+\end{definition}
+
+\begin{definition}
   We write \emph{$\mathds{L}(A)$\/} for the set of formulas obtained inductively as follows
   \begin{itemize}
-  \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le s$ for every pair of terms $t,s\in\mathds{T}(A)$.
-  \item[ii.] $\mathds{L}(A)$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $\breve M$.
-  \item[iii.] $\mathds{L}(A)$ is closed under the quantifier $\forall$ of sort $\mathds{R}$ possibly relativized to a definable subset of $\mathds{R}$.
+  \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le0$ for every term $t\in\mathds{T}(A)$.
+  \item[ii.] It is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $\breve M$.
+  \item[iii.] It is closed under the quantifier $\forall$ of sort $\mathds{R}$ relativized to any definable subset of $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
-Note that iii asserts, in particular, that if $\varphi(x,\varepsilon)\in\mathds{L}(A)$ then also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
+Note that in iii, definability, is with respect to the full first order language.
+In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
 
 \begin{example}[Banach spaces]
   Given a Banach space  $M$ we define a structure ${\EuScript M}=\langle \breve M,M,\mathds{R}\rangle$ as follows.
   Let $\breve M=\{a\in M: \|a\|\le1\}$ be the closed unit ball of $M$.
   Besides the symbols mentioned above, $\mathds{L}$ contains a function symbol for the natural embedding ${\rm id}:\breve M\to M$.
-  It contains also a symbol for the norm $\|\mbox-\|:M\to\mathds{R}$.
+  It also contains a symbol for the norm $\|\mbox-\|:M\to\mathds{R}$.
   Finally, $\mathds{L}$ contains the usual symbols of the language of vector spaces.
   These have sort ${M}^n\to M$, for the appropiate $n\in\{0,1,2\}$.
-
-  Finally, note that condition 3 and 4 of Definition~\ref{def_1} are immediatly satisfied.
+  Note that conditions 3 and 4 of Definition~\ref{def_1} are immediatly satisfied.
 \end{example}
 
+If $\varphi\in\mathds{L(A)}$ and $\varepsilon>0$ we write \emph{$\varphi_\varepsilon$\/} for the formula obtained by replacing in $\varphi$ the atomic formulas $t\le0$ with  $t-\varepsilon\le0$.
+Note that $\varphi\to\varphi_\varepsilon$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,16 +168,16 @@ Note that iii asserts, in particular, that if $\varphi(x,\varepsilon)\in\mathds{
 We recall some standard definitions about limits.
 Let $I$ be a non-empty set.
 Let $F$ be a filter on $I$.
-If $r:I\to{\mathds R}$ and $\lambda\in{\mathds R}\cup\{\pm\infty\}$ we write
+If $f:I\to{\mathds R}$ and $\lambda\in{\mathds R}\cup\{\pm\infty\}$ we write
 
-\hfil$\displaystyle \lim_{i\uparrow F}r(i)=\lambda$
+\hfil$\displaystyle \lim_{i\to F}f(i)=\lambda$
 
-if $r^{-1}[A]\in F$ for every $A\subseteq{\mathds R}$ that is a neighborhood of $\lambda$.
-When $F$ is an ultrafilter, such a $\lambda$ always exists.
+if $f^{-1}[A]\in F$ for every $A\subseteq{\mathds R}\cup\{\pm\infty\}$ that is a neighborhood of $\lambda$.
+Such a $\lambda$ is unique and, when $F$ is an ultrafilter, it always exists.
+When $f$ is bounded, $\lambda\in\mathds{R}$.
 
 Let $I$ be an infinite set.
-Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle \breve M_i,M_i,\mathds{R}\rangle$, that are uniformly bounded.
-That is, the bounds in 3 of Definition~\ref{def_1} are the same for all ${\EuScript M}_i$.
+Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle \breve M_i,M_i,\mathds{R}\rangle$, that are \emph{uniformly bounded,} that is, the bounds in 3 of Definition~\ref{def_1} are the same for all ${\EuScript M}_i$.
 
 Let $F$ be an ultrafilter on $I$.
 
@@ -186,7 +191,7 @@ Let $F$ be an ultrafilter on $I$.
     \item[4.] Similarly when $f$ is of sort $\breve M^n\times{M}^m\to M$.
     \item[5.] If $f$ is a function of sort $\breve M^n\times{M}^m\to\mathds{R}$ then 
     $$
-    f^{\EuScript N}\big(\hat a,t^{\EuScript N}(\hat c)\big)\ =\ \lim_{i\uparrow F}f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big).
+    f^{\EuScript N}\big(\hat a,t^{\EuScript N}(\hat c)\big)\ =\ \lim_{i\to F}f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big).
     $$ 
   \end{itemize}
   As usual, if ${\EuScript M}_i={\EuScript M}$ for all $i\in I$, we say that ${\EuScript N}$ is an \emph{ultrapower\/} of ${\EuScript M}$.
@@ -195,57 +200,143 @@ Let $F$ be an ultrafilter on $I$.
 The limit in 5 of the definition above always exists because $F$ is an ultrafilter.
 It is finite because all models ${\EuScript M}_i$ have the same bounds.
 
+The following fact is easily proved by induction on the syntax.
+
+\begin{fact}
+  For every term of sort $\breve M^n\times{M}^m\to\mathds{R}$  
+  $$
+  f^{\EuScript N}\big(\hat a,t^{\EuScript N}(\hat c)\big)\ =\ \lim_{i\to F}f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big).
+  $$ 
+\end{fact}
+
+Finally, we prove 
+
 
 \begin{proposition}[\L\v{o}\'s Theorem]
-  Let ${\EuScript N}$ be as above and let $\varphi(x,y)\in\mathds{L}(A)$. Then for every $\hat a\in\breve N^{|x|}$ and $\lambda\in\mathds{R}^{|y|}$
+  Let ${\EuScript N}$ be as above and let $\varphi(x,y)\in\mathds{L}(A)$.
+  Let $\hat a\in\breve N^{|x|}$.
+  Then there is a function $u_{-}:\mathds{R}^+\to F$ such that for every $\lambda\in\mathds{R}^{|y|}$
 
-  \ceq{\hfill {\EuScript N}\models\varphi(\hat a, \lambda)}
-  {\Leftrightarrow}
-  {\big\{ i\in I\ :\ {\EuScript M}_i\models\exists \alpha\in A\;\varphi(\hat ai,\alpha)\big\}\in F}\ for every neighborhood $A\ni\lambda$.
+  \ceq{1.\hfill {\EuScript N}\models\varphi(\hat a, \lambda)}
+  {\Rightarrow}
+  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\models\varphi_\varepsilon(\hat ai,\lambda)\big\} \ \textrm{for every }\varepsilon>0.}
+
+  \ceq{2.\hfill {\EuScript N}\not\models\varphi(\hat a, \lambda)}
+  {\Rightarrow}
+  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\not\models\varphi_\varepsilon(\hat ai,\lambda)\big\} \ \textrm{for some }\varepsilon>0.}
 
 \end{proposition}
-\end{document}
 \begin{proof}
-  We proceed by induction on the syntax of $\varphi(x)$.
-  Assume $\varphi(\hat a,\lambda)$ is atomic, say $t(\hat a,\lambda)\le s(\hat a,\lambda)$.
+  Without loss of generality, we can assume that $\Lambda$ is compact.
+  Suppose that $\varphi(x,y)$ is atomic, say
+
+  \ceq{\hfill\varphi(x,y)}
+  {=}
+  {f(t(x),\,y)\le0,} 
+  
+  where $t$ is a tuple of terms of sort  $\breve M^{|x|}\to\mathds{R}$ and $f$ is a continuous function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
+
+  Let $\Lambda_0$ be the set of those $\lambda\in\Lambda$ such that
+
+  \ceq{\hfill {\EuScript N}}{\models}{f(t(\hat a),\,\lambda)\le0}
+
+  or, equivalently, such that
+
+  \ceq{\hfill {\EuScript N}}
+  {\models}
+  {f(\beta',\,\lambda)\le0,}
+  \hfill 
+  where $\beta'\in\mathds{R}^{|t|}$ is such that
+  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)$.
+
+  As $\Lambda_0$ is compact, the function $g$ defined below is continuous 
+
+  \ceq{\hfill g:\mathds{R}^{|t|}}{\to}{\mathds{R}}
+
+  \ceq{\hfill\beta\kern1.5ex}{\mapsto}{\sup_{\lambda\in\Lambda_0} f(\beta,\lambda).}
+
+  Given $\varepsilon>0$, let $B_\varepsilon=g^{-1}(-\infty,\varepsilon]$ and $u=\{i:{\EuScript M}_i\models g(t(\hat a i))\le\varepsilon\}$.
+  As $B_\varepsilon$ is a neighborhood of $\beta'$, the set $u$ belongs to $F$ and for every $\lambda\in\Lambda_0$ and $i\in u$
+
+  \ceq{2.\hfill u_\varepsilon}
+  {\subseteq}
+  {\Big\{ i\ ;\ {\EuScript M_i}\models f(t(\hat a i),\,\lambda)\le\varepsilon\Big\}}
+
+
+\end{proof}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+  \ceq{\hfill {\EuScript N}\models f(t(\hat a),\,\lambda)\le0}
+  {\Leftrightarrow}
+  {{\EuScript N}\models f(\beta',\,\lambda)\le0}
+  \hfill 
+  where $\beta'\in\mathds{R}^{|t|}$ is such that
+  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)$
+
+
+
+  \vfill
+  
+  \ceq{\hfill g(\beta)\le\varepsilon}
+  {\Leftrightarrow}
+  {\beta\in B.}
+
+  Let $\beta'\in\mathds{R}^{|t|}$ be such that
+
+  \ceq{\hfill\lim_{i\to F}\ t(\hat a\,i)}
+  {=}
+  {\beta.}
+
+  Let $\Lambda_{\le0}$ be the set of those $\lambda\in\Lambda$ such that $f(\beta,\lambda)\le0$.
+  
+
+
+
+  $t(\hat a,\lambda)\le s(\hat a,\lambda)$.
   We spell out the proof for the infimum quantifier.
   Assume inductively that
 
   \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
   {=}
-  {\lim_{i\uparrow F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big).}
+  {\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big).}
 
   We want to prove that
 
   \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
   {=}
-  {\lim_{i\uparrow F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{\breve M_i}}
+  {\lim_{i\to F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{\breve M_i}}
+
+
 
   By the interpretation of the infimum quantifier, this amounts to prove that
 
   \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
   {=}
-  {\lim_{i\uparrow F}\inf\big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)\big\}}
+  {\lim_{i\to F}\inf\big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)\big\}}
 
   First we prove the $\le$ inequality.
   Let $\alpha$ be an arbitrary positive real number.
 
   \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
 
-  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\uparrow F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
+  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
 
   \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
   \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{\breve M_i}\big(\hat ai,b\big):\,b\in(u\breve M_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-  \ceq{\textrm{Finally,}\hfill\lim_{i\uparrow F}\ \inf\Big\{\varphi^{\breve M_i}\big(\hat ai,b\big):\,b\in(u\breve M_i)\Big\}}{<}{\alpha}.
+  \ceq{\textrm{Finally,}\hfill\lim_{i\to F}\ \inf\Big\{\varphi^{\breve M_i}\big(\hat ai,b\big):\,b\in(u\breve M_i)\Big\}}{<}{\alpha}.
 
   \smallskip
   This proves the $\ge$ inequality.
   As for the $\le$ inequality, assume that
   \smallskip
 
-  \ceq{\hfill\lim_{i\uparrow F}\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}
+  \ceq{\hfill\lim_{i\to F}\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}
   {<}
   {\alpha.}
 
@@ -255,9 +346,11 @@ It is finite because all models ${\EuScript M}_i$ have the same bounds.
 
   \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
+  Such a neighborhood exists because $f$ is uniforml;y continuous and $\Lambda$ is 
+
   \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
-  \ceq{\textrm{Then}\hfill\lim_{i\uparrow F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
+  \ceq{\textrm{Then}\hfill\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
 
   \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
 
@@ -556,7 +649,7 @@ First we prove the following lemma.
   Let $\hat a\in (\breve M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
   By \L\v o\'s Theorem, for every formula $\varphi(x)$
 
-  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{\xi\uparrow F}\varphi^{\breve M}\big(a_\xi\big).}
+  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a\big)}{=}{\lim_{\xi\to F}\varphi^{\breve M}\big(a_\xi\big).}
 
   Therefore $\hat a$ realizes $p(x)\le0$ in ${\EuScript N}$.
 \end{proof}
