@@ -85,7 +85,7 @@
 \linespread{1.2}
 \begin{document}
 \title{Continuous logic for the classical logician}
-\hfill\texttt{Branch: Logica-Discreta \ \DTMnow}\bigskip
+\hfill\texttt{Branch:\ master\ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,15 +160,79 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 If $\varphi\in\mathds{L(A)}$ and $\varepsilon>0$ we write \emph{$\varphi_\varepsilon$\/} for the formula obtained by replacing in $\varphi$ the atomic formulas $t\le0$ with  $t-\varepsilon\le0$.
 Note that $\varphi\to\varphi_\varepsilon$.
 
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{\u Elementary relations}
+
+\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+Let ${\EuScript M}$ and ${\EuScript N}$ be models.
+We say that $R\subseteq\breve M\times\breve N$ is an \emph{\u elementary relation\/} between ${\EuScript M}$ and ${\EuScript N}$ if for every $\varphi(x)\in\mathds{L}$
+
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi(b)} \hfill for every $a$ and $b$ such that $aRb$.
+
+Recall that, when $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ are tuples, $aRb$ stands for $a_iRb_i$ for $i=1,\dots,n$.
+
+We define an equivalence relation \emph{$(\sim_{\EuScript M})$\/} on $\breve M$ as follows
+
+\ceq{1.\hfill a\,\sim_{\EuScript M\!}b}{\Leftrightarrow}{t^{\EuScript M}(a)=t^{\EuScript M}(b)}\ \ for every $t(x)\in\mathds{T}(\breve M)$,
+
+where $|x|=|a|=|b|=1$.
+
+\begin{lemma}
+  The relation $(\sim_{\EuScript M\!})\subseteq \breve M^2$ is an \u elementary relation.
+  Among these, it is maximal, i.e.\@ no elementary relation contains $(\sim_{\EuScript M\!})$ properly.
+\end{lemma}
+
+\begin{proof}
+  Assume $a\sim_{\EuScript M\!}b$, where $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$.
+  Recall that this means that $a_i\sim_{\EuScript M\!}b_i$ for all $i\in\{1,\dots,n\}$.
+  Let $\Delta$ denote the diagonal relation on $\breve M$.
+  Note that $a_i\sim_{\EuScript M\!}b_i$ is equivalent to saying that $\Delta\cup\{(a_i,b_i)\}$ is an \u elementary relation.
+  As \u elementary relations are closed under composition $\Delta\cup\big\{(a_1,b_1),\dots,(a_n,b_n)\big\}$ is \u elementary.
+  It follows that for every $\varphi(x)\in\mathds{L}$
+
+  \ceq{2.\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi(b).}
+  
+  The converse implication $(2\Rightarrow a\sim_{\EuScript M\!}b)$ is immediate.
+\end{proof}
+
+
+\begin{lemma}
+  Let $R\subseteq \breve M\times\breve N$ be total and surjective elementary relation.
+  Then there is a unique maximal elementary relation containing $R$.
+  This maximal elementary relation is equal to both $(\sim_{\EuScript M\!})\,R$ and $R\,(\sim_{\EuScript N\!})$.
+\end{lemma}
+\begin{proof}
+  It is immediate to verify that $(\sim_{\EuScript M\!})\,R$ is an elementary relation containing $R$.
+  Let $S$ be any maximal elementary relation containing $R$.
+  By maximality, $(\sim_{\EuScript M\!})\,S=S$.
+  As $S$ is a total relation $(\sim_{\EuScript M\!})\subseteq SS^{-1}$.
+  Therefore, by the lemma above, $(\sim_{\EuScript M\!})=SS^{-1}$.
+  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$.
+  Finally, by maximality, we conclude that $S=(\sim_{\EuScript M\!})\,R$.
+  A similar argument proves that $S=R\,(\sim_{\EuScript N\!})$.
+\end{proof}
+
+We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective, elementary relations $R\subseteq \breve M^2$.
+The choice of the symbol Aut is motivated by the lemma above.
+In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_{\EuScript M\!}}$.
+
+Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
+Therefore below we insist in working with elementary relations in place of elementary maps.
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ultraproducts}\label{ultrapws}
-
-% The content of this section can be generalized to ultraproducts at the cost of an extra index.
-% We opt for the simpler variant as it suffices to prove the existence of saturated elementary extensions.
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
@@ -257,98 +321,14 @@ Finally, we prove
 
   The rest of the inductive proof is straightforeward and is left to the reader.
 \end{proof}
+
+
+
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-
-  \ceq{\hfill {\EuScript N}\models f(t(\hat a),\,\lambda)\le0}
-  {\Leftrightarrow}
-  {{\EuScript N}\models f(\beta',\,\lambda)\le0}
-  \hfill 
-  where $\beta'\in\mathds{R}^{|t|}$ is such that
-  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)$
-
-
-
-  \vfill
-  
-  \ceq{\hfill g(\beta)\le\varepsilon}
-  {\Leftrightarrow}
-  {\beta\in B.}
-
-  Let $\beta'\in\mathds{R}^{|t|}$ be such that
-
-  \ceq{\hfill\lim_{i\to F}\ t(\hat a\,i)}
-  {=}
-  {\beta.}
-
-  Let $\Lambda_{\le0}$ be the set of those $\lambda\in\Lambda$ such that $f(\beta,\lambda)\le0$.
-  
-
-
-
-  $t(\hat a,\lambda)\le s(\hat a,\lambda)$.
-  We spell out the proof for the infimum quantifier.
-  Assume inductively that
-
-  \ceq{\hfill \varphi^{\EuScript N}\big(\hat a,\hat b\big)}
-  {=}
-  {\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big).}
-
-  We want to prove that
-
-  \ceq{\hfill\Big(\bigwedge_x\varphi\big(\hat a,x\big)\Big)^{\EuScript N}}
-  {=}
-  {\lim_{i\to F}\Big(\bigwedge_x\varphi\big(\hat ai,x\big)\Big)^{\breve M_i}}
-
-
-
-  By the interpretation of the infimum quantifier, this amounts to prove that
-
-  \ceq{\hfill\inf\big\{\varphi\big(\hat a,\hat b\big)^{\EuScript N}\ :\ \hat b\in(uN)\big\}}
-  {=}
-  {\lim_{i\to F}\inf\big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)\big\}}
-
-  First we prove the $\le$ inequality.
-  Let $\alpha$ be an arbitrary positive real number.
-
-  \ceq{\textrm{Assume\ that\ for\ some\ }\hat b\in(uN)\hfill\varphi^{\EuScript N}\big(\hat a,\hat b\big)}{<}{\alpha}.
-
-  \ceq{\textrm{By\ induction\ hypothesis}\hfill\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha},
-
-  \ceq{\textrm{then\ for\ some\ }u\in F\hfill\varphi^{U_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Hence}\hfill \inf\Big\{\varphi^{\breve M_i}\big(\hat ai,b\big):\,b\in(u\breve M_i)\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Finally,}\hfill\lim_{i\to F}\ \inf\Big\{\varphi^{\breve M_i}\big(\hat ai,b\big):\,b\in(u\breve M_i)\Big\}}{<}{\alpha}.
-
-  \smallskip
-  This proves the $\ge$ inequality.
-  As for the $\le$ inequality, assume that
-  \smallskip
-
-  \ceq{\hfill\lim_{i\to F}\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}
-  {<}
-  {\alpha.}
-
-  Therefore, for some $u\in F$
-
-  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
-
-  Such a neighborhood exists because $f$ is uniformly continuous and $\Lambda$ is 
-
-  \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
-
-  \ceq{\textrm{Then}\hfill\lim_{i\to F}\varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha,}
-
-  \ceq{\textrm{and\ finally}\hfill\vphantom{\bigwedge_x}\varphi^{\EuScript N}\big(\hat a, \hat b\big)}{<}{\alpha.}
-
-  This proves the desired inequality.
-\end{proof}
 
 The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
 
@@ -458,72 +438,6 @@ Beware that $p(x)$ denotes just a set of formulas, the expression $p(x)\le0$ den
 
 We write \emph{${\EuScript M}\models p(a)\le0$} if ${\EuScript M}\models\varphi(a)\le0$ for every $\varphi(x)\in p$.
 We write \emph{${\EuScript M}\models \exists x\ p(x)\le0$} if ${\EuScript M}\models p(a)\le0$ for some $a\in \breve M^{|x|}$.
-
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\section{Elementary relations}
-
-\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
-
-Let ${\EuScript M}$ and ${\EuScript N}$ be models with unit balls $\breve M$ and $N$, respectively.
-We say that $R\subseteq \breve M\times N$ is an \emph{elementary relation\/} between $\breve M$ and $N$ if for every $\varphi(x)\in L$
-
-\ceq{\hfill \varphi^{\EuScript M}(a)}{\Leftrightarrow}{\varphi^{\EuScript N}(b)} \hfill for every $a,b\in \breve M^{|x|},N^{|x|}$ such that $aRb$.
-
-Equivalently, if for every $\varphi(x)\in L$
-
-\ceq{\hfill {\EuScript M}\models \varphi(a)\le0}{=}{{\EuScript N}\models \varphi(a)\le0} \hfill for every $a,b\in \breve M^{|x|},N^{|x|}$ such that $aRb$.
-
-We define an equivalence relation \emph{$(\sim_{\breve M\!})$\/} on the unit ball $\breve M$ as follows
-
-\ceq{1.\hfill a\, \sim_Mb}{\Leftrightarrow}{\varphi(a)^{\EuScript M}=\varphi^{\EuScript M}(b)}\ \ for every $\varphi(x)\in L(\breve M)$.
-
-In ther words,
-
-\ceq{\hfill a\, \sim_Mb}{\Leftrightarrow}{I_M\cup\{(a,b)\}\subseteq \breve M^2}\ \ is an elementary relation.
-
-As elementary relations are closed under composition, if $a\sim_M\!b$ and $a'\sim_M\!b'$ then the relation $I_M\cup\big\{(a,b),(a',b')\big\}\subseteq \breve M^2$ is also elementary.
-In general, for any $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ we have that
-
-\ceq{2.\hfill a_i\, \sim_Mb_i\textrm{ for all }i}{\Leftrightarrow}{\varphi(a)^{\EuScript M}=\varphi^{\EuScript M}(b)}\ \ for every $\varphi(z)\in L(\breve M)$.
-
-From the consideration above we deduce the following.
-\begin{lemma}
-  The relation $(\sim_{\breve M\!})\subseteq \breve M^2$ is a maximal elementary relation.
-  That is, no elementary relation on $\breve M$ contains $(\sim_{\breve M\!})$ properly.
-\end{lemma}
-
-\begin{proof}
-  By 2 above, $(\sim_{\breve M\!})$ is elementary.
-  By 1, a pair $a\nsim_M\!b$ cannot belong to any elementary relation.
-  Therefore  $(\sim_{\breve M\!})$ is maximal.
-\end{proof}
-
-\begin{lemma}
-  Let $R\subseteq \breve M\times N$ be total and surjective elementary relation.
-  Then there is a unique maximal elementary relation containing $R$.
-  This maximal elementary relation is equal to both $(\sim_{\breve M\!})\,R$ and $R\,(\sim_{N\!})$.
-\end{lemma}
-\begin{proof}
-  It is immediate to verify that $(\sim_{\breve M\!})\,R$ is an elementary relation containing $R$.
-  Let $S$ be any maximal elementary relation containing $R$.
-  By maximality, $(\sim_{\breve M\!})\,S=S$.
-  As $S$ is a total relation $(\sim_{\breve M\!})\subseteq SS^{-1}$.
-  Therefore, by the lemma above, $(\sim_{\breve M\!})=SS^{-1}$.
-  As $R$ is a surjective relation, $S\subseteq S\,S^{-1}R$.
-  Finally, by maximality, we conclude that $S=(\sim_{\breve M\!})\,R$.
-  A similar argument proves that $S=R\,(\sim_{N\!})$.
-\end{proof}
-
-We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective, elementary relations $R\subseteq \breve M^2$.
-The choice of the symbol Aut is motivated by the lemma above.
-In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_M}$.
-
-Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_M}$, in concrete cases one has a better grip on the first than on the latter.
-Therefore below we insist in working with elementary relations in place of elementary maps.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
