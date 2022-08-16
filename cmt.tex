@@ -110,7 +110,7 @@
     % \item[c.] $\breve M^n\times{M}^m\to M$
     % \item[d.] $\breve M^n\times{M}^m\to\mathds{R}$
   \end{itemize}
-  \item[2.] There is a symbol for very (total) continuous functions $\mathds{R}^n\to\mathds{R}$.
+  \item[2.] There is a symbol for every (total) uniformly continuous functions $\mathds{R}^n\to\mathds{R}$.
   \item[3.] The (functions that interpret the) terms of sort $\breve M^n\to\mathds{R}$ have \textit{bounded\/} range.
   \item[4.] Every element of $M$ is the image of some term of sort $\breve M^n\to M$.  
   \item[5.] There is only one predicate; it has sort $\mathds{R}$ and is interpreted as $x\le0$.
@@ -123,8 +123,8 @@ The terminology is inspired by the example below.
 The language is denoted by $\mathds{L}$.
 
 \begin{definition}
-  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\times\mathds{R}^m\to\mathds{R}$ and parameters in $A\subseteq \breve M$.
-  Up to equivalence, these terms have the form $f(t(x),y)$ where $t(x)$ is a tuple of terms of sort $\breve M^{|x|}\to\mathds{R}$, the variables $y$ have sort $\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
+  We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $\breve M^n\times\mathds{R}^m\to\mathds{R}$ with parameters in some $A\subseteq \breve M$.
+  Up to equivalence, these terms have the form $f(t(x),y)$, where $t(x)$ is a tuple of terms of sort $\breve M^{|x|}\to\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
 \end{definition}
 
 \begin{definition}
@@ -136,8 +136,16 @@ The language is denoted by $\mathds{L}$.
   \end{itemize}
 \end{definition}
 
-Note that in iii, definability, is with respect to the full first order language.
+Note that in iii of the definition above, definability is intended with respect to the full first order language.
 In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
+
+
+\begin{example}[Metric spaces of finite diameter]
+  Given a metric space $M,{\rm d}$ of finite diameter we define a structure ${\EuScript M}=\langle \breve M,M,\mathds{R}\rangle$ as follows.
+  Set $\breve M=M$ and let ${\rm id}:\breve M\to M$ be the identical isomorphism.
+  The function symbols are ${\rm id}$ and ${\rm d}$.
+  Note that 3 is satisfied because ${\rm d}$ is bounded.
+\end{example}
 
 \begin{example}[Banach spaces]
   Given a Banach space  $M$ we define a structure ${\EuScript M}=\langle \breve M,M,\mathds{R}\rangle$ as follows.
@@ -203,10 +211,9 @@ It is finite because all models ${\EuScript M}_i$ have the same bounds.
 The following fact is easily proved by induction on the syntax.
 
 \begin{fact}
-  For every term of sort $\breve M^n\times{M}^m\to\mathds{R}$  
-  $$
-  f^{\EuScript N}\big(\hat a,t^{\EuScript N}(\hat c)\big)\ =\ \lim_{i\to F}f^{{\EuScript M}_i}\big(\hat ai,t^{{\EuScript M}_i}(\hat ci)\big).
-  $$ 
+  For every term $t(x)$ of sort $\breve M^n\to\mathds{R}$  
+  
+  \ceq{\hfill t^{\EuScript N}\big(\hat a\big)}{=}{\lim_{i\to F}t^{{\EuScript M}_i}\big(\hat ai\big).}\hfill\qedsymbol
 \end{fact}
 
 Finally, we prove 
@@ -227,42 +234,28 @@ Finally, we prove
 
 \end{proposition}
 \begin{proof}
-  Without loss of generality, we can assume that $\Lambda$ is compact.
   Suppose that $\varphi(x,y)$ is atomic, say
 
   \ceq{\hfill\varphi(x,y)}
   {=}
   {f(t(x),\,y)\le0,} 
   
-  where $t$ is a tuple of terms of sort  $\breve M^{|x|}\to\mathds{R}$ and $f$ is a continuous function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
-
-  Let $\Lambda_0$ be the set of those $\lambda\in\Lambda$ such that
-
-  \ceq{\hfill {\EuScript N}}{\models}{f(t(\hat a),\,\lambda)\le0}
-
-  or, equivalently, such that
-
-  \ceq{\hfill {\EuScript N}}
-  {\models}
-  {f(\beta',\,\lambda)\le0,}
-  \hfill 
-  where $\beta'\in\mathds{R}^{|t|}$ is such that
-  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)$.
-
-  As $\Lambda_0$ is compact, the function $g$ defined below is continuous 
-
-  \ceq{\hfill g:\mathds{R}^{|t|}}{\to}{\mathds{R}}
-
-  \ceq{\hfill\beta\kern1.5ex}{\mapsto}{\sup_{\lambda\in\Lambda_0} f(\beta,\lambda).}
-
-  Given $\varepsilon>0$, let $B_\varepsilon=g^{-1}(-\infty,\varepsilon]$ and $u=\{i:{\EuScript M}_i\models g(t(\hat a i))\le\varepsilon\}$.
-  As $B_\varepsilon$ is a neighborhood of $\beta'$, the set $u$ belongs to $F$ and for every $\lambda\in\Lambda_0$ and $i\in u$
-
-  \ceq{2.\hfill u_\varepsilon}
-  {\subseteq}
-  {\Big\{ i\ ;\ {\EuScript M_i}\models f(t(\hat a i),\,\lambda)\le\varepsilon\Big\}}
+  where $t$ is a tuple of terms of sort  $\breve M^{|x|}\to\mathds{R}$ and $f$ is a uniformly continuous function $\mathds{R}^{|t|+|y|}\to\mathds{R}$. 
 
 
+  Let $\beta'\in\mathds{R}^{|t|}$ be such that
+  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)=\beta'$.
+
+  Given $\varepsilon>0$, let $B_\varepsilon$ be a neighborhood of $\beta'$ such that 
+  
+  \ceq{}{\ }{\big|f(\beta,\,\lambda)-f(\beta',\lambda)\big|<\varepsilon}\hfill for every $\beta\in B_\varepsilon$ and every $\lambda\in\mathds{R}^{|y|}$.
+  
+  Such a neighborhood exists by the uniform continuity of $f$.
+  Finally, to obtain 1 and 2 above it suffices to define 
+
+  \ceq{\hfill u_\varepsilon}{=}{\big\{i\ :\  t(\hat a i)\in B_\varepsilon\big\}.}
+
+  The rest of the inductive proof is straightforeward and is left to the reader.
 \end{proof}
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -346,7 +339,7 @@ Finally, we prove
 
   \ceq{\hfill\inf\Big\{\varphi\big(\hat ai,b\big)^{\breve M_i}:\,b\in(u\breve M_i)^{|x|}\Big\}}{<}{\alpha}\quad for every $i\in u$.
 
-  Such a neighborhood exists because $f$ is uniforml;y continuous and $\Lambda$ is 
+  Such a neighborhood exists because $f$ is uniformly continuous and $\Lambda$ is 
 
   \ceq{\textrm{Therefore,\ for\ some\ }\hat b\in(uN)^{|x|}\hfill \varphi^{\breve M_i}\big(\hat ai,\hat bi\big)}{<}{\alpha}\quad for every $i\in u$.
 
@@ -403,7 +396,7 @@ However, we note the following fact which is an easy consequence of \L\v o\'s Th
         Let $L$ be the language of Banach spaces.
         Here we have only one symbol in $L_{\rm rel}$, the symbol $\|\mbox-\|$ for the norm.
         The set $L_{\rm fun}$ is the same as for real vector spaces in classical logic.
-        Let ${\EuScript M}$ be a Banach space and define a continuous model as follows.
+        Let ${\EuScript M}$ be a Banach space and define a uniformly continuous model as follows.
         The interpretation of the symbols in $L_{\rm rel}\cup L_{\rm fun}$ is the natural one.
         The unit ball of is $\breve M=\{a\in \breve M: \|a\|\le1\}$.
         If $\varphi(x)$ is the atomic formulas
@@ -588,7 +581,7 @@ Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
 
 % \begin{remark}
 % In the Tarski-Vaught test for classical logic it is not necessary to require that $\breve M$ is a substructure of $N$ as this is a consequence of the test.
-% In the continuous case this is necessary by the lack of a predicate for equality.\qed
+% In the uniformly continuous case this is necessary by the lack of a predicate for equality.\qed
 %Still, we may drop this assumption when $\breve M$ is metric complete. In fact, we can apply 2 as follows. For every function symbol $f$ and every $a\in \breve M^{<\omega}$ the formula $d(fa,x)<\varepsilon$ has a witness in $\breve M$ for all $\varepsilon\in{\mathds R}^+$. Hence $f{a}\in \breve M$ follows from completeness.
 % \end{remark}
 
