@@ -104,7 +104,7 @@
   structures of the form ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$.
   The language and its interpretation are subject to the following conditions.
   \begin{itemize}
-  \item[1.] Functions may only have one of the following sorts (for any $m,n\in\omega$)
+  \item[1.] Functions only have one of the following sorts (for any $m,n\in\omega$)
   \begin{itemize}
     \item[a.] $\mathds{R}^n\to\mathds{R}$
     \item[b.] $ M^n\times{\breve M}^m\to\textrm{any of }  M,\ \breve M,\textrm{ or }\mathds{R}$
@@ -112,18 +112,19 @@
     % \item[d.] $ M^n\times{\breve M}^m\to\mathds{R}$
   \end{itemize}
   \item[2.] There is a symbol for every (total) uniformly continuous function $\mathds{R}^n\to\mathds{R}$.
-  \item[3.] The (functions that interpret the) terms of sort $ M^n\to\mathds{R}$ have \textit{bounded\/} range.
+  \item[3.] The (functions that interpret the) terms of sort $M^n\to\mathds{R}$ have \textit{bounded\/} range.
   \item[4.] Every element of $\breve M$ is the image of some term of sort $ M^n\to \breve M$.  
-  \item[5.] There is only one predicate; it has sort $\mathds{R}$ and is interpreted as $x\le0$.
+  \item[5.] There is only one unary predicate: $x\le0$, of sort $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
-We call $ M$ the \emph{unit ball\/} of ${\EuScript M}$.
-The terminology is inspired by the example below.
+We call $M$ the \emph{unit ball\/} of ${\EuScript M}$: here is where the action takes place.
+The auxiliary sort ${\breve M}$ can be ignored at a first reading.
+Is is introduced as it makes the description of many important examples less contrived, e.g.\@ Example~\ref{ex_banach} below.
 
 \begin{definition}
   We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $ M^n\times\mathds{R}^m\to\mathds{R}$ with parameters in some $A\subseteq  M$.
-  Up to equivalence, these terms have the form $f(t(x),y)$, where $t(x)$ is a tuple of terms of sort $ M^{|x|}\to\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
+  Up to equivalence, these terms have the form $f(t(x),y)$, where $t(x)$ is a tuple of terms of sort $M^{|x|}\to\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
 \end{definition}
 
 \begin{definition}
@@ -146,7 +147,7 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
   Note that 3 is satisfied because ${\rm d}$ is bounded..
 \end{example}
 
-\begin{example}[Banach spaces]
+\begin{example}[Banach spaces]\label{ex_banach}
   Given a Banach space  $V$ we define a structure ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$ as follows.
   Let $\breve M=V$ and let $M=\{a\in \breve M: \|a\|\le1\}$ be the closed unit ball of $V$.
   Besides the symbols mentioned above, $\mathds{L}$ contains a function symbol for the natural embedding ${\rm id}: M\to \breve M$.
@@ -166,18 +167,17 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
   Conditions 4 is immediate.
 \end{example}
 
-If $\varphi\in\mathds{L(A)}$ and $\varepsilon>0$ we write \emph{$\varphi_\varepsilon$\/} for the formula obtained by replacing in $\varphi$ the atomic formulas $t\le0$ with  $t-\varepsilon\le0$.
-Note that $\varphi\to\varphi_\varepsilon$.
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{$\mathds{L}$-relations}
 
-
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-elementary relations}
+Equality between elements in the unit ball is not among the formulas in $\mathds{L}$.
+For this reason, relations, rather than partial maps, are the natural tool to discuss elementarity. 
 
 Let ${\EuScript M}$ and ${\EuScript N}$ be models.
-We say that $R\subseteq M\times N$ is an \emph{$\mathds{L}$-elementary relation\/} between ${\EuScript M}$ and ${\EuScript N}$ if for every $\varphi(x)\in\mathds{L}$
+We say that $R\subseteq M\times N$ is an \emph{$\mathds{L}$-(elementary) relation\/} between ${\EuScript M}$ and ${\EuScript N}$, or on ${\EuScript M}$ if the two coicide, if for every $\varphi(x)\in\mathds{L}$
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi(b)} \hfill for every $a$ and $b$ such that $a\mathbin{R}b$.
 
@@ -185,37 +185,43 @@ Recall that, when $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$ are tuples, $a\mathbin
 
 We define an equivalence relation \emph{$(\sim_{\EuScript M})$\/} on $ M$ as follows
 
-\ceq{1.\hfill a\,\sim_{\EuScript M\!}b}{\Leftrightarrow}{t^{\EuScript M}(a)=t^{\EuScript M}(b)}\ \ for every $t(x)\in\mathds{T}( M)$,
+\ceq{1.\hfill a\,\sim_{\EuScript M\!}b}
+{\Leftrightarrow}
+{\Big({\EuScript M}\models\varphi(a)\leftrightarrow\varphi(b)}
+\ \ for every $\varphi(x)\in\mathds{L}( M)\Big)$,
 
 where $|x|=|a|=|b|=1$.
 
 \begin{lemma}
-  The relation $(\sim_{\EuScript M\!})\subseteq  M^2$ is an $\mathds{L}$-elementary relation.
-  Moreover, it is maximal among these, i.e.\@ no $\mathds{L}$-elementary relation properly contains $(\sim_{\EuScript M\!})$.
+  The relation $(\sim_{\EuScript M\!})\subseteq  M^2$ is an $\mathds{L}$-relation.
+  Moreover, it is maximal among the $\mathds{L}$-relations on ${\EuScript M}$, i.e.\@ no $\mathds{L}$-relation properly contains $(\sim_{\EuScript M\!})$.
 \end{lemma}
 
 \begin{proof}
   Assume $a\sim_{\EuScript M\!}b$, where $a=a_1,\dots,a_n$ and $b=b_1,\dots,b_n$.
   Recall that this means that $a_i\sim_{\EuScript M\!}b_i$ for all $i\in\{1,\dots,n\}$.
   Let $\Delta$ denote the diagonal relation on $ M$.
-  Note that $a_i\sim_{\EuScript M\!}b_i$ is equivalent to saying that $\Delta\cup\{(a_i,b_i)\}$ is an $\mathds{L}$-elementary relation.
-  As $\mathds{L}$-elementary relations are closed under composition $\Delta\cup\big\{(a_1,b_1),\dots,(a_n,b_n)\big\}$ is $\mathds{L}$-elementary.
+  Note that $a_i\sim_{\EuScript M\!}b_i$ is equivalent to saying that $\Delta\cup\{(a_i,b_i)\}$ is an $\mathds{L}$-relation.
+  As $\mathds{L}$-relations are closed under composition $\Delta\cup\big\{(a_1,b_1),\dots,(a_n,b_n)\big\}$ is $\mathds{L}$-elementary.
   It follows that for every $\varphi(x)\in\mathds{L}$
 
-  \ceq{2.\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi(b).}
+  \ceq{2.\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(b).}
   
-  The converse implication $(2\Rightarrow a\sim_{\EuScript M\!}b)$ is immediate.
+  This proves that $(\sim_{\EuScript M\!})$ is an $\mathds{L}$-relation.
+  Finally, maximality is immediate.
+  % Suppose $E$ and equivalence $\mathds{L}$-relation on ${\EuScript M\!}$ properly containing $(\sim_{\EuScript M\!})$.
+  % Pick $a,b\in M$ such that $a\mathbin{E}b$ and $a\not\sim_{\EuScript M\!}b$.
 \end{proof}
 
 
 \begin{lemma}
-  Let $R\subseteq  M\times N$ be total and surjective $\mathds{L}$-elementary relation.
-  Then there is a unique maximal $\mathds{L}$-elementary relation containing $R$.
-  This maximal $\mathds{L}$-elementary relation is equal to both $(\sim_{\EuScript M\!})\,R$ and $R\,(\sim_{\EuScript N\!})$.
+  Let $R\subseteq  M\times N$ be total and surjective $\mathds{L}$-relation.
+  Then there is a unique maximal $\mathds{L}$-relation containing $R$.
+  This maximal $\mathds{L}$-relation is equal to both $(\sim_{\EuScript M\!})\,R$ and $R\,(\sim_{\EuScript N\!})$.
 \end{lemma}
 \begin{proof}
-  It is immediate to verify that $(\sim_{\EuScript M\!})\,R$ is an $\mathds{L}$-elementary relation containing $R$.
-  Let $S$ be any maximal $\mathds{L}$-elementary relation containing $R$.
+  It is immediate to verify that $(\sim_{\EuScript M\!})\,R$ is an $\mathds{L}$-relation containing $R$.
+  Let $S$ be any maximal $\mathds{L}$-relation containing $R$.
   By maximality, $(\sim_{\EuScript M\!})\,S=S$.
   As $S$ is a total relation $(\sim_{\EuScript M\!})\subseteq SS^{-1}$.
   Therefore, by the lemma above, $(\sim_{\EuScript M\!})=SS^{-1}$.
@@ -224,13 +230,110 @@ where $|x|=|a|=|b|=1$.
   A similar argument proves that $S=R\,(\sim_{\EuScript N\!})$.
 \end{proof}
 
-We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective, $\mathds{L}$-elementary relations $R\subseteq  M^2$.
+We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective, $\mathds{L}$-relations $R\subseteq  M^2$.
 The choice of the symbol Aut is motivated by the lemma above.
 In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_{\EuScript M\!}}$.
 
 Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
-Therefore below we insist in working with $\mathds{L}$-elementary relations in place of $\mathds{L}$-elementary maps.
+Therefore below we insist in working with $\mathds{L}$-relations in place of $\mathds{L}$-elementary maps.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elementary substructures}
+
+An \emph{$\mathds{L}$-(elementary) embedding\/} is an $\mathds{L}$-relation that is functional, injective and total.
+
+When $\varnothing$ is an $\mathds{L}$-relation between ${\EuScript M}$ and ${\EuScript N}$ we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} and write \emph{${\EuScript M}\equiv^\mathds{L} {\EuScript N}$.}
+When $A\subseteq M\cap N$, we write \emph{${\EuScript M}\equiv_{\!A}{\EuScript N}$\/} if $\Delta_{\!A}$, the diagonal relation on $A$, is an $\mathds{L}$-relation.
+In words, we say that ${\EuScript M}$ and ${\EuScript N}$ are $\mathds{L}$-equivalent \emph{over $A$.}
+Finally, we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\subseteq{\EuScript N}$, i.e.\@ ${\EuScript M}$ is a substructure of ${\EuScript N}$, and ${\EuScript M}\equiv_M^\mathds{L}{\EuScript N}$.
+In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
+
+
+Let $A\subseteq  M$.
+The \emph{$\mathds{L}(A)$-topology\/} on $M^{|x|}$ is the topology that has, as a base of closed sets, the $\mathds{L}(A)$-definable sets.
+
+The $\mathds{L}(A)$-topology is not T$_0$.
+The following lemma asserts that to obtain a Hausdorff topology it suffices to quotient by $\equiv_A^\mathds{L}$.
+This is the so-called the Kolmogorov quotient.
+
+We need the following definitions that will be relevant in many of the proofs below.
+If $\varphi(x)\in\mathds{L}(A)$ and $\varepsilon>0$ we write \emph{${}^{\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing every occurence in $\varphi$ of the atomic formula $t(x)\le0$ with $t(x)-\varepsilon\le0$ or, less petandically, $t(x)\le\varepsilon$.
+We write \emph{${}^{\neg\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing $t(x)\le0$ with $\varepsilon\le t(x)$.
+
+Note that ${}^{\varepsilon\kern-2pt}\varphi(x),\ {}^{\neg\varepsilon\kern-2pt}\varphi(x)\in\mathds{L}(A)$.
+Moreover
+
+\ceq{\hfill\varphi(x)}{\to}{{}^{\varepsilon\kern-2pt}\varphi(x)}
+
+\ceq{\textrm{and}\hfill {}^{\neg\varepsilon\kern-2pt}\varphi(x)}{\to}{\neg\varphi(x)}
+
+The following fact is immediate.
+
+\begin{fact}
+  For every $a\in M^{|x|}$ and very $\varphi(x)\in\mathds{L}(A)$
+  
+  \ceq{\hfill{\EuScript M}\ \models\ \forall\varepsilon > 0\ {}^{\phantom{\neg}\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \varphi(a)}
+  
+  \ceq{\hfill{\EuScript M}\ \models\ \forall\varepsilon > 0\ {}^{\neg\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \neg\varphi(a)}\hfill\qedsymbol
+\end{fact}
+
+\begin{lemma}
+  If $a\nequiv_A^\mathds{L}b$ are two elements of $M^{|x|}$ then there are two formulas $\varphi(x), \psi(x)\in\mathds{L}(A)$ such that $\varphi(a)$ and $\psi(b)$ hold and $\varphi(M)\cap\psi(M)=\varnothing$.
+\end{lemma}
+
+\begin{proof}
+  Let $\varphi(x)\in\mathds{L}(A)$ be such that $\varphi(a)$ and $\neg\varphi(b)$.
+  By the fact above ${}^{\neg\varepsilon\kern-2pt}\varphi(b)$ holds for some $\varepsilon>0$.
+  Then let $\psi(x)={}^{\neg\varepsilon\kern-2pt}\varphi(x)$.
+\end{proof}
+
+\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let ${\EuScript M}\subseteq{\EuScript N}$.
+  Let $x$ be a single variable.
+  Then the following are equivalent
+  \begin{itemize}
+    \item[1.] ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$;
+    % \item[2.] $M$ is dense in $N$ w.r.t.\@ the $\mathds{L}(M)$-topology on $N$;
+    \item[2.] for every $\varphi(x)\in \mathds{L}(M)$, if $\varphi(N)\neq\varnothing$, then ${\EuScript N}\models\varphi(b)$ for some $b\in M$.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  % Equivalence 2$\Leftrightarrow$3 is tautological.
+
+  
+
+  Implication 1$\Rightarrow$2 is clear.
+  As for 2$\Rightarrow$1, we prove by induction on the syntax of $\varphi(z)$, where $z$ is a finite tuple, that
+
+  \ceq{3.\hfill {\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)} \hfill for every $a\in  M^{|z|}$
+
+  For $\varphi(z)$ atomic 3 follows from ${\EuScript M}\subseteq{\EuScript N}$.
+  Induction for the connectives $\wedge$ and $\vee$ is straightforeward.
+  Induction for the existential quantifier is as in the classical case.
+  We prove the case of the universal quantifier over the unit ball.
+  Assume that 3 holds for the formula $\psi(z,y)$ and prove that it holds for the formula $\forall y\,\psi(z,y)$.
+  The the implication $\Rightarrow$ is immediate.
+  As for $\Leftarrow$, 
+
+  \ceq{\hfill{\EuScript N}\models\neg\forall y\ \psi(a,y)}{\Rightarrow}{{\EuScript N}\models\forall y\,{}^{\neg\varepsilon}\psi(a,y)} \hfill for some $\varepsilon>0$
+
+  \ceq{}{\Rightarrow}{{\EuScript M}\models\forall y\,{}^{\neg\varepsilon\kern-.2pt}\psi(a,y)}\hfill for some $\varepsilon>0$
+
+  \ceq{}{\Rightarrow}{{\EuScript M}\models\neg\forall y\ \psi(a,y)}.
+
+  Induction for the universal quantifier of sort $\mathds{R}$ is immediate.
+\end{proof}
+
+% \begin{theorem}[Downward L\"owenheim-Skolem] For every $A\subseteq \breve N$ there is a model $A\subseteq  M\preceq \breve N$ of cardinality $\le |L(A)|$.
+% \end{theorem}
+% \begin{proof} (Needs some checking.)
+%   For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $ M$ of the required cardinality that is dense in the  $ M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
+% \end{proof}
 
 
 
@@ -261,7 +364,7 @@ Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${
 Let $F$ be an ultrafilter on $I$.
 
 \begin{definition}\label{def_ultraproduct}
-  We define a structure \emph{${\EuScript N}=\langle\breve  N,\breve N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
+  We define a structure \emph{${\EuScript N}=\langle  N,\breve N,\mathds{R}\rangle$\/} that we call the \emph{ultraproduct\/} of the models $\langle{\EuScript M}_i:i\in I\rangle$.
   \begin{itemize}
     \item[1.] $N$ comprise the sequences $\hat a: I\to\bigcup_{i\in I} M_i$ such that $\hat a\,i\in  M_i$.
     \item[2.] $\breve N$ comprise the sequences $t^{\EuScript N}(\hat a)$ of the form $t^{{\EuScript M}_i}(\hat ai)$, where $t(x)$ is a term of sort $ M^n\to \breve M$.
@@ -297,11 +400,11 @@ Finally, we prove
 
   \ceq{1.\hfill {\EuScript N}\models\varphi(\hat a, \lambda)}
   {\Rightarrow}
-  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\models\varphi_\varepsilon(\hat ai,\lambda)\big\} \ \textrm{for every }\varepsilon>0.}
+  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\models{}^{\varepsilon\kern-2pt}\varphi(\hat ai,\lambda)\big\} \ \textrm{for every }\varepsilon>0.}
 
   \ceq{2.\hfill {\EuScript N}\not\models\varphi(\hat a, \lambda)}
   {\Rightarrow}
-  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\not\models\varphi_\varepsilon(\hat ai,\lambda)\big\} \ \textrm{for some }\varepsilon>0.}
+  {u_\varepsilon\subseteq\big\{ i\in I\ :\ {\EuScript M}_i\not\models{}^{\varepsilon\kern-2pt}\varphi(\hat ai,\lambda)\big\} \ \textrm{for some }\varepsilon>0.}
 
 \end{proposition}
 \begin{proof}
@@ -315,7 +418,7 @@ Finally, we prove
 
 
   Let $\beta'\in\mathds{R}^{|t|}$ be such that
-  $\displaystyle\lim_{i\to F}\ t(\hat a\,i)=\beta'$.
+  $\displaystyle\lim_{i\to F}\ t(\hat ai)=\beta'$.
 
   Given $\varepsilon>0$, let $B_\varepsilon$ be a neighborhood of $\beta'$ such that 
   
@@ -330,6 +433,69 @@ Finally, we prove
 \end{proof}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Saturation}
+
+
+Let $p(x)\subseteq\mathds{L}(M)$, where $x$ has the sort of the unit ball.
+We say that $p(x)$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every conjunction of formulas in $p(x)$, say $\varphi(x)$, and for every $\varepsilon>0$, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models{}^{\varepsilon\kern-2pt}\varphi(a)$.
+
+The following definition is completely standard
+
+\begin{definition}
+  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models p(a)$
+  \begin{itemize}
+    \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
+    \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
+  \end{itemize}
+\end{definition}
+
+Now we prove that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one.
+First we prove the following lemma.
+
+\begin{lemma}\label{thm_compattezza}
+  Every model ${\EuScript M}$ embeds $\mathds{L}$-elementarily in a model ${\EuScript N}$ that realizes all types as in the definition above.
+\end{lemma}
+
+\begin{proof}
+  Consider the collection of types such that 1 and 2 above.
+  Assume that each type has a distinct variable and let $x$ be the concatenation of all these variables.
+  We denote by $p(x)$ the union of all these types.
+  Let $I$ be the set of formulas $\xi(x)$ that are satisfied in ${\EuScript M}$.
+  For every formula $\varphi(x)$ and every $\varepsilon>0$ define $X_{\varphi,\varepsilon}\subseteq I$ as follows
+
+  \ceq{\hfill X_{\varphi,\varepsilon}}{=}{\Big\{\xi(x)\in I\ :\ \xi(M)\ \subseteq\ {}^{\varepsilon\kern-2pt}\varphi(M)\Big\}}
+
+  Note that ${}^{\varepsilon\kern-2pt}\varphi(x)$ is satisfied in ${\EuScript M}$ if and only if $X_\varphi\neq\varnothing$ if and only if ${}^{\varepsilon\kern-2pt}\varphi(x)\in X_{\varphi,\varepsilon}$.
+  Moreover 
+  
+  \ceq{\hfill X_{\varphi\wedge\psi,\ \min\{\varepsilon,\delta\}}}{\subseteq}{X_{\varphi,\varepsilon}\cap X_{\psi,\delta}.}
+  
+  Then, as $p(x)$ is finitely consistent, the set 
+  
+  \ceq{\hfill B}{=}{\big\{X_{\varphi,\varepsilon}\,:\,\varphi(x)\in p\textrm{ and }\varepsilon>0\big\}}
+  
+  has the finite intersection property.
+  Extend $B$ to an ultrafilter $F$ on $I$.
+  Let ${\EuScript N}$ be the ultrapower of ${\EuScript M}$ over $F$.
+  That is, the model with unit ball $N=M^I$ obtained as in Definition~\ref{def_ultraproduct}.
+
+  For every formula $\xi(x)\in I$ choose some $a_\xi\in  M^{|x|}$ such that $\xi(a_\xi)$.
+  We are confusing $( M^I)^{|x|}$ with $( M^{|x|})^I$ as it simplifies notation.
+  Let $\hat a\in ( M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
+  We claim that ${\EuScript N}\models\varphi(\hat a)$ for every $\varphi(x)\in p$.
+  By Lemma~\ref{}, it suffices to prove that ${\EuScript N}\models{}^{\varepsilon\kern-2pt}\varphi(\hat a)$ for every $\varepsilon>0$.
+  Suppose not, then by \L\v o\'s Theorem (with $\varepsilon$ for $\lambda$), for some $\varepsilon'>0$ the set 
+
+  \ceq{\hfill\Big\{\xi(x)\in I}{ :}{ {\EuScript M}\not\models{}^{\varepsilon+\varepsilon'\kern-2pt}\varphi(a_\xi)\Big\}}
+
+  belongs to $F$.
+  This is a contradiction because $B\subseteq F$ contains the set $X_{\varphi,\varepsilon+\varepsilon'}$. 
+\end{proof}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -349,7 +515,7 @@ However, we note the following fact which is an easy consequence of \L\v o\'s Th
 
 \begin{fact}
   Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
-  Then $R$ is an $\mathds{L}$-elementary relation.\qed
+  Then $R$ is an $\mathds{L}$-relation.\qed
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%
@@ -439,72 +605,6 @@ Beware that $p(x)$ denotes just a set of formulas, the expression $p(x)\le0$ den
 
 We write \emph{${\EuScript M}\models p(a)\le0$} if ${\EuScript M}\models\varphi(a)\le0$ for every $\varphi(x)\in p$.
 We write \emph{${\EuScript M}\models \exists x\ p(x)\le0$} if ${\EuScript M}\models p(a)\le0$ for some $a\in  M^{|x|}$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Elementary substructures}
-
-An \emph{elementary embedding\/} is an $\mathds{L}$-elementary relation that is functional, injective and total.
-
-When $\varnothing$ is an $\mathds{L}$-elementary relation between $ M$ and $\breve N$, the unit balls of ${\EuScript M}$ and ${\EuScript N}$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{elementarily equivalent\/} and write \emph{${\EuScript M}\equiv {\EuScript N}$.}
-We write $I_A$ for the diagonal relation on a set $A$.
-We write \emph{${\EuScript M}\equiv_A{\EuScript N}$\/} if $I_A$ is an $\mathds{L}$-elementary relation.
-In words, we say that ${\EuScript M}$ and ${\EuScript N}$ are $\mathds{L}$-elementary equivalent \emph{over $A$.}
-Finally, we write \emph{${\EuScript M}\preceq{\EuScript N}$\/} if ${\EuScript M}\equiv_\breve M{\EuScript N}$ and ${\EuScript M}\subseteq{\EuScript N}$, that is ${\EuScript M}$ is a substructure of ${\EuScript N}$ in the classical sense.
-In words, we say that ${\EuScript M}$ is an \emph{elementary substructure\/} of ${\EuScript N}$.
-
-
-Let $A\subseteq  M$.
-The \emph{limit $A$-topology\/} on $ M^{|x|}$ is the initial topology with respect to the functions that interpret the formulas in $L(A)$.
-The sets $\big\{a\in  M^{|x|}:\, \varphi^{\EuScript M}(a)\le0\big\}$, as $\varphi(x)$ ranges over $L(A)$, form a base of closed sets for the limit $A$-topology.
-Note that the sets $\big\{a\in  M^{|x|}:\, \varphi^{\EuScript M}(a)<0\big\}$ are a base of open sets of the same topology.
-
-The limit $A$-topology is a completely regular topology, almost by definition.
-Typically, it is not T$_0$, but its Kolmogorov quotient is Hausdorff.
-
-\begin{proposition}[Tarski-Vaught test]\label{prop_Tarski-Vaught} Let ${\EuScript M}\subseteq{\EuScript M}$.
-  Let $x$ be a single variable.
-  Then the following are equivalent
-  \begin{itemize}
-    \item[1.] ${\EuScript M}\preceq{\EuScript N}$;
-    \item[2.] $ M$ is dense in $\breve N$ w.r.t.\@ the $ M\mbox{-}$limit topology on $\breve N$;
-    \item[3.] for every $\varphi(x)\in L( M)$, if $\varphi(\breve N)<0$ is non empty, then ${\EuScript N}\models\varphi(b)<0$ for some $b\in  M$.
-  \end{itemize}
-\end{proposition}
-\begin{proof}
-  Equivalence 2$\Leftrightarrow$3 is tautological.
-  Implication 1$\Rightarrow$2 is clear.
-  To prove 3$\Rightarrow$1 we prove by induction on the syntax of $\varphi(z)$, where $z$ is a finite tuple, that for every $\alpha\in{\mathds R}$
-
-  \ceq{\hfill {\EuScript M}\models\varphi(a)<\alpha}{\Leftrightarrow}{{\EuScript N}\models\varphi(a)<\alpha} \hfill for every $a\in  M^{|z|}$
-
-  We use the equivalence above as induction hypothesis.
-  As $ M$ is a substructure of $\breve N$, this equivalence holds for atomic $\varphi(z)$.
-  We leave the case of the propositional connectives to the reader and consider only the case of the infimum quantifier.
-
-  \ceq{\hfill \breve N\,\models\,\smash{\bigwedge_x}\varphi(x,a)<\alpha}{\Leftrightarrow}{} there is a $b\in \breve N$ such that ${\EuScript N}\models\varphi(b,a)<\alpha$
-
-  \ceq{a.}{\Leftrightarrow}{} there is a $b\in  M^{|x|}$ such that ${\EuScript N}\models\varphi(b,a)<\alpha$
-
-  \ceq{b.}{\Leftrightarrow}{ M\,\models\,\bigwedge_x\varphi(x)<\alpha.}
-
-  Implication $\Rightarrow$ in \textit{a} uses the assumption 3 and the equivalence in \textit{b} uses the induction hypothesis.
-\end{proof}
-
-% \begin{remark}
-% In the Tarski-Vaught test for classical logic it is not necessary to require that $ M$ is a substructure of $\breve N$ as this is a consequence of the test.
-% In the uniformly continuous case this is necessary by the lack of a predicate for equality.\qed
-%Still, we may drop this assumption when $ M$ is metric complete. In fact, we can apply 2 as follows. For every function symbol $f$ and every $a\in  M^{<\omega}$ the formula $d(fa,x)<\varepsilon$ has a witness in $ M$ for all $\varepsilon\in{\mathds R}^+$. Hence $f{a}\in  M$ follows from completeness.
-% \end{remark}
-
-\begin{theorem}[Downward L\"owenheim-Skolem] For every $A\subseteq \breve N$ there is a model $A\subseteq  M\preceq \breve N$ of cardinality $\le |L(A)|$.
-\end{theorem}
-\begin{proof} (\breve Needs some checking.)
-  For every set $A$ there is a base for the $A\mbox{-}$topology that has cardinality $\le |L(A)|$. A set $ M$ of the required cardinality that is dense in the  $ M\mbox{-}$topology is obtained as in the classical downward L\"owenheim-Skolem theorem.
-\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -601,8 +701,8 @@ We write $p(x)={\rm tp}(a/A)$ for $p(x)=\big\{\psi(x)\in L(A):{\EuScript U}\mode
 We write ${\rm tp}(a)$ when $A=\varnothing$.
 
 \begin{fact}
-  Let $R\subseteq{\EuScript U}^2$ be an $\mathds{L}$-elementary relation of cardinality $<\kappa$.
-  Then there is a total and surjective $\mathds{L}$-elementary relation $S\subseteq{\EuScript U}^2$ containing $R$.
+  Let $R\subseteq{\EuScript U}^2$ be an $\mathds{L}$-relation of cardinality $<\kappa$.
+  Then there is a total and surjective $\mathds{L}$-relation $S\subseteq{\EuScript U}^2$ containing $R$.
 \end{fact}
 
 \begin{proof}
@@ -612,7 +712,7 @@ We write ${\rm tp}(a)$ when $A=\varnothing$.
   Let $\bar a=\langle a_i:i<\lambda\rangle$ be an enumeration of all tuples of length $|a|$ such that $aRa_i$.
   As $\kappa$ is inaccessible, $\lambda<\kappa$.
   Let $b\in{\EuScript U}$.
-  It suffices to prove that there is a $c$ such that $R\cup\{\langle b,c\rangle\}$ is an $\mathds{L}$-elementary relation.
+  It suffices to prove that there is a $c$ such that $R\cup\{\langle b,c\rangle\}$ is an $\mathds{L}$-relation.
   Let $p(x,z)={\rm tp}(b,a/A)$ and let
   
   \ceq{\hfill q(x,\bar z)}{=}{\bigcup_{i<\lambda}p(x,z_i).}
