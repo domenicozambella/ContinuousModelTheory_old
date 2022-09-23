@@ -118,7 +118,7 @@
   \end{itemize}
 \end{definition}
 
-We call $M$ the \emph{unit ball\/} of ${\EuScript M}$: here is where the action takes place.
+We call $M$ the \emph{unit ball\/} of ${\EuScript M}$: there is where the action takes place.
 The auxiliary sort ${\breve M}$ can be ignored at a first reading.
 Is is introduced as it makes the description of many important examples less contrived, e.g.\@ Example~\ref{ex_banach} below.
 
@@ -139,12 +139,11 @@ Is is introduced as it makes the description of many important examples less con
 Note that in iii of the definition above, definability is intended with respect to the full first order language.
 In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
 
-
-\begin{example}[Metric spaces of finite diameter]
-  Given a metric space $M,{\rm d}$ of finite diameter we define a structure ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$ as follows.
-  Set $M=\breve M$ and let ${\rm id}: M\to \breve M$ be the identical isomorphism (so, $\breve M$ is irrelevant in this example).
+\begin{example}[Metric spaces of finite diameter]\label{ex_metric}
+  Given a metric space $(M,{\rm d})$ of finite diameter we define a structure ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$ as follows.
+  Set $M=\breve M$ and let ${\rm id}: M\to \breve M$ be the identical isomorphism (hence $\breve M$ is pleonastic in this case).
   The function symbols are ${\rm id}$ and ${\rm d}$.
-  Note that 3 is satisfied because ${\rm d}$ is bounded..
+  Note that 3 is satisfied because ${\rm d}$ is bounded.
 \end{example}
 
 \begin{example}[Banach spaces]\label{ex_banach}
@@ -171,13 +170,13 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-relations}
+\section{$\mathds{L}$-relations}\label{L-relations}
 
 Equality between elements in the unit ball is not among the formulas in $\mathds{L}$.
 For this reason, relations, rather than partial maps, are the natural tool to discuss elementarity. 
 
 Let ${\EuScript M}$ and ${\EuScript N}$ be models.
-We say that $R\subseteq M\times N$ is an \emph{$\mathds{L}$-(elementary) relation\/} between ${\EuScript M}$ and ${\EuScript N}$, or on ${\EuScript M}$ if the two coicide, if for every $\varphi(x)\in\mathds{L}$
+We say that $R\subseteq M\times N$ is an \emph{$\mathds{L}$-(elementary) relation\/} between ${\EuScript M}$ and ${\EuScript N}$ (or on ${\EuScript M}$ if the two coicide) if for every $\varphi(x)\in\mathds{L}$
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi(b)} \hfill for every $a$ and $b$ such that $a\mathbin{R}b$.
 
@@ -275,7 +274,7 @@ Moreover
 
 The following fact is immediate.
 
-\begin{fact}
+\begin{fact}\label{fact_immediate}
   For every $a\in M^{|x|}$ and very $\varphi(x)\in\mathds{L}(A)$
   
   \ceq{\hfill{\EuScript M}\ \models\ \forall\varepsilon > 0\ {}^{\phantom{\neg}\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \varphi(a)}
@@ -392,8 +391,7 @@ The following fact is easily proved by induction on the syntax.
 
 Finally, we prove 
 
-
-\begin{proposition}[\L\v{o}\'s Theorem]
+\begin{proposition}[\L\v{o}\'s Theorem]\label{thm_Los}
   Let ${\EuScript N}$ be as above and let $\varphi(x,y)\in\mathds{L}(A)$.
   Let $\hat a\in N^{|x|}$.
   Then there is a function $u_{-}:\mathds{R}^+\to F$ such that for every $\lambda\in\mathds{R}^{|y|}$
@@ -457,7 +455,7 @@ The following definition is completely standard
 Now we prove that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one.
 First we prove the following lemma.
 
-\begin{lemma}\label{thm_compattezza}
+\begin{lemma}\label{lem_compattezza}
   Every model ${\EuScript M}$ embeds $\mathds{L}$-elementarily in a model ${\EuScript N}$ that realizes all types as in the definition above.
 \end{lemma}
 
@@ -483,19 +481,55 @@ First we prove the following lemma.
   Extend $B$ to an ultrafilter $F$ on $I$.
   Let ${\EuScript N}$ be the ultrapower of ${\EuScript M}$ over $F$.
   That is, the model with unit ball $N=M^I$ obtained as in Definition~\ref{def_ultraproduct}.
+  By \L\v o\'s Theorem, ${\EuScript M}$ embeds elementariy into ${\EuScript N}$.
+  It remains to prove that ${\EuScript N}$ realizes $p(x)$.
 
   For every formula $\xi(x)\in I$ choose some $a_\xi\in  M^{|x|}$ such that $\xi(a_\xi)$.
-  We are confusing $( M^I)^{|x|}$ with $( M^{|x|})^I$ as it simplifies notation.
-  Let $\hat a\in ( M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
+  %For legibility we conflate $(M^I)^{|x|}$ with $(M^{|x|})^I$.
+  Let $\hat a\in (M^{|x|})^I$ be the function that maps $\xi(x)\mapsto a_\xi$.
   We claim that ${\EuScript N}\models\varphi(\hat a)$ for every $\varphi(x)\in p$.
-  By Lemma~\ref{}, it suffices to prove that ${\EuScript N}\models{}^{\varepsilon\kern-2pt}\varphi(\hat a)$ for every $\varepsilon>0$.
-  Suppose not, then by \L\v o\'s Theorem (with $\varepsilon$ for $\lambda$), for some $\varepsilon'>0$ the set 
+  By Fact~\ref{fact_immediate}, it suffices to prove that ${\EuScript N}\models{}^{\varepsilon\kern-2pt}\varphi(\hat a)$ for every $\varepsilon>0$.
+  Suppose not, then by \L\v o\'s Theorem (Proposition~\ref{thm_Los} with $\varepsilon$ for $\lambda$), for some $\varepsilon'>0$ the set 
 
-  \ceq{\hfill\Big\{\xi(x)\in I}{ :}{ {\EuScript M}\not\models{}^{\varepsilon+\varepsilon'\kern-2pt}\varphi(a_\xi)\Big\}}
+  \ceq{\hfill Y_{\varphi,\varepsilon+\varepsilon'}}{=}{\Big\{\xi(x)\in I\ :\ {\EuScript M}\not\models{}^{\varepsilon+\varepsilon'\kern-2pt}\varphi(a_\xi)\Big\}}
 
   belongs to $F$.
-  This is a contradiction because $B\subseteq F$ contains the set $X_{\varphi,\varepsilon+\varepsilon'}$. 
+  This is a contradiction because $B\subseteq F$ contains the set $X_{\varphi,\varepsilon+\varepsilon'}\subseteq Y_{\varphi,\varepsilon+\varepsilon'}$. 
 \end{proof}
+
+\begin{corollary}\label{thm_compattezza}
+  Every model ${\EuScript M}$ is an $\mathds{L}$-elementary subtructure of some saturated model ${\EuScript N}$ (possibly of inaccessible cardinality).
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Complete models}
+
+Fix a model ${\EuScript M}$ with unit ball $M$.
+Let ${\EuScript U}$ be a saturated extension of ${\EuScript M}$ with unit ball $U$.
+Let $a\in U$.
+We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if the are a finite set $A\subseteq M$ and an infinite set $A\subseteq B\subseteq M$ such that for every infinite $A\subseteq C\subseteq B$
+
+\ceq{\hfill p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+
+The following proposition is immediate consequence of the definition of the relation $(\sim_{\EuScript U})$, see Section~\ref{L-relations}.
+
+\begin{proposition}
+  Suppose that $a'\equiv^\mathds{L}_Ma$ are isolated in the limit by ${\EuScript M}$.
+  Then $a'\sim_{\EuScript U}a$.
+\end{proposition}
+
+Finally we define completeness which is a form of saturation whose strength lies between $\omega$-$\mathds{L}$-saturation and $\omega_1$-$\mathds{L}$-saturation.
+
+\begin{definition}
+  A model ${\EuScript M}$ is complete if it contains all points isolated in the limit.
+  The completion of ${\EuScript M}$ is the minimal model ${\EuScript M}'$ that contains all points isolated by ${\EuScript M}'$.
+  It is easy to verify that ${\EuScript M}'$ is complete.
+\end{definition}
+
+It is easy to verify that if ${\EuScript M}$ is the metric space in Example~\ref{ex_metric}, then the completeness of ${\EuScript M}$ implies the Cauchy-completeness of $(M,\,{\rm d})$.
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -503,7 +537,7 @@ First we prove the following lemma.
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 
-The following corollary of  \L\v{o}\'s Theorem is identical to its classical counterpart.
+The following corollary of \L\v{o}\'s Theorem is identical to its classical counterpart.
 
 \begin{corollary}
   For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
