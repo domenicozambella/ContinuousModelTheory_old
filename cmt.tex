@@ -100,7 +100,7 @@
 
 \begin{definition}\label{def_1}
   In these notes we deal with 3-sorted%
-  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle  M_1,\dots, M_n,\breve M_1,\dots,\breve M_{n'},\mathds{R}\rangle$. The generalization is straightforeward.} 
+  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle  M_1,\dots, M_n,\breve M_1,\dots,\breve M_{n'},\mathds{R}\rangle$. The generalization is straightforward.}
   structures of the form ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$.
   The language and its interpretation are subject to the following conditions.
   \begin{itemize}
@@ -112,10 +112,12 @@
     % \item[d.] $ M^n\times{\breve M}^m\to\mathds{R}$
   \end{itemize}
   \item[2.] There is a symbol for every (total) uniformly continuous function $\mathds{R}^n\to\mathds{R}$.
-  \item[3.] The (functions that interpret the) terms of sort $M^n\to\mathds{R}$ have \textit{bounded\/} range.
+  \item[3.] The interpretation of functions symbolsof sort $M^n\to\mathds{R}$ have \textit{bounded\/} range.
   \item[4.] Every element of $\breve M$ is the image of some term of sort $ M^n\to \breve M$.  
   \item[5.] There is only one unary predicate: $x\le0$, of sort $\mathds{R}$.
   \end{itemize}
+  Below, when the sort $\breve M$ is not displaied in the definitions, we assume that $M=\breve M$ and that the language contains the identity map ${\rm id}: M\to \breve M$.
+  In other words, that $\breve M$ is redundant.
 \end{definition}
 
 We call $M$ the \emph{unit ball\/} of ${\EuScript M}$: there is where the action takes place.
@@ -125,10 +127,15 @@ Is is introduced as it makes the description of many important examples less con
 \begin{definition}
   We write \emph{$\mathds{T}(A)$\/} for the set of terms of sort $ M^n\times\mathds{R}^m\to\mathds{R}$ with parameters in some $A\subseteq  M$.
   Up to equivalence, these terms have the form $f(t(x),y)$, where $t(x)$ is a tuple of terms of sort $M^{|x|}\to\mathds{R}$, and $f$ is a function $\mathds{R}^{|t|+|y|}\to\mathds{R}$.
+  Note that the terms $\mathds{T}(A)$ have bounded range.
 \end{definition}
 
+Now define a subset of the set first order formulas with parameters in a set $A\subseteq M$.
+Note that we do not allow negation, nor quantification over $\breve M$.
+Also, equality among elements of $M$ is excluded.
+
 \begin{definition}
-  We write \emph{$\mathds{L}(A)$\/} for the set of formulas obtained inductively as follows
+  We define the set of formulas o \emph{$\mathds{L}(A)$\/} inductively as follows
   \begin{itemize}
   \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le0$ for every term $t\in\mathds{T}(A)$.
   \item[ii.] It is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $ M$.
@@ -136,15 +143,8 @@ Is is introduced as it makes the description of many important examples less con
   \end{itemize}
 \end{definition}
 
-Note that in iii of the definition above, definability is intended with respect to the full first order language.
+Note that in iii of the definition above, definability is intended with respect to the full first order language of ${\EuScript M}$ which is strictly larger than $\mathds{L}(A)$.
 In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
-
-\begin{example}[Metric spaces of finite diameter]\label{ex_metric}
-  Given a metric space $(M,{\rm d})$ of finite diameter we define a structure ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$ as follows.
-  Set $M=\breve M$ and let ${\rm id}: M\to \breve M$ be the identical isomorphism (hence $\breve M$ is pleonastic in this case).
-  The function symbols are ${\rm id}$ and ${\rm d}$.
-  Note that 3 is satisfied because ${\rm d}$ is bounded.
-\end{example}
 
 \begin{example}[Banach spaces]\label{ex_banach}
   Given a Banach space  $V$ we define a structure ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$ as follows.
@@ -156,14 +156,21 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 
   Terms of sort $M^{|x|}\to\mathds{R}$ have the form $f(t(x))$ where $f$ is a uniformly continuous function and
 
-  \ceq{\hfill t(x)}{=}{\Big\|\sum_{i=1}^{|x|}\sum_{j=1}^m\lambda_{i,j} x_i\,\Big\|.}
+  \ceq{\hfill t(x)}{=}{\Big\|\sum_{i=1}^{|x|}\lambda_i x_i\,\Big\|.}
 
   Therefore, as for all $a\in M^{|x|}$
 
-  \ceq{\hfill t^{{\EuScript M}}(a)}{\le}{\sum_{i=1}^{|x|}\sum_{j=1}^m|\lambda_{i,j}|,}
+  \ceq{\hfill t^{{\EuScript M}}(a)}{\le}{\sum_{i=1}^{|x|}|\lambda_i|,}
 
   condition 3 of Definition~\ref{def_1} is  satisfied.
   Conditions 4 is immediate.
+\end{example}
+
+
+\begin{example}[Metric spaces of finite diameter]\label{ex_metric}
+  Given a metric space $(M,{\rm d})$ of finite diameter we define a structure ${\EuScript M}=\langle  M,\mathds{R}\rangle$ as follows.
+  The only function symbols is ${\rm d}$.
+  Note that 3 is satisfied because ${\rm d}$ is bounded.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%
@@ -172,8 +179,18 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 %%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-relations}\label{L-relations}
 
-Equality between elements in the unit ball is not among the formulas in $\mathds{L}$.
-For this reason, relations, rather than partial maps, are the natural tool to discuss elementarity. 
+Equality between elements in the unit ball is not among the formulas that Definition~\ref{def_1} enumerates in $\mathds{L}$.
+Logic without equality is not uncommon in mathematics.
+For instance, in the theory of integration equality beween functions is not significative notion.
+Of course, there is a quick remedy to this.
+One can work with equivalence classes of functions that coincide almost everywhere.
+In this way, equality regains it meaning.
+But this has some drawbacks.
+In fact, this makes impossible to speak of the value that a function takes at a point and there are situations when this is inconvenient.
+
+In our general setting, for similar reasons, structures that contain irrelevat copies of equivalent objects may offer a better grasp than terse quotiented structures.
+
+Without equality, relations, rather than partial maps, are the natural tool to discuss elementarity. 
 
 Let ${\EuScript M}$ and ${\EuScript N}$ be models.
 We say that $R\subseteq M\times N$ is an \emph{$\mathds{L}$-(elementary) relation\/} between ${\EuScript M}$ and ${\EuScript N}$ (or on ${\EuScript M}$ if the two coicide) if for every $\varphi(x)\in\mathds{L}$
@@ -190,6 +207,17 @@ We define an equivalence relation \emph{$(\sim_{\EuScript M})$\/} on $ M$ as fol
 \ \ for every $\varphi(x)\in\mathds{L}( M)\Big)$,
 
 where $|x|=|a|=|b|=1$.
+Note that this relation would be trivial had we included  in $\mathds{L}(M)$ equality between elements of $M$.
+
+The following proposition is easily proved by induction on the syntax. 
+
+\begin{proposition}
+  The following are equivalent for every $a,b\in M$.
+  \begin{itemize}
+    \item[1.] $a\equiv_{\EuScript M}b$;
+    \item[2.] ${\EuScript M}\models t(a)=t(b)$ for every $t(x)\in\mathds{T}(M)$, with $|x|=1$.\hfill\qedsymbol
+  \end{itemize}
+\end{proposition}
 
 \begin{lemma}
   The relation $(\sim_{\EuScript M\!})\subseteq  M^2$ is an $\mathds{L}$-relation.
@@ -216,7 +244,7 @@ where $|x|=|a|=|b|=1$.
 \begin{lemma}
   Let $R\subseteq  M\times N$ be total and surjective $\mathds{L}$-relation.
   Then there is a unique maximal $\mathds{L}$-relation containing $R$.
-  This maximal $\mathds{L}$-relation is equal to both $(\sim_{\EuScript M\!})\,R$ and $R\,(\sim_{\EuScript N\!})$.
+  This maximal $\mathds{L}$-relation is equal to both $(\sim_{\EuScript M\!})\,R$ and $R\,(\sim_{\EuScript N\!})$, where justapposition of relations stands for composition.
 \end{lemma}
 \begin{proof}
   It is immediate to verify that $(\sim_{\EuScript M\!})\,R$ is an $\mathds{L}$-relation containing $R$.
@@ -233,9 +261,12 @@ We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective
 The choice of the symbol Aut is motivated by the lemma above.
 In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_{\EuScript M\!}}$.
 
-Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
-Therefore below we insist in working with $\mathds{L}$-relations in place of $\mathds{L}$-elementary maps.
+For every tuple $t(x)=t_1(x),\dots,t_n(x)$ of terms in $\mathds{T}(M)$, with $|x|=1$, we define a pseudometric ${\rm d}_t$ on $M$ as follows
 
+\ceq{\hfill\emph{${\rm d}_t(a,b)$}}{=}{\max_{i=1,\dots,n}\big\{|t_i^{\EuScript M}(a)-t_i^{\EuScript M}(b)|\big\}}
+
+% Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
+% Therefore below we insist in working with $\mathds{L}$-relations in place of $\mathds{L}$-elementary maps.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -266,7 +297,7 @@ If $\varphi(x)\in\mathds{L}(A)$ and $\varepsilon>0$ we write \emph{${}^{\varepsi
 We write \emph{${}^{\neg\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing $t(x)\le0$ with $\varepsilon\le t(x)$.
 
 Note that ${}^{\varepsilon\kern-2pt}\varphi(x),\ {}^{\neg\varepsilon\kern-2pt}\varphi(x)\in\mathds{L}(A)$.
-Moreover
+Moreover, the positivity of the formulas in $\mathds{L}(A)$ ensures that
 
 \ceq{\hfill\varphi(x)}{\to}{{}^{\varepsilon\kern-2pt}\varphi(x)}
 
@@ -279,7 +310,7 @@ The following fact is immediate.
   
   \ceq{\hfill{\EuScript M}\ \models\ \forall\varepsilon > 0\ {}^{\phantom{\neg}\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \varphi(a)}
   
-  \ceq{\hfill{\EuScript M}\ \models\ \forall\varepsilon > 0\ {}^{\neg\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \neg\varphi(a)}\hfill\qedsymbol
+  \ceq{\hfill{\EuScript M}\ \models\ \exists\varepsilon > 0\ {}^{\neg\varepsilon\kern-2pt}\varphi(a)}{\Leftrightarrow}{{\EuScript M}\ \models\ \neg\varphi(a)}\hfill\qedsymbol
 \end{fact}
 
 \begin{lemma}
@@ -312,12 +343,12 @@ The following fact is immediate.
   \ceq{3.\hfill {\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)} \hfill for every $a\in  M^{|z|}$
 
   For $\varphi(z)$ atomic 3 follows from ${\EuScript M}\subseteq{\EuScript N}$.
-  Induction for the connectives $\wedge$ and $\vee$ is straightforeward.
+  Induction for the connectives $\wedge$ and $\vee$ is straightforward.
   Induction for the existential quantifier is as in the classical case.
   We prove the case of the universal quantifier over the unit ball.
   Assume that 3 holds for the formula $\psi(z,y)$ and prove that it holds for the formula $\forall y\,\psi(z,y)$.
   The the implication $\Rightarrow$ is immediate.
-  As for $\Leftarrow$, 
+  To prove $\Leftarrow$, note that
 
   \ceq{\hfill{\EuScript N}\models\neg\forall y\ \psi(a,y)}{\Rightarrow}{{\EuScript N}\models\forall y\,{}^{\neg\varepsilon}\psi(a,y)} \hfill for some $\varepsilon>0$
 
@@ -427,7 +458,7 @@ Finally, we prove
 
   \ceq{\hfill u_\varepsilon}{=}{\big\{i\ :\  t(\hat a i)\in B_\varepsilon\big\}.}
 
-  The rest of the inductive proof is straightforeward and is left to the reader.
+  The rest of the inductive proof is straightforward and is left to the reader.
 \end{proof}
 
 
@@ -501,56 +532,227 @@ First we prove the following lemma.
   Every model ${\EuScript M}$ is an $\mathds{L}$-elementary subtructure of some saturated model ${\EuScript N}$ (possibly of inaccessible cardinality).
 \end{corollary}
 
+We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
+The unit ball of  ${\EuScript U}$ is denoted by \emph{$U$.}
+The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
+Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
+
 %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Complete models}
 
-Fix a model ${\EuScript M}$ with unit ball $M$.
-Let ${\EuScript U}$ be a saturated extension of ${\EuScript M}$ with unit ball $U$.
-Let $a\in U$.
-We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if the are a finite set $A\subseteq M$ and an infinite set $A\subseteq B\subseteq M$ such that for every infinite $A\subseteq C\subseteq B$
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-\ceq{\hfill p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+Let ${\EuScript M}$ be a model.
+Let $a\in U^{|x|}$.
+We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if 
 
-The following proposition is immediate consequence of the definition of the relation $(\sim_{\EuScript U})$, see Section~\ref{L-relations}.
+\ceq{\hfill p_{\restriction M}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+
+or, in other words, if $a'\equiv^\mathds{L}_Ma$ implies $a'\sim_{\EuScript U}a$.
+
+Note that the isolation of a tuple is equivalent to the isolation of its components.
+This follows from the following obvious identity
+
+\ceq{\hfill {\rm tp}_\mathds{L}(a,b/U)}
+{=}
+{{\rm tp}_\mathds{L}(a/U)\ \cup\ {\rm tp}_\mathds{L}(b/U).}
+
+Now we characterize isolation in the limit in topological terms.
 
 \begin{proposition}
-  Suppose that $a'\equiv^\mathds{L}_Ma$ are isolated in the limit by ${\EuScript M}$.
-  Then $a'\sim_{\EuScript U}a$.
+  The following are equivalent for every $a\in U$
+  \begin{itemize}
+    \item[1.] ${\EuScript M}$ isolates $a$ in the limit;
+    \item[2.] there is a net of elements of $M$ that converges to $a$. 
+  \end{itemize}
 \end{proposition}
 
-Finally we define completeness which is a form of saturation whose strength lies between $\omega$-$\mathds{L}$-saturation and $\omega_1$-$\mathds{L}$-saturation.
+\begin{proof}
+  Let $p(x)={\rm tp}_\mathds{L}(a/U)$.
+
+  (1$\Rightarrow$2) \ 
+  The set of metrics ${\rm d}_t$ defined in Section~\ref{L-relations} is a directed set under the relation of refinement.
+  For every such metric ${\rm d}_t$ and every $\varepsilon>0$  we have that 
+
+  \ceq{\hfill p_{\restriction M}(x)}{\vdash}{{\rm d}_t(x,a)\le\varepsilon}
+
+  By compactness, for some $\varphi(x)\in\mathds{L}(M)$
+
+  \ceq{\hfill \varphi(x)}{\rightarrow}{{\rm d}_t(x,a)\le\varepsilon}
+
+  Therefore there is some $b_t\in M$ such that ${\rm d}_t(b_t,a)\le\varepsilon$.
+  This defines a net of elements of $M$ that, by definition, converges to $a$.
+
+  (2$\Rightarrow$1) \ 
+  Let $I$ be a directed set.
+  Let $\langle b_i:i\in I\rangle$ be a net of elements of $M$ that converges to $a$.
+  Then, $c\sim_{\EuScript U} a$ for every  $c\models p_{\restriction M}(x)$.
+  Hence $p_{\restriction M}(x)\vdash p(x)$.
+\end{proof}
 
 \begin{definition}
-  A model ${\EuScript M}$ is complete if it contains all points isolated in the limit.
-  The completion of ${\EuScript M}$ is the minimal model ${\EuScript M}'$ that contains all points isolated by ${\EuScript M}'$.
-  It is easy to verify that ${\EuScript M}'$ is complete.
+  A model ${\EuScript M}$ is complete if it contains, up to $(\sim_{\EuScript U})$-equivalence, all points it isolates in the limit.
 \end{definition}
 
-It is easy to verify that if ${\EuScript M}$ is the metric space in Example~\ref{ex_metric}, then the completeness of ${\EuScript M}$ implies the Cauchy-completeness of $(M,\,{\rm d})$.
+Let \emph{$\bar M$\/} be the set points that are isolated in the limit by ${\EuScript M}$.
+We denote by \emph{$\bar{\EuScript M}$\/} the (unique) substructure of ${\EuScript U}$ with unit ball $\bar M$.
+We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
 
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proposition}
+  $\bar{\EuScript M}$ is a complete model.
+\end{proposition}
 
-The following corollary of \L\v{o}\'s Theorem is identical to its classical counterpart.
+\begin{proof}
+  We first prove that $\bar{\EuScript M}$ is complete.
+  Suppose $a\in U$ is isolated in the limit by $\bar{\EuScript M}$, that is
 
-\begin{corollary}
-  For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
-  Then there is an $\mathds{L}$-elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
-\end{corollary}
+  \ceq{\hfill p'(x,b)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+  
+  for some $b\in\bar M^{|z|}$ and $p'(x,z)\subseteq\mathds{L}(M)$ such that $p_{\restriction\bar M}(x)=p'(x,b)$.  
+  Let $q(z)={\rm tp}_\mathds{L}(b/U)$, then
 
-Note also that, unlike the classical ultraproduct, here we do not quotient the structure obtained in Definition~\ref{def_ultraproduct}.
-However, we note the following fact which is an easy consequence of \L\v o\'s Theorem.
+  \ceq{\hfill q_{\restriction M}(z)\ \cup\ p'(x,z)}{\vdash}{p(x)}
+  
+  Finally, $a\in\bar M$ follows because
+
+  \ceq{\hfill p_{\restriction M}(x)}{\vdash}{\exists z\ \big[q_{\restriction M}(z)\ \cup\ p'(x,z)\big].}
+  
+  Now, we that $\bar{\EuScript M}\preceq_\mathds{L}{\EuScript U}$ using the Tarski-Vaught test.
+  Suppose $\exists x\,\varphi(x,b)$ holds in ${\EuScript U}$, where $\varphi(x,z)\in\mathds{L}(M)$ and $b\in\bar M^{|z|}$.
+
+  T.b.c.
+\end{proof}
+
+% %%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Let ${\EuScript M}$ be a substructure of ${\EuScript U}$.
+% Let $a\in U^{|x|}$.
+% We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if there is a formula $\varphi(x)\in\mathds{L}(M)$ and some infinite sets $B_1,\dots,B_n\subseteq M$ such that
+
+% \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+
+% for every $C$ that has infinite intersection with all $B_1,\dots,B_n$.
+
+
+
+% The following proposition is an immediate consequence of the definition of the relation $(\sim_{\EuScript U})$ in Section~\ref{L-relations}.
+
+% \begin{proposition}
+%   Suppose that $a'\equiv^\mathds{L}_Ma$ are both isolated in the limit by ${\EuScript M}$.
+%   Then $a'\sim_{\EuScript U}a$.
+% \end{proposition}
+
+% Finally we define completeness as a weak form of saturation.
+% It is easy to verify that if ${\EuScript M}$ is the metric space in Example~\ref{ex_metric}, then the completeness of ${\EuScript M}$ is equivalent to the Cauchy-completeness of $(M,{\rm d})$.
+
+% The proof of the following proposition is tedious but straightforward.
+
+% \begin{proposition}
+%   $\bar{\EuScript M}$ is complete.
+% \end{proposition}
+
+% \begin{proof}
+%   Let $a\in U$ be isolated in the limit by $\bar{\EuScript M}$.
+%   For some formula $\varphi(x)\in\mathds{L}(\bar M)$ and some infinite set $B\subseteq\bar M$ we have that for every infinite $C\subseteq B$
+
+%   \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+
+%   Let $b$ be a tuple that enumerates $B$ and the parameters of  $\varphi(x)$.
+%   We rewrite the condition above with the dependence from $b$ displaied
+
+%   \ceq{\hfill\big\{\varphi(x,b)\big\}\ \cup\ p_{\restriction C}(x,b)}{\vdash}{p(x,b).}
+
+%   where $p(x,z)={\rm tp}_\mathds{L}(a,b/U)$.
+%   As $b$ is isolated in the limit by ${\EuScript M}$, there is a 
+
+%   \ceq{\hfill\big\{\psi(z)\big\}\ \cup\ q_{\restriction C}(z)}{\vdash}{q(z)={\rm tp}_\mathds{L}(b/U)}
+% \end{proof}
+
+% Without additional hypothesis we cannot guarantee that $\bar{\EuScript M}$ is a model.
+
+% \begin{theorem}
+%   $\bar{\EuScript M}$ is an existentially closed substructure of ${\EuScript U}$.
+% \end{theorem}
+
+% \begin{proposition}
+%   $\bar{\EuScript M}\preceq^\mathds{L}{\EuScript U}$.
+% \end{proposition}
+
+% \begin{proof}
+%   Apply the Tarski-Vaught Test~\ref{prop_Tarski-Vaught}.
+%   Let $\psi(x,z)\in\mathds{L}$ and $a\in\bar M^{|z|}$ be such that $\psi(x,a)$ is consistent.
+% Let $p(z)={\rm tp}_\mathds{L}(a/U)$.
+% For some $B\subseteq M$ and some formula $\varphi(z)\in\mathds{L}(M)$ 
+
+%   \ceq{\hfill\big\{\varphi(z)\big\}\ \cup\ p_{\restriction C}(z)}{\vdash}{\exists x\ \psi(x, z)}
+% \end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Homogeneity}
+Recall that $\kappa$,  the cardinality of ${\EuScript U}$, is an inaccessible cardinal.
 
 \begin{fact}
-  Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
-  Then $R$ is an $\mathds{L}$-relation.\qed
+  Let $R\subseteq{\EuScript U}^2$ be an $\mathds{L}$-relation of cardinality $<\kappa$.
+  Then there is a total and surjective $\mathds{L}$-relation $S\subseteq{\EuScript U}^2$ containing $R$.
 \end{fact}
+
+\begin{proof}
+  We apply the usual back-and-forth construction with a pinch of extra caution.
+  Let $a$ be an enumeration of the domain of $R$.
+  Let $\bar a=\langle a_i:i<\lambda\rangle$ be an enumeration of all tuples of length $|a|$ such that $aRa_i$.
+  As $\kappa$ is inaccessible, $\lambda<\kappa$.
+  Let $b\in U$.
+  It suffices to prove that there is a $c$ such that $R\cup\{\langle b,c\rangle\}$ is an $\mathds{L}$-relation.
+  Let $p(x,z)={\rm tp}(b,a)$ and let
+  
+  \ceq{\hfill q(x,\bar z)}{=}{\bigcup_{i<\lambda}p(x,z_i).}
+
+  We claim that $q(x,\bar a)$ is finitely consistent.
+  A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})$.
+  As $\psi(b,a)$ and $a_{i_1},\dots,a_{i_n}\,R\;a,\dots,a$, we conclude that the condition $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})$ is satisfied.
+  The existence of the required element $c$ follows from saturation.
+\end{proof}
+
+\begin{corollary}
+  Let $A\subseteq{\EuScript U}$ have cardinality $<\kappa$.
+  Let $p(x)={\rm tp}_\mathds{L}(a/A)$, where $a\in{\EuScript U}^{|x|}$ is a tuple of length $|x|<\kappa$.
+  Then
+
+  \ceq{\hfill p({\EuScript U})}{=}{\big\{b : bRa,\ R\in{\rm Aut}({\EuScript U}/A)\big\}}
+\end{corollary}
+
+
+% The following corollary of \L\v{o}\'s Theorem is identical to its classical counterpart.
+
+% \begin{corollary}
+%   For every model ${\EuScript M}$ and every ultrafilter $F$ on $I$, an infinite set, let ${\EuScript N}$ be corresponding ultrapower of ${\EuScript M}$.
+%   Then there is an $\mathds{L}$-elementary embedding of ${\EuScript M}$ in ${\EuScript N}$.\qed
+% \end{corollary}
+
+% Note also that, unlike the classical ultraproduct, here we do not quotient the structure obtained in Definition~\ref{def_ultraproduct}.
+% However, we note the following fact which is an easy consequence of \L\v o\'s Theorem.
+
+% \begin{fact}
+%   Let $R\subseteq N^2$ be the set of those pairs $(\hat a, \hat b)$ such that $\{i\in I:\hat ai=\hat bi\}\in F$.
+%   Then $R$ is an $\mathds{L}$-relation.\qed
+% \end{fact}
+
+\end{document}
+
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
