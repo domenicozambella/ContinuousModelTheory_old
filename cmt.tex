@@ -102,7 +102,7 @@
   In these notes we deal with 3-sorted%
   \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle  M_1,\dots, M_n,\breve M_1,\dots,\breve M_{n'},\mathds{R}\rangle$. The generalization is straightforward.}
   structures of the form ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$.
-  The language and its interpretation are subject to the following conditions.
+  The language $L$ and its interpretation are subject to the following conditions.
   \begin{itemize}
   \item[1.] Functions only have one of the following sorts (for any $m,n\in\omega$)
   \begin{itemize}
@@ -135,15 +135,15 @@ Note that we do not allow negation, nor quantification over $\breve M$.
 Also, equality among elements of $M$ is excluded.
 
 \begin{definition}
-  We define the set of formulas o \emph{$\mathds{L}(A)$\/} inductively as follows
+  We define the set of formulas \emph{$\mathds{L}(A)$\/} inductively
   \begin{itemize}
   \item[i.] $\mathds{L}(A)$ contains the atomic formula $t\le0$ for every term $t\in\mathds{T}(A)$.
-  \item[ii.] It is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $ M$.
+  \item[ii.] It is closed under the Boolean connectives $\bot$, $\top$, $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $ M$.
   \item[iii.] It is closed under the quantifier $\forall$ of sort $\mathds{R}$ relativized to any definable subset of $\mathds{R}$.
   \end{itemize}
 \end{definition}
 
-Note that in iii of the definition above, definability is intended with respect to the full first order language of ${\EuScript M}$ which is strictly larger than $\mathds{L}(A)$.
+Note that in iii of the definition above, definability is intended with respect to $L(M)$, the full first order language of ${\EuScript M}$, which is strictly larger than $\mathds{L}(A)$.
 In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\varepsilon{>}0\;\varphi(x,\varepsilon)\in\mathds{L}(A)$.
 
 \begin{example}[Banach spaces]\label{ex_banach}
@@ -261,10 +261,14 @@ We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective
 The choice of the symbol Aut is motivated by the lemma above.
 In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_{\EuScript M\!}}$.
 
-For every tuple $t(x)=t_1(x),\dots,t_n(x)$ of terms in $\mathds{T}(M)$, with $|x|=1$, we define a pseudometric ${\rm d}_t$ on $M$ as follows
+\begin{definition}\label{def_uniformity}
+  Let $x$ be a single variable.
+  Let $t(x)\in\mathds{T}(M)^{<\omega}$ be a finte tuple of terms, say $t(x)=t_1(x),\dots,t_n(x)$.
+  We define a pseudometric ${\rm d}_t(\mbox{-},\mbox{-})$ on $M$ as follows
 
-\ceq{\hfill\emph{${\rm d}_t(a,b)$}}{=}{\max_{i=1,\dots,n}\big\{|t_i^{\EuScript M}(a)-t_i^{\EuScript M}(b)|\big\}}
+  \ceq{\hfill\emph{${\rm d}_t(a,b)$}}{=}{\max_{i=1,\dots,n}\big\{|t_i^{\EuScript M}(a)-t_i^{\EuScript M}(b)|\big\}}
 
+\end{definition}
 % Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
 % Therefore below we insist in working with $\mathds{L}$-relations in place of $\mathds{L}$-elementary maps.
 
@@ -293,10 +297,10 @@ The following lemma asserts that to obtain a Hausdorff topology it suffices to q
 This is the so-called the Kolmogorov quotient.
 
 We need the following definitions that will be relevant in many of the proofs below.
-If $\varphi(x)\in\mathds{L}(A)$ and $\varepsilon>0$ we write \emph{${}^{\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing every occurence in $\varphi$ of the atomic formula $t(x)\le0$ with $t(x)-\varepsilon\le0$ or, less petandically, $t(x)\le\varepsilon$.
+If $\varphi(x)\in L(A)$ and $\varepsilon>0$ we write \emph{${}^{\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing every occurence in $\varphi$ of the atomic formula $t(x)\le0$ with $t(x)-\varepsilon\le0$ or, less pedantically, $t(x)\le\varepsilon$.
 We write \emph{${}^{\neg\varepsilon\kern-2pt}\varphi(x)$\/} for the formula obtained by replacing $t(x)\le0$ with $\varepsilon\le t(x)$.
 
-Note that ${}^{\varepsilon\kern-2pt}\varphi(x),\ {}^{\neg\varepsilon\kern-2pt}\varphi(x)\in\mathds{L}(A)$.
+Note that, if $\varphi(x)\in\mathds{L}(A)$ then ${}^{\varepsilon\kern-2pt}\varphi(x),\ {}^{\neg\varepsilon\kern-2pt}\varphi(x)\in\mathds{L}(A)$.
 Moreover, the positivity of the formulas in $\mathds{L}(A)$ ensures that
 
 \ceq{\hfill\varphi(x)}{\to}{{}^{\varepsilon\kern-2pt}\varphi(x)}
@@ -533,12 +537,27 @@ First we prove the following lemma.
 \end{corollary}
 
 We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
-The unit ball of  ${\EuScript U}$ is denoted by \emph{$U$.}
+The unit ball of ${\EuScript U}$ is denoted by \emph{$U$.}
 The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
 Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
 
+
+\begin{lemma}\label{lem_compactness_implication}
+  Let $p(x)\subseteq\mathds{L}(A)$, where $A\subseteq U$ has small cardinality.
+  Let $\varphi(x)\in\mathds{L}(U)$ be such that $p(x)\rightarrow\varphi(x)$.
+  Then for every $\varepsilon>0$ there is a formula $\psi(x)$, conjunction of formulas in $p(x)$, such that $\psi(x)\rightarrow\neg{}^{\neg\varepsilon\kern-2pt}\varphi(x)$.
+\end{lemma}
+
+\begin{proof}
+  Let $\varepsilon>0$ be given.
+  Suppose that $\psi(x)\wedge{}^{\neg\varepsilon\kern-2pt}\varphi(x)$ is consistent for every $\psi(x)$ that is conjunction of formulas in $p(x)$.
+  By saturation there is a realization of $p(x)\cup{}^{\neg\varepsilon\kern-2pt}\varphi(x)$.
+  By Fact~\ref{fact_immediate}, $p(x)\wedge\neg\varphi(x)$ is also consistent.
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -548,25 +567,25 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 
 Let ${\EuScript M}$ be a model.
 Let $a\in U^{|x|}$.
-We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if 
+We say that ${\EuScript M}$ \emph{defines $a$ in the limit\/} if 
 
-\ceq{\hfill p_{\restriction M}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+\ceq{\hfill p_{\restriction M}(x)}{\rightarrow}{p(x):={\rm tp}_\mathds{L}(a/U)}
 
 or, in other words, if $a'\equiv^\mathds{L}_Ma$ implies $a'\sim_{\EuScript U}a$.
 
-Note that the isolation of a tuple is equivalent to the isolation of its components.
+Note that the definability of a tuple in the limit is equivalent to the definability of its components.
 This follows from the following obvious identity
 
 \ceq{\hfill {\rm tp}_\mathds{L}(a,b/U)}
 {=}
 {{\rm tp}_\mathds{L}(a/U)\ \cup\ {\rm tp}_\mathds{L}(b/U).}
 
-Now we characterize isolation in the limit in topological terms.
+Now we characterize definability in the limit in topological terms.
 
 \begin{proposition}
   The following are equivalent for every $a\in U$
   \begin{itemize}
-    \item[1.] ${\EuScript M}$ isolates $a$ in the limit;
+    \item[1.] ${\EuScript M}$ defines $a$ in the limit;
     \item[2.] there is a net of elements of $M$ that converges to $a$. 
   \end{itemize}
 \end{proposition}
@@ -575,58 +594,55 @@ Now we characterize isolation in the limit in topological terms.
   Let $p(x)={\rm tp}_\mathds{L}(a/U)$.
 
   (1$\Rightarrow$2) \ 
-  The set of metrics ${\rm d}_t$ defined in Section~\ref{L-relations} is a directed set under the relation of refinement.
-  For every such metric ${\rm d}_t$ and every $\varepsilon>0$  we have that 
+  The set of metrics ${\rm d}_t$ in Definion~\ref{def_uniformity} is a directed set under the relation of refinement.
+  For every such metric ${\rm d}_t$ we have that
 
-  \ceq{\hfill p_{\restriction M}(x)}{\vdash}{{\rm d}_t(x,a)\le\varepsilon}
+  \ceq{\hfill p_{\restriction M}(x)}{\rightarrow}{{\rm d}_t(x,a)\le0}
 
-  By compactness, for some $\varphi(x)\in\mathds{L}(M)$
+  By Lemma~\ref{lem_compactness_implication}, for every $\varepsilon>0$ there some consistent $\varphi(x)\in p$ such that
 
-  \ceq{\hfill \varphi(x)}{\rightarrow}{{\rm d}_t(x,a)\le\varepsilon}
+  \ceq{\hfill \varphi(x)}{\rightarrow}{{\rm d}_t(x,a)<\varepsilon}
 
-  Therefore there is some $b_t\in M$ such that ${\rm d}_t(b_t,a)\le\varepsilon$.
-  This defines a net of elements of $M$ that, by definition, converges to $a$.
+  As $\varphi(x)$ is consistent in ${\EuScript M}$, there is some $b_{t,\varepsilon}\in M$ such that ${\rm d}_t(b_{t,\varepsilon},a)<\varepsilon$.
+  This defines a net of elements of $M$ that converges to $a$.
 
   (2$\Rightarrow$1) \ 
   Let $I$ be a directed set.
   Let $\langle b_i:i\in I\rangle$ be a net of elements of $M$ that converges to $a$.
-  Then, $c\sim_{\EuScript U} a$ for every  $c\models p_{\restriction M}(x)$.
-  Hence $p_{\restriction M}(x)\vdash p(x)$.
+  Then, $c\sim_{\EuScript U} a$ for every $c\models p_{\restriction M}(x)$.
+  Hence $p_{\restriction M}(x)\rightarrow p(x)$.
 \end{proof}
 
 \begin{definition}
-  A model ${\EuScript M}$ is complete if it contains, up to $(\sim_{\EuScript U})$-equivalence, all points it isolates in the limit.
+  A model ${\EuScript M}$ is complete if it contains, up to $(\sim_{\EuScript U})$-equivalence, all points it defines in the limit.
 \end{definition}
 
-Let \emph{$\bar M$\/} be the set points that are isolated in the limit by ${\EuScript M}$.
+Let \emph{$\bar M$\/} be the set points that are defined in the limit by ${\EuScript M}$.
 We denote by \emph{$\bar{\EuScript M}$\/} the (unique) substructure of ${\EuScript U}$ with unit ball $\bar M$.
-We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
+We call  $\bar{\EuScript M}$ the \emph{completion\/} of ${\EuScript M}$.
 
 \begin{proposition}
-  $\bar{\EuScript M}$ is a complete model.
+  $\bar{\EuScript M}$ is complete.
 \end{proposition}
 
 \begin{proof}
-  We first prove that $\bar{\EuScript M}$ is complete.
-  Suppose $a\in U$ is isolated in the limit by $\bar{\EuScript M}$, that is
+  Suppose $a\in U$ is defined in the limit by $\bar{\EuScript M}$, that is
 
-  \ceq{\hfill p'(x,b)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+  \ceq{\hfill p'(x,b)}{\rightarrow}{p(x):={\rm tp}_\mathds{L}(a/U)}
   
   for some $b\in\bar M^{|z|}$ and $p'(x,z)\subseteq\mathds{L}(M)$ such that $p_{\restriction\bar M}(x)=p'(x,b)$.  
   Let $q(z)={\rm tp}_\mathds{L}(b/U)$, then
 
-  \ceq{\hfill q_{\restriction M}(z)\ \cup\ p'(x,z)}{\vdash}{p(x)}
+  \ceq{\hfill q_{\restriction M}(z)\ \cup\ p'(x,z)}{\rightarrow}{p(x)}
   
   Finally, $a\in\bar M$ follows because
 
-  \ceq{\hfill p_{\restriction M}(x)}{\vdash}{\exists z\ \big[q_{\restriction M}(z)\ \cup\ p'(x,z)\big].}
-  
-  Now, we that $\bar{\EuScript M}\preceq_\mathds{L}{\EuScript U}$ using the Tarski-Vaught test.
-  Suppose $\exists x\,\varphi(x,b)$ holds in ${\EuScript U}$, where $\varphi(x,z)\in\mathds{L}(M)$ and $b\in\bar M^{|z|}$.
-
-  T.b.c.
+  \ceq{\hfill p_{\restriction M}(x)}{\rightarrow}{\exists z\ \big[q_{\restriction M}(z)\ \cup\ p'(x,z)\big].}
 \end{proof}
 
+\begin{question}
+  $\bar{\EuScript M}\preceq_\mathds{L}{\EuScript U}$ \ ?
+\end{question}
 % %%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%
@@ -635,9 +651,9 @@ We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
 
 % Let ${\EuScript M}$ be a substructure of ${\EuScript U}$.
 % Let $a\in U^{|x|}$.
-% We say that ${\EuScript M}$ \emph{isolates $a$ in the limit\/} if there is a formula $\varphi(x)\in\mathds{L}(M)$ and some infinite sets $B_1,\dots,B_n\subseteq M$ such that
+% We say that ${\EuScript M}$ \emph{defines $a$ in the limit\/} if there is a formula $\varphi(x)\in\mathds{L}(M)$ and some infinite sets $B_1,\dots,B_n\subseteq M$ such that
 
-% \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+% \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\rightarrow}{p(x):={\rm tp}_\mathds{L}(a/U)}
 
 % for every $C$ that has infinite intersection with all $B_1,\dots,B_n$.
 
@@ -646,7 +662,7 @@ We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
 % The following proposition is an immediate consequence of the definition of the relation $(\sim_{\EuScript U})$ in Section~\ref{L-relations}.
 
 % \begin{proposition}
-%   Suppose that $a'\equiv^\mathds{L}_Ma$ are both isolated in the limit by ${\EuScript M}$.
+%   Suppose that $a'\equiv^\mathds{L}_Ma$ are both defined in the limit by ${\EuScript M}$.
 %   Then $a'\sim_{\EuScript U}a$.
 % \end{proposition}
 
@@ -660,20 +676,20 @@ We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
 % \end{proposition}
 
 % \begin{proof}
-%   Let $a\in U$ be isolated in the limit by $\bar{\EuScript M}$.
+%   Let $a\in U$ be defined in the limit by $\bar{\EuScript M}$.
 %   For some formula $\varphi(x)\in\mathds{L}(\bar M)$ and some infinite set $B\subseteq\bar M$ we have that for every infinite $C\subseteq B$
 
-%   \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\vdash}{p(x):={\rm tp}_\mathds{L}(a/U)}
+%   \ceq{\hfill\big\{\varphi(x)\big\}\ \cup\ p_{\restriction C}(x)}{\rightarrow}{p(x):={\rm tp}_\mathds{L}(a/U)}
 
 %   Let $b$ be a tuple that enumerates $B$ and the parameters of  $\varphi(x)$.
 %   We rewrite the condition above with the dependence from $b$ displaied
 
-%   \ceq{\hfill\big\{\varphi(x,b)\big\}\ \cup\ p_{\restriction C}(x,b)}{\vdash}{p(x,b).}
+%   \ceq{\hfill\big\{\varphi(x,b)\big\}\ \cup\ p_{\restriction C}(x,b)}{\rightarrow}{p(x,b).}
 
 %   where $p(x,z)={\rm tp}_\mathds{L}(a,b/U)$.
-%   As $b$ is isolated in the limit by ${\EuScript M}$, there is a 
+%   As $b$ is defined in the limit by ${\EuScript M}$, there is a 
 
-%   \ceq{\hfill\big\{\psi(z)\big\}\ \cup\ q_{\restriction C}(z)}{\vdash}{q(z)={\rm tp}_\mathds{L}(b/U)}
+%   \ceq{\hfill\big\{\psi(z)\big\}\ \cup\ q_{\restriction C}(z)}{\rightarrow}{q(z)={\rm tp}_\mathds{L}(b/U)}
 % \end{proof}
 
 % Without additional hypothesis we cannot guarantee that $\bar{\EuScript M}$ is a model.
@@ -692,7 +708,7 @@ We call  $\bar{\EuScript M}$ this the \emph{completion\/} of ${\EuScript M}$.
 % Let $p(z)={\rm tp}_\mathds{L}(a/U)$.
 % For some $B\subseteq M$ and some formula $\varphi(z)\in\mathds{L}(M)$ 
 
-%   \ceq{\hfill\big\{\varphi(z)\big\}\ \cup\ p_{\restriction C}(z)}{\vdash}{\exists x\ \psi(x, z)}
+%   \ceq{\hfill\big\{\varphi(z)\big\}\ \cup\ p_{\restriction C}(z)}{\rightarrow}{\exists x\ \psi(x, z)}
 % \end{proof}
 
 
