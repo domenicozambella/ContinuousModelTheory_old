@@ -621,6 +621,13 @@ Let \emph{$\bar M$\/} be the set points that are defined in the limit by ${\EuSc
 We denote by \emph{$\bar{\EuScript M}$\/} the (unique) substructure of ${\EuScript U}$ with unit ball $\bar M$.
 We call  $\bar{\EuScript M}$ the \emph{completion\/} of ${\EuScript M}$.
 
+We say that a model ${\EuScript N}$ is $M$-$\mathds{L}$-saturated if it realizes all constistent types $p(x)\subseteq\mathds{L}(M)$.
+The following proposition is easy to prove.
+
+\begin{proposition}
+  $\bar{\EuScript M}$ is the intersection of all $M$-$\mathds{L}$-saturated models.
+\end{proposition}
+
 \begin{proposition}
   $\bar{\EuScript M}$ is complete.
 \end{proposition}
@@ -737,10 +744,10 @@ Recall that $\kappa$,  the cardinality of ${\EuScript U}$, is an inaccessible ca
   
   \ceq{\hfill q(x,\bar z)}{=}{\bigcup_{i<\lambda}p(x,z_i).}
 
-  We claim that $q(x,\bar a)$ is finitely consistent.
+  We claim that $q(x,\bar a)$ is a finitely consistent type.
   A finite conjunction of formulas in $q(x,\bar a)$ has the form $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})$.
   As $\psi(b,a)$ and $a_{i_1},\dots,a_{i_n}\,R\;a,\dots,a$, we conclude that the condition $\psi(x,a_{i_1})\wedge\dots\wedge\psi(x,a_{i_n})$ is satisfied.
-  The existence of the required element $c$ follows from saturation.
+  The existence of the required element $c$ follows by saturation.
 \end{proof}
 
 \begin{corollary}
