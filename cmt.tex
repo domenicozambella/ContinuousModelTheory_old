@@ -98,10 +98,165 @@
 
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
+
+
+\begin{definition}\label{def_0}
+  We will work with $L$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $R$ is fixed.
+  We are given, for each $n$,  a set of definable subsets of $R^n$ that form a base of closed sets of a compact Hausdorff topology.
+
+  (?) We require that the terms of sort $M^n\times R^m\to R$  are interpreted in functions $t^{\EuScript M}(a,\mbox{-}):R^m\to R$ that are continuous uniformly in $a\in M^n$. 
+\end{definition}
+
+Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
+When we say that such a space is Hausdorff, we mean that its Kolmogorof quotient is Hausdorff.
+  
+There may be no saturated structure among those described in Definition~\ref{def_0}.
+As a remedy, we restrict the notion of saturation to formulas in $\mathds{L}$, as defined below.
+In a nutshell, formulas in $\mathds{L}$ do not contain existential quantifiers of sort $R$.
+Moreover, there are some \textit{critical\/} function symbols that may not occur under the scope of negation.
+Intuitively, the function symbols are divided in three classes according to their sort
+  \begin{itemize}
+    \item[1.] $M^n\times R^m\to M$
+    \item[2.] $M^0\times R^m\to R$
+    \item[3.] $M^{n+1}\times R^m\to R$
+  \end{itemize}
+Functions in the latter group are critical and will be dealt with caution.
+
+Below, \emph{$\mathds{T}$\/} denotes the set of the terms of sort  $M^n\times R^m\to R$.
+
 \begin{definition}\label{def_1}
-  In these notes we deal with 3-sorted%
-  \footnote{In some examples it may be more natural to use $(n+n'+1)$-sorted structures ${\EuScript M}=\langle  M_1,\dots, M_n,\breve M_1,\dots,\breve M_{n'},\mathds{R}\rangle$. The generalization is straightforward.}
-  structures of the form ${\EuScript M}=\langle  M,\breve M,\mathds{R}\rangle$.
+  The set \emph{$\mathds{L}$\/} is a subset of $L$ that is defined inductively as follows
+  \begin{itemize}
+  \item[i.] it contains all formulas without quantifiers of sort $R$ and function of sort $M^{n+1}\times R^m\to R$; 
+  \item[ii.] it contains the formulas $t(y;z)\in C$ where $C\subseteq R^n$ is a basic closed set and $t(y;z)\in\mathds{T}^n$;
+  \item[iii.] it is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$;
+  \item[iv.] it is closed under the quantifier $\forall$ of sort $R$.
+  \end{itemize}
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ultrapowers}\label{ultrapws}
+
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+
+We recall some standard definitions about $F$-limits.
+Let $I$ be a non-empty set.
+Let $F$ be a filter on $I$.
+If $f:I\to R^m$ and $\lambda\in R^m$ we write
+
+\hfil$\displaystyle F\mbox{-}\lim_{i}f(i)=\lambda$
+
+if $f^{-1}[A]\in F$ for every $A\subseteq R^m$ that is a neighborhood of $\lambda$.
+Such a $\lambda$ is unique and, when $F$ is an ultrafilter, it always exists (because $R^n$ is compact).
+
+Below we introduce ultrapowers of a suitable form.
+To keep the notation as clean as possible we make two simplifications: (1) we discuss only ultraproducts; (2) we do not consider formulas containing equality among elements of $M$, so we need not take any quotient.
+
+Let $I$ be an infinite set.
+Let $F$ be an ultrafilter on $I$.
+Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
+
+\begin{definition}\label{def_ultraproduct}
+  We define a structure \emph{${\EuScript N}=\langle  N,R\rangle$\/} that we call the \emph{ultrapower\/} of ${\EuScript M}$.
+  \begin{itemize}
+    \item[1.] $N=M^I$ that is, it is the set of sequences $\hat a: I\to M$.
+    \item[2.] If $f$ is a function of sort $ M^n\times R^m\to  M$ then $f^{\EuScript N}(\hat a;\alpha)$ is the sequence 
+    $\langle f^{\EuScript M}\big(\hat ai;\alpha\big):i\in I\rangle$.
+    \item[4.] If $f$ is a function of sort $ M^n\times R^m\to R$ then 
+    $$
+    f^{\EuScript N}\big(\hat a;\alpha\big)\ =\ F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai;\alpha\big).
+    $$ 
+  \end{itemize}
+\end{definition}
+
+The following fact is easily proved by induction on the syntax.
+
+\begin{fact}
+  If no function symbol of sort $M^{n+1}\times R^m\to R$ occurs in   $t(y;z)$ then 
+  
+  \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{\langle t^{\EuScript M}\big(\hat ai;\alpha\big): i\in I\rangle.}\hfill\qedsymbol
+\end{fact}
+
+If true, the proof of the following fact is tedious.
+
+\begin{fact}
+  For every term $t(y;z)$ of sort $M^n\times R^m\to R$  
+  
+  \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}\hfill\qedsymbol
+\end{fact}
+
+For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ has been obtained replacing each atomic formulas $t\in C$ occurring in $\varphi$ by $t\in D$ for some closed neighborhood of $C$.
+Note that, if such atomic formulas do not occur in $\varphi$, then $\varphi>\varphi$.
+
+Finally, we prove 
+
+\begin{proposition}[\L\v{o}\'s Theorem]\label{thm_Los}
+  Assume $|I|\ge$ the weight of the topology on $R$.
+  Let ${\EuScript N}$ be as above and let $\varphi(x;y)\in\mathds{L}$.
+  Then for all $\hat a\in N^{|x|}$ and all $\alpha\in R^{|y|}$
+
+  \ceq{\hfill {\EuScript N}\models\varphi(\hat a; \alpha)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+
+\end{proposition}
+\begin{proof}
+  First note that if $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1} then, after absorbing $\alpha$ into le language, the proposition reduces to the classical \L\v{o}\'s Theorem.
+
+  Now, suppose that $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)$ is a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
+  
+  Assume ${\EuScript N}\models t(\hat a,\alpha)\in C$.
+  If $D$ a closed neighborhood of $C$ then $D$ is also a neighborhood of $t^{\EuScript N}(\hat a,\alpha)$.
+  Hence, by the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\in D\big\}\in F$.
+
+  Vice versa, assume ${\EuScript N}\models t(\hat a,\alpha)\notin C$.
+  By normality, $t^{\EuScript N}(\hat a,\alpha)\notin D$ for $D$ a closed neigboorhood of $C$. 
+  By the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\notin D\big\}\in F$.
+  Then $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\in D\big\}\notin F$.
+
+  As for induction, only the existential quantifier require some work. Assume for simplicity that $I=\omega$.
+  inductively we assume that
+
+  \ceq{\hfill {\EuScript N}\models\varphi(\hat a,\hat b\,; \alpha)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+  
+
+  We need to prove 
+
+  \ceq{\hfill {\EuScript N}\models\exists y\,\varphi(\hat a,y\,; \alpha)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+
+The implication $\Rightarrow$ is clear.
+For the converse, assume the r.h.s.
+For every $i\in I$ pick a formula $\varphi_i$ so that $\varphi_i>\varphi_j>\varphi$ for for every $i<j$ and
+
+\ceq{\hfill {\EuScript M}}
+{\models}
+{\bigwedge_{i\in I}\varphi_i(x,y\,;\alpha)\ \rightarrow\ \varphi(x,y\,;\alpha).}
+
+For every $j\in I$ there is a sequence $\hat b_j$ such that 
+
+\ceq{\hfill }
+{ } 
+{\big\{ i\in I\ :\ {\EuScript M}\models\varphi_j(\hat ai,\hat b_ji\,;\alpha)\big\}\in F.}
+
+As $\varphi_j(x,y\,;\alpha)\rightarrow\varphi_{j'}(x,y\,;\alpha)$ for $j>j'$, the diagonal sequence $\hat d=\langle \hat b_ii :i\in I\rangle$ satisfies ${\EuScript N}\models\varphi(\hat a,\hat d\,; \alpha)$.
+\end{proof}
+
+
+\end{document}
+
+
+\clearpage
+
   The language $L$ and its interpretation are subject to the following conditions.
   \begin{itemize}
   \item[1.] Functions only have one of the following sorts (for any $m,n\in\omega$)
@@ -118,7 +273,7 @@
   \end{itemize}
   Below, when the sort $\breve M$ is not displaied in the definitions, we assume that $M=\breve M$ and that the language contains the identity map ${\rm id}: M\to \breve M$.
   In other words, that $\breve M$ is redundant.
-\end{definition}
+
 
 We call $M$ the \emph{unit ball\/} of ${\EuScript M}$: there is where the action takes place.
 The auxiliary sort ${\breve M}$ can be ignored at a first reading.
