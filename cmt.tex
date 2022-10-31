@@ -106,11 +106,12 @@
   We assume that all compact sets of $R^n$ are definable in $L$.
   We require that the functions symbols of sort $M^n\times R^m\to R$  are interpreted in functions such that
   \begin{itemize}
-    \item[1?] $f^{\EuScript M}(a,\mbox{-}):R^m\to R$ is continuous uniformly in $a\in M^n$, that is,
+    \item[1.] $f^{\EuScript M}(\mbox{-},\alpha):M^n\to R$ is bounded (i.e.\@ its range is contained in a compact set) for every $\alpha\in R^m$.
+ 
+    \item[2??] $f^{\EuScript M}(a,\mbox{-}):R^m\to R$ is continuous uniformly in $a\in M^n$, that is (?),
     
     \hfil$\displaystyle\bigcap_{a\in M^n}f^{\EuScript M}(a,\mbox{-})^{-1}(O)$ is open for every open $O\subseteq R$.
 
-    \item[2?] $f^{\EuScript M}(\mbox{-},\alpha):M^n\to R$ is bounded (i.e.\@ its range is contained in a compact set) for every $\alpha\in R^m$.
   \end{itemize}
 \end{definition}
 
@@ -122,11 +123,10 @@ As a remedy, we restrict the notion of saturation to formulas in a set $\mathds{
 In a nutshell, formulas in $\mathds{L}$ do not contain existential quantifiers of sort $R$.
 Moreover, we require that some \textit{critical\/} function symbols only occour only inside compact relations and never under the scope of negation.
 
-Intuitively, the function symbols are divided in three classes according to their sort
+Intuitively, the function symbols are divided in two classes according to their sort
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
-    \item[2.] $M^0\times R^m\to R$
-    \item[3.] $M^{n+1}\times R^m\to R$
+    \item[2.] $M^n\times R^m\to R$
   \end{itemize}
 Functions in the latter group are the \textit{critical\/} one and will be dealt with caution.
 
@@ -136,7 +136,7 @@ Definition~\ref{def_0} ensures that for all $t(x;y)\in\mathds{T}$ the range of t
 \begin{definition}\label{def_1}
   Formulas in \emph{$\mathds{L}$\/} are defined inductively as follows
   \begin{itemize}
-  \item[i.] $\mathds{L}$ contains all formulas without quantifiers of sort $R$ and function of sort $M^{n+1}\times R^m\to R$; 
+  \item[i.] $\mathds{L}$ contains all formulas without quantifiers of sort $R$ and functions of sort $M^n\times R^m\to R$; 
   \item[ii.] $\mathds{L}$ contains formulas of the form $t(y;z)\in C$ where $C\subseteq R^n$ is compact and $t(y;z)\in\mathds{T}^n$;
   \item[iii.] $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$;
   \item[iv.] $\mathds{L}$ is closed under the quantifier $\forall$ of sort $R$.
@@ -185,13 +185,13 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
 \end{definition}
 
 \begin{fact}
-  The structure ${\EuScript N}$ satisfies the conditions of Definition~\ref{def_0}.
+  The structure ${\EuScript N}$ satisfies the conditions of Definition~\ref{def_0}. (Didin't check condition 2.)
 \end{fact}
 
 The following fact is easily proved by induction on the syntax.
 
 \begin{fact}
-  If no function symbol of sort $M^{n+1}\times R^m\to R$ occurs in   $t(y;z)$ then 
+  If no function symbol of sort $M^n\times R^m\to R$ occurs in   $t(y;z)$ then 
   
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{\langle t^{\EuScript M}\big(\hat ai;\alpha\big): i\in I\rangle.}\hfill\qedsymbol
 \end{fact}
