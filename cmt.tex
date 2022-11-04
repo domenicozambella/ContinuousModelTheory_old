@@ -101,34 +101,33 @@
 
 
 \begin{definition}\label{def_0}
-  We will work with $L$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $R$ is fixed.
-  Moreover, we are given for each $n$ a Hausdorff topology on $R^n$.
-  We assume that all compact sets of $R^n$ are definable in $L$.
-  We require that the functions symbols of sort $M^n\times R^m\to R$  are interpreted in functions such that
+  As $M$ ranges over the $L$-structures, we consider the class of $L'$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $R$ is some fixed structure.
+  We are given a Hausdorff topology on $R$ and assume that there is a relation symbol in $L'$ for every subset of $R^n$ that is compact in the product topology.
+  We require that the function symbols of sort $M^n\times R^m\to R$  are interpreted in functions such that
   \begin{itemize}
-    \item[1.] $f^{\EuScript M}(\mbox{-},\alpha):M^n\to R$ is bounded (i.e.\@ its range is contained in a compact set) for every $\alpha\in R^m$.
+    \item[1.] $f^{\EuScript M}(\mbox{-};\alpha):M^n\to R$ is bounded (i.e.\@ its range is contained in a compact set) for every $\alpha\in R^m$.
  
-    \item[2??] $f^{\EuScript M}(a,\mbox{-}):R^m\to R$ is continuous uniformly in $a\in M^n$, that is (?),
+    \item[2??] $f^{\EuScript M}(a;\mbox{-}):R^m\to R$ is continuous uniformly in $a\in M^n$, that is (?),
     
-    \hfil$\displaystyle\bigcap_{a\in M^n}f^{\EuScript M}(a,\mbox{-})^{-1}(O)$ is open for every open $O\subseteq R$.
+    \hfil$\displaystyle\bigcap_{a\in M^n}f^{\EuScript M}(a;\mbox{-})^{-1}(O)$ is open for every open $O\subseteq R$.
 
   \end{itemize}
 \end{definition}
 
-Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
-When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
+% Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
+% When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
   
 There may be no saturated structure among those described in Definition~\ref{def_0}.
 As a remedy, we restrict the notion of saturation to formulas in a set $\mathds{L}$ that we define below.
 In a nutshell, formulas in $\mathds{L}$ do not contain existential quantifiers of sort $R$.
-Moreover, we require that some \textit{critical\/} function symbols only occour only inside compact relations and never under the scope of negation.
+Moreover, we require that a few \textit{critical\/} function symbols only occour only inside compact relations and never under the scope of negation.
 
-Intuitively, the function symbols are divided in two classes according to their sort
+Intuitively, the function symbols are divided in two groups according to their sort
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
     \item[2.] $M^n\times R^m\to R$
   \end{itemize}
-Functions in the latter group are the \textit{critical\/} one and will be dealt with caution.
+The ultrapower construction we introduce in the next section is completely classical w.r.t.\@ functionsw as in 1. On the other hand, the functions as in 2 are are \textit{critical\/} and need to be dealt diffrently.
 
 Below, \emph{$\mathds{T}$\/} denotes the set of the terms of sort  $M^n\times R^m\to R$. 
 Definition~\ref{def_0} ensures that for all $t(x;y)\in\mathds{T}$ the range of the functions $t^{\EuScript M}(\mbox{-},\alpha):M^n\to R$ is bounded.
@@ -143,6 +142,8 @@ Definition~\ref{def_0} ensures that for all $t(x;y)\in\mathds{T}$ the range of t
   \end{itemize}
 \end{definition}
 
+Clearly, $L\subseteq\mathds{L}\subseteq L'$.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,7 +151,7 @@ Definition~\ref{def_0} ensures that for all $t(x;y)\in\mathds{T}$ the range of t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ultrapowers}\label{ultrapws}
 
-\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 
 We recall the standard definition of $F$-limits.
@@ -190,8 +191,8 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
 
 The following fact is easily proved by induction on the syntax.
 
-\begin{fact}
-  If no function symbol of sort $M^n\times R^m\to R$ occurs in   $t(y;z)$ then 
+\begin{fact}\label{fact_easy_induz}
+  If only function symbols of sort $M^n\times R^m\to M$ occurs in  $t(y;z)$ then 
   
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{\langle t^{\EuScript M}\big(\hat ai;\alpha\big): i\in I\rangle.}\hfill\qedsymbol
 \end{fact}
@@ -201,15 +202,35 @@ If true, the proof of the following fact is tedious.
 \begin{fact}
   For every term $t(y;z)$ of sort $M^n\times R^m\to R$  
   
-  \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}\hfill\qedsymbol
+  \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}
 \end{fact}
 
-For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ has been obtained replacing each atomic formulas $t\in C$ occurring in $\varphi$ by $t\in D$ for some closed neighborhood of $C$.
+\begin{proof}
+  The proof is by induction.
+  Assume the claim is true for $t_M(y,z)$ a tuple of terms with values in $M$.
+  Write $\lambda_\alpha$ for $t^{\EuScript N}_M\big(\hat a;\alpha\big)$.
+  Let $t_R(y;z)$ be a tuple of terms with values in $R$.
+  Let $f$ be a function of sort $M^n\times R^m\to R$.
+  We need to prove that
+
+  \ceq{\hfill f^{\EuScript N}\Big(t^{\EuScript N}_M\big(\hat a;\alpha\big);\lambda_\alpha\Big)}{=}{F\mbox{-}\lim_i f\Big(t^{\EuScript M}_M\big(\hat ai;\alpha\big);t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)}
+
+  By Fact~\ref{fact_easy_induz} we can replace $t^{\EuScript N}_M\big(\hat a;\alpha\big)$ by a sequence of elements of $M$.
+  As we are reluctant to introduce a new letter, we absorb this sequence in the tuple $\hat a$.
+  Therefore the claim to prove is
+
+  \ceq{\hfill f^{\EuScript N}\big(\hat a;\lambda_\alpha\big)}{=}{F\mbox{-}\lim_i f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big).}
+ 
+  Write $\mu$ for the limit on the r.h.s.\@ of the equality above. 
+  For every neighborhood $\mu\in S\subseteq R$ there is a $J\in F$ such that $f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)\in S$ for all $i\in J$  
+\end{proof}
+
+For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formulas $t\in C$ occurring in $\varphi$ by $t\in D$ for some closed neighborhood of $C$.
 Note that, if such atomic formulas do not occur in $\varphi$, then $\varphi>\varphi$.
 
-Finally, we prove 
+Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem
 
-\begin{proposition}[\L\v{o}\'s Theorem]\label{thm_Los}
+\begin{proposition}\label{thm_Los}
   Assume $|I|\ge$ the weight of the topology on $R$.
   Let ${\EuScript N}$ be as above and let $\varphi(x;y)\in\mathds{L}$.
   Then for all $\hat a\in N^{|x|}$ and all $\alpha\in R^{|y|}$
@@ -220,7 +241,7 @@ Finally, we prove
 
 \end{proposition}
 \begin{proof}
-  First note that if $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1} then, after absorbing $\alpha$ into le language, the proposition reduces to the classical \L\v{o}\'s Theorem.
+  First note that if $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1} then, after absorbing $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
 
   Now, suppose that $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)$ is a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
   
