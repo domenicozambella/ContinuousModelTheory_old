@@ -101,44 +101,61 @@
 
 
 \begin{definition}\label{def_0}
-  As $M$ ranges over the $L$-structures, we consider the class of $L'$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $R$ is some fixed structure.
-  We are given a Hausdorff topology on $R$ and assume that there is a relation symbol in $L'$ for every subset of $R^n$ that is compact in the product topology.
+  Let \emph{$L$\/} be a one-sorted (first-order) language.
+  Let \emph{$L'$\/}$\supseteq L$ be a two-sorted language.
+
+  We consider the class of $L'$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
+
+  We assume that $R$ is endowed with a Hausdorff topology and that there is a relation symbol in $L'$ for every compact $C\subseteq R$. We will write $x\in C$ for $C(x)$.
+  
   We require that the function symbols of sort $M^n\times R^m\to R$  are interpreted in functions such that
   \begin{itemize}
-    \item[1.] $f^{\EuScript M}(\mbox{-};\alpha):M^n\to R$ is bounded (i.e.\@ its range is contained in a compact set) for every $\alpha\in R^m$.
+    \item[1.] $f^{\EuScript M}:M^n\times R^n\to R$ is bounded (i.e.\@ its range is contained in a compact set);
+    \item[2.] ???
  
-    \item[2??] $f^{\EuScript M}(a;\mbox{-}):R^m\to R$ is continuous uniformly in $a\in M^n$, that is (?),
+    % \item[2] $f^{\EuScript M}(a;\mbox{-}):R^m\to R$ is are 
+    % uniformly continuous, uniformly in $a\in M^n$. Precisely, we require the following. Fix a compact $C\subseteq R$ containgng the range of $f^{\EuScript M}$, let $U$ and $V$ range over the entourages of the (unique)uniformity, associated to $C$. We require that
     
-    \hfil$\displaystyle\bigcap_{a\in M^n}f^{\EuScript M}(a;\mbox{-})^{-1}(O)$ is open for every open $O\subseteq R$.
-
+    % for every $U$ there is a $V$ such that for every $a,b\in M^n$ 
+    
+    % entourages of the 
+    
+    % \hfil$\displaystyle\bigcap_{a\in M^n}f^{\EuScript M}(a;\mbox{-})^{-1}(O)$ is open for every open $O\subseteq R$.
   \end{itemize}
 \end{definition}
 
 % Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
 % When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
   
-There may be no saturated structure among those described in Definition~\ref{def_0}.
-As a remedy, we restrict the notion of saturation to formulas in a set $\mathds{L}$ that we define below.
-In a nutshell, formulas in $\mathds{L}$ do not contain existential quantifiers of sort $R$.
-Moreover, we require that a few \textit{critical\/} function symbols only occour only inside compact relations and never under the scope of negation.
+There might be models in  the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
+As a remedy, we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
 
-Intuitively, the function symbols are divided in two groups according to their sort
+In a nutshell, formulas in $\mathds{L}$ are required not to contain quantifiers of sort $R$.
+Moreover, function symbols in the second group below may only occur only inside compact relations and never under the scope of negation.
+
+Function symbols are divided in two groups according to their sort
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
     \item[2.] $M^n\times R^m\to R$
   \end{itemize}
-The ultrapower construction we introduce in the next section is completely classical w.r.t.\@ functionsw as in 1. On the other hand, the functions as in 2 are are \textit{critical\/} and need to be dealt diffrently.
+ The ultrapower construction we introduce in the next section is completely classical w.r.t.\@ functions in 1. 
+ On the other hand, functions in 2 are \textit{critical\/} and need to be dealt with differently.
+ 
+Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing function symbols as in 1 above.
 
-Below, \emph{$\mathds{T}$\/} denotes the set of the terms of sort  $M^n\times R^m\to R$. 
+By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing function symbols as in 2 above.
+
+By \emph{$\mathds{T}_R\circ\mathds{T}_M$\/} we  denote the set of the terms of the form $t_R(t_M;\alpha)$, where $t_R\in\mathds{T}_R$ and $t_M$ is a tuple of terms in $\mathds{T}_M$, finally $\alpha\in R^m$.
+
 Definition~\ref{def_0} ensures that for all $t(x;y)\in\mathds{T}$ the range of the functions $t^{\EuScript M}(\mbox{-},\alpha):M^n\to R$ is bounded.
 
 \begin{definition}\label{def_1}
   Formulas in \emph{$\mathds{L}$\/} are defined inductively as follows
   \begin{itemize}
-  \item[i.] $\mathds{L}$ contains all formulas without quantifiers of sort $R$ and functions of sort $M^n\times R^m\to R$; 
-  \item[ii.] $\mathds{L}$ contains formulas of the form $t(y;z)\in C$ where $C\subseteq R^n$ is compact and $t(y;z)\in\mathds{T}^n$;
+  \item[i.] $\mathds{L}$ contains formulas of the form $t(y;z)\in C$,where $C\subseteq R^n$ is compact and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
+  \item[ii.] $\mathds{L}$ contains all formulas without quantifiers of sort $R$ and only terms in $\mathds{T}_M$;
   \item[iii.] $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$;
-  \item[iv.] $\mathds{L}$ is closed under the quantifier $\forall$ of sort $R$.
+  \item[iv.] ???  it might be feasible to assume some form of closure under the quantifier $\forall$ of sort $R$.
   \end{itemize}
 \end{definition}
 
@@ -157,16 +174,21 @@ Clearly, $L\subseteq\mathds{L}\subseteq L'$.
 We recall the standard definition of $F$-limits.
 Let $I$ be a non-empty set.
 Let $F$ be a filter on $I$.
-If $f:I\to R^m$ and $\lambda\in R^m$ we write
+If $f:I\to R$ and $\lambda\in R$ we write
 
 \hfil$\displaystyle F\mbox{-}\lim_{i}f(i)=\lambda$
 
-if $f^{-1}[A]\in F$ for every $A\subseteq R^m$ that is a neighborhood of $\lambda$.
-Such a $\lambda$ is always unique (by the property of filters).
+if $f^{-1}[A]\in F$ for every $A\subseteq R$ that is a neighborhood of $\lambda$.
+Such a $\lambda$ is always unique (by properties of filters).
 When $F$ is an ultrafilter, and ${\rm range} f$ is bounded (i.e. it is contained in a compact set), the limit always exists.
 
-Below we introduce a suitable notion of ultrapower.
-To keep notation tidy, we make two simplifications: (1) we only consider ultraproducts; (2) we do not consider formulas containing equality, so we need not take any quotient.
+Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
+We require that each function symbol $f$ of sort $M^n\times R^m\to R$ is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$. 
+(Otherwise, Fact~\ref{fact_termini1} below may fail.)
+
+To keep notation tidy, we make two simplifications: 
+(1) we only consider ultrapowers; 
+(2) we do not consider formulas containing equality, so we need not take any quotient.
 
 Let $I$ be an infinite set.
 Let $F$ be an ultrafilter on $I$.
@@ -178,57 +200,100 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
     \item[1.] $N=M^I$ that is, it is the set of sequences $\hat a: I\to M$.
     \item[2.] If $f$ is a function of sort $ M^n\times R^m\to  M$ then $f^{\EuScript N}(\hat a;\alpha)$ is the sequence 
     $\langle f^{\EuScript M}\big(\hat ai;\alpha\big):i\in I\rangle$.
-    \item[4.] If $f$ is a function of sort $ M^n\times R^m\to R$ then 
+    \item[4.] If $f$ is a function of sort $ M^n\times R^m\to R$ then for every $\alpha\in R^m$
     $$
     f^{\EuScript N}\big(\hat a;\alpha\big)\ =\ F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai;\alpha\big).
     $$ 
+    \item[3.] if $r$ is a relation symbol of sort $M^n\times R^m$ then for every $\alpha\in R^m$
+    $$
+    {\EuScript N}\models r(\hat a; \alpha)
+    \Leftrightarrow
+    \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai;\alpha)\big\}\in F.
+    $$
   \end{itemize}
 \end{definition}
 
-\begin{fact}
-  The structure ${\EuScript N}$ satisfies the conditions of Definition~\ref{def_0}. (Didin't check condition 2.)
+The following is immediate.
+
+\begin{fact}\label{fact_termini1}
+  The structure ${\EuScript N}$ satisfies condition 1 of Definition~\ref{def_0}.
 \end{fact}
 
-The following fact is easily proved by induction on the syntax.
+The following is easily proved by induction on the syntax
 
 \begin{fact}\label{fact_easy_induz}
-  If only function symbols of sort $M^n\times R^m\to M$ occurs in  $t(y;z)$ then 
+  If  $t(y;z)\in \mathds{T}_M$ then 
   
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{\langle t^{\EuScript M}\big(\hat ai;\alpha\big): i\in I\rangle.}\hfill\qedsymbol
 \end{fact}
 
-If true, the proof of the following fact is tedious.
+We also have that
 
 \begin{fact}
-  For every term $t(y;z)$ of sort $M^n\times R^m\to R$  
+  If  $t(y;z)\in \mathds{T}_R$ then 
   
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}
 \end{fact}
 
 \begin{proof}
-  The proof is by induction.
-  Assume the claim is true for $t_M(y,z)$ a tuple of terms with values in $M$.
-  Write $\lambda_\alpha$ for $t^{\EuScript N}_M\big(\hat a;\alpha\big)$.
-  Let $t_R(y;z)$ be a tuple of terms with values in $R$.
-  Let $f$ be a function of sort $M^n\times R^m\to R$.
-  We need to prove that
-
-  \ceq{\hfill f^{\EuScript N}\Big(t^{\EuScript N}_M\big(\hat a;\alpha\big);\lambda_\alpha\Big)}{=}{F\mbox{-}\lim_i f\Big(t^{\EuScript M}_M\big(\hat ai;\alpha\big);t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)}
-
-  By Fact~\ref{fact_easy_induz} we can replace $t^{\EuScript N}_M\big(\hat a;\alpha\big)$ by a sequence of elements of $M$.
-  As we are reluctant to introduce a new letter, we absorb this sequence in the tuple $\hat a$.
-  Therefore the claim to prove is
-
-  \ceq{\hfill f^{\EuScript N}\big(\hat a;\lambda_\alpha\big)}{=}{F\mbox{-}\lim_i f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big).}
- 
-  Write $\mu$ for the limit on the r.h.s.\@ of the equality above. 
-  For every neighborhood $\mu\in S\subseteq R$ there is a $J\in F$ such that $f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)\in S$ for all $i\in J$  
+   The proof is clear if (as in RVL) we only allow functions of sort $M^n\times R^m\to R$ with $n\cdot m=0$.
 \end{proof}
 
-For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formulas $t\in C$ occurring in $\varphi$ by $t\in D$ for some closed neighborhood of $C$.
-Note that, if such atomic formulas do not occur in $\varphi$, then $\varphi>\varphi$.
+From the two facts above it immediately follows that
 
-Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem
+\begin{fact}\label{fact_termini2}
+  If $t(y;z)\in \mathds{T}_R\circ\mathds{T}_M$ then 
+  
+  \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}
+  \hfill\qedsymbol
+\end{fact}
+
+% \begin{proof}
+%   The proof is by induction.
+%   Assume the claim is true for $t_R(y;z)$, a tuple of terms with values in $R$. 
+%   Let $t_M(y,z)$ a tuple of terms with values in $M$.
+%   Let $f$ be a function of sort $M^n\times R^m\to R$.
+  
+%   We need to prove that
+
+%   \ceq{\hfill f^{\EuScript N}\Big(t^{\EuScript N}_M\big(\hat a;\alpha\big);t^{\EuScript N}_R\big(\hat a;\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f\Big(t^{\EuScript M}_M\big(\hat ai;\alpha\big);t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)}
+
+%   As $\alpha$ is just a fixed parameter, we hide it from the notation.
+
+%   \ceq{\hfill f^{\EuScript N}\Big(t^{\EuScript N}_M\big(\hat a\big);t^{\EuScript N}_R\big(\hat a\big)\Big)}{=}{F\mbox{-}\lim_i f\Big(t^{\EuScript M}_M\big(\hat ai\big);t^{\EuScript M}_R\big(\hat ai\big)\Big)}
+
+%   By Fact~\ref{fact_termini1} we we can set $\hat b=t^{\EuScript N}_M\big(\hat a\big)$ and $b_i=t^{\EuScript M}_M\big(\hat ai\big)$ 
+
+
+%   \ceq{\hfill f^{\EuScript N}\Big(\hat b;t^{\EuScript N}_R\big(\hat a\big)\Big)}{=}{F\mbox{-}\lim_i f\Big(b_i;t^{\EuScript M}_R\big(\hat ai\big)\Big)}
+
+%   Now apply the induction hypothesis to obtain
+
+
+
+  
+%   Write $\lambda_\alpha$ for $t^{\EuScript N}_R\big(\hat a;\alpha\big)$.
+
+  
+%   Let $t_R(y;z)$ be a tuple of terms with values in $R$.
+  
+
+%   By Fact~\ref{fact_easy_induz} we can replace $t^{\EuScript N}_M\big(\hat a;\alpha\big)$ by a sequence of elements of $M$.
+%   As we are reluctant to introduce a new letter, we absorb this sequence in the tuple $\hat a$.
+%   Therefore the claim to prove is
+
+%   \ceq{\hfill f^{\EuScript N}\big(\hat a;\lambda_\alpha\big)}{=}{F\mbox{-}\lim_i f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big).}
+ 
+%   Write $\mu$ for the limit on the r.h.s.\@ of the equality above. 
+%   For every neighborhood $\mu\in S\subseteq R$ there is a $J\in F$ such that $f\Big(\hat ai;t^{\EuScript M}_R\big(\hat ai;\alpha\big)\Big)\in S$ for all $i\in J$  
+
+%   (\ldots)
+% \end{proof}
+
+For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in D$ for some compact neighborhood $D$ of $C$.
+Note that, if no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
+
+Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem.
 
 \begin{proposition}\label{thm_Los}
   Assume $|I|\ge$ the weight of the topology on $R$.
@@ -246,15 +311,14 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   Now, suppose that $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)$ is a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
   
   Assume ${\EuScript N}\models t(\hat a,\alpha)\in C$.
-  If $D$ a compact neighborhood of $C$ then $D$ is also a neighborhood of $t^{\EuScript N}(\hat a,\alpha)$.
+  If $D$ is a compact neighborhood of $C$ then $D$ is also a neighborhood of $t^{\EuScript N}(\hat a,\alpha)$.
   Hence, by the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\in D\big\}\in F$.
 
   Vice versa, assume ${\EuScript N}\models t(\hat a,\alpha)\notin C$.
-  We can assume to work inside a compact set containing $C$ and $t(\hat a,\alpha)$. By regularity, $t^{\EuScript N}(\hat a,\alpha)\notin D$ for $D$ a compact neigboorhood of $C$. 
-  By the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\notin D\big\}\in F$.
-  Then $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\in D\big\}\notin F$.
+  Let $D$ be a compact neighborhood of $C$ such that $t^{\EuScript N}(\hat a,\alpha)\notin D$ (why should it exist ???). 
+  By Fact~\ref{fact_termini2} and the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\notin D\big\}\in F$.
 
-  As for induction, only the existential quantifier require some work.
+  As for induction, only the existential quantifier requires some work.
   Inductively we assume that
 
   \ceq{\hfill {\EuScript N}\models\varphi(\hat a,\hat b\,; \alpha)}
@@ -284,8 +348,128 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   {\big\{ i\in I\ :\ {\EuScript M}\models\varphi_j(\hat ai,\hat b_ji\,;\alpha)\big\}\in F.}
 
   As $\varphi_j(x,y\,;\alpha)\rightarrow\varphi_{j'}(x,y\,;\alpha)$ holds for $j>j'$, the diagonal sequence $\hat d=\langle \hat b_ii :i\in I\rangle$ satisfies ${\EuScript N}\models\varphi(\hat a,\hat d\,; \alpha)$.
+
+  (...)
+\end{proof}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Saturation}
+
+
+Let $p(x)\subseteq\mathds{L}(M)$.
+We say that $p(x)$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every conjunction of formulas in $p(x)$, say $\varphi(x)$, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models\varphi(a)$.
+
+The following definition is completely standard
+
+\begin{definition}
+  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models p(a)$
+  \begin{itemize}
+    \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
+    \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
+  \end{itemize}
+\end{definition}
+
+Now we prove that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one.
+First we prove the following lemma.
+
+\begin{lemma}\label{lem_compattezza}
+  Every model ${\EuScript M}$ embeds $\mathds{L}$-elementarily in a model ${\EuScript N}$ that realizes all types as in the definition above.
+\end{lemma}
+
+\begin{corollary}\label{thm_compattezza}
+  Every model ${\EuScript M}$ is an $\mathds{L}$-elementary subtructure of some saturated model ${\EuScript N}$ (possibly of inaccessible cardinality).
+\end{corollary}
+
+We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
+The unit ball of ${\EuScript U}$ is denoted by \emph{$U$.}
+The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
+Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
+
+
+\begin{lemma}\label{lem_compactness_implication}
+  Let $p(x)\subseteq\mathds{L}(A)$, where $A\subseteq U$ has small cardinality.
+  Let $\varphi(x)\in\mathds{L}(U)$ be such that $p(x)\rightarrow\varphi(x)$.
+  Then for every $\varphi'>\varphi$ there is a formula $\psi(x)$, conjunction of formulas in $p(x)$, such that $\psi(x)\rightarrow\varphi'(x)$.
+\end{lemma}
+
+\begin{proof}
+  Let $\varepsilon>0$ be given.
+  Suppose that $\psi(x)\wedge{}^{\neg\varepsilon\kern-2pt}\varphi(x)$ is consistent for every $\psi(x)$ that is conjunction of formulas in $p(x)$.
+  By saturation there is a realization of $p(x)\cup{}^{\neg\varepsilon\kern-2pt}\varphi(x)$.
+  By Fact~\ref{fact_immediate}, $p(x)\wedge\neg\varphi(x)$ is also consistent.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Equivalences}
+
+
+We define an equivalence relation \emph{$(\sim_{\EuScript U})$\/} on $ U$ as follows
+
+\ceq{1.\hfill a\,\sim_{\EuScript U}b}
+{\Leftrightarrow}
+{\Big({\EuScript U}\models t(a)= t(b)}
+\ \ for every $t(x)\in\mathds{T}(U)\Big)$,
+
+where $|x|=|a|=|b|=1$.
+
+Hence $a\,\sim_{\EuScript U}b$ if and only if ${\rm d}_t(a,b)=0$ for all the pseudometrics ${\rm d}_t(\mbox{-},\mbox{-})$ defined below. 
+
+\begin{definition}\label{def_uniformity}
+  Let $x$ be a single variable.
+  Let $t(x)\in\mathds{T}(U)^{<\omega}$ be a finte tuple of terms, say $t(x)=t_1(x),\dots,t_n(x)$.
+  We define a pseudometric ${\rm d}_t(\mbox{-},\mbox{-})$ on $U$ as follows
+
+  \ceq{\hfill\emph{${\rm d}_t(a,b)$}}{=}{\max_{i=1,\dots,n}\big\{|t_i^{\EuScript U}(a)-t_i^{\EuScript U}(b)|\big\}}
+
+\end{definition}
+
+We say that $a\in U$ is close to $M$ if 
+
+
+\ceq{\hfill a\,\equiv^\mathds{L}_{\EuScript M}x}
+{\rightarrow}
+{a\sim_{\EuScript U}x},
+
+
+\begin{proposition}
+  The following are equivalent for every $a\in U$
+  \begin{itemize}
+    \item[1.] $a$ is close to ${\EuScript M}$;
+    \item[2.] there is a net of elements of $M$ that converges to $a$. 
+  \end{itemize}
+\end{proposition}
+
+\begin{proof}
+  Let $p(x)={\rm tp}_\mathds{L}(a/U)$.
+
+  (1$\Rightarrow$2) \ 
+  The set of metrics ${\rm d}_t$ in Definion~\ref{def_uniformity} is a directed set under the relation of refinement.
+  For every such metric ${\rm d}_t$ we have that
+
+  \ceq{\hfill p_{\restriction M}(x)}{\rightarrow}{{\rm d}_t(x,a)\le0}
+
+  By Lemma~\ref{lem_compactness_implication}, for every $\varepsilon>0$ there some consistent $\varphi(x)\in p$ such that
+
+  \ceq{\hfill \varphi(x)}{\rightarrow}{{\rm d}_t(x,a)<\varepsilon}
+
+  As $\varphi(x)$ is consistent in ${\EuScript M}$, there is some $b_{t,\varepsilon}\in M$ such that ${\rm d}_t(b_{t,\varepsilon},a)<\varepsilon$.
+  This defines a net of elements of $M$ that converges to $a$.
+
+  (2$\Rightarrow$1) \ 
+  Let $I$ be a directed set.
+  Let $\langle b_i:i\in I\rangle$ be a net of elements of $M$ that converges to $a$.
+  Then, $c\sim_{\EuScript U} a$ for every $c\models p_{\restriction M}(x)$.
+  Hence $p_{\restriction M}(x)\rightarrow p(x)$.
+\end{proof}
 
 \end{document}
 
@@ -451,14 +635,6 @@ We write ${\rm Aut}({\EuScript M})$ for the set of maximal, total and surjective
 The choice of the symbol Aut is motivated by the lemma above.
 In fact any such relation $R$ induces a unique automorphism on the (properly defined) quotient structure ${\EuScript M}/{\sim_{\EuScript M\!}}$.
 
-\begin{definition}\label{def_uniformity}
-  Let $x$ be a single variable.
-  Let $t(x)\in\mathds{T}(M)^{<\omega}$ be a finte tuple of terms, say $t(x)=t_1(x),\dots,t_n(x)$.
-  We define a pseudometric ${\rm d}_t(\mbox{-},\mbox{-})$ on $M$ as follows
-
-  \ceq{\hfill\emph{${\rm d}_t(a,b)$}}{=}{\max_{i=1,\dots,n}\big\{|t_i^{\EuScript M}(a)-t_i^{\EuScript M}(b)|\big\}}
-
-\end{definition}
 % Thought in most situations one could dispense with ${\EuScript M}$ in favour of ${\EuScript M}/{\sim_{\EuScript M\!}}$, in concrete cases one has a better grip on the first than on the latter.
 % Therefore below we insist in working with $\mathds{L}$-relations in place of $\mathds{L}$-elementary maps.
 
@@ -772,36 +948,6 @@ This follows from the following obvious identity
 
 Now we characterize definability in the limit in topological terms.
 
-\begin{proposition}
-  The following are equivalent for every $a\in U$
-  \begin{itemize}
-    \item[1.] ${\EuScript M}$ defines $a$ in the limit;
-    \item[2.] there is a net of elements of $M$ that converges to $a$. 
-  \end{itemize}
-\end{proposition}
-
-\begin{proof}
-  Let $p(x)={\rm tp}_\mathds{L}(a/U)$.
-
-  (1$\Rightarrow$2) \ 
-  The set of metrics ${\rm d}_t$ in Definion~\ref{def_uniformity} is a directed set under the relation of refinement.
-  For every such metric ${\rm d}_t$ we have that
-
-  \ceq{\hfill p_{\restriction M}(x)}{\rightarrow}{{\rm d}_t(x,a)\le0}
-
-  By Lemma~\ref{lem_compactness_implication}, for every $\varepsilon>0$ there some consistent $\varphi(x)\in p$ such that
-
-  \ceq{\hfill \varphi(x)}{\rightarrow}{{\rm d}_t(x,a)<\varepsilon}
-
-  As $\varphi(x)$ is consistent in ${\EuScript M}$, there is some $b_{t,\varepsilon}\in M$ such that ${\rm d}_t(b_{t,\varepsilon},a)<\varepsilon$.
-  This defines a net of elements of $M$ that converges to $a$.
-
-  (2$\Rightarrow$1) \ 
-  Let $I$ be a directed set.
-  Let $\langle b_i:i\in I\rangle$ be a net of elements of $M$ that converges to $a$.
-  Then, $c\sim_{\EuScript U} a$ for every $c\models p_{\restriction M}(x)$.
-  Hence $p_{\restriction M}(x)\rightarrow p(x)$.
-\end{proof}
 
 \begin{definition}
   A model ${\EuScript M}$ is complete if it contains, up to $(\sim_{\EuScript U})$-equivalence, all points it defines in the limit.
