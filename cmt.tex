@@ -103,15 +103,22 @@
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
   Let \emph{$L'$\/}$\supseteq L$ be a two-sorted language.
-
   We consider the class of $L'$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
 
-  We assume that $R$ is endowed with a Hausdorff topology and that there is a relation symbol in $L'$ for every compact $C\subseteq R$. We will write $x\in C$ for $C(x)$.
+  We assume that $R$ is endowed with a locally compact Hausdorff topology.
   
-  We require that the function symbols of sort $M^n\times R^m\to R$  are interpreted in functions such that
+  The relation symbols of $L'$ are those of $L$ plus symbols for every compact $C\subseteq R^m$. 
+  We write $x\in C$ for $C(x)$.
+  In $L'$ there are function symbols of any possible sort that we divide in to clades
   \begin{itemize}
-    \item[1.] $f^{\EuScript M}:M^n\times R^n\to R$ is bounded, i.e.\@ its range is contained in a compact set;
-    \item[2.] $f^{\EuScript M}:M^n\times R^n\to R$ is continuous uniformly in $M$, see Definition~\ref{def_unif_cont}.
+    \item[1.] $M^n\times R^m\to M$
+    \item[2.] $M^n\times R^m\to R$
+  \end{itemize}
+  
+  We require that function symbols of the second clade are interpreted in functions such that
+  \begin{itemize}
+    \item[i.] $f^{\EuScript M}:M^n\times R^m\to R$ is bounded, i.e.\@ its range is contained in a compact set;
+    \item[ii.] $f^{\EuScript M}:M^n\times R^m\to R$ is continuous uniformly in $M$, as defined in Definition~\ref{def_unif_cont} below.
  
     % \item[2] $f^{\EuScript M}(a;\mbox{-}):R^m\to R$ is are 
     % uniformly continuous, uniformly in $a\in M^n$. Precisely, we require the following. Fix a compact $C\subseteq R$ containgng the range of $f^{\EuScript M}$, let $U$ and $V$ range over the entourages of the (unique)uniformity, associated to $C$. We require that
@@ -127,35 +134,30 @@
 % Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
 % When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
   
-There might be models in  the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
-As a remedy, we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
+There might be models in  the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in this class.
+As a remedy, below we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
+Our choice of $\mathds{L}$ is not the most general.
 
-In a nutshell, formulas in $\mathds{L}$ are required not to contain quantifiers of sort $R$.
-Moreover, function symbols in the second group below may only occur only inside compact relations and never under the scope of negation.
+In a nutshell, we require that function symbols of the second clade above may not occur under the scope of a negation.
+We do not allow existential quantifiers of sort $R$.
 
-Function symbols are divided in two groups according to their sort
-  \begin{itemize}
-    \item[1.] $M^n\times R^m\to M$
-    \item[2.] $M^n\times R^m\to R$
-  \end{itemize}
- The ultrapower construction we introduce in the next section is completely classical w.r.t.\@ functions in 1. 
- On the other hand, functions in 2 are \textit{critical\/} and need to be dealt with differently.
+The ultrapower construction in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first clade. 
+On the other hand, functions of the second clade are \textit{critical\/} and need to be dealt with differently.
  
 Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing function symbols as in 1 above.
 
 By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing function symbols as in 2 above.
 
 By \emph{$\mathds{T}_R\circ\mathds{T}_M$\/} we  denote the set of the terms obtained composing terms in $\mathds{T}_R$ with terms in $\mathds{T}_M$. 
-Clearly, there are many more terms in $L'$ but for simplicity, we will restrict the discussion to these.
+Clearly, there are many more terms in $L'$ but for simplicity, we will restrict to these.
 
 \begin{definition}\label{def_1}
-  Formulas in \emph{$\mathds{L}$\/} are defined inductively as follows
+  Formulas in \emph{$\mathds{L}$\/} are constricted inductively from 
   \begin{itemize}
-  \item[i.] $\mathds{L}$ contains formulas of the form $t(y;z)\in C$,where $C\subseteq R^n$ is compact and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
-  \item[ii.] $\mathds{L}$ contains all formulas without quantifiers of sort $R$ and only terms in $\mathds{T}_M$;
-  \item[iii.] $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, and the quantifiers $\forall$, $\exists$ of sort $M$;
-  \item[iv.] ???  it might be feasible to assume some form of closure under the quantifier $\forall$ of sort $R$.
+  \item[i.] formulas as $t(y;z)\in C$, where $C\subseteq R^n$ is compact and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
+  \item[ii.] formulas with only terms in $\mathds{T}_M$ and no quantifiers;
   \end{itemize}
+  Finally we require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, the quantifiers $\forall$, $\exists$ of sort $M$; and the universal quantifier $\forall$ of sort $R$.
 \end{definition}
 
 Clearly, $L\subseteq\mathds{L}\subseteq L'$.
@@ -191,7 +193,7 @@ By $\beta\kern-1.5pt I$ we denote the set of ultrafilters on $I$. This is a topo
   \ceq{\hfill  \langle F,\alpha\rangle\ }{\mapsto}{F\mbox{-}\lim_i f(i,\alpha)}
 \end{definition}
 
-It is convenient to unravel the devinition above into a longer b.
+It is convenient to unravel the definition above in a more practicable form.
 
 \begin{proposition}\label{prop_uc_esplicito}
   The following are equivalent
@@ -211,10 +213,9 @@ It is convenient to unravel the devinition above into a longer b.
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-
 Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
-We require that each function symbol $f$ of sort $M^n\times R^m\to R$ is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$. 
-(Otherwise, Fact~\ref{fact_termini1} below may fail.)
+We require that for each function symbol $f$ of sort $M^n\times R^m\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
+Note that, otherwise, Fact~\ref{fact_termini1} below may fail.
 
 To keep notation tidy, we make two simplifications: 
 (1) we only consider ultrapowers; 
@@ -267,8 +268,8 @@ We also have that
 
 \begin{proof}
   By induction. 
-  The fact holds by definition if $t$ is atomic.
-  Therefore, assume $\#_0$ and prove 
+  The fact holds by definition if $t$ is a function symbol.
+  Therefore, we assume $\#_0$ as induction hypothesis and prove 
 
   \ceq{\#_1\hfill f^{\EuScript N}\Big(\hat a;t^{\EuScript N}\big(\hat a;\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f^{\EuScript M}\Big(\hat ai;t^{\EuScript M}\big(\hat ai;\alpha\big)\Big).}
 
@@ -280,9 +281,9 @@ We also have that
   
   \ceq{\hfill\lambda}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big)}
 
-  Let $\sigma$ the limit in $\#_2$.
+  Let $\sigma$ be the limit in $\#_2$.
   Let $V\subseteq R$ be an open set containing $\sigma$.
-  Apply the uniform continuity as in 2 of Proposition~\ref{prop_uc_esplicito}, to obtain $A\in F$ and an open set $U\subseteq R$ containing $\lambda$ such that for every $i\in A$ and every $x\in U$
+  Apply 2 of Proposition~\ref{prop_uc_esplicito}, to obtain $A\in F$ and an open set $U\subseteq R$ containing $\lambda$ such that for every $i\in A$ and every $x\in U$
   
   \ceq{\hfill f^{\EuScript M}\big(\hat ai;x\big)}{\in}{V}.
 
@@ -290,7 +291,7 @@ We also have that
 
   \ceq{\hfill t^{\EuScript M}\big(\hat ai;\alpha\big)}{\in}{U}.
 
-  This sufficies to prove that $\sigma$ is also the limit in $\#1$.
+  This sufficies to prove that $\sigma$ is also the limit in $\#_1$.
 \end{proof}
 
 From the two facts above it immediately follows that
@@ -360,34 +361,62 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
 \end{proposition}
 \begin{proof}
-  First note that if $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1} then, after absorbing $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
+  First note that if $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1} then, if we absorbe $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
 
-  Now, suppose that $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)$ is a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
+  Now, suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)\in \mathds{T}_R\circ\mathds{T}_M$.
   
   Assume ${\EuScript N}\models t(\hat a,\alpha)\in C$.
   If $D$ is a compact neighborhood of $C$ then $D$ is also a neighborhood of $t^{\EuScript N}(\hat a,\alpha)$.
   Hence, by the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\in D\big\}\in F$.
-
   Vice versa, assume ${\EuScript N}\models t(\hat a,\alpha)\notin C$.
-  Let $D$ be a compact neighborhood of $C$ such that $t^{\EuScript N}(\hat a,\alpha)\notin D$ (why should it exist ???). 
+  Let $D$ be a compact neighborhood of $C$ such that $t^{\EuScript N}(\hat a,\alpha)\notin D$. 
   By Fact~\ref{fact_termini2} and the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\notin D\big\}\in F$.
 
-  As for induction, only the existential quantifier requires some work.
-  Inductively we assume that
+  As for induction, the connective $\vee$ and $\wedge$ are clear.
+  To deal with the universal quantifier of sort $R$ we assume that 
+ 
+  \ceq{\hfill {\EuScript N}\models\varphi(\hat a; \alpha, \beta)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai;\alpha, \beta)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+  
+  and we prove that
+ 
+  \ceq{\hfill {\EuScript N}\models\forall y\,\varphi(\hat a; \alpha, y)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\forall y\,\varphi'(\hat ai;\alpha,y)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+  
+  The implication $\Rightarrow$ is clear.
+  For the converse assume ${\EuScript N}\not\models\varphi(\hat a; \alpha, \beta)$ for some $\beta$.
+  By induction hypothesis, and the requirement that $F$ to be an ultrafilter, $\big\{ i\in I\ :\ {\EuScript M}\not\models\varphi'(\hat ai;\alpha,\beta)\big\}\in F$ for some $\varphi'>\varphi$.
+  A fortiori $\big\{ i\in I\ :\ {\EuScript M}\not\models\forall y\,\varphi'(\hat ai;\alpha,y)\big\}\in F$, hence the implication $\Leftarrow$ follows.
+
+  To deal with the quantifiers of sort $M$ we assume inductively that 
 
   \ceq{\hfill {\EuScript N}\models\varphi(\hat a,\hat b\,; \alpha)}
   {\Leftrightarrow}
   {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
   
+  First we prove that
 
-  We need to prove 
+  \ceq{\hfill {\EuScript N}\models\forall y\,\varphi(\hat a,y\,; \alpha)}
+  {\Leftrightarrow}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\forall y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+
+  This is identical to the case above.
+  The implication $\Rightarrow$ is clear.
+  For the converse assume ${\EuScript N}\not\models\varphi(\hat a,\hat b\,; \alpha)$ for some $\hat b$.
+  By induction hypothesis, $\big\{ i\in I\ :\ {\EuScript M}\not\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\in F$ for some $\varphi'>\varphi$.
+  Hence $\big\{ i\in I\ :\ {\EuScript M}\models\forall y\,\varphi'(\hat ai,y\,;\alpha)\big\}\notin F$ as required.
+  
+  Finally we prove  
 
   \ceq{\hfill {\EuScript N}\models\exists y\,\varphi(\hat a,y\,; \alpha)}
   {\Leftrightarrow}
   {\big\{ i\in I\ :\ {\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
 
-  The implication $\Rightarrow$ is clear.
+  Again, $\Rightarrow$ is clear.
   For the converse, assume the r.h.s.
+
   Assume for simplicity that $I=\omega$.
   For every $i\in I$ pick a formula $\varphi_i$ so that $\varphi_i>\varphi_j>\varphi$ for for every $i<j$ and
 
@@ -403,7 +432,7 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
   As $\varphi_j(x,y\,;\alpha)\rightarrow\varphi_{j'}(x,y\,;\alpha)$ holds for $j>j'$, the diagonal sequence $\hat d=\langle \hat b_ii :i\in I\rangle$ satisfies ${\EuScript N}\models\varphi(\hat a,\hat d\,; \alpha)$.
 
-  (...)
+ 
 \end{proof}
 \end{document}
 
