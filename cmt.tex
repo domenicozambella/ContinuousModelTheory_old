@@ -83,6 +83,7 @@
    \smash{\tikz[baseline]\node[rectangle, fill=olive!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{#1};}}
 
 \linespread{1.2}
+\author{C. L. C. L. Polymath}
 \begin{document}
 \title{Continuous logic for the classical logician}
 \hfill\texttt{Branch:\ master\ \DTMnow}\bigskip
@@ -108,7 +109,7 @@
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
   
   The relation symbols of $L'$ are those of $L$ plus symbols for every compact $C\subseteq R^m$. 
-  We write $x\in C$ for $C(x)$.
+  When suggested by the context, $x\in C$ stands for $C(x)$.
   In $L'$ there are function symbols of any possible sort that we divide in to clades
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
@@ -136,10 +137,10 @@
   
 There might be models in  the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in this class.
 As a remedy, below we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
-Our choice of $\mathds{L}$ is not the most general.
+Our choice of $\mathds{L}$ is not the most general, it is a compromise that accomodates the relevant examples and avoids eccessive complications.
 
-In a nutshell, we require that function symbols of the second clade above may not occur under the scope of a negation.
-We do not allow existential quantifiers of sort $R$.
+In a nutshell, we require that function symbols of the second clade above do not occur under the scope of a negation.
+We also do not allow existential quantifiers of sort $R$.
 
 The ultrapower construction in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first clade. 
 On the other hand, functions of the second clade are \textit{critical\/} and need to be dealt with differently.
@@ -151,11 +152,11 @@ By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing fun
 By \emph{$\mathds{T}_R\circ\mathds{T}_M$\/} we  denote the set of the terms obtained composing terms in $\mathds{T}_R$ with terms in $\mathds{T}_M$. 
 Clearly, there are many more terms in $L'$ but for simplicity, we will restrict to these.
 
-\begin{definition}\label{def_1}
-  Formulas in \emph{$\mathds{L}$\/} are constricted inductively from 
+\begin{definition}\label{def_LL}
+  Formulas in \emph{$\mathds{L}$\/} are constricted inductively from two clades of formulas below
   \begin{itemize}
   \item[i.] formulas as $t(y;z)\in C$, where $C\subseteq R^n$ is compact and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
-  \item[ii.] formulas with only terms in $\mathds{T}_M$ and no quantifiers;
+  \item[ii.] quantifier free formulas with only terms in $\mathds{T}_M$.
   \end{itemize}
   Finally we require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, the quantifiers $\forall$, $\exists$ of sort $M$; and the universal quantifier $\forall$ of sort $R$.
 \end{definition}
@@ -209,7 +210,7 @@ It is convenient to unravel the definition above in a more practicable form.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ultrapowers}\label{ultrapws}
+\section{Ultraproducts}\label{ultrapws}
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
@@ -347,7 +348,13 @@ From the two facts above it immediately follows that
 
 For $\varphi(x),\varphi'(x)\in\mathds{L}(A)$ we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in D$ for some compact neighborhood $D$ of $C$.
 Note that, if no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
+Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that  $\varphi\to\varphi'$.
+Moreover
 
+\ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'}{\leftrightarrow}{\varphi.}
+
+
+\bigskip
 Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem.
 
 \begin{proposition}\label{thm_Los}
@@ -361,9 +368,9 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
 \end{proposition}
 \begin{proof}
-  First note that if $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_1} then, if we absorbe $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
+  First note that if $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_LL} then, if we absorbe $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
 
-  Now, suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_1}, say it is the formula $t(x;y)\in C$, where $t(x;y)\in \mathds{T}_R\circ\mathds{T}_M$.
+  Now, suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$, where $t(x;y)\in \mathds{T}_R\circ\mathds{T}_M$.
   
   Assume ${\EuScript N}\models t(\hat a,\alpha)\in C$.
   If $D$ is a compact neighborhood of $C$ then $D$ is also a neighborhood of $t^{\EuScript N}(\hat a,\alpha)$.
@@ -372,12 +379,12 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   Let $D$ be a compact neighborhood of $C$ such that $t^{\EuScript N}(\hat a,\alpha)\notin D$. 
   By Fact~\ref{fact_termini2} and the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai,\alpha)\notin D\big\}\in F$.
 
-  As for induction, the connective $\vee$ and $\wedge$ are clear.
-  To deal with the universal quantifier of sort $R$ we assume that 
+  Induction for the connectives $\vee$ and $\wedge$ is clear.
+  To deal with the universal quantifier of sort $R$ we assume inductively that 
  
   \ceq{\hfill {\EuScript N}\models\varphi(\hat a; \alpha, \beta)}
   {\Leftrightarrow}
-  {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai;\alpha, \beta)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+  {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai;\alpha, \beta)\big\}\in F \ \textrm{for every }\varphi'>\varphi}
   
   and we prove that
  
@@ -387,7 +394,7 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   
   The implication $\Rightarrow$ is clear.
   For the converse assume ${\EuScript N}\not\models\varphi(\hat a; \alpha, \beta)$ for some $\beta$.
-  By induction hypothesis, and the requirement that $F$ to be an ultrafilter, $\big\{ i\in I\ :\ {\EuScript M}\not\models\varphi'(\hat ai;\alpha,\beta)\big\}\in F$ for some $\varphi'>\varphi$.
+  By induction hypothesis, and the requirement that $F$ is an ultrafilter, $\big\{ i\in I\ :\ {\EuScript M}\not\models\varphi'(\hat ai;\alpha,\beta)\big\}\in F$ for some $\varphi'>\varphi$.
   A fortiori $\big\{ i\in I\ :\ {\EuScript M}\not\models\forall y\,\varphi'(\hat ai;\alpha,y)\big\}\in F$, hence the implication $\Leftarrow$ follows.
 
   To deal with the quantifiers of sort $M$ we assume inductively that 
@@ -396,7 +403,7 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   {\Leftrightarrow}
   {\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
   
-  First we prove that
+  We first we prove that
 
   \ceq{\hfill {\EuScript N}\models\forall y\,\varphi(\hat a,y\,; \alpha)}
   {\Leftrightarrow}
@@ -416,8 +423,7 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
   Again, $\Rightarrow$ is clear.
   For the converse, assume the r.h.s.
-
-  Assume for simplicity that $I=\omega$.
+  Assume for simplicity that $I=\omega$ and that $R$ is second countable.
   For every $i\in I$ pick a formula $\varphi_i$ so that $\varphi_i>\varphi_j>\varphi$ for for every $i<j$ and
 
   \ceq{\hfill {\EuScript M}}
@@ -431,8 +437,6 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
   {\big\{ i\in I\ :\ {\EuScript M}\models\varphi_j(\hat ai,\hat b_ji\,;\alpha)\big\}\in F.}
 
   As $\varphi_j(x,y\,;\alpha)\rightarrow\varphi_{j'}(x,y\,;\alpha)$ holds for $j>j'$, the diagonal sequence $\hat d=\langle \hat b_ii :i\in I\rangle$ satisfies ${\EuScript N}\models\varphi(\hat a,\hat d\,; \alpha)$.
-
- 
 \end{proof}
 \end{document}
 
@@ -619,7 +623,7 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 
   \ceq{\hfill t^{{\EuScript M}}(a)}{\le}{\sum_{i=1}^{|x|}|\lambda_i|,}
 
-  condition 3 of Definition~\ref{def_1} is  satisfied.
+  condition 3 of Definition~\ref{def_LL} is  satisfied.
   Conditions 4 is immediate.
 \end{example}
 
@@ -636,7 +640,7 @@ In particular, if $\varphi(x,\varepsilon)\in\mathds{L}(A)$, also $\forall\vareps
 %%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-relations}\label{L-relations}
 
-Equality between elements in the unit ball is not among the formulas that Definition~\ref{def_1} enumerates in $\mathds{L}$.
+Equality between elements in the unit ball is not among the formulas that Definition~\ref{def_LL} enumerates in $\mathds{L}$.
 Logic without equality is not uncommon in mathematics.
 For instance, in the theory of integration equality beween functions is not significative notion.
 Of course, there is a quick remedy to this.
@@ -842,7 +846,7 @@ Such a $\lambda$ is unique and, when $F$ is an ultrafilter, it always exists.
 When $f$ is bounded, $\lambda\in\mathds{R}$.
 
 Let $I$ be an infinite set.
-Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle  M_i,\breve M_i,\mathds{R}\rangle$, that are \emph{uniformly bounded,} that is, the bounds in 3 of Definition~\ref{def_1} are the same for all ${\EuScript M}_i$.
+Let $\langle {\EuScript M}_i:i\in I\rangle$ be a sequence of structures, say  ${\EuScript M}_i=\langle  M_i,\breve M_i,\mathds{R}\rangle$, that are \emph{uniformly bounded,} that is, the bounds in 3 of Definition~\ref{def_LL} are the same for all ${\EuScript M}_i$.
 
 Let $F$ be an ultrafilter on $I$.
 
