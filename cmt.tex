@@ -108,15 +108,13 @@
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
   
-  The relation symbols of $L'$ are those of $L$ plus symbols for every compact $C\subseteq R^m$. 
-  When suggested by the context, $x\in C$ stands for $C(x)$.
-  In $L'$ there are function symbols of any possible sort that we divide in to clades
+  The function symbols of $L'$ are classified in two groups
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
     \item[2.] $M^n\times R^m\to R$
   \end{itemize}
-  
-  We require that function symbols of the second clade are interpreted in functions such that
+
+  We require that function symbols of the second group are interpreted in functions such that
   \begin{itemize}
     \item[i.] $f^{\EuScript M}:M^n\times R^m\to R$ is bounded, i.e.\@ its range is contained in a compact set;
     \item[ii.] $f^{\EuScript M}:M^n\times R^m\to R$ is continuous uniformly in $M$, as defined in Definition~\ref{def_unif_cont} below.
@@ -139,11 +137,11 @@ There might be models in  the class described in Definition~\ref{def_0} that do 
 As a remedy, below we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
 Our choice of $\mathds{L}$ is not the most general, it is a compromise that accomodates the relevant examples and avoids eccessive complications.
 
-In a nutshell, we require that function symbols of the second clade above do not occur under the scope of a negation.
+In a nutshell, we require that function symbols of the second group above do not occur under the scope of a negation.
 We also do not allow existential quantifiers of sort $R$.
 
-The ultrapower construction in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first clade. 
-On the other hand, functions of the second clade are \textit{critical\/} and need to be dealt with differently.
+The ultrapower construction in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first group. 
+On the other hand, functions of the second group are \textit{critical\/} and need to be dealt with differently.
  
 Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing function symbols as in 1 above.
 
@@ -153,9 +151,9 @@ By \emph{$\mathds{T}_R\circ\mathds{T}_M$\/} we  denote the set of the terms obta
 Clearly, there are many more terms in $L'$ but for simplicity, we will restrict to these.
 
 \begin{definition}\label{def_LL}
-  Formulas in \emph{$\mathds{L}$\/} are constricted inductively from two clades of formulas below
+  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from two groups of formulas below
   \begin{itemize}
-  \item[i.] formulas as $t(y;z)\in C$, where $C\subseteq R^n$ is compact and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
+  \item[i.] formulas as $t(y;z)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $x\in C$ for $C(x)$} and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
   \item[ii.] quantifier free formulas with only terms in $\mathds{T}_M$.
   \end{itemize}
   Finally we require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, the quantifiers $\forall$, $\exists$ of sort $M$; and the universal quantifier $\forall$ of sort $R$.
@@ -276,11 +274,8 @@ We also have that
 
   By induction hypothesis 
 
-  \ceq{\#_2\hfill f^{\EuScript N}\Big(\hat a;t^{\EuScript N}\big(\hat a;\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f^{\EuScript M}\Big(\hat ai;\lambda\Big).} 
+  \ceq{\#_2\hfill f^{\EuScript N}\Big(\hat a;t^{\EuScript N}\big(\hat a;\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f^{\EuScript M}\Big(\hat ai;\lambda\Big),}\hfill where $\displaystyle\lambda=F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).$
   
-  where 
-  
-  \ceq{\hfill\lambda}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big)}
 
   Let $\sigma$ be the limit in $\#_2$.
   Let $V\subseteq R$ be an open set containing $\sigma$.
@@ -368,7 +363,7 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
 \end{proposition}
 \begin{proof}
-  First note that if $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_LL} then, if we absorbe $\alpha$ into the language, the proposition reduces to the classical \L\v{o}\'s Theorem.
+  First note that if $\varphi(x;y)$ is as in (ii) of Definition~\ref{def_LL} then the proposition reduces to the classical \L\v{o}\'s Theorem.
 
   Now, suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$, where $t(x;y)\in \mathds{T}_R\circ\mathds{T}_M$.
   
