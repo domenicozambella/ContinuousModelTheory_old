@@ -90,9 +90,9 @@
 \maketitle
 \raggedbottom
 
-These notes have no ambition of mathematcal novelty.
-In fact, most techniques applied here are at least half a century old.
-Still we believe that an important facet of mathematics progress consists of the simplificaytion and clarification of existent knowledge.
+These notes do not claim new mathematical results.
+In fact, the main ideas applied here originated in the mid 20th century (cf. Chang-Keisler, Gromov).
+Still, we believe that an important facet of mathematics progress consists of the simplificaytion and clarification of existent knowledge.
 We hope to contribute in this manner.
 
 
@@ -108,12 +108,14 @@ We hope to contribute in this manner.
 
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-Real vector spaces are among the most simple strucures considered in model theory.
-Unfortunately, in most situations they are not expressive enough.
-It is natural to expand them by adding a norm. 
-The norm is a function that, given vector, outputs a real number.
-Unfortunately, this function messies up with our intuition of elementary extension.
-Ideally, we would like to extend the vector field while mantaining the usal notion of real number\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ needs to remain $\mathds{R}$ throughout.} but ths is impossible.
+As a motivating example, consider real vector spaces.
+These are among the most simple strucures considered in model theory.
+Now expand them by adding a norm.
+The norm is a function that, given vector, outputs a real number, we may formalize this with a two sorted struture.
+Ideally, we would like to extend the vector space while mantaining the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ should remain $\mathds{R}$ throughout.} but this is incompatible with the usual notion of elementary extension.
+One way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas.
+We elaborate on this idea and generalize it to arbitrary structures.
+We also show that their approach applies to a larger class of formulas.
 
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
@@ -122,7 +124,7 @@ Ideally, we would like to extend the vector field while mantaining the usal noti
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
   
-  Function symbols of $L'$ falls in one of these two groups
+  The function symbols of $L'$ fall in one of two groups
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
     \item[2.] $M^n\times R^m\to R$
@@ -131,7 +133,7 @@ Ideally, we would like to extend the vector field while mantaining the usal noti
   We require that function symbols of the second group are interpreted in functions such that
   \begin{itemize}
     \item[i.] $f^{\EuScript M}:M^n\times R^m\to R$ is bounded, i.e.\@ its range is contained in a compact set;
-    \item[ii.] $f^{\EuScript M}:M^n\times R^m\to R$ is continuous uniformly in $M$, as defined in Definition~\ref{def_unif_cont} below.
+    \item[ii.] $f^{\EuScript M}:M^n\times R^m\to R$ is continuous uniformly in $M$, this is made precise in Definition~\ref{def_unif_cont}.
  
     % \item[2] $f^{\EuScript M}(a;\mbox{-}):R^m\to R$ is are 
     % uniformly continuous, uniformly in $a\in M^n$. Precisely, we require the following. Fix a compact $C\subseteq R$ containgng the range of $f^{\EuScript M}$, let $U$ and $V$ range over the entourages of the (unique)uniformity, associated to $C$. We require that
@@ -148,7 +150,7 @@ Ideally, we would like to extend the vector field while mantaining the usal noti
 % When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
   
 There might be models in the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
-As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq L'$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated and is still same class.
+As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq L'$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated in the same class.
 Our choice of $\mathds{L}$ is not the most general.
 It is a compromise that avoids eccessive complications.
 
