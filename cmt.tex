@@ -89,6 +89,15 @@
 \hfill\texttt{Branch:\ master\ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
+
+These notes have no ambition of mathematcal novelty.
+In fact, most techniques applied here are at least half a century old.
+Still we believe that an important facet of mathematics progress consists of the simplificaytion and clarification of existent knowledge.
+We hope to contribute in this manner.
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,7 +108,12 @@
 
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-
+Real vector spaces are among the most simple strucures considered in model theory.
+Unfortunately, in most situations they are not expressive enough.
+It is natural to expand them by adding a norm. 
+The norm is a function that, given vector, outputs a real number.
+Unfortunately, this function messies up with our intuition of elementary extension.
+Ideally, we would like to extend the vector field while mantaining the usal notion of real number\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ needs to remain $\mathds{R}$ throughout.} but ths is impossible.
 
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
@@ -108,7 +122,7 @@
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
   
-  The function symbols of $L'$ are classified in two groups
+  Function symbols of $L'$ falls in one of these two groups
   \begin{itemize}
     \item[1.] $M^n\times R^m\to M$
     \item[2.] $M^n\times R^m\to R$
@@ -133,14 +147,14 @@
 % Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
 % When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
   
-There might be models in  the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in this class.
-As a remedy, below we carve out a set of formulas $L\subseteq\mathds{L}\subseteq L'$ such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension in the same class that is $\mathds{L}$-saturated.
-Our choice of $\mathds{L}$ is not the most general, it is a compromise that accomodates the relevant examples and avoids eccessive complications.
+There might be models in the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
+As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq L'$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated and is still same class.
+Our choice of $\mathds{L}$ is not the most general.
+It is a compromise that avoids eccessive complications.
 
 In a nutshell, we require that function symbols of the second group above do not occur under the scope of a negation.
 We also do not allow existential quantifiers of sort $R$.
-
-The ultrapower construction in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first group. 
+In fact, the ultrapower construction that we present in Section~\ref{ultrapws} is completely classical w.r.t.\@ functions the first group. 
 On the other hand, functions of the second group are \textit{critical\/} and need to be dealt with differently.
  
 Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing function symbols as in 1 above.
@@ -148,15 +162,16 @@ Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing f
 By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing function symbols as in 2 above.
 
 By \emph{$\mathds{T}_R\circ\mathds{T}_M$\/} we  denote the set of the terms obtained composing terms in $\mathds{T}_R$ with terms in $\mathds{T}_M$. 
-Clearly, there are many more terms in $L'$ but for simplicity, we will restrict to these.
+
+Clearly, there are many more terms in $L'$ but we will restrict to these.
 
 \begin{definition}\label{def_LL}
-  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from two groups of formulas below
+  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
   \begin{itemize}
   \item[i.] formulas as $t(y;z)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $x\in C$ for $C(x)$} and $t(y;z)$ is a tuple of terms in $\mathds{T}_R\circ\mathds{T}_M$; 
   \item[ii.] quantifier free formulas with only terms in $\mathds{T}_M$.
   \end{itemize}
-  Finally we require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, the quantifiers $\forall$, $\exists$ of sort $M$; and the universal quantifier $\forall$ of sort $R$.
+  We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$, the quantifiers $\forall$, $\exists$ of sort $M$; and the universal quantifier $\forall$ of sort $R$.
 \end{definition}
 
 Clearly, $L\subseteq\mathds{L}\subseteq L'$.
@@ -183,8 +198,7 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
 By $\beta\kern-1.5pt I$ we denote the set of ultrafilters on $I$. This is a topological space with the topology generated by the clopen sets $[A]=\{F\in\beta\kern-1.5pt I: A\in F\}$ as $A$ ranges over the subsets of $I$.
 
 \begin{definition}\label{def_unif_cont}
-  Let $I$ be a pure set. Let $X,Y$ be topological spaces, and assume $Y$ is compact. 
-  
+  Let $I$ be a pure set. Let $X,Y$ be topological spaces, and assume $Y$ is Hausdorff and compact.  
   We say that $f:I\times X\to Y$ is \emph{continuous uniformly in $I$} if the function below is continuous
   
   \ceq{\hfill \bar f\ :\ \beta\kern-1.5pt I\times X}{\to}{Y}
@@ -192,7 +206,7 @@ By $\beta\kern-1.5pt I$ we denote the set of ultrafilters on $I$. This is a topo
   \ceq{\hfill  \langle F,\alpha\rangle\ }{\mapsto}{F\mbox{-}\lim_i f(i,\alpha)}
 \end{definition}
 
-It is convenient to unravel the definition above in a more practicable form.
+The following propositions unravels the definition above into a more practicable form.
 
 \begin{proposition}\label{prop_uc_esplicito}
   The following are equivalent
@@ -202,23 +216,41 @@ It is convenient to unravel the definition above in a more practicable form.
   \end{itemize}
 \end{proposition}
 
+\begin{lemma}[???]
+  Let $f:I\times X\to Y$ be continuous uniformly in $I$.
+  Let $\langle y_i\in Y : i\in I\rangle$.
+  For a given $F\in\beta I$ define $\alpha=F\mbox{-}\lim_iy_i$.
+  Then $f(F,\alpha)=F\mbox{-}\lim_i f(i,y_i)$.
+\end{lemma}
+
+
+\begin{lemma}[???]
+  Let $f:I\times X\to Y$ be continuous uniformly in $I$.
+  Let $g:I\times Y\to I$ be any function and let $\bar g:\beta I\times Y\to \beta I$ the unique continuous extension of $g$.
+  Let $\langle y_i\in Y : i\in I\rangle$.
+  For a given $F\in\beta I$ define $\alpha=F\mbox{-}\lim_iy_i$.
+  Then $f(\bar g(F,\alpha),\alpha)=F\mbox{-}\lim_i f(g(i,y_i),y_i)$.
+\end{lemma}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ultraproducts}\label{ultrapws}
+\section{Ultrapowers}\label{ultrapws}
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
-We require that for each function symbol $f$ of sort $M^n\times R^m\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
-Note that, otherwise, Fact~\ref{fact_termini1} below may fail.
+% Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
+% We require that for each function symbol $f$ of sort $M^n\times R^m\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
+% Note that, otherwise, Fact~\ref{fact_termini1} below may fail.
 
-To keep notation tidy, we make two simplifications: 
-(1) we only consider ultrapowers; 
-(2) we do not consider formulas containing equality, so we need not take any quotient.
+To keep notation tidy, 
+% we make two simplifications: 
+% (1) we only consider ultrapowers; 
+% (2) 
+we do not consider formulas containing equality, so we need not take any quotient.
 
 Let $I$ be an infinite set.
 Let $F$ be an ultrafilter on $I$.
@@ -279,15 +311,19 @@ We also have that
 
   Let $\sigma$ be the limit in $\#_2$.
   Let $V\subseteq R$ be an open set containing $\sigma$.
+  Note that we can identify $F$ with an ultrafilter on $M^{|\hat a|}$ concentrated on ${\rm range}$ of $\hat a$.
   Apply 2 of Proposition~\ref{prop_uc_esplicito}, to obtain $A\in F$ and an open set $U\subseteq R$ containing $\lambda$ such that for every $i\in A$ and every $x\in U$
   
   \ceq{\hfill f^{\EuScript M}\big(\hat ai;x\big)}{\in}{V}.
 
-  After possibly restricting $A$, we can assume that for every $i\in A$ 
+  By induction hypothesis there is $B\in F$ be such that
+  $t^{\EuScript M}\big(\hat ai;\alpha\big)\in U$ for every $i\in B$. 
+  Therefore
 
-  \ceq{\hfill t^{\EuScript M}\big(\hat ai;\alpha\big)}{\in}{U}.
-
-  This sufficies to prove that $\sigma$ is also the limit in $\#_1$.
+  \ceq{\hfill f^{\EuScript M}\Big(\hat ai;t^{\EuScript M}\big(\hat ai;\alpha\big)\Big)}{\in}{V}
+  
+  for every $i\in A\cap B$.
+  As $A\cap B\in F$, this sufficies to prove that $\sigma$ is also the limit in $\#_1$.
 \end{proof}
 
 From the two facts above it immediately follows that
@@ -433,8 +469,11 @@ Finally, we prove $\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theore
 
   As $\varphi_j(x,y\,;\alpha)\rightarrow\varphi_{j'}(x,y\,;\alpha)$ holds for $j>j'$, the diagonal sequence $\hat d=\langle \hat b_ii :i\in I\rangle$ satisfies ${\EuScript N}\models\varphi(\hat a,\hat d\,; \alpha)$.
 \end{proof}
-\end{document}
 
+
+
+
+\end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -486,6 +525,7 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
   By Fact~\ref{fact_immediate}, $p(x)\wedge\neg\varphi(x)$ is also consistent.
 \end{proof}
 
+\end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
