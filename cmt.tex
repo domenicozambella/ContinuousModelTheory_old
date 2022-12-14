@@ -133,21 +133,24 @@ As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\math
 Our choice of $\mathds{L}$ is not the most general.
 It is a compromise that avoids eccessive complications.
 
-The function symbols of $L'$ fall in one of four groups accortding to their sort
+The function symbols of $L'$ fall in one of the two groups below accortding to their sort
   \begin{itemize}
-    \item[0.] $M^n\to M$ (we assume, for simplicity, that these are also in $L$);
-    \item[1.] $M^n\times R^m\to M$ with $m$ positive;
-    \item[2.] $R^m\to R$ (we assume $L'$ contains symbols for \textit{all} continuous bounded functions of this sort);
-    \item[3.] $M^n\times R^m\to R$ with $m$ positive.
+    \item[1.] $M^n\times R^m\to M$;
+    \item[2.] $M^n\times R^m\to R$.
   \end{itemize}
  
-Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing function symbols as in 0 or 1 above.
+Below, \emph{$\mathds{T}_M$\/} denotes the set of the terms obtained composing the function symbols as in 1 above.
 
-By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing function symbols as in 2 or 3 above.
+By \emph{$\mathds{T}_R$\/} we denote the set of the terms obtained composing the function symbols as in 2 above.
 
 By \emph{$\mathds{T}_{R\circ M}$\/} we  denote the set of the terms obtained composing terms in $\mathds{T}_R$ with terms in $\mathds{T}_M$. 
 
-Clearly, there are many more terms in $L'$; but we will restrict to the one above.
+Clearly, there are more terms in $L'$; but we will restrict to the one above.
+
+For definiteness, we assume that $L'$ contains symbols for \textit{all\/} compact sets $C\subseteq R^m$.
+It also contains symbols for \textit{all\/} functions $R^m\to R$ that are bounded and continuous.
+
+For convenience we assume that the functions of sort $M^n\to M$ and the relation of sort $M^n$ are all in $L$.
 
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
@@ -240,7 +243,7 @@ Vice versa, if $\varphi'$ for every $\varphi'>\varphi$, then $\varphi$.
 The following lemma is required for the proof of \L\v o\'s Theorem in the next section.
 
 \begin{lemma}\label{lem_HIapprox}
-  Let $\alpha=F\mbox{-}\lim_i\alpha_i$ for some sequence $\langle \alpha_i:i\in I\rangle$ in $R$ and some $F\in\beta\kern-1.5pt I$.
+  Let $\alpha=F\mbox{-}\lim_i\alpha_i$, where $\langle \alpha_i:i\in I\rangle$ is a sequence in $R$ and $F\in\beta\kern-1.5pt I$.
   Let $\hat a:I\to M$.
   Let $\varphi(x;y)\in\mathds{L}$ be such that $\{i:{\EuScript M}\models\varphi(\hat ai;\alpha)\}\in F$. Then $\{i:{\EuScript M}\models\varphi'(\hat ai\,;\alpha_i)\}\in F$ for every $\varphi'>\varphi$.
 \end{lemma}
