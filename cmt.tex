@@ -124,18 +124,15 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
     \item[ii.] $M^n\to M$;
     \item[iii.] $M^n\to R$.
   \end{itemize}
-  The interpretation of function symbolss of sort $R^n\to R$ is required to be continuous, the interpretation of function symbolss of sort $M^n\to R$ is required to be bounded, i.e.\@ the range is contained in a compact set.
+  The interpretation of symbols of sort $R^n\to R$ is required to be continuous, the interpretation of symbols of sort $M^n\to R$ is required to be bounded, i.e.\@ the range is contained in a compact set.
 
   We only allow relation symbols of sorts $M^n$ and $R^n$.
 \end{definition}
 
-% Caveat: occasionally, we work with totopogical spaces that are not ${\rm T}_0$.
-% When we say that such a space is Hausdorff, we mean that its Kolmogorov quotient is Hausdorff.
-  
 There might be models in the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
 As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq L'$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated in the same class.
-Our choice of $\mathds{L}$ is not the most general.
-It is a compromise that avoids eccessive complications.
+% Our choice of $\mathds{L}$ is not the most general.
+% It is a compromise that avoids eccessive complications.
 
 For convenience we assume that the functions of sort $M^n\to M$ and the relation of sort $M^n$ are all in $L$.
 
@@ -169,25 +166,25 @@ if $f^{-1}[A]\in F$ for every $A\subseteq Y$ that is a neighborhood of $\lambda$
 Such a $\lambda$ is unique if $Y$ is Hausdorff.
 When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
 
-Let $M^I$ denote the set of functions $\hat a:I\to M$.
-
 \begin{fact}\label{fact_unifcont}
-  Let $t(x;y)$ be a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$ such that 
+  Let $t(x;y)$ be a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
+  Let $U\subseteq R^{|y|}$ be an open set. 
+  Assume that for some $\alpha\in R^{|y|}$ and some sequence $\langle a_i:i\in I\rangle$ of elements of $M^{|x|}$ and 
 
-  \ceq{\hfill\{i\in I : t^{\EuScript M}(\hat ai;\alpha)\in U\}}{\in}{F}
+  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha)\in U\}}{\in}{F}
 
-  for some given $\hat a\in (M^I)^{|x|}$ and $\alpha\in R^{|y|}$.
-  Then there is a an open $V\ni\alpha$ such that for everu $\alpha'\in V$
+  
+  Then there is an open $V\ni\alpha$ such that for every $\alpha'\in V$
 
-  \ceq{\hfill\{i\in I : t^{\EuScript M}(\hat ai;\alpha')\in U\}}{\in}{F.}
+  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha')\in U\}}{\in}{F.}
 \end{fact}
 
 \begin{proof}
   By induction. 
-  If $t$ is a function symbol $f$ then $x$ or $y$ do not occor in $t$.
+  If $t$ is a function symbol $f$ then $x$ or $y$ do not occur in $t$.
   If $x$ does not occur in $t$ the claim holds because $f^{\EuScript M}:R^{|y|}\to R$ is continuous.
   If $y$ does not occur in $t$ the claim is trivial.
-  Finally, induction is is clear by the continuity of the functions of sort $R^n\to R$. 
+  Finally, induction is clear by the continuity of the functions of sort $R^n\to R$. 
 \end{proof}
 
 \def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
@@ -210,9 +207,10 @@ Vice versa, if $\varphi'$ for every $\varphi'>\varphi$, then $\varphi$.
 The following lemma is required for the proof of \L\v o\'s Theorem in the next section.
 
 \begin{lemma}\label{lem_HIapprox}
-  Let $\alpha=F\mbox{-}\lim_i\alpha_i$, where $\langle \alpha_i:i\in I\rangle$ is a sequence in $R$ and $F\in\beta\kern-1.5pt I$.
-  Let $\hat a:I\to M$.
-  Let $\varphi(x;y)\in\mathds{L}$ be such that $\{i:{\EuScript M}\models\varphi(\hat ai;\alpha)\}\in F$. Then $\{i:{\EuScript M}\models\varphi'(\hat ai\,;\alpha_i)\}\in F$ for every $\varphi'>\varphi$.
+  Let $\alpha=F\mbox{-}\lim_i\alpha_i$, where $\langle \alpha_i:i\in I\rangle$ is a sequence in $R^{|y|}$ and $F$ is an untrafilter on $I$.
+  Let  $\langle a_i:i\in I\rangle$ be a sequence in $M^{|x|}$.
+  Let $\varphi(x;y)\in\mathds{L}$ be such that $\{i:{\EuScript M}\models\varphi(a_i;\alpha)\}\in F$. 
+  Then $\{i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}\in F$ for every $\varphi'>\varphi$.
 \end{lemma}
 \begin{proof}
   \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
@@ -220,49 +218,49 @@ The following lemma is required for the proof of \L\v o\'s Theorem in the next s
   When $\varphi(x;y)$ is in $L$, it does not depend on $\alpha$, and the lemma is trivial.
   Suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$.
   
-  Assume that $\{i:{\EuScript M}\models t(\hat ai;\alpha)\in C\}\in F$.
-  Then $F\mbox{-}\lim_i t^{\EuScript M}(\hat ai;\alpha)\in C$.
+  Assume that $\{i:{\EuScript M}\models t(a_i;\alpha)\in C\}\in F$.
+  Then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)\in C$.
   Let $D$ be a compact neighborhood of $C$.
   By Fact~\ref{fact_unifcont}, there is an open $V\ni\alpha$ such that 
-  $\{i:{\EuScript M}\models t(\hat ai;\alpha')\in D\}\in F$ for every $\alpha'\in D$
-  Then $\{i:{\EuScript M}\models t'(\hat ai\,;\alpha_i)\in D\}\in F$ follows.
+  $\{i:{\EuScript M}\models t(a_i;\alpha')\in D\}\in F$ for every $\alpha'\in V$.
+  Then $\{i:{\EuScript M}\models t'(a_i\,;\alpha_i)\in D\}\in F$ follows.
   This completes the base case of the induction.
 
   Induction clear for the connectives $\vee$, $\wedge$ and for the existential quantifier of sort $M$.
   To deal with the universal quantifier of sort $M$ we assume inductively that for every $\varphi'>\varphi$
 
-  \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai,\hat bi\,; \alpha)\big\}\in F}
+  \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F}
   {\Rightarrow}
-  {\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha_i)\big\}\in F}.
+  {\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}.
   
   We prove
 
-  \ceq{1.\hfill \{i:{\EuScript M}\models\forall y\,\varphi(\hat ai,y\,; \alpha)\}\in F}
+  \ceq{1.\hfill \{i:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\}\in F}
   {\Rightarrow}
-  {\big\{ i:{\EuScript M}\models\forall y\,\varphi'(\hat ai,y\,;\alpha_i)\big\}\in F}
+  {\big\{ i:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}
   
   Negate the r.h.s.\@ of the implication.
-  Using that $F$ is an ultrafilter, there is a sequence $\hat b$ such that 
+  Using that $F$ is an ultrafilter, there is a sequence $\langle b_i:i\in I\rangle$ such that 
 
   \ceq{}
   { }
-  {\big\{ i:{\EuScript M}\not\models\varphi'(\hat ai,\hat bi\,;\alpha_i)\big\}\in F}
+  {\big\{ i:{\EuScript M}\not\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}
   
   Assume the l.h.s.\@ of the implication,  for a contradiction.
-  Then $\big\{i:{\EuScript M}\models\varphi(\hat ai,\hat bi\,; \alpha)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha_i)\big\}\in F$. A contradiction that proves (1).
+  Then $\big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. A contradiction that proves (1).
   
   Induction for the quantifier $\forall^C$ is similar.
   Assume inductively that for every $\varphi'>\varphi$
 
-  \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai\,; \alpha,\beta)\big\}\in F}
+  \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F}
   {\Rightarrow}
-  {\big\{ i:{\EuScript M}\models\varphi'(\hat a\,;\alpha_i,\beta_i)\big\}\in F}.
+  {\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F}.
   
   We prove
 
-  \ceq{2.\hfill \{i:{\EuScript M}\models\forall^C\!y\,\varphi(\hat ai,; \alpha,y)\}\in F}
+  \ceq{2.\hfill \{i:{\EuScript M}\models\forall^C\!y\,\varphi(a_i,; \alpha,y)\}\in F}
   {\Rightarrow}
-  {\big\{ i:{\EuScript M}\models\forall^C\!y\,\varphi'(\hat ai\,;\alpha_i,y)\big\}\in F}
+  {\big\{ i:{\EuScript M}\models\forall^C\!y\,\varphi'(a_i\,;\alpha_i,y)\big\}\in F}
   
  
   Negate the r.h.s.\@ of the implication.
@@ -270,11 +268,11 @@ The following lemma is required for the proof of \L\v o\'s Theorem in the next s
 
   \ceq{}
   { }
-  {\big\{ i:{\EuScript M}\not\models\varphi'(\hat ai\,;\alpha_i,\beta_i)\big\}\in F}
+  {\big\{ i:{\EuScript M}\not\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F}
   
   As $C$ is compact, $F\mbox{-}\lim_i\beta_i$ exists, say it equals $\beta\in C$.
   Assume,  for a contradiction, that the l.h.s.\@ of the implication holds.
-  Then $\big\{i:{\EuScript M}\models\varphi(\hat a\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves (2) and, with it, the lemma.
+  Then $\big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves (2) and, with it, the lemma.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
