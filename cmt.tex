@@ -319,50 +319,52 @@ The following lemma is required for the proof of \L\v o\'s Theorem in the next s
 
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-% Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
-% We require that for each function symbol $f$ of sort $M^n\times R^m\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
-% Note that, otherwise, Fact~\ref{fact_termini1} below may fail.
-
-To keep notation tidy, 
-% we make two simplifications: 
-% (1) we only consider ultrapowers; 
-% (2) 
-we do not consider formulas containing equality, so we need not take any quotient.
-The generalization is straightforward.
-
 Let $I$ be an infinite set.
 Let $F$ be an ultrafilter on $I$.
 Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
 
 \begin{definition}\label{def_ultraproduct}
-  We define a structure \emph{${\EuScript N}=\langle  N,R\rangle$\/} that we call the \emph{ultrapower\/} of ${\EuScript M}$.
+  We define a structure \emph{${\EuScript N}=\langle  N,\bar R\rangle$\/} that we call the \emph{ultrapower\/} of ${\EuScript M}$.
   \begin{itemize}
-    \item[1.] $N=M^I$ that is, it is the set of sequences $\hat a: I\to M$.
-    \item[2.] If $f$ is a function of sort $ M^n\times R^m\to  M$ then $f^{\EuScript N}(\hat a;\alpha)$ is the sequence 
-    $\langle f^{\EuScript M}\big(\hat ai;\alpha\big):i\in I\rangle$.
-    \item[4.] If $f$ is a function of sort $ M^n\times R^m\to R$ then for every $\alpha\in R^m$
+    \item[1.] $N$ is the set of sequences $\hat a: I\to M$.
+    \item[2.] $\bar R$ is the set of bounded sequences $\hat\alpha: I\to R$.
+    \item[3.] If $f$ is a function symbols then $f^{\EuScript N}(\hat a;\hat\alpha)$ is the sequence 
+    $\langle f^{\EuScript M}\big(\hat ai;\hat\alpha i\big):i\in I\rangle$.
+    \item[4.] if $r$ is a relation symbol of sort $M^n\times R^m$ then
     $$
-    f^{\EuScript N}\big(\hat a;\alpha\big)\ =\ F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai;\alpha\big).
-    $$ 
-    \item[3.] if $r$ is a relation symbol of sort $M^n\times R^m$ then for every $\alpha\in R^m$
-    $$
-    {\EuScript N}\models r(\hat a; \alpha)
+    {\EuScript N}\models r(\hat a; \hat\alpha)
     \Leftrightarrow
-    \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai;\alpha)\big\}\in F.
+    \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai;F\mbox{-}\lim_i\hat\alpha i)\big\}\in F.
     $$
   \end{itemize}
 \end{definition}
 
-The following is immediate.
+We define an equivalence relation on ${\EuScript N}$.
+\begin{itemize}
+  \item[1.] $\hat a\sim_F\hat b$, where $\hat a,\hat b\in N$, if $\{i:\hat ai=\hat bi\}\in F$
+  \item[2.] $\hat\alpha\sim_F\hat\beta$, where $\hat\alpha,\hat\beta\in\bar R$, if  $F\mbox{-}\lim_i\hat\alpha i=F\mbox{-}\lim_i\hat\beta i$
+\end{itemize}
 
-\begin{fact}\label{fact_termini1}
-  The structure ${\EuScript N}$ satisfies Definition~\ref{def_0}.\hfill\textcolor{blue}{\Large\danger}
+\begin{fact}\label{fact_congruence}
+  The relation ${\sim_F}$ is a congruence.
 \end{fact}
+
+\begin{proof}
+  If $f$ is a function symbol of sort $M^n\times R^m\to R$ then we need to show that
+
+  \ceq{\hfill f^{\EuScript N}(\hat a\,;\hat\alpha)}{\sim_F}{f^{\EuScript N}(\hat b\,;\hat\beta)}
+
+  \ceq{\hfill F\mbox{-}\lim_i f^{\EuScript M}(\hat ai,\hat\alpha i)}{=}{F\mbox{-}\lim_i f^{\EuScript M}(\hat bi,\hat\beta i)}
+
+  If $f$ is a function symbol of sort $M^n\times R^m\to M$ the claim is clear.
+\end{proof}
+
+The following is immediate.
 
 The following is easily proved by induction on the syntax
 
 \begin{fact}\label{fact_easy_induz}
-  If  $t(y;z)\in \mathds{T}_M$ then 
+  If  $t(y;z)$ is a term then 
   
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{\langle t^{\EuScript M}\big(\hat ai;\alpha\big): i\in I\rangle.}\hfill\qedsymbol
 \end{fact}
@@ -380,7 +382,7 @@ We also have that
   The fact holds by definition if $t$ is a function symbol.
   Therefore, we assume $\#_0$ as induction hypothesis and prove 
 
-  \ceq{\#_1\hfill f^{\EuScript N}\Big(\hat a;t^{\EuScript N}\big(\hat a;\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f^{\EuScript M}\Big(\hat ai;t^{\EuScript M}\big(\hat ai;\alpha\big)\Big).}
+  \ceq{\#_1\hfill f^{\EuScript N}\Big(\hat a;t^{\EuScript N}\big(\hat a;\hat\alpha\big)\Big)}{=}{F\mbox{-}\lim_i f^{\EuScript M}\Big(\hat ai;t^{\EuScript M}\big(\hat ai;\hat\alpha\big)\Big).}
 
   By induction hypothesis 
 
