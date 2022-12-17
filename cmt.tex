@@ -30,7 +30,7 @@
 
 \newcommand{\mylabel}[1]{{#1}\hfill}
 \renewenvironment{itemize}
-  {\begin{list}{$\triangleright$}{%
+  {\begin{list}{$\cdot$}{%
    \setlength{\parskip}{0mm}
    \setlength{\topsep}{.2\baselineskip}
    \setlength{\rightmargin}{0mm}
@@ -139,14 +139,14 @@ For convenience we assume that the functions of sort $M^n\to M$ and the relation
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
   \begin{itemize}
-  \item[i.] formulas as $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
+  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
   \end{itemize}
   We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifier $\forall^C$, by which we mean a universal quantifier restricted to the compact set $C\subseteq R^m$.
 \end{definition}
 
 
-\def\ceq#1#2#3{\parbox[t]{43ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,20 +167,25 @@ Such a $\lambda$ is unique if $Y$ is Hausdorff.
 When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
 
 \begin{fact}\label{fact_unifcont}
-  Let $t(x;y)$ be a tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$.
-  Let $U\subseteq R^{|y|}$ be an open set. 
-  Assume that for some $\alpha\in R^{|y|}$ and some sequence $\langle a_i:i\in I\rangle$ of elements of $M^{|x|}$ and 
-
-  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha)\in U\}}{\in}{F}
-
+  Consider the followin data
+  \begin{itemize}
+    \item $t(x;y)$, an $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$;
+    \item $\langle{\EuScript M}_i:i\in I\rangle$, a sequence of structures;
+    \item $\langle a_i:i\in I\rangle$, a sequence of elements $a_i\in M_i^{|x|}$;
+    \item $\langle U_i:i\in I\rangle$, a sequence of open sebsets of $R^n$.
+  \end{itemize}
+  Let $F$ be an ultrafilter on $I$.
+  Assume that for some $\alpha\in R^{|y|}$
   
+  \ceq{\hfill\{i\in I : t^{{\EuScript M}_i}( a_i;\alpha)\in U_i\}}{\in}{F.}
+
   Then there is an open $V\ni\alpha$ such that for every $\alpha'\in V$
 
-  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha')\in U\}}{\in}{F.}
+  \ceq{\hfill\{i\in I : t^{{\EuScript M}_i}( a_i;\alpha')\in U_i\}}{\in}{F.}
 \end{fact}
 
 \begin{proof}
-  By induction. 
+  By induction on the syntax. 
   If $t$ is a function symbol $f$ then $x$ or $y$ do not occur in $t$.
   If $x$ does not occur in $t$ the claim holds because $f^{\EuScript M}:R^{|y|}\to R$ is continuous.
   If $y$ does not occur in $t$ the claim is trivial.
@@ -207,13 +212,26 @@ Vice versa, if $\varphi'$ for every $\varphi'>\varphi$, then $\varphi$.
 The following lemma is required for the proof of \L\v o\'s Theorem in the next section.
 
 \begin{lemma}\label{lem_HIapprox}
-  Let $\alpha=F\mbox{-}\lim_i\alpha_i$, where $\langle \alpha_i:i\in I\rangle$ is a sequence in $R^{|y|}$ and $F$ is an untrafilter on $I$.
-  Let  $\langle a_i:i\in I\rangle$ be a sequence in $M^{|x|}$.
-  Let $\varphi(x;y)\in\mathds{L}$ be such that $\{i:{\EuScript M}\models\varphi(a_i;\alpha)\}\in F$. 
-  Then $\{i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}\in F$ for every $\varphi'>\varphi$.
+  Consider the followin data
+  \begin{itemize}
+    \item $\varphi(x;y)\in\mathds{L}$;
+    \item $\langle{\EuScript M}_i:i\in I\rangle$, a sequence of structures;
+    \item $\langle a_i:i\in I\rangle$, a sequence of elements $a_i\in M_i^{|x|}$;
+    % \item $\langle\alpha_i:i\in I\rangle$, a sequence of elements of $C\subseteq R^{|y|}$, a compact set.
+  \end{itemize}
+  Let $F$ be an ultrafilter on $I$.
+  % Let $\alpha=F\mbox{-}\lim_i\alpha_i$.
+  Assume that for some $\alpha\in R^{|y|}$
+
+  \ceq{\hfill\{i:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
+
+  Then for every $\varphi'>\varphi$ there is  open $V\ni\alpha$ such that for every $\alpha'\in V$
+
+  \ceq{\hfill\{i:{\EuScript M}\models\varphi'(a_i\,;\alpha')\}}{\in}{F.} 
+  
 \end{lemma}
 \begin{proof}
-  \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
+  % \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
   By induction on the syntax.
   When $\varphi(x;y)$ is in $L$, it does not depend on $\alpha$, and the lemma is trivial.
   Suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$.
@@ -302,7 +320,7 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
     \item[1.] $N=M^I$ that is, it is the set of sequences $\hat a: I\to M$.
     \item[2.] If $f$ is a function of sort $ M^n\to  M$ then $f^{\EuScript N}(\hat a)$ is the sequence 
     $\langle f^{\EuScript M}\big(\hat ai\big):i\in I\rangle$.
-    \item[3.] The interpretation of functions of sort $R^n\to  R$ is unchanged.
+    \item[3.] The interpretation of functions of sort $R^n\to  R$ remains unchanged.
     \item[4.] If $f$ is a function of sort $ M^n\to R$ then 
     $$
     f^{\EuScript N}\big(\hat a\big)\ =\ F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai\big).
@@ -313,7 +331,7 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
     \Leftrightarrow
     \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai)\big\}\in F.
     $$
-    \item[6.] The interpretation of functions of sort $R^n$ is unchanged.
+    \item[6.] The interpretation of functions of sort $R^n$ remains unchanged.
   \end{itemize}
 \end{definition}
 
