@@ -9,6 +9,8 @@
 \usepackage{hyperref}
 
 \usepackage[margin=1in]{geometry}
+\usepackage{stackengine}
+\usepackage{scalerel}
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{calc}
@@ -135,6 +137,7 @@ As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\math
 % It is a compromise that avoids eccessive complications.
 
 For convenience we assume that the functions of sort $M^n\to M$ and the relation of sort $M^n$ are all in $L$.
+It is also convenient to assume that $L'$ contains names for all continuous bounded functions $R^n\to R$.
 
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
@@ -214,11 +217,11 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   \end{itemize}
   Assssume that
 
-  \ceq{\hfill\{i:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
+  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
 
   Then for every $\varphi'>\varphi$
 
-  \ceq{\hfill\{i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}}{\in}{F.} 
+  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}}{\in}{F.} 
   
 \end{lemma}
 \begin{proof}
@@ -297,7 +300,7 @@ We require that for each function symbol $f$ of sort $M^n\to R$ there is a compa
 
 To keep notation tidy,
 we make two semplifications: (1) we only consider ultratpowers; (2) we do not consider formulas in $L$ containing equality, so we need not take any quotient.
-The generalization is straightforward.
+The generalization is straightforward and is left to the reader.
 
 Let $I$ be an infinite set.
 Let $F$ be an ultrafilter on $I$.
@@ -446,34 +449,79 @@ Finally, we prove
   This completes the proof of (3) and, with it, of the theorem.
 \end{proof}
 
-\end{document}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Saturation}
+\section{$\mathds{L}$-elementrarity}
 
+
+Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
+We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if
+
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $\varphi(x)\in\mathds{L}$ and every $a\in({\rm dom }f)^{|x|}$
+
+The following fact is proved as in the classical case using that ${\EuScript M}\models\varphi'$ for every $\varphi'>\varphi$ if and only if ${\EuScript M}\models\varphi$.
+
+\begin{fact}
+  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-elementary embedding of ${\EuScript M}$ into ${\EuScript N}$.
+\end{fact} 
+
+
+For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ is $\mathds{L}$-elementary.
+% Recall that $L'$ contains constants for all elements of $R$, then we never need to use parameter in $R$.
+We write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\equiv^\mathds{L}_M{\EuScript N}$.
+In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
+
+The following is proved as in the classical case.
+
+\begin{proposition}[Tarski-Vaught Test]
+  The following are equivalent 
+  \begin{itemize}
+    \item[1.] ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$
+    \item[2.] $M$ is a subset of $N$ and for every formula $\varphi(x)\in\mathds{L}(M)$
+    
+    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}{\Rightarrow}{{\EuScript N}\models\varphi(a)} \ for some $a\in M$\hfill\qedsymbol
+  \end{itemize}
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$\mathds{L}$-saturated structures}
+
+\newcommand\dangersign[1][3ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[.2pt]{\color{red}$\triangle$}{\color{red}\bfseries\tiny ?}}{#1}%
+}
+
+\noindent\llap{\dangersign\kern2ex}%
 Let $p(x)\subseteq\mathds{L}(M)$.
-We say that $p(x)$ is \emph{finitely satisfied in ${\EuScript M}$\/} if for every conjunction of formulas in $p(x)$, say $\varphi(x)$, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models\varphi(a)$.
+We say that $p(x)$ is \emph{finitely satisfied in ${\EuScript M}$\/} if ${\EuScript M}\models\exists x\,\varphi'(x)$ for every $\varphi'>\varphi$ where $\varphi(x)$ is any conjunction of formulas in $p(x)$.
 
-The following definition is completely standard
+The following definition is standard.
 
 \begin{definition}
-  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, there is an $a\in  M^{|x|}$ such that ${\EuScript M}\models p(a)$
+  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
   \begin{itemize}
     \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
     \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
   \end{itemize}
 \end{definition}
 
-Now we prove that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one.
-First we prove the following lemma.
+Then proof that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one proceeds as in the classical case.
+First, note that the classical ultrapower construction yieds the the following lemma.
 
 \begin{lemma}\label{lem_compattezza}
   Every model ${\EuScript M}$ embeds $\mathds{L}$-elementarily in a model ${\EuScript N}$ that realizes all types as in the definition above.
 \end{lemma}
+
+Finally, using a sufficiently long $\mathds{L}$-elementary chain we obtain the required saturated extension.
 
 \begin{corollary}\label{thm_compattezza}
   Every model ${\EuScript M}$ is an $\mathds{L}$-elementary subtructure of some saturated model ${\EuScript N}$ (possibly of inaccessible cardinality).
@@ -483,20 +531,6 @@ We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structur
 The unit ball of ${\EuScript U}$ is denoted by \emph{$U$.}
 The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
 Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
-
-
-\begin{lemma}\label{lem_compactness_implication}
-  Let $p(x)\subseteq\mathds{L}(A)$, where $A\subseteq U$ has small cardinality.
-  Let $\varphi(x)\in\mathds{L}(U)$ be such that $p(x)\rightarrow\varphi(x)$.
-  Then for every $\varphi'>\varphi$ there is a formula $\psi(x)$, conjunction of formulas in $p(x)$, such that $\psi(x)\rightarrow\varphi'(x)$.
-\end{lemma}
-
-\begin{proof}
-  Let $\varepsilon>0$ be given.
-  Suppose that $\psi(x)\wedge{}^{\neg\varepsilon\kern-2pt}\varphi(x)$ is consistent for every $\psi(x)$ that is conjunction of formulas in $p(x)$.
-  By saturation there is a realization of $p(x)\cup{}^{\neg\varepsilon\kern-2pt}\varphi(x)$.
-  By Fact~\ref{fact_immediate}, $p(x)\wedge\neg\varphi(x)$ is also consistent.
-\end{proof}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%
