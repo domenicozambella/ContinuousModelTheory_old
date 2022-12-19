@@ -299,8 +299,9 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
 Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
 We require that for each function symbol $f$ of sort $M^n\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
 
-To keep notation tidy,
-we make two semplifications: (1) we only consider ultratpowers; (2) we do not consider formulas in $L$ containing equality, so we need not take any quotient.
+To keep notation tidy, we make two semplifications:
+(1) we only consider ultratpowers; 
+(2) we ignore formulas in $L$ containing equality, so we can work with $M^I$ in place of $M^I/F$.
 The generalization is straightforward and is left to the reader.
 
 Let $I$ be an infinite set.
@@ -410,7 +411,7 @@ Finally, we prove
   then in particular ${\EuScript N}\models\varphi(\hat a,\hat b; \alpha)$.
   By induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$ a contradiction. This completes the proof of (1).
   
-  Now we prove (the argument, which we repeat for convinience, is dual to the one above)
+  Now, we prove (the argument is dual to the one above -- it is repeated for convinience)
 
   \ceq{2.\hfill {\EuScript N}\models\exists y\,\varphi(\hat a,y\,; \alpha)}
   {\Leftrightarrow}
@@ -459,6 +460,7 @@ Finally, we prove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-elementrarity}
 
+(Work in progress)
 
 Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
 We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if
@@ -494,7 +496,9 @@ The following is proved as in the classical case.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-saturated structures}
+\section{$\mathds{L}$-saturation}
+
+(Work in progress)
 
 \newcommand\dangersign[1][3ex]{%
   \renewcommand\stacktype{L}%
@@ -532,6 +536,52 @@ We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structur
 The unit ball of ${\EuScript U}$ is denoted by \emph{$U$.}
 The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
 Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Completeness}
+
+(Work in progress)
+
+For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ with parameters in $U$ of sort $M\to R$. 
+
+\begin{fact}
+  If $\bar a=\langle a_i:i<\lambda\rangle$ and $\bar b=\langle b_i:i<\lambda\rangle$ are such that $a_i\sim b_i$ for every $i<\lambda$ then $t(\bar a)=t(\bar b)$ for every term $t(x)$ with parameters in $U$ of sort $M^\lambda\to R$.
+\end{fact}
+
+\begin{proof}
+  Assume inductively that the fact holds for $\lambda$ and let $a_\lambda\sim b_\lambda$.
+  Then $t(\bar a,a_\lambda)=t(\bar a,b_\lambda)=t(\bar b,b_\lambda)$.
+\end{proof}
+
+We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\mathds{L}_M x\rightarrow a\sim x$
+
+\begin{example}
+  Assume that $R=\mathds{R}$ and that $L'$ contains a function of sort $M^2\to R$ that that is interpreted in a pseudometric.
+  Assume that all terms of sort $M^n\to R$ are continuous with rispect to this pseudometric.
+  It is easy to see that $a\sim b$ if and only if $d(a,b)=0$.
+  We claim that the following are equivalent
+  \begin{itemize}
+    \item[1.] $a\in U$ is definable in the limit over $M$, a model;
+    \item[2.] there is a sequence $\langle a_i: i\in\omega\rangle$ of elements of $M$ that converges to $a$.
+  \end{itemize} 
+\end{example}
+
+\begin{proof}
+  ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence of reals that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
+  Then $d(a_i,b)\le\varepsilon_i$ for every $b\equiv_Ma$.
+  By the uniqueness of the limit $d(a,b)=0$.
+
+  ($1\Rightarrow2$) Assume that $a\equiv_M x\rightarrow a\sim x$.
+  Then $a\equiv^\mathds{L}_M x\rightarrow d(a,x)<1/n$ for every $n>0$.
+  By compactness there is a formula $\varphi_n(x)\in{\rm tp}_\mathds{L}(a/M)$ such that $\varphi_n(x)\rightarrow d(a,x)<1/n$.
+  By $\mathds{L}$-elementarity there is an $a_n\in M$ such that $\varphi(a_n)$.
+  As $d(a,a_n)<1/n$, the sequence $\langle a_n: n\in\omega\rangle$ converges to $a$.
+\end{proof}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%
