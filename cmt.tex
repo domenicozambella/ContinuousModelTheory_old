@@ -146,7 +146,7 @@ It is also convenient to assume that $L'$ contains names for all continuous boun
   \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
   \end{itemize}
-  We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifier $\forall^C$, by which we mean a universal quantifier restricted to the compact set $C\subseteq R^m$.
+  We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifiers $\forall^C$, $\exists^C$, by which we mean the quantifiers of sort $R$ restricted to some (any) compact set $C\subseteq R^m$.
 \end{definition}
 
 
@@ -176,19 +176,20 @@ But first a preliminary fact.
   \begin{itemize}
     \item $t(x;y)$, an $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$;
     \item $\langle a_i:i\in I\rangle$, a sequence of elements $a_i\in M^{|x|}$;
-    \item $U\subseteq R^n$ an open set.
+    \item $U\subseteq R^n$ an open set;
+    \item $F$, an ultrafilter on $I$.
   \end{itemize}
-  Let $F$ be an ultrafilter on $I$.
-  Assume that for some $\alpha\in R^{|y|}$
-  
-  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha)\in U\}}{\in}{F.}
-
-  Then there is an open $V\ni\alpha$ such that for every $\alpha'\in V$
-
-  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha')\in U\}}{\in}{F.}
+  Then for every $\alpha\in R^{|y|}$ the following are equivalent
+  \begin{itemize}
+    \item[1] \noindent\kern-4ex  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha)\in U\}}{\in}{F.}
+    \item[2] there is an open $V\ni\alpha$ such that for every $\alpha'\in V$
+    
+    \noindent\kern-4ex \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha')\in U\}}{\in}{F.}
+  \end{itemize}
 \end{fact}
 
 \begin{proof}
+  Only (1$\Rightarrow$2) requires a proof.
   By induction on the syntax. 
   If $t$ is a function symbol $f$ then $x$ or $y$ do not occur in $t$.
   If $x$ does not occur in $t$ the claim holds because $f^{\EuScript M}:R^{|y|}\to R$ is continuous.
@@ -216,13 +217,12 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
     \item $\langle\alpha_i:i\in I\rangle$, a sequence of elements of $C\subseteq R^{|y|}$, a compact set;
     \item $\alpha=F\mbox{-}\lim_i\alpha_i$, for some ultrafilter $F$ on $I$.
   \end{itemize}
-  Assssume that
+  Then the following are equivalent
+  \begin{itemize}
+    \item[1]\noindent\kern-4ex   \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
 
-  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
-
-  Then for every $\varphi'>\varphi$
-
-  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}}{\in}{F.} 
+    \item[2]\noindent\kern-4ex    \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}}{\in}{F} \  for every $\varphi'>\varphi$.
+  \end{itemize}
   
 \end{lemma}
 \begin{proof}
@@ -236,19 +236,25 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   Let $D$ be a compact neighborhood of $C$.
   By Fact~\ref{fact_unifcont}, there is an open $V\ni\alpha$ such that 
   $\{i:{\EuScript M}\models t(a_i;\alpha')\in D\}\in F$ for every $\alpha'\in V$.
-  Then $\{i:{\EuScript M}\models t'(a_i\,;\alpha_i)\in D\}\in F$ follows and proves the base case of the induction.
+  Then $\{i:{\EuScript M}\models t'(a_i\,;\alpha_i)\in D\}\in F$ follows.
+  As $D$ is arbitrary, (1) follows.
+  Vice versa, using that $F$ is an ultrafilter, assume that $\{i:{\EuScript M}\not\models t(a_i;\alpha)\in C\}\in F$. 
+  By local compactness and regularity, $\{i:{\EuScript M}\not\models t(a_i;\alpha)\in D\}\in F$ for some $D$, a compact neighborhood of $C$.
+  Then the negation of (2) follows.
 
-  Induction clear for the connectives $\vee$, $\wedge$ and for the existential quantifier of sort $M$.
+  This completes the proof of the base case of the induction.
+
+  Induction clear for the connectives $\vee$, $\wedge$.
   To deal with the universal quantifier of sort $M$ we assume inductively that for every $\varphi'>\varphi$
 
   \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F}
-  {\Rightarrow}
+  {\Leftrightarrow}
   {\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}.
   
   We prove
 
   \ceq{1.\hfill \{i:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\}\in F}
-  {\Rightarrow}
+  {\Leftrightarrow}
   {\big\{ i:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}
   
   Negate the r.h.s.\@ of the implication.
@@ -259,22 +265,23 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   {\big\{ i:{\EuScript M}\not\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}
   
   Assume the l.h.s.\@ of (1) and reason for a contradiction.
-  Then $\big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. A contradiction that proves (1).
+  Then $\big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. A contradiction that proves the implication ($\Rightarrow$) in (1). The converse implication is immediate.
   
-  Induction for the quantifier $\forall^B$ is virtually identical, but we repeat the argument for convenience.
+  Induction for the existential quantifier of sort $M$ is similar (dual) to the proof for the universal quantifier.
+
+  Induction for the quantifier $\forall^B$ is also virtually identical, but we repeat the argument for convenience.
   Assume inductively that for every $\varphi'>\varphi$ and every sequence $\langle\beta_i:i\in I\rangle$ in $B$ such that $\beta=F\mbox{-}\lim_i\beta_i$
 
   \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F}
-  {\Rightarrow}
+  {\Leftrightarrow}
   {\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F}.
   
   We prove
 
   \ceq{2.\hfill \{i:{\EuScript M}\models\forall^C\!y\,\varphi(a_i,; \alpha,y)\}\in F}
-  {\Rightarrow}
+  {\Leftrightarrow}
   {\big\{ i:{\EuScript M}\models\forall^C\!y\,\varphi'(a_i\,;\alpha_i,y)\big\}\in F}
   
- 
   Negate the r.h.s.\@ of the implication.
   Then there is a sequence $\langle\beta_i:i\in I\rangle$ such that (again using that $F$ is an ultrafilter)
 
@@ -284,7 +291,8 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   
   As $B$ is compact, $F\mbox{-}\lim_i\beta_i$ exists, say it equals $\beta\in B$.
   Assume the l.h.s.\@ of the implication and reason for a contradiction.
-  Then $\big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves (2) and, with it, the lemma.
+  Then $\big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves the implication ($\Rightarrow$) in (2) . 
+  The converse implication is immediate.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -410,22 +418,23 @@ Finally, we prove
   If for a contradiction ${\EuScript N}\models\forall y\,\varphi(\hat a,y; \alpha)$, 
   then in particular ${\EuScript N}\models\varphi(\hat a,\hat b; \alpha)$.
   By induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$ a contradiction. This completes the proof of (1).
-  
-  Now, we prove (the argument is dual to the one above -- it is repeated for convinience)
 
-  \ceq{2.\hfill {\EuScript N}\models\exists y\,\varphi(\hat a,y\,; \alpha)}
-  {\Leftrightarrow}
-  {\big\{ i\in I\ :\ {\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
+  Induction for the existential quantifier of sort $M$ is similar (dual) to the proof above.  
+  % Now, we prove (the argument is dual to the one above -- it is repeated for convinience)
 
-  ($\Rightarrow$) Assume ${\EuScript N}\models\varphi(\hat a,\hat b; \alpha)$ for some $\hat b$.
-  By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$ for every $\varphi'>\varphi$.
-  A fortiori $\big\{ i:{\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F$ as required.
+  % \ceq{2.\hfill {\EuScript N}\models\exists y\,\varphi(\hat a,y\,; \alpha)}
+  % {\Leftrightarrow}
+  % {\big\{ i\in I\ :\ {\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
 
-  ($\Leftarrow$) Assume that $\big\{ i:{\EuScript M}\models\exists y\,\varphi'(\hat ai,y;\alpha)\big\}\in F$ for every $\varphi'>\varphi$.
-  Choose some $\hat b$ such that $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$.
-  Suppose for a contradiction that ${\EuScript N}\not\models\exists y\,\varphi(\hat a,y\,; \alpha)$.
-  Then, in particular, ${\EuScript N}\not\models\varphi(\hat a,\hat b\,; \alpha)$.
-  By induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\notin F$ for some $\varphi'>\varphi$, a contradiction. This completes the proof of (2).
+  % ($\Rightarrow$) Assume ${\EuScript N}\models\varphi(\hat a,\hat b; \alpha)$ for some $\hat b$.
+  % By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$ for every $\varphi'>\varphi$.
+  % A fortiori $\big\{ i:{\EuScript M}\models\exists y\,\varphi'(\hat ai,y\,;\alpha)\big\}\in F$ as required.
+
+  % ($\Leftarrow$) Assume that $\big\{ i:{\EuScript M}\models\exists y\,\varphi'(\hat ai,y;\alpha)\big\}\in F$ for every $\varphi'>\varphi$.
+  % Choose some $\hat b$ such that $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi;\alpha)\big\}\in F$.
+  % Suppose for a contradiction that ${\EuScript N}\not\models\exists y\,\varphi(\hat a,y\,; \alpha)$.
+  % Then, in particular, ${\EuScript N}\not\models\varphi(\hat a,\hat b\,; \alpha)$.
+  % By induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai,\hat bi\,;\alpha)\big\}\notin F$ for some $\varphi'>\varphi$, a contradiction. This completes the proof of (2).
   
   Finally, to deal with the quantifier $\forall^C$ we assume inductively that 
  
@@ -448,7 +457,9 @@ Finally, we prove
   If for a contradiction ${\EuScript N}\models\forall^C\!y\,\varphi(\hat a; \alpha, y)$, 
   then ${\EuScript N}\models\varphi(\hat a; \alpha, \beta)$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi''(\hat ai;\alpha,\beta)\big\}\in F$ for every $\varphi''>\varphi$.
   Fix $\varphi''$ such that $\varphi'>\varphi''>\varphi$ and obtain a contradiction from Lemma~\ref{lem_HIapprox}.
-  This completes the proof of (3) and, with it, of the theorem.
+  This completes the proof of (3).
+  
+  Induction for the quantifier $\exists^C$ is again dual to the proof above.
 \end{proof}
 
 
