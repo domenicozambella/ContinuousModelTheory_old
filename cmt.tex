@@ -151,7 +151,7 @@ It is also convenient to assume that $L'$ contains names for all continuous boun
 
 
 
-\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,11 +190,20 @@ But first a preliminary fact.
 
 \begin{proof}
   Only (1$\Rightarrow$2) requires a proof.
-  By induction on the syntax. 
-  If $t$ is a function symbol $f$ then $x$ or $y$ do not occur in $t$.
-  If $x$ does not occur in $t$ the claim holds because $f^{\EuScript M}:R^{|y|}\to R$ is continuous.
-  If $y$ does not occur in $t$ the claim is trivial.
-  Finally, induction is clear by the continuity of the functions of sort $R^n\to R$. 
+  By induction on the nesting of functions of sort $R^n\to R$
+  In the basis case the tuple $t$ is composed of elements of $R$ and terms of sort $M^n\to R$.
+  Then the fact is clear.
+  Assume inductively that the fact holds for the tuple $t(x,y)$ and prove it for the tuple $f_1\big(t(x,y)\big),\dots,f_n\big(t(x,y)\big)$.
+  It suffices to prove it for $n=1$.
+  Hence, assume
+
+  \ceq{\hfill\Big\{i\in I : f^{\EuScript M}\big(t^{\EuScript M}( a_i;\alpha)\big)\in U\Big\}}{\in}{F}
+
+  or equivalently
+
+  \ceq{\hfill\Big\{i\in I : t^{\EuScript M}(a_i;\alpha)\in \big(f^{\EuScript M}\big)^{-1}[U]\}}{\in}{F.}
+  
+  By the continuity of the functions of sort $R^n\to R$, the required $V$ is obtained from the induction hypothesis. 
 \end{proof}
 
 We recall the standard definition of $F$-limits.
@@ -293,6 +302,8 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   Assume the l.h.s.\@ of the implication and reason for a contradiction.
   Then $\big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves the implication ($\Rightarrow$) in (2) . 
   The converse implication is immediate.
+
+  Induction for the quantifier $\exists^B$ is proved by the dual version of argument above.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -568,6 +579,21 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
   Assume inductively that the fact holds for $\lambda$ and let $a_\lambda\sim b_\lambda$.
   Then $t(\bar a,a_\lambda)=t(\bar a,b_\lambda)=t(\bar b,b_\lambda)$.
 \end{proof}
+
+\begin{example}[???]
+  Let $L$ be the language of $\mathds{R}$-algebras expanded with two lattice operators $\wedge$, $\vee$.
+  Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
+  Let $M$ be the set the simple real valued random variables with the natural interpretation of the symbols in $L$. 
+  Let $R=\mathds{R}$.
+  Assume $L'$ estends $L$ with all the continuous functions $\mathds{R}^n\to\mathds{R}$ and for every $n\in\mathds{N}$ the functions ${\rm E}_n$ that gives the expected value of $(X\wedge n)\vee -n$ for $n\in\mathds{N}$.
+  Note that the cut-off enures that the range of these functions is bounded.
+
+  The relation $a\sim b$ holds in these there cases
+
+
+\end{example}
+
+
 
 We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\mathds{L}_M x\rightarrow a\sim x$
 
