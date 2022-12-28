@@ -88,7 +88,7 @@
 \author{C. L. C. L. Polymath}
 \begin{document}
 \title{Continuous logic for the classical logician}
-\hfill\texttt{Branch:\ debole\ \DTMnow}\bigskip
+\hfill\texttt{Branch:\ master\ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 
@@ -110,7 +110,7 @@ These are among the most simple strucures considered in model theory.
 Now expand them with a norm.
 The norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two sorted struture.
-Ideally, we would like to have that an elementary extension of a normed space mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ should remain $\mathds{R}$ throughout.} but this is not possible if we insist to mantain the classical notion of elementary extension.
+Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ (or, in general $R$) should remain $\mathds{R}$ throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
@@ -137,7 +137,7 @@ As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\math
 % Our choice of $\mathds{L}$ is not the most general.
 % It is a compromise that avoids eccessive complications.
 
-For convenience we assume that the functions of sort $M^n\to M$ and the relation of sort $M^n$ are all in $L$.
+For convenience we assume that the functions of sort $M^n\to M$ and the relations of sort $M^n$ are all in $L$.
 It is also convenient to assume that $L'$ contains names for all continuous bounded functions $R^n\to R$.
 
 \begin{definition}\label{def_LL}
@@ -162,49 +162,13 @@ It is also convenient to assume that $L'$ contains names for all continuous boun
 
 For $\varphi,\varphi'\in\mathds{L}$ (free variables are hidden) we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in D$ for some compact neighborhood $D$ of $C$.
 If no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
+We also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
 
-Note that this is a dense (pre)order of $\mathds{L}$.
+Note that $<$ is a dense (pre)order of $\mathds{L}$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
 Vice versa, if $\varphi'$ for every $\varphi'>\varphi$, then $\varphi$.
 
-The lemma below is required for the proof of \L\v o\'s Theorem in the next section.
-But first a preliminary fact.
-
-\begin{fact}\label{fact_unifcont}
-  Assume the following data
-  \begin{itemize}
-    \item $t(x;y)$, an $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$;
-    \item $\langle a_i:i\in I\rangle$, a sequence of elements $a_i\in M^{|x|}$;
-    \item $U\subseteq R^n$ an open set;
-    \item $F$, an ultrafilter on $I$.
-  \end{itemize}
-  Then for every $\alpha\in R^{|y|}$ the following are equivalent
-  \begin{itemize}
-    \item[1] \noindent\kern-4ex  \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha)\in U\}}{\in}{F.}
-    \item[2] there is an open $V\ni\alpha$ such that for every $\alpha'\in V$
-    
-    \noindent\kern-4ex \ceq{\hfill\{i\in I : t^{\EuScript M}( a_i;\alpha')\in U\}}{\in}{F.}
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  Only (1$\Rightarrow$2) requires a proof.
-  By induction on the nesting of functions of sort $R^n\to R$
-  In the basis case the tuple $t$ is composed of elements of $R$ and terms of sort $M^n\to R$.
-  Then the fact is clear.
-  Assume inductively that the fact holds for the tuple $t(x,y)$ and prove it for the tuple $f_1\big(t(x,y)\big),\dots,f_n\big(t(x,y)\big)$.
-  It suffices to prove it for $n=1$.
-  Hence, assume
-
-  \ceq{\hfill\Big\{i\in I : f^{\EuScript M}\big(t^{\EuScript M}( a_i;\alpha)\big)\in U\Big\}}{\in}{F}
-
-  or equivalently
-
-  \ceq{\hfill\Big\{i\in I : t^{\EuScript M}(a_i;\alpha)\in \big(f^{\EuScript M}\big)^{-1}[U]\}}{\in}{F.}
-  
-  By the continuity of the functions of sort $R^n\to R$, the required $V$ is obtained from the induction hypothesis. 
-\end{proof}
 
 We recall the standard definition of $F$-limits.
 Let $I$ be a non-empty set.
@@ -218,6 +182,33 @@ if $f^{-1}[A]\in F$ for every $A\subseteq Y$ that is a neighborhood of $\lambda$
 Such a $\lambda$ is unique if $Y$ is Hausdorff.
 When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
 
+The lemma below is required for the proof of \L\v o\'s Theorem in the next section.
+But first a preliminary fact.
+
+\begin{fact}\label{fact_unifcont}
+  Assume the following data
+  \begin{itemize}
+    \item $t(x;y)$, a term of sort $M^{|x|}\times R^{|y|}\to R$;
+    \item $\langle a_i:i\in I\rangle$, a sequence of elements $a_i\in M^{|x|}$;    
+    \item $\langle\alpha_i:i\in I\rangle$, a sequence of elements of $C\subseteq R^{|y|}$, a compact set;
+    \item $\alpha=F\mbox{-}\lim_i\alpha_i$, for some ultrafilter $F$ on $I$.
+  \end{itemize}
+  Then 
+  
+  \ceq{\#\hfill F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)}{=}{F\mbox{-}\lim_i t^{\EuScript M}( a_i;\alpha_i)}
+\end{fact}
+
+\begin{proof}
+  By induction on the nesting of functions of sort $R^n\to R$.
+  In the basis case $t$ is either a term of sort $M^{|x|}\to R$ or a variable of sort $R$.
+  In both cases ($\#$) is trivial.
+  Assume inductively that the fact holds for the $n$-tuple $t(x,y)$.
+  By the continuity of the functions of sort $R^n\to R$ and the induction hypothesis, 
+  ($\#$) holds for $f\big(t(x,y)\big)$.
+  The step fron terms tu tule of term is clear becouse the topology on $R^n$ is the product topology. 
+\end{proof}
+
+
 \begin{lemma}\label{lem_HIapprox}
   Assume the following data
   \begin{itemize}
@@ -228,7 +219,7 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   \end{itemize}
   Then the following are equivalent
   \begin{itemize}
-    \item[1]\noindent\kern-4ex   \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F.} 
+    \item[1]\noindent\kern-4ex   \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi(a_i;\alpha)\}}{\in}{F;} 
 
     \item[2]\noindent\kern-4ex    \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\}}{\in}{F} \  for every $\varphi'>\varphi$.
   \end{itemize}
@@ -240,34 +231,31 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   When $\varphi(x;y)$ is in $L$, it does not depend on $\alpha$, and the lemma is trivial.
   Suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$.
   
-  Assume that $\{i:{\EuScript M}\models t(a_i;\alpha)\in C\}\in F$.
+  Assume $\{i:t^{\EuScript M}(a_i;\alpha)\in C\}\in F$.
   Then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)\in C$.
-  Let $D$ be a compact neighborhood of $C$.
-  By Fact~\ref{fact_unifcont}, there is an open $V\ni\alpha$ such that 
-  $\{i:{\EuScript M}\models t(a_i;\alpha')\in D\}\in F$ for every $\alpha'\in V$.
-  Then $\{i:{\EuScript M}\models t'(a_i\,;\alpha_i)\in D\}\in F$ follows.
-  As $D$ is arbitrary, (1) follows.
-  Vice versa, using that $F$ is an ultrafilter, assume that $\{i:{\EuScript M}\not\models t(a_i;\alpha)\in C\}\in F$. 
-  By local compactness and regularity, $\{i:{\EuScript M}\not\models t(a_i;\alpha)\in D\}\in F$ for some $D$, a compact neighborhood of $C$.
-  Then the negation of (2) follows.
+  By Fact~\ref{fact_unifcont}, $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha_i)\in C$.
+  Then $\{i:t^{\EuScript M}(a_i\,;\alpha_i)\in D\}\in F$ for every $D$ that is a compact neighborhood of $C$.
+
+  Vice versa, if  $\{i:t^{\EuScript M}(a_i\,;\alpha_i)\in D\}\in F$ for every $D$ that is a compact neighborhood of $C$, then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha_i)\in C$, and (1) follows by Fact~\ref{fact_unifcont}.
+
 
   This completes the proof of the base case of the induction.
 
   Induction clear for the connectives $\vee$, $\wedge$.
-  To deal with the universal quantifier of sort $M$ we assume inductively that for every $\varphi'>\varphi$
+  To deal with the universal quantifier of sort $M$ we assume inductively that
 
   \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F}
   {\Leftrightarrow}
-  {\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}.
+  {\big\{ i:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F}\quad for every $\varphi'>\varphi$.
   
   We prove
 
   \ceq{1.\hfill \{i:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\}\in F}
   {\Leftrightarrow}
-  {\big\{ i:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}
+  {\big\{ i:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}\quad for every $\varphi'>\varphi$.
   
   Negate the r.h.s.\@ of the implication.
-  Then there is a sequence $\langle b_i:i\in I\rangle$ such that (using that $F$ is an ultrafilter)
+  Then there are a formula $\varphi'<\varphi$ and a sequence $\langle b_i:i\in I\rangle$ such that (using that $F$ is an ultrafilter)
 
   \ceq{}
   { }
@@ -278,8 +266,8 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   
   Induction for the existential quantifier of sort $M$ is similar (dual) to the proof for the universal quantifier.
 
-  Induction for the quantifier $\forall^B$ is also virtually identical, but we repeat the argument for convenience.
-  Assume inductively that for every $\varphi'>\varphi$ and every sequence $\langle\beta_i:i\in I\rangle$ in $B$ such that $\beta=F\mbox{-}\lim_i\beta_i$
+  Induction for the quantifier $\forall^C$ is also virtually identical, but we repeat the argument for convenience.
+  Assume inductively that for every $\varphi'>\varphi$ and every sequence $\langle\beta_i:i\in I\rangle$ in $C$ such that $\beta=F\mbox{-}\lim_i\beta_i$
 
   \ceq{\hfill \big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F}
   {\Leftrightarrow}
@@ -298,12 +286,12 @@ When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
   { }
   {\big\{ i:{\EuScript M}\not\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F}
   
-  As $B$ is compact, $F\mbox{-}\lim_i\beta_i$ exists, say it equals $\beta\in B$.
+  As $C$ is compact, $F\mbox{-}\lim_i\beta_i$ exists, say it equals $\beta\in C$.
   Assume the l.h.s.\@ of the implication and reason for a contradiction.
   Then $\big\{i:{\EuScript M}\models\varphi(a_i\,; \alpha,\beta)\big\}\in F$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(a_i\,;\alpha_i,\beta_i)\big\}\in F$. A contradiction that proves the implication ($\Rightarrow$) in (2) . 
   The converse implication is immediate.
 
-  Induction for the quantifier $\exists^B$ is proved by the dual version of argument above.
+  Induction for the quantifier $\exists^C$ is proved by the dual version of argument above.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -349,7 +337,7 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
 \end{definition}
 
 The following is immediate but it needs to be noted.
-In fact, in the more general setting of ultraproducts, it would not hold without the uniformity assumption above.
+In fact, in the more general setting of ultraproducts, it would not hold without the requirement above.
 
 \begin{fact}\label{fact_termini1}
   The structure ${\EuScript N}$ satisfies Definition~\ref{def_0}.
@@ -480,7 +468,7 @@ Finally, we prove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-elementrarity}
+\section{$\mathds{L}$-Elementrarity}
 
 (Work in progress)
 
@@ -501,24 +489,96 @@ For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \e
 We write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\equiv^\mathds{L}_M{\EuScript N}$.
 In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
 
-The following is proved as in the classical case.
+The following lemma is a useful observation.
+Its first application is below, in the proof of a version of the classical Tarski-Vaught test.
 
-\begin{proposition}[Tarski-Vaught Test]
-  The following are equivalent 
+\begin{lemma}
+  Let $A\subseteq N$.
+  Then the following are equivalent 
   \begin{itemize}
-    \item[1.] ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$
-    \item[2.] $M$ is a subset of $N$ and for every formula $\varphi(x)\in\mathds{L}(M)$
+    \item[1] for every formula $\varphi(x)\in\mathds{L}(A)$
     
-    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}{\Rightarrow}{{\EuScript N}\models\varphi(a)} \ for some $a\in M$\hfill\qedsymbol
+    \ceq{\hfill{\EuScript N}\models\exists x\,\neg\varphi(x)}{\Rightarrow}{\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\neg\varphi(a);}
+ 
+    \item[2.] for every formula $\varphi(x)\in\mathds{L}(M)$
+    
+    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}{\Rightarrow}{\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
+ 
   \end{itemize}
+  
+\end{lemma}
+
+\begin{proposition}[$\mathds{L}$-Tarski-Vaught Test]
+  Assume the two equivalent properties of the lemma above.
+  Then $A$ is the domain of a structure ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.
 \end{proposition}
 
+\begin{proof}
+  Assume (2) of the lemma.
+  Then, by the classical Tarski-Vaught test $M\preceq N$. 
+  We also have that  ${\EuScript M}$ is an $L'$-substructure of ${\EuScript N}$. 
+  Therefore, form every formula as in (i) and (ii) of Definition~\ref{def_LL} we have
+
+  \ceq{\hfill{\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)}\hfill  for every $a\in M^{|x|}$.
+
+  Assume inductively
+  
+  \ceq{\#\hfill{\EuScript N}\models\varphi(a,b)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a,b)}
+
+  and prove
+
+  \ceq{\hfill{\EuScript N}\models\exists y\,\varphi(a,y)}{\Leftrightarrow}{{\EuScript M}\models\exists y\,\varphi(a,y)}.
+
+  The implication $\Leftarrow$ follows immediately from the induction hypothesis.
+  For the converse note that
+
+  \ceq{\hfill{\EuScript N}\models\exists y\,\varphi(a,y)}
+  {\Rightarrow}
+  {\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }{\EuScript N}\models\varphi'(a,b)}
+
+  \ceq{}
+  {\Rightarrow}
+  {\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }{\EuScript M}\models\varphi'(a,b)}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\models\exists y\,\varphi'(a,y)\textrm{ for every }\varphi'>\varphi}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\models\exists y\,\varphi(a,y)}
+
+  Now, assuming (\#) we prove
+
+  \ceq{\hfill{\EuScript N}\models\forall y\,\varphi(a,y)}{\Leftrightarrow}{{\EuScript M}\models\forall y\,\varphi(a,y)}.
+
+  One implication, $\Rightarrow$, is again immediate.
+  For the converse note that
+
+  \ceq{\hfill{\EuScript N}\not\models\forall y\,\varphi(a,y)}
+  {\Rightarrow}{{\EuScript N}\models\exists y\,\neg\varphi(a,y)}
+  
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript N}\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\not\models\forall y\,\varphi(a,y)}
+\end{proof}
+
+Finally, induction for the boolean connectives and the quantifiers of sort $R$ is immediate.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-saturation}
+\section{$\mathds{L}$-compactness}
 
 (Work in progress)
 
@@ -576,7 +636,7 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
 \end{fact}
 
 \begin{proof}
-  Assume inductively that the fact holds for $\lambda$ and let $a_\lambda\sim b_\lambda$.
+  Assume the fact for $\lambda$ and let $a_\lambda\sim b_\lambda$.
   Then $t(\bar a,a_\lambda)=t(\bar a,b_\lambda)=t(\bar b,b_\lambda)$.
 \end{proof}
 
