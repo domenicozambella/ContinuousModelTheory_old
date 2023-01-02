@@ -160,14 +160,79 @@ It is also convenient to assume that $L'$ contains names for all continuous boun
 \section{Henson-Iovino approximations}\label{ultrapws}
 
 
-For $\varphi,\varphi'\in\mathds{L}$ (free variables are hidden) we say that $\varphi'>\varphi$ if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in D$ for some compact neighborhood $D$ of $C$.
+For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in D$ for some compact neighborhood $D$ of $C$.
 If no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
-We also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
+We also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$, by the normality of $R$..
 
-Note that $<$ is a dense (pre)order of $\mathds{L}$.
+Note that $<$ is a dense (pre)order of $\mathds{L}(M)$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
-Vice versa, if $\varphi'$ for every $\varphi'>\varphi$, then $\varphi$.
+In fact, we have the following.
+
+\begin{proposition}[fake theorem]\label{prop_approx}
+  For every $\varphi(x)\in\mathds{L}(M)$
+
+  \ceq{\hfill\varphi(x)}
+  {\leftrightarrow}
+  {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+
+\end{proposition}
+
+\begin{proof}
+  The claim is clear for atomic formulas.
+  Induction for conjunction and the universal quantifiers is immediate.
+  
+  Consider disjunction.
+  Let $\varphi=\varphi_i\vee\varphi_1$.
+  Assume inductively
+  
+  \ceq{\hfill\varphi_i(x)}
+  {\leftrightarrow}
+  {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
+
+  Then
+
+  \ceq{\hfill\varphi(x)}
+  {\leftrightarrow}
+  {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
+
+
+  \ceq{}
+  {\leftrightarrow}
+  {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
+
+  \ceq{}
+  {\leftrightarrow}
+  {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+
+  Now consider the existential quantifiers of sort $M$.
+     
+\end{proof}
+
+\begin{lemma}\label{lem_interpolation}
+  ($R$ compact) \ 
+  For every $\varphi'>\varphi$ there is a formula $\psi\in\mathds{L}(M)$ such that $\varphi\rightarrow\neg\psi\rightarrow\varphi'$.
+\end{lemma}
+
+\begin{proof}
+  By induction. 
+  If $\varphi\in L$ the claim is obious.
+  Suppose $\varphi$ is of the form $t\in C$.
+  Then $\varphi'$ is $t\in D$ for some compact neighborhood of $C$.
+  Let $O$ be an open set such that $C\subseteq O\subseteq D$.
+  Then $\psi=(t\in R\smallsetminus O)$ is as required.
+
+  Induction is easy (conjuctions and disjuctions in $\varphi$ occur swapped in $\psi$; similarly universal and existential quantifiers). 
+\end{proof}
+
+
+% The following fact is an immediate consequence.
+
+% \begin{fact}
+%   Let $a\in M^{|x|}$ be such that ${\EuScript M}\not\models\varphi(a)$
+%   Then, ${\EuScript M}\not\models\varphi'(a)$ for some $\varphi'>\varphi$.\hfill\qedsymbol
+% \end{fact}
+
 
 
 We recall the standard definition of $F$-limits.
@@ -180,7 +245,7 @@ If $f:I\to Y$ and $\lambda\in Y$ we write
 
 if $f^{-1}[A]\in F$ for every $A\subseteq Y$ that is a neighborhood of $\lambda$.
 Such a $\lambda$ is unique if $Y$ is Hausdorff.
-When $F$ is an ultrafilter, and $Y$ is compact the limit always exists.
+When $F$ is an ultrafilter and, in addition, $Y$ is compact the limit always exists.
 
 The lemma below is required for the proof of \L\v o\'s Theorem in the next section.
 But first a preliminary fact.
@@ -232,11 +297,12 @@ But first a preliminary fact.
   Suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$.
   
   Assume $\{i:t^{\EuScript M}(a_i;\alpha)\in C\}\in F$.
-  Then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)\in C$.
+  Then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)\in C$ by normality of $R$.
   By Fact~\ref{fact_unifcont}, $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha_i)\in C$.
   Then $\{i:t^{\EuScript M}(a_i\,;\alpha_i)\in D\}\in F$ for every $D$ that is a compact neighborhood of $C$.
 
-  Vice versa, if  $\{i:t^{\EuScript M}(a_i\,;\alpha_i)\in D\}\in F$ for every $D$ that is a compact neighborhood of $C$, then $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha_i)\in C$, and (1) follows by Fact~\ref{fact_unifcont}.
+  Vice versa, assime  $\{i:t^{\EuScript M}(a_i\,;\alpha_i)\in D\}\in F$ for every $D$ that is a compact neighborhood of $C$.
+  Then, again by normality, $F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha_i)\in C$, and (1) follows by Fact~\ref{fact_unifcont}.
 
 
   This completes the proof of the base case of the induction.
@@ -304,7 +370,11 @@ But first a preliminary fact.
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
-We require that for each function symbol $f$ of sort $M^n\to R$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
+We require that for each function symbol $f$ of sort $M^n\to R$ 
+\begin{itemize}
+  \item[\#] there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
+\end{itemize}
+
 
 To keep notation tidy, we make two semplifications:
 (1) we only consider ultratpowers; 
@@ -332,12 +402,12 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
     \Leftrightarrow
     \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai)\big\}\in F.
     $$
-    \item[6.] The interpretation of functions of sort $R^n$ remains unchanged.
+    \item[6.] The interpretation of relations of sort $R^n$ remains unchanged.
   \end{itemize}
 \end{definition}
 
 The following is immediate but it needs to be noted.
-In fact, in the more general setting of ultraproducts, it would not hold without the requirement above.
+In fact, in the more general setting of ultraproducts, it would not hold without the uniformity requirement (\#) above.
 
 \begin{fact}\label{fact_termini1}
   The structure ${\EuScript N}$ satisfies Definition~\ref{def_0}.
@@ -461,8 +531,6 @@ Finally, we prove
   Induction for the quantifier $\exists^C$ is again dual to the proof above.
 \end{proof}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -470,54 +538,154 @@ Finally, we prove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-Elementrarity}
 
-(Work in progress)
-
 Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
 We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $\varphi(x)\in\mathds{L}$ and every $a\in({\rm dom }f)^{|x|}$
 
-The following fact is proved as in the classical case using that ${\EuScript M}\models\varphi'$ for every $\varphi'>\varphi$ if and only if ${\EuScript M}\models\varphi$.
+The following fact is proved as in the classical case using that ${\EuScript M}\models\varphi$ holds if and only if ${\EuScript M}\models\varphi'$ holds for every $\varphi'>\varphi$.
 
 \begin{fact}
   If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-elementary embedding of ${\EuScript M}$ into ${\EuScript N}$.
 \end{fact} 
-
 
 For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ is $\mathds{L}$-elementary.
 % Recall that $L'$ contains constants for all elements of $R$, then we never need to use parameter in $R$.
 We write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\equiv^\mathds{L}_M{\EuScript N}$.
 In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
 
-The following lemma is a useful observation.
-Its first application is below, in the proof of a version of the classical Tarski-Vaught test.
 
-\begin{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$\mathds{L}$-compactness}
+
+\newcommand\dangersign[1][3ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[.2pt]{\color{red}$\triangle$}{\color{red}\bfseries\tiny ?}}{#1}%
+}
+A theory $T\subseteq\mathds{L}$ be a weakly finitely consistent if for every $\varphi$, conjunction of sentences in $T$, any $\varphi'>\varphi$ is consistent.
+The following proposition follows from \L\v o\'s Theorem by the usual argument.
+
+\begin{proposition}[Compactness Theorem]\label{prop_compattezza}
+  Let $T\subseteq\mathds{L}$ be an weakly finitely consistent theory.
+  Then $T$ is consistent.\hfill\qedsymbol
+\end{proposition}
+
+
+% \noindent\llap{\dangersign\kern2ex}%
+Let $p(x)\subseteq\mathds{L}(M)$.
+We say that $p(x)$ is \emph{weakly finitely satisfied in ${\EuScript M}$\/} if ${\EuScript M}\models\exists x\,\varphi'(x)$ for every $\varphi'>\varphi$ where $\varphi(x)$ is some conjunction of formulas in $p(x)$.
+
+\begin{definition}
+  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
+  \begin{itemize}
+    \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
+    \item[2.] $p(x)$ is weakly finitely satisfied in ${\EuScript M}$.
+  \end{itemize}
+\end{definition}
+
+The existence of $\mathds{L}$-saturated models is proved as in the classical case.
+
+
+\begin{proposition}
+  Every model has an $\mathds{L}$-elementary extension to a saturated model (possibly of inaccessible cardinality).\hfill\qedsymbol
+\end{proposition}
+
+% Homogeneity follows from saturation by the usual back-and-forth contruction.
+
+% \begin{proposition}(Homogeneity)
+%   Let ${\EuScript N}$ be saturated and of cardinality larger than $|\mathds{L}|$.
+%   Then for every $ab\in M^\alpha$, where $\alpha<|N|$, such that $a\equiv b$, there is an $\mathds{L}$-automorphism of ${\EuScript N}$ that maps $a$ to $b$.
+% \end{proposition}
+
+We denote by \emph{${\EuScript U}=\langle U,R\rangle$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
+The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
+Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
+
+
+
+% \begin{fact}
+%   Let $\varphi(x)\in\mathds{L}(A)$, where $A\subseteq M$.
+%   Then for every $a\in M^{|x|}$ such that ${\EuScript M}\not\models\varphi(a)$ there is a formula $\tilde\varphi(x)\in\mathds{L}(A)$ such that ${\EuScript M}\models\tilde\varphi(a)$ and ${\EuScript M}\models\neg\exists x\,[\tilde\varphi(x)\wedge\varphi(x)]$.
+% \end{fact}
+
+
+\begin{fact}
+  For every $\varphi(x),\psi(x)\in\mathds{L}(U)$ such that $\neg\exists x\,[\varphi(x)\wedge\psi(x)]$ there are $\varphi'>\varphi$ and $\psi'>\psi$ such that $\neg\exists x\,[\varphi'(x)\wedge\psi'(x)]$.
+\end{fact}
+
+\begin{proof}
+  By Proposition~\ref{prop_approx} and saturation.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Tarski-Vaught $\mathds{L}$-test}
+
+The following lemma is a useful observation.
+It has its first application below, in the proof of our version of the Tarski-Vaught test.
+
+\begin{lemma}\label{lem_TVT}
+  ($R$ compact) \ 
   Let $A\subseteq N$.
   Then the following are equivalent 
   \begin{itemize}
     \item[1] for every formula $\varphi(x)\in\mathds{L}(A)$
     
-    \ceq{\hfill{\EuScript N}\models\exists x\,\neg\varphi(x)}{\Rightarrow}{\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\neg\varphi(a);}
+    \noindent\kern-\leftmargin
+    \ceq{\hfill{\EuScript N}\models\exists x\,\neg\varphi(x)}{\Rightarrow}
+    {\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\neg\varphi(a);}
  
-    \item[2.] for every formula $\varphi(x)\in\mathds{L}(M)$
+    \item[2.] for every formula $\varphi(x)\in\mathds{L}(A)$
     
-    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}{\Rightarrow}{\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
+    \noindent\kern-\leftmargin
+    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}
+    {\Rightarrow}
+    {\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
  
   \end{itemize}
-  
+  The implication 2$\Rightarrow$1 does not require the assumption of compactness.
 \end{lemma}
 
-\begin{proposition}[$\mathds{L}$-Tarski-Vaught Test]
-  Assume the two equivalent properties of the lemma above.
-  Then $A$ is the domain of a structure ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.
+\begin{proof}
+  (2$\Rightarrow$1) Assume ${\EuScript N}\models\exists x\,\neg\varphi(x)$.
+  Pick any $c\in N$ such that $c\models\neg\varphi(x)$.
+  Let $p(x)=\mathds{L}\mbox{-}{\rm tp}(c/A)$.
+  Without loss of generality we can assume that ${\EuScript N}$ is saturated.
+  As $p(x)\cup\{\neg\varphi(x)\}$ is inconsistent there is is a formula $\psi(x)\in p(x)$  such that $\psi'(x)\rightarrow\neg\varphi(x)$ for some $\psi'>\psi$.
+  Then from (2) we obtain that ${\EuScript N}\models\psi'(a)$ for some $a\in A$.
+  Hence ${\EuScript N}\models\neg\varphi(a)$ follows.
+
+  
+  (1$\Rightarrow$2) follows immediately from Lemma~\ref{lem_interpolation}.
+\end{proof}
+
+\begin{proposition}[Tarski-Vaught $\mathds{L}$-Test] 
+  Let $M$ be a subset of $N$.
+  Then the following are equivalent
+  \begin{itemize}
+    \item[1.] $M$ is the domain of a structure ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$;
+    \item[2.] for every formula $\varphi(x)\in\mathds{L}(M)$
+    
+    \noindent\kern-\leftmargin
+    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}
+    {\Rightarrow}
+    {\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
+ 
+  \end{itemize}
 \end{proposition}
 
 \begin{proof}
   Assume (2) of the lemma.
   Then, by the classical Tarski-Vaught test $M\preceq N$. 
   We also have that  ${\EuScript M}$ is an $L'$-substructure of ${\EuScript N}$. 
-  Therefore, form every formula as in (i) and (ii) of Definition~\ref{def_LL} we have
+  Therefore, form every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL} we have
 
   \ceq{\hfill{\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)}\hfill  for every $a\in M^{|x|}$.
 
@@ -538,7 +706,7 @@ Its first application is below, in the proof of a version of the classical Tarsk
 
   \ceq{}
   {\Rightarrow}
-  {\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }{\EuScript M}\models\varphi'(a,b)}
+  {\phantom{\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }}{\EuScript M}\phantom{\models{{text}}\varphi'(a,b)}}
 
   \ceq{}
   {\Rightarrow}
@@ -553,7 +721,7 @@ Its first application is below, in the proof of a version of the classical Tarsk
   \ceq{\hfill{\EuScript N}\models\forall y\,\varphi(a,y)}{\Leftrightarrow}{{\EuScript M}\models\forall y\,\varphi(a,y)}.
 
   One implication, $\Rightarrow$, is again immediate.
-  For the converse note that
+  For the converse note that by Lemma~\ref{lem_TVT}
 
   \ceq{\hfill{\EuScript N}\not\models\forall y\,\varphi(a,y)}
   {\Rightarrow}{{\EuScript N}\models\exists y\,\neg\varphi(a,y)}
@@ -564,7 +732,7 @@ Its first application is below, in the proof of a version of the classical Tarsk
 
   \ceq{}
   {\Rightarrow}
-  {{\EuScript M}\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}
+  {{\EuScript M}\phantom{\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}}
 
   \ceq{}
   {\Rightarrow}
@@ -573,51 +741,6 @@ Its first application is below, in the proof of a version of the classical Tarsk
 
 Finally, induction for the boolean connectives and the quantifiers of sort $R$ is immediate.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-compactness}
-
-(Work in progress)
-
-\newcommand\dangersign[1][3ex]{%
-  \renewcommand\stacktype{L}%
-  \scaleto{\stackon[.2pt]{\color{red}$\triangle$}{\color{red}\bfseries\tiny ?}}{#1}%
-}
-
-\noindent\llap{\dangersign\kern2ex}%
-Let $p(x)\subseteq\mathds{L}(M)$.
-We say that $p(x)$ is \emph{finitely satisfied in ${\EuScript M}$\/} if ${\EuScript M}\models\exists x\,\varphi'(x)$ for every $\varphi'>\varphi$ where $\varphi(x)$ is any conjunction of formulas in $p(x)$.
-
-The following definition is standard.
-
-\begin{definition}
-  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
-  \begin{itemize}
-    \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
-    \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
-  \end{itemize}
-\end{definition}
-
-Then proof that every model embeds $\mathds{L}$-elementarily in an $\mathds{L}$-saturated one proceeds as in the classical case.
-First, note that the classical ultrapower construction yieds the the following lemma.
-
-\begin{lemma}\label{lem_compattezza}
-  Every model ${\EuScript M}$ embeds $\mathds{L}$-elementarily in a model ${\EuScript N}$ that realizes all types as in the definition above.
-\end{lemma}
-
-Finally, using a sufficiently long $\mathds{L}$-elementary chain we obtain the required saturated extension.
-
-\begin{corollary}\label{thm_compattezza}
-  Every model ${\EuScript M}$ is an $\mathds{L}$-elementary subtructure of some saturated model ${\EuScript N}$ (possibly of inaccessible cardinality).
-\end{corollary}
-
-We denote by \emph{${\EuScript U}$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
-The unit ball of ${\EuScript U}$ is denoted by \emph{$U$.}
-The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
-Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -636,8 +759,10 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
 \end{fact}
 
 \begin{proof}
-  Assume the fact for $\lambda$ and let $a_\lambda\sim b_\lambda$.
+  By induction on $\lambda$. Assume the fact and let $a_\lambda\sim b_\lambda$.
   Then $t(\bar a,a_\lambda)=t(\bar a,b_\lambda)=t(\bar b,b_\lambda)$.
+  Then the fact holds with $\lambda+1$ for $\lambda$.
+  For limit ordinals induction is immediate.
 \end{proof}
 
 \begin{example}[???]
