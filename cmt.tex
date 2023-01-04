@@ -167,46 +167,46 @@ By the normality of $R$ we also have $\varphi>\varphi$ when $\varphi=(t\in C)$ f
 Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
-In fact, we have the following.
+% In fact, we have the following.
 
-\begin{proposition}[fake theorem]\label{prop_approx}
-  For every $\varphi(x)\in\mathds{L}(M)$
+% \begin{proposition}[fake theorem]\label{prop_approx}
+%   For every $\varphi(x)\in\mathds{L}(M)$
 
-  \ceq{\hfill\varphi(x)}
-  {\leftrightarrow}
-  {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+%   \ceq{\hfill\varphi(x)}
+%   {\leftrightarrow}
+%   {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
 
-\end{proposition}
+% \end{proposition}
 
-\begin{proof}
-  The claim is clear for atomic formulas.
-  Induction for conjunction and the universal quantifiers is immediate.
+% \begin{proof}
+%   The claim is clear for atomic formulas.
+%   Induction for conjunction and the universal quantifiers is immediate.
   
-  Consider disjunction.
-  Let $\varphi=\varphi_i\vee\varphi_1$.
-  Assume inductively
+%   Consider disjunction.
+%   Let $\varphi=\varphi_i\vee\varphi_1$.
+%   Assume inductively
   
-  \ceq{\hfill\varphi_i(x)}
-  {\leftrightarrow}
-  {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
+%   \ceq{\hfill\varphi_i(x)}
+%   {\leftrightarrow}
+%   {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
 
-  Then
+%   Then
 
-  \ceq{\hfill\varphi(x)}
-  {\leftrightarrow}
-  {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
+%   \ceq{\hfill\varphi(x)}
+%   {\leftrightarrow}
+%   {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
 
 
-  \ceq{}
-  {\leftrightarrow}
-  {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
+%   \ceq{}
+%   {\leftrightarrow}
+%   {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
 
-  \ceq{}
-  {\leftrightarrow}
-  {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+%   \ceq{}
+%   {\leftrightarrow}
+%   {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
 
-  Now consider the existential quantifiers of sort $M$....
-\end{proof}
+%   Now consider the existential quantifiers of sort $M$....
+% \end{proof}
 
 \begin{lemma}\label{lem_interpolation}
   ($R$ compact) \ 
@@ -550,13 +550,11 @@ Finally, we prove
   
   Finally, for the quantifier $\exists^C$ we prove
 
-
   \noindent\llap{\color{red}\LARGE\danger\kern1ex}%
   \ceq{4.\hfill {\EuScript N}\models\exists^C\!y\,\varphi(\hat a\,;  y)}
   {\Leftrightarrow}
   {\big\{ i\in I\ :\ {\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F \ \textrm{for every }\varphi'>\varphi.}
   
-
   ($\Rightarrow$) Assume ${\EuScript N}\models\varphi(\hat a\,;  \beta)$ for some $\beta$.
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai\,;\beta)\big\}\in F$ for every $\varphi'>\varphi$.
   A fortiori $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\notin F$ for every $\varphi'>\varphi$.
