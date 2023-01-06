@@ -208,22 +208,6 @@ Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of
 %   Now consider the existential quantifiers of sort $M$....
 % \end{proof}
 
-\begin{lemma}\label{lem_interpolation}
-  ($R$ compact) \ 
-  For every $\varphi'>\varphi$ there is a formula $\psi\in\mathds{L}(M)$ such that $\varphi\rightarrow\neg\psi\rightarrow\varphi'$.
-\end{lemma}
-
-\begin{proof}
-  By induction. 
-  If $\varphi\in L$ the claim is obious.
-  Suppose $\varphi$ is of the form $t\in C$.
-  Then $\varphi'$ is $t\in D$ for some compact neighborhood of $C$.
-  Let $O$ be an open set such that $C\subseteq O\subseteq D$.
-  Then $\psi=(t\in R\smallsetminus O)$ is as required.
-
-  Induction is easy (conjuctions and disjuctions in $\varphi$ occur swapped in $\psi$; similarly universal and existential quantifiers). 
-\end{proof}
-
 
 % The following fact is an immediate consequence.
 
@@ -664,6 +648,24 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Tarski-Vaught $\mathds{L}$-test}
+
+
+\begin{lemma}\label{lem_interpolation}
+  ($R$ compact) \ 
+  For every $\varphi'>\varphi$ there is a formula $\psi\in\mathds{L}(M)$ such that $\varphi\rightarrow\neg\psi\rightarrow\varphi'$.
+\end{lemma}
+
+\begin{proof}
+  By induction. 
+  If $\varphi\in L$ the claim is obious.
+  Suppose $\varphi$ is of the form $t\in C$.
+  Then $\varphi'$ is $t\in D$ for some compact neighborhood of $C$.
+  Let $O$ be an open set such that $C\subseteq O\subseteq D$.
+  Then $\psi=(t\in R\smallsetminus O)$ is as required.
+
+  Induction is easy (conjuctions and disjuctions in $\varphi$ occur swapped in $\psi$; similarly universal and existential quantifiers). 
+\end{proof}
+
 
 The following lemma is a useful observation.
 It has its first application below, in the proof of our version of the Tarski-Vaught test.
