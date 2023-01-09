@@ -116,8 +116,8 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
 
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
-  Let \emph{$L'$\/}$\supseteq L$ be a two-sorted language.
-  We consider the class of $L'$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
+  Let \emph{${\EuScript L}$\/}$\supseteq L$ be a two-sorted language.
+  We consider the class of ${\EuScript L}$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
 
@@ -133,17 +133,17 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
 \end{definition}
 
 There might be models in the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
-As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}'$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}'$-elementary extension that is $\mathds{L}'$-saturated in the same class.
+As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated in the same class.
 % Our choice of $\mathds{L}$ is not the most general.
 % It is a compromise that avoids eccessive complications.
 
 For convenience we assume that the functions of sort $M^n\to M$ and the relations of sort $M^n$ are all in $L$.
-It is also convenient to assume that $L'$ contains names for all continuous bounded functions $R^n\to R$.
+It is also convenient to assume that ${\EuScript L}$ contains names for all continuous bounded functions $R^n\to R$.
 
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
   \begin{itemize}
-  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in $L'$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
+  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in ${\EuScript L}$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
   \end{itemize}
   We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifiers $\forall^C$, $\exists^C$, by which we mean the quantifiers of sort $R$ restricted to some (any) compact set $C\subseteq R^m$.
@@ -234,7 +234,7 @@ if $f^{-1}[A]\in F$ for every $A\subseteq Y$ that is a neighborhood of $\lambda$
 Such a $\lambda$ is unique if $Y$ is Hausdorff.
 When $F$ is an ultrafilter and, in addition, $Y$ is compact the limit always exists.
 
-The lemma below is required for the proof of \L\v o\'s Theorem in the next section.
+The following ia technical lemma that is required in the proof of \L\v o\'s Theorem in the next section.
 
 \begin{lemma}\label{lem_HIapprox}
   Assume the following data
@@ -252,7 +252,7 @@ The lemma below is required for the proof of \L\v o\'s Theorem in the next secti
 \end{lemma}
 \begin{proof}
   % \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
-  We claim that that the following implications hold for every $\varphi'>\varphi$
+  We claim that the following implications hold for every $\varphi'>\varphi$
 
   \ceq{\textsf{i.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha)\big\}\in F}
   {\Rightarrow}
@@ -300,8 +300,8 @@ The lemma below is required for the proof of \L\v o\'s Theorem in the next secti
 
   Negate the consequence.
   Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. 
-  If for a contradiction the antecedent of (\textsf{i}$\forall$) holds, from (\textsf{ih}) we would obtain $\big\{i:\varphi'(a_i,b_i\,; \alpha)\big\}\in F$.
-  A contradiction that proves (\textsf{i}$\forall$).
+  If for a contradiction the antecedent of (\textsf{i}$\forall$) holds, from (\textsf{ih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)\big\}\in F$.
+  A fotriori  $\big\{i:\varphi'(a_i,b_i\,; \alpha)\big\}\in F$, which is a contradiction that proves (\textsf{i}$\forall$).
 
   To deal with the existential quantifier of sort $M$ we prove 
 
@@ -324,7 +324,7 @@ The lemma below is required for the proof of \L\v o\'s Theorem in the next secti
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ultraproducts}\label{ultrapws}
 
-\def\ceq#1#2#3{\parbox[t]{45ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 Below we introduce a suitable notion of ultraproducts of some structures $\langle{\EuScript M}_i:i\in I\rangle$.
 We require that for each function symbol $f$ of sort $M^n\to R$ 
@@ -349,15 +349,19 @@ Let ${\EuScript M}=\langle  M,R\rangle$ be an $L$-structure.
     $\langle f^{\EuScript M}\big(\hat ai\big):i\in I\rangle$.
     \item[3.] The interpretation of functions of sort $R^n\to  R$ remains unchanged.
     \item[4.] If $f$ is a function of sort $ M^n\to R$ then 
-    $$
-    f^{\EuScript N}\big(\hat a\big)\ =\ F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai\big).
-    $$ 
+    
+    \noindent\kern-\leftmargin
+    \ceq{\hfill f^{\EuScript N}\big(\hat a\big)}
+    {=}
+    {F\mbox{-}\lim_if^{\EuScript M}\big(\hat ai\big).}
+    
     \item[5.] If $r$ is a relation symbol of sort $M^n$ then 
-    $$
-    {\EuScript N}\models r(\hat a)
-    \Leftrightarrow
-    \big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai)\big\}\in F.
-    $$
+    
+    \noindent\kern-\leftmargin
+    \ceq{\hfill{\EuScript N}\models(\hat a)}
+    {\Leftrightarrow}
+    {\big\{ i\in I\ :\ {\EuScript M}\models r(\hat ai)\big\}\in F.}
+    
     \item[6.] The interpretation of relations of sort $R^n$ remains unchanged.
   \end{itemize}
 \end{definition}
@@ -387,18 +391,17 @@ By Remark~\ref{rk_terms} we also have that
 
 Finally, we prove
 
-\def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 \begin{proposition}[$\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem]\label{thm_Los}
   Let ${\EuScript N}$ be as above and let $\varphi(x)\in\mathds{L}$.
-  Then for all $\hat a\in N^{|x|}$ the following are equivalent
+  Then for every $\hat a\in N^{|x|}$ the following are equivalent
   \begin{itemize}
-    \item  ${\EuScript N}\models\varphi'(\hat a)$ \ for every $\varphi'>\varphi$
+    \item  ${\EuScript N}\models\varphi'(\hat a)$ \ for every $\varphi'>\varphi$;
     \item $\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai)\big\}\in F$ \ for every $\varphi'>\varphi$.
   \end{itemize}
 \end{proposition}
 \begin{proof}
-  We claim that that the following implications hold for every $\varphi'>\varphi$
+  We claim that the following implications hold for every $\varphi'>\varphi$
 
   \ceq{\textsf{i.}\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai)\big\}\in F}
   {\Rightarrow}
@@ -408,9 +411,9 @@ Finally, we prove
   {\Rightarrow}
   {\big\{i:{\EuScript M}\models\varphi'(\hat ai)\big\}\in F}.
   
-  The lemma follows from the claim by the density of  $>$.
+  By the density of $>$, the lemma follows from the claim.
   
-  By induction on the syntax.
+  The claim is proved by induction on the syntax.
   If $\varphi(x)\in L$ then the theorem reduces to the classical \L\v{o}\'s Theorem. Then, suppose that $\varphi(x)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x)\in C$.
   
   (\textsf{i})
@@ -527,6 +530,9 @@ Finally, we prove
   Therefore $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\notin F$.
 \end{proof}
 
+
+\end{document}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -534,7 +540,7 @@ Finally, we prove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-Elementrarity}
 
-
+Needs full rewriting
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
@@ -550,7 +556,7 @@ The following fact is proved as in the classical case.
 \end{fact} 
 
 For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ is $\mathds{L}$-elementary.
-% Recall that $L'$ contains constants for all elements of $R$, then we never need to use parameter in $R$.
+% Recall that ${\EuScript L}$ contains constants for all elements of $R$, then we never need to use parameter in $R$.
 We write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\equiv^\mathds{L}_M{\EuScript N}$.
 In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
 
@@ -562,6 +568,10 @@ In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) subs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-compactness}
+
+
+Needs full rewriting
+
 
 \newcommand\dangersign[1][3ex]{%
   \renewcommand\stacktype{L}%
@@ -628,6 +638,8 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Tarski-Vaught $\mathds{L}$-test}
 
+
+Needs full rewriting
 
 \begin{lemma}\label{lem_interpolation}
   ($R$ compact) \ 
@@ -702,7 +714,7 @@ It has its first application below, in the proof of our version of the Tarski-Va
 \begin{proof}
   Assume (2) of the lemma.
   Then, by the classical Tarski-Vaught test $M\preceq N$. 
-  We also have that  ${\EuScript M}$ is an $L'$-substructure of ${\EuScript N}$. 
+  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript N}$. 
   Therefore, form every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL} we have
 
   \ceq{\hfill{\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)}\hfill  for every $a\in M^{|x|}$.
@@ -768,7 +780,7 @@ Finally, induction for the boolean connectives and the quantifiers of sort $R$ i
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Completeness}
 
-(Work in progress)
+Needs full rewriting
 
 For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ with parameters in $U$ of sort $M\to R$. 
 
@@ -788,7 +800,7 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
   Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
   Let $M$ be the set the simple real valued random variables with the natural interpretation of the symbols in $L$. 
   Let $R=\mathds{R}$.
-  Assume $L'$ estends $L$ with all the continuous functions $\mathds{R}^n\to\mathds{R}$ and for every $n\in\mathds{N}$ the functions ${\rm E}_n$ that gives the expected value of $(X\wedge n)\vee -n$ for $n\in\mathds{N}$.
+  Assume ${\EuScript L}$ estends $L$ with all the continuous functions $\mathds{R}^n\to\mathds{R}$ and for every $n\in\mathds{N}$ the functions ${\rm E}_n$ that gives the expected value of $(X\wedge n)\vee -n$ for $n\in\mathds{N}$.
   Note that the cut-off enures that the range of these functions is bounded.
 
   The relation $a\sim b$ holds in these there cases
@@ -801,7 +813,7 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
 We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\mathds{L}_M x\rightarrow a\sim x$
 
 \begin{example}
-  Assume that $R=\mathds{R}$ and that $L'$ contains a function of sort $M^2\to R$ that that is interpreted in a pseudometric.
+  Assume that $R=\mathds{R}$ and that ${\EuScript L}$ contains a function of sort $M^2\to R$ that that is interpreted in a pseudometric.
   Assume that all terms of sort $M^n\to R$ are continuous with rispect to this pseudometric.
   It is easy to see that $a\sim b$ if and only if $d(a,b)=0$.
   We claim that the following are equivalent
