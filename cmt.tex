@@ -529,9 +529,45 @@ Finally, we prove
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai\,;\beta)\big\}\in F$.
   Therefore $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\notin F$.
 \end{proof}
-
-
 \end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Compactness}
+
+\begin{proposition}[Compactness Theorem]\label{prop_compattezza}
+  Every finitely consistent theory is consistent. 
+  \end{proposition}
+  
+  \begin{proof}
+  Let  $T$ be a finitely consistent theory.
+  
+  We claim that the structure $N/F$ which we define below is a model of $T$. 
+  Let $I$ be the set of consistent sentences $\xi\in\mathds{L}$.
+  For every $\xi\in I$ pick some ${\EuScript M}_\xi\models\xi$.
+  For any sentence $\varphi\in L$ we define
+  
+  \ceq{\hfill X_\varphi}{=}{\Big\{\xi\in I\ :\ \xi\vdash \varphi\Big\}.}
+  
+  Clearly $\varphi$ is consistent if and only if $X_\varphi\neq\varnothing$.
+  Moreover $X_{\varphi\wedge\psi}\ =\ X_\varphi\cap X_\psi$.
+  Hence, as $T$ is finitely consistent, the set $B=\big\{X_\varphi\,:\,\varphi\in T\big\}$ has the finite intersection property. Therefore $B$ extends to an ultrafilter $F$ on $I$. Define
+  
+  \ceq{\hfill N}{=}{\prod_{\xi\in I}M_\xi}.
+  
+  We claim that $N/F\models T$. By \L o\v{s} Theorem, for every sentence $\varphi\in L$
+  
+  \ceq{\hfill N/F\models \varphi}%
+  {\Leftrightarrow}%
+  {\Big\{\xi\ :\ M_\xi\models\varphi\Big\}\ \in\ F\,.}
+  
+  By the definition of $F$, for every $\varphi\in T$, the set $X_\varphi\subseteq \big\{\xi\ :\ M_\xi\models \varphi\big\}$ belongs to $F$. Therefore $N/F\models T$.
+  \end{proof}
+  
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
