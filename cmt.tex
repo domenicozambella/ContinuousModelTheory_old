@@ -155,7 +155,7 @@ For later reference we remark the following which is an immediate consequence of
    Each component of the tuple $t(x\,;y)$ in the definition above is either of sort $M^{|x|}\to R$ or of sort $R^{|y|}\to R$.\hfill\qedsymbol
 \end{remark}
 
-\def\ceq#1#2#3{\parbox[t]{39ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -244,41 +244,38 @@ The following ia technical lemma that is required in the proof of \L\v o\'s Theo
     \item $\langle\alpha_i:i\in I\rangle$, a sequence of elements of $C\subseteq R^{|y|}$, a compact set;
     \item $\alpha=F\mbox{-}\lim_i\alpha_i$, for some ultrafilter $F$ on $I$.
   \end{itemize}
-  Then the following are equivalent
-  
-  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i;\alpha)\}\in F}{ ~}{\textrm{for every }\varphi'>\varphi;}
-
-  \ceq{\hfill\{i\in I:{\EuScript M}\models\varphi'(a_i;\alpha_i)\}\in F}{~}{\textrm{for every }\varphi'>\varphi.}
-\end{lemma}
-\begin{proof}
-  % \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
-  We claim that the following implications hold for every $\varphi'>\varphi$
+  Then the following implications hold
 
   \ceq{\textsf{i.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha)\big\}\in F}
   {\Rightarrow}
-  {\big\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\big\}\in F};
+  {\big\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\big\}\in F} for every $\varphi'>\varphi$;
 
   \ceq{\textsf{ii.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha_i)\big\}\in F}
   {\Rightarrow}
-  {\big\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha)\big\}\in F}.
+  {\big\{i\in I:{\EuScript M}\models\varphi(a_i\,;\alpha)\big\}\in F}.
   
-  The lemma follows from the claim by the density of $>$.
-  
+\end{lemma}
+\begin{proof}
+  % \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
   By induction on the syntax.
-  We only proof (\textsf{i}), the proof of  (\textsf{ii}) is essetially the same.
   When $\varphi(x;y)$ is in $L$, it does not depend on $\alpha$, and the lemma is trivial.
   Suppose that $\varphi(x;y)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x;y)\in C$.
   First, note that by Remark~\ref{rk_terms} we trivially have that
 
   \ceq{\hfill F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)}{=}{F\mbox{-}\lim_i t^{\EuScript M}( a_i;\alpha_i).}
   
-  We prove (\textsf{i}).
+  (\textsf{i})
   Assume $\{i:t(a_i;\alpha)\in C\}\in F$.
   Let $O\supseteq C$ be open.
-  Then $F\mbox{-}\lim_i t(a_i;\alpha)$\in $O$.
+  Then $F\mbox{-}\lim_i t(a_i;\alpha)\in O$.
   By what noted above, $F\mbox{-}\lim_i t(a_i;\alpha_i)\in O$.
-  As $O$ is arbitrary, $\{i:t(a_i\,;\alpha_i)\in C'\}\in F$ for every compact neghborhod of $C$. 
+  As $O$ is arbitrary, $\{i:t(a_i\,;\alpha_i)\in C'\}\in F$ for every compact neghborhod of $C$.
 
+  (\textsf{ii})
+  Assume $\{i:t(a_i;\alpha)\notin C\}\in F$.
+  Then $F\mbox{-}\lim_i t(a_i;\alpha)\notin C$.
+  Hence $F\mbox{-}\lim_i t(a_i;\alpha_i)\notin C$ and  $\{i:t(a_i;\alpha)\notin C\}\in F$ follows.
+  
   This proves the basis case of the induction.
 
   Induction clear for the connectives $\vee$, $\wedge$.
@@ -288,20 +285,31 @@ The following ia technical lemma that is required in the proof of \L\v o\'s Theo
   {\Rightarrow}
   {\big\{i\in I:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F};
 
+  \ceq{\textsf{iih.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,;\alpha)\big\}\in F};
+
   % \ceq{\textsf{iih.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha_i)\big\}\in F}
   % {\Rightarrow}
   % {\big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,;\alpha)\big\}\in F}.
 
-  First we prove
+  We prove
 
   \ceq{\textsf{i}\forall.\hfill \big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\big\}\in F}
   {\Rightarrow}
   {\big\{i\in I:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}.
 
-  Negate the consequence.
-  Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. 
-  If for a contradiction the antecedent of (\textsf{i}$\forall$) holds, from (\textsf{ih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)\big\}\in F$.
-  A fotriori  $\big\{i:\varphi'(a_i,b_i\,; \alpha)\big\}\in F$, which is a contradiction that proves (\textsf{i}$\forall$).
+  \ceq{\textsf{ii}\forall.\hfill \big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,;\alpha)\big\}\in F}.
+
+
+  ($\textsf{i}\forall$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. 
+  If for a contradiction the antecedent of (\textsf{i}$\forall$) holds, from (\textsf{ih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)_i\big\}\in F$.
+  A fotriori  $\big\{i:\varphi'(a_i,b_i\,; \alpha_i)\big\}\in F$, which is a contradiction that proves (\textsf{i}$\forall$).
+
+  ($\textsf{ii}\forall$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi(a_i,b_i\,;\alpha)\big\}\in F$. 
+  If for a contradiction the antecedent of (\textsf{ii}$\forall$) holds, from (\textsf{iih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)\big\}\in F$, a contradiction that proves (\textsf{ii}$\forall$).
 
   To deal with the existential quantifier of sort $M$ we prove 
 
@@ -309,11 +317,20 @@ The following ia technical lemma that is required in the proof of \L\v o\'s Theo
   {\Rightarrow}
   {\big\{i\in I:{\EuScript M}\models\exists y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}.
 
-  Assume the antecedent of the implication.
+  \ceq{\textsf{ii}\exists.\hfill \big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,;\alpha)\big\}\in F}.
+
+  ($\textsf{i}\exists$) Assume the antecedent.
   Pick $\varphi''$ such that $\varphi'>\varphi''>\varphi$.
   Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi''(a_i,b_i\,;\alpha)\big\}\in F$.
-  By (\textsf{ih}) of the induction hypothesis $\big\{ i:\exists y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F$.
+  By (\textsf{ih})  we obtain $\big\{ i:\exists y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F$.
   
+
+  ($\textsf{ii}\exists$) Assume the antecedent.
+  Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi(a_i,b_i\,;\alpha_i)\big\}\in F$.
+  By (\textsf{iih}) we obtain $\big\{ i:\exists y\,\varphi(a_i,y\,;\alpha)\big\}\in F$.
+
   Induction for the quantifiers $\forall^C$ and  $\exists^C$ is virtually identical.
 \end{proof}
 
@@ -394,35 +411,29 @@ Finally, we prove
 
 \begin{proposition}[$\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem]\label{thm_Los}
   Let ${\EuScript N}$ be as above and let $\varphi(x)\in\mathds{L}$.
-  Then for every $\hat a\in N^{|x|}$ the following are equivalent
-  \begin{itemize}
-    \item  ${\EuScript N}\models\varphi'(\hat a)$ \ for every $\varphi'>\varphi$;
-    \item $\big\{ i\in I\ :\ {\EuScript M}\models\varphi'(\hat ai)\big\}\in F$ \ for every $\varphi'>\varphi$.
-  \end{itemize}
-\end{proposition}
-\begin{proof}
-  We claim that the following implications hold for every $\varphi'>\varphi$
-
+  Then for every $\hat a\in N^{|x|}$ and every $\varphi'>\varphi$
+  
   \ceq{\textsf{i.}\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\varphi'(\hat a)};
+  {{\EuScript N}\models\varphi(\hat a)};
 
   \ceq{\textsf{ii.}\hfill{\EuScript N}\models\varphi(\hat a)}
   {\Rightarrow}
   {\big\{i:{\EuScript M}\models\varphi'(\hat ai)\big\}\in F}.
-  
-  By the density of $>$, the lemma follows from the claim.
-  
+
+\end{proposition}
+\begin{proof}  
   The claim is proved by induction on the syntax.
-  If $\varphi(x)\in L$ then the theorem reduces to the classical \L\v{o}\'s Theorem. Then, suppose that $\varphi(x)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x)\in C$.
+  If $\varphi(x)\in L$ then the theorem reduces to the classical \L\v{o}\'s Theorem. 
+  Now, suppose instead that $\varphi(x)$ is as in (i) of Definition~\ref{def_LL}, say it is the formula $t(x)\in C$.
   
   (\textsf{i})
   Assume $\big\{ i:{\EuScript M}\models t(\hat ai)\in C\big\}\in F$.
-  Then $F\mbox{-}\lim_it(\hat ai)\in C'$, where $C'$ is any neighborhood of $C$.
-  By Fact~\ref{fact_termini2}, ${\EuScript N}\models t(\hat a)\in C'$.
+  Then $F\mbox{-}\lim_it(\hat ai)\in C'$ for every neighborhood of $C$.
+  By regularity, ${\EuScript N}\models t(\hat a)\in C$.
   
   (\textsf{ii}) Assume ${\EuScript N}\models t(\hat a)\in C$.
-  By Fact~\ref{fact_termini2} and the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai)\in C'\big\}\in F$ where $C'$  is any neighborhood of $C$.
+  By the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai)\in C'\big\}\in F$ where $C'$  is any neighborhood of $C$.
 
   This completes the proof of the base case of the induction.
 
@@ -431,7 +442,7 @@ Finally, we prove
 
   \ceq{\textsf{ih.}\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai,\hat bi)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\varphi'(\hat a,\hat b)};
+  {{\EuScript N}\models\varphi(\hat a,\hat b)};
 
   \ceq{\textsf{iih.}\hfill{\EuScript N}\models\varphi(\hat a\,;\hat b)}
   {\Rightarrow}
@@ -441,16 +452,16 @@ Finally, we prove
   
   \ceq{\textsf{i}\forall.\hfill \big\{i:{\EuScript M}\models\forall y\,\varphi(\hat ai,y)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\forall y\,\varphi'(\hat a,y)};
+  {{\EuScript N}\models\forall y\,\varphi(\hat a,y)};
 
   \ceq{\textsf{ii}\forall.\hfill{\EuScript N}\models\forall y\,\varphi(\hat a,y)}
   {\Rightarrow}
   {\big\{i:{\EuScript M}\models\forall y\,\varphi'(\hat ai,y)\big\}\in F}.
 
   (\textsf{i}$\forall$)
-  Assume ${\EuScript N}\not\models\varphi'(\hat a,\hat b)$ for some $\hat b$.
+  Assume ${\EuScript N}\not\models\varphi(\hat a,\hat b)$ for some $\hat b$.
   By induction hypothesis, $\big\{ i: {\EuScript M}\not\models\varphi(\hat ai,\hat bi)\big\}\in F$.
-  A fortiori $\big\{ i:{\EuScript M}\not\models\forall y\,\varphi'(\hat ai,y)\big\}\in F$ as required.
+  A fortiori $\big\{ i:{\EuScript M}\not\models\forall y\,\varphi(\hat ai,y)\big\}\in F$ as required.
 
 
   (\textsf{ii}$\forall$)
@@ -464,7 +475,7 @@ Finally, we prove
 
   \ceq{\textsf{i}\exists.\hfill \big\{i:{\EuScript M}\models\exists y\,\varphi(\hat ai,y)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\exists y\,\varphi'(\hat a,y)};
+  {{\EuScript N}\models\exists y\,\varphi(\hat a,y)};
 
   \ceq{\textsf{ii}\exists.\hfill{\EuScript N}\models\exists y\,\varphi(\hat a,y)}
   {\Rightarrow}
@@ -473,8 +484,8 @@ Finally, we prove
 
   (\textsf{i}$\exists$) Assume $\big\{ i:{\EuScript M}\models\exists y\,\varphi(\hat ai,y)\big\}\in F$.
   Choose some $\hat b$ such that $\big\{ i:{\EuScript M}\models\varphi(\hat ai,\hat bi)\big\}\in F$.
-  By induction hypothesis ${\EuScript N}\models\varphi'(\hat a,\hat b)$.
-  Therefore ${\EuScript N}\models\exists y\,\varphi'(\hat a,y)$ as required.
+  By induction hypothesis ${\EuScript N}\models\varphi(\hat a,\hat b)$.
+  Therefore ${\EuScript N}\models\exists y\,\varphi(\hat a,y)$ as required.
 
   (\textsf{ii}$\exists$) Assume ${\EuScript N}\models\varphi(\hat a,\hat b)$ for some $\hat b$.
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai,\hat bi)\big\}\in F$.
@@ -484,7 +495,7 @@ Finally, we prove
 
   \ceq{\textsf{ih.}\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai\,;\alpha)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\varphi'(\hat a\,;\alpha)};
+  {{\EuScript N}\models\varphi(\hat a\,;\alpha)};
 
   \ceq{\textsf{iih.}\hfill{\EuScript N}\models\varphi(\hat a\,;\alpha)}
   {\Rightarrow}
@@ -494,27 +505,26 @@ Finally, we prove
   
   \ceq{\textsf{i}\forall^C\!\!.\hfill \big\{i:{\EuScript M}\models\forall^C\! y\,\varphi(\hat ai\,;y)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\forall^C\! y\,\varphi'(\hat a\,;y)};
+  {{\EuScript N}\models\forall^C\! y\,\varphi(\hat a\,;y)};
 
   \ceq{\textsf{ii}\forall^C\!\!.\hfill{\EuScript N}\models\forall y^C\!\,\varphi(\hat a,y)}
   {\Rightarrow}
   {\big\{i:{\EuScript M}\models\forall^C\! y\,\varphi'(\hat ai,y)\big\}\in F}.
   
   (\textsf{i}$\forall^C$) Assume ${\EuScript N}\not\models\varphi(\hat a\,;  \beta)$ for some $\beta$.
-  By induction hypothesis, $\big\{ i: {\EuScript M}\not\models\varphi'(\hat ai\,;\beta)\big\}\in F$.
-  A fortiori $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$ as required.
+  By induction hypothesis, $\big\{ i: {\EuScript M}\not\models\varphi(\hat ai\,;\beta)\big\}\in F$.
+  A fortiori $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi(\hat ai\,;y)\big\}\in F$ as required.
 
-  (\textsf{ii}$\forall^C$) Assume $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi(\hat ai\,;y)\big\}\in F$.
-  Pick $\beta_i\in C$ such that $\big\{ i:{\EuScript M}\not\models\varphi(\hat ai\,;\beta_i)\big\}\in F$ and let $\beta=F\mbox{-}\lim_i\beta_i$.
-  By Lemma~\ref{lem_HIapprox} $\big\{ i:{\EuScript M}\not\models\varphi''(\hat ai\,;\beta)\big\}\in F$ for some $\varphi''>\varphi$.
-  If for a contradiction ${\EuScript N}\models\forall^C\!y\,\varphi(\hat a\,;y)$, 
-  then ${\EuScript N}\models\varphi(\hat a\,;\beta)$ and, by induction hypothesis, $\big\{ i:{\EuScript M}\models\varphi'(\hat ai\,;\beta)\big\}\in F$ for every $\varphi'>\varphi$, a contradiction.
+  (\textsf{ii}$\forall^C$) Assume $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$.
+  Pick $\beta_i\in C$ such that $\big\{ i:{\EuScript M}\not\models\varphi'(\hat ai\,;\beta_i)\big\}\in F$ and let $\beta=F\mbox{-}\lim_i\beta_i$.
+  Then from Lemma~\ref{lem_HIapprox} we obtain $\big\{ i:{\EuScript M}\not\models\varphi(\hat ai\,;\beta)\big\}\in F$.
+  Finally, by  (\textsf{iih}), we conclude ${\EuScript N}\not\models\forall y^C\!\,\varphi(\hat a,y)$.
   
   Finally, we prove
   
   \ceq{\textsf{i}\exists^C\!\!.\hfill \big\{i:{\EuScript M}\models\exists^C\! y\,\varphi(\hat ai\,;y)\big\}\in F}
   {\Rightarrow}
-  {{\EuScript N}\models\exists^C\! y\,\varphi'(\hat a\,;y)};
+  {{\EuScript N}\models\exists^C\! y\,\varphi(\hat a\,;y)};
 
   \ceq{\textsf{ii}\exists^C\!\!.\hfill{\EuScript N}\models\exists y^C\!\,\varphi(\hat a,y)}
   {\Rightarrow}
@@ -522,12 +532,11 @@ Finally, we prove
   
   (\textsf{i}$\exists^C$) Assume $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi(\hat ai\,;y)\big\}\in F$.
   Choose $\beta_i\in C$ such that $\big\{ i:{\EuScript M}\models\varphi(\hat ai\,;\beta_i)\big\}\in F$ and let $\beta=F\mbox{-}\lim_i\beta_i$.
-  By Lemma~\ref{lem_HIapprox}, $\big\{ i:{\EuScript M}\models\varphi''(\hat ai\,;\beta)\big\}\in F$ for every $\varphi''>\varphi$.
-  Hence from the induction hypothesis and the density of $>$ we obtain ${\EuScript N}\models\varphi'(\hat a\,;\beta)$ and a fortiori ${\EuScript N}\models\exists^C\! y\,\varphi'(\hat a\,;y)$..
+  By Lemma~\ref{lem_HIapprox}, $\big\{ i:{\EuScript M}\models\varphi(\hat ai\,;\beta)\big\}\in F$.
   
   (\textsf{ii}$\exists^C$) Assume ${\EuScript N}\models\varphi(\hat a\,;  \beta)$ for some $\beta$.
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai\,;\beta)\big\}\in F$.
-  Therefore $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\notin F$.
+  Therefore $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$.
 \end{proof}
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
