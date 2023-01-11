@@ -110,7 +110,7 @@ These are among the most simple strucures considered in model theory.
 Now expand them with a norm.
 The norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two sorted struture.
-Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ (or, in general $R$) should remain $\mathds{R}$ throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
+Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ (or, in general $R$) should remain itself throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
@@ -172,17 +172,17 @@ Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
 
-We write $\tilde{\varphi}\perp\varphi$ if $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact set disjoint from $C$. 
-All other atomic formula (i.e.\@ those in $L$) are replaced with their negation.
-Moreover, each connective is replaced with its dual.
+We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact set disjoint from $C$. 
+Moreover the atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
 I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
 
 It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$ and that $\tilde{\varphi}\leftrightarrow\neg\varphi$  when $\varphi\in L$.
-Therefore we call  $\tilde{\varphi}$ a \emph{strong negation} of $\varphi$
+We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
 
 
 \begin{lemma}\label{lem_interpolation}
-  For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$.
+  For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$. 
+  Vice versa, for every $\tilde{\varphi}\perp\varphi$ there is a formula $\varphi''>\varphi$ such that  $\varphi\rightarrow\varphi''\rightarrow\neg \tilde{\varphi}$.
 \end{lemma}
 
 \begin{proof}
@@ -262,7 +262,7 @@ if $f^{-1}[A]\in F$ for every $A\subseteq Y$ that is a neighborhood of $\lambda$
 Such a $\lambda$ is unique if $Y$ is Hausdorff.
 When $F$ is an ultrafilter and, in addition, $Y$ is compact the limit always exists.
 
-The following ia technical lemma that is required in the proof of \L\v o\'s Theorem in the next section.
+The following is technical lemma that is required in the proof of \L\v o\'s Theorem in the next section.
 
 \begin{lemma}\label{lem_HIapprox}
   Assume the following data
@@ -575,15 +575,15 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-Elementrarity}
 
-\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
-We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-(elementary) map\/} if for every $\varphi(x)\in\mathds{L}$
+We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(fa)}\hfill for every $a\in({\rm dom }f)^{|x|}$.
 
-A total $\mathds{L}$-map is called an \emph{$\mathds{L}$-(elementary) embedding.} 
-If natural immersion ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$
+A total $\mathds{L}$-elementary map is called an \emph{$\mathds{L}$-(elementary) embedding.} 
+If the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $a\in M^{|x|}$,
 
@@ -595,6 +595,34 @@ The following fact follows from \L\v{o}\'s Theorem just as in the classical case
 \end{fact} 
 
 % For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ and ${\rm id}_A:N\to M$ are $\mathds{L}$-elementary.
+
+\begin{fact}
+  If $f:M\to N$ is $\mathds{L}$-elementary then for every $\varphi(x)\in\mathds{L}$ and every  $a\in({\rm dom }f)^{|x|}$
+
+  \ceq{\hfill{\EuScript M}\models\varphi'(a)\textrm{ for every }\varphi'>\varphi}
+  {\Leftrightarrow}
+  {{\EuScript N}\models\varphi'(fa)\textrm{ for every }\varphi'>\varphi}
+
+\end{fact}
+
+\begin{proof}
+  Only the implication $\Leftarrow$ requires a proof.
+  Suppose $\varphi'>\varphi$ is such that ${\EuScript M}\not\models\varphi'(a)$.
+  By Lemma~\ref{lem_interpolation} there is formula  $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg\tilde{\varphi}\rightarrow\varphi'$ and a formula   $\varphi''>\varphi$ such that  $\varphi\rightarrow\varphi''\rightarrow\neg\tilde{\varphi}$. 
+  Then we have
+  
+  \ceq{\hfill{\EuScript M}\not\models\varphi'(a)}
+  {\Rightarrow}
+  {{\EuScript M}\models\tilde{\varphi}(a)}
+  
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript N}\models\tilde{\varphi}(fa)}
+  
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript N}\not\models\varphi''(fa)}
+\end{proof}
 
 We prove a version of Tarski-Vaught Test.
 A second equivalent version of this test will be proved in the sections below.
@@ -647,7 +675,7 @@ A second equivalent version of this test will be proved in the sections below.
   {\Rightarrow}
   {{\EuScript M}\not\models\forall y\,\varphi(a,y)}
 
-  Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$ and $\forall^C$ is straightforward.
+  Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$, and $\forall^C$ is straightforward.
 \end{proof}
 
   
@@ -664,29 +692,38 @@ A second equivalent version of this test will be proved in the sections below.
   \renewcommand\stacktype{L}%
   \scaleto{\stackon[.2pt]{\color{red}$\triangle$}{\color{red}\bfseries\tiny ?}}{#1}%
 }
-A theory $T\subseteq\mathds{L}$ be a weakly finitely consistent if for every $\varphi$, conjunction of sentences in $T$, any $\varphi'>\varphi$ is consistent.
+We say that a teory is consistent if it has a model satisfying Definition~\ref{def_0}.
+Also the notion of logical consequence is restricted to models in this class. 
+
+A theory $T\subseteq\mathds{L}$ be a finitely uniformly consistent if for every $\varphi$, conjunction of sentences in $T$ is consistent.
+Moreover the functions in the models witnessing this have the same bound.
+
 The following proposition follows from \L\v o\'s Theorem by the usual argument.
 
 \begin{proposition}[Compactness Theorem]\label{prop_compattezza}
-  Let $T\subseteq\mathds{L}$ be an weakly finitely consistent theory.
+  Let $T\subseteq\mathds{L}$ be a finitely uniformly consistent theory.
   Then $T$ is consistent.\hfill\qedsymbol
 \end{proposition}
 
 
+
+\begin{proposition}\label{prop_tipi_compattezza}
+  Let $p(x)\subseteq\mathds{L}(M)$ be a finitely consistent in ${\EuScript M}$.
+  Then ${\EuScript N}\models\exists x\,p(x)$ for some ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.\hfill\qedsymbol
+\end{proposition}
+
 % \noindent\llap{\dangersign\kern2ex}%
-Let $p(x)\subseteq\mathds{L}(M)$.
-We say that $p(x)$ is \emph{weakly finitely satisfied in ${\EuScript M}$\/} if ${\EuScript M}\models\exists x\,\varphi'(x)$ for every $\varphi'>\varphi$ where $\varphi(x)$ is some conjunction of formulas in $p(x)$.
+
 
 \begin{definition}
   We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
   \begin{itemize}
     \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
-    \item[2.] $p(x)$ is weakly finitely satisfied in ${\EuScript M}$.
+    \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
   \end{itemize}
 \end{definition}
 
 The existence of $\mathds{L}$-saturated models is proved as in the classical case.
-
 
 \begin{proposition}
   Every model has an $\mathds{L}$-elementary extension to a saturated model (possibly of inaccessible cardinality).\hfill\qedsymbol
@@ -703,6 +740,19 @@ We denote by \emph{${\EuScript U}=\langle U,R\rangle$\/} some large $\mathds{L}$
 The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
 Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuScript U}$.
 
+\begin{fact}
+  Let $p(x)\subseteq\mathds{L}(U)$ be a type of small cardinality.
+  Then for every  $\varphi(x)\in\mathds{L}(U)$
+  \begin{itemize}
+    \item[1.] if $p(x)\rightarrow\neg\varphi(x)$ then $\psi(x)\rightarrow\varphi(x)$ for some $\psi(x)$ conjunction of formulas in $p(x)$;
+    \item[2.] if $p(x)\rightarrow\varphi(x)$ and $\varphi'>\varphi$ then $\psi(x)\rightarrow\varphi'(x)$ for some conjunction of formulas in $p(x)$.
+  \end{itemize} 
+\end{fact}
+
+\begin{proof}
+  The first claim is clear.
+  The second follows from the first by Lemma~\ref{lem_interpolation}.
+\end{proof}
 
 
 % \begin{fact}
@@ -711,13 +761,13 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 % \end{fact}
 
 
-\begin{fact}
-  For every $\varphi(x),\psi(x)\in\mathds{L}(U)$ such that $\neg\exists x\,[\varphi(x)\wedge\psi(x)]$ there are $\varphi'>\varphi$ and $\psi'>\psi$ such that $\neg\exists x\,[\varphi'(x)\wedge\psi'(x)]$.
-\end{fact}
+% \begin{fact}
+%   For every $\varphi(x),\psi(x)\in\mathds{L}(U)$ such that $\neg\exists x\,[\varphi(x)\wedge\psi(x)]$ there are $\varphi'>\varphi$ and $\psi'>\psi$ such that $\neg\exists x\,[\varphi'(x)\wedge\psi'(x)]$.
+% \end{fact}
 
-\begin{proof}
-  By Proposition~\ref{prop_approx} and saturation.
-\end{proof}
+% \begin{proof}
+%   By Proposition~\ref{prop_approx} and saturation.
+% \end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
