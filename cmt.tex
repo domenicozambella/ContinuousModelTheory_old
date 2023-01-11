@@ -127,7 +127,7 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
     \item[ii.] $M^n\to M$;
     \item[iii.] $M^n\to R$.
   \end{itemize}
-  The interpretation of symbols of sort $R^n\to R$ is required to be continuous, the interpretation of symbols of sort $M^n\to R$ is required to be bounded, i.e.\@ the range is contained in a compact set.
+  The interpretation of symbols of sort $R^n\to R$ is required to be continuous and bounded, the interpretation of symbols of sort $M^n\to R$ is required to be bounded, i.e.\@ the range is contained in a compact set.
 
   We only allow relation symbols of sorts $M^n$ and $R^n$.
 \end{definition}
@@ -164,13 +164,41 @@ For later reference we remark the following which is an immediate consequence of
 \section{Henson-Iovino approximations}\label{ultrapws}
 
 
-For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ can be obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ by $t\in C'$ where $C'$ is some compact neighborhood of $C$.
+For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ is obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact neighborhood of $C$.
 If no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
 By the normality of $R$ we also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
 
 Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
+
+We write $\tilde{\varphi}\perp\varphi$ if $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact set disjoint from $C$. 
+All other atomic formula (i.e.\@ those in $L$) are replaced with their negation.
+Moreover, each connective is replaced with its dual.
+I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
+
+It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$ and that $\tilde{\varphi}\leftrightarrow\neg\varphi$  when $\varphi\in L$.
+Therefore we call  $\tilde{\varphi}$ a \emph{strong negation} of $\varphi$
+
+
+\begin{lemma}\label{lem_interpolation}
+  For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$.
+\end{lemma}
+
+\begin{proof}
+  If $\varphi\in L$ the claim is obvious.
+  Suppose $\varphi$ is of the form $t\in C$.
+  Then $\varphi'$ is $t\in C'$ for some compact neighborhood of $C$.
+  Let $O$ be an open set such that $C\subseteq O\subseteq C'$.
+  Then $\psi=(t\in C'\smallsetminus O)$ is as required.
+
+  The lemma follows easily by induction.
+\end{proof}
+
+
+
+
+
 % In fact, we have the following.
 
 % \begin{proposition}[fake theorem]\label{prop_approx}
@@ -406,7 +434,7 @@ By Remark~\ref{rk_terms} we also have that
   \ceq{\hfill t^{\EuScript N}\big(\hat a;\alpha\big)}{=}{F\mbox{-}\lim_i t^{\EuScript M}\big(\hat ai;\alpha\big).}\hfill\qedsymbol
 \end{fact}
 
-Finally, we prove
+Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
 
 
 \begin{proposition}[$\mathds{L}$\llap{\rotatebox{30}{--}\kern1.5pt}\v{o}\'s Theorem]\label{thm_Los}
@@ -538,44 +566,6 @@ Finally, we prove
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai\,;\beta)\big\}\in F$.
   Therefore $\big\{ i:{\EuScript M}\models\exists^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$.
 \end{proof}
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Compactness}
-
-\begin{proposition}[Compactness Theorem]\label{prop_compattezza}
-  Every finitely consistent theory is consistent. 
-  \end{proposition}
-  
-  \begin{proof}
-  Let  $T$ be a finitely consistent theory.
-  
-  We claim that the structure $N/F$ which we define below is a model of $T$. 
-  Let $I$ be the set of consistent sentences $\xi\in\mathds{L}$.
-  For every $\xi\in I$ pick some ${\EuScript M}_\xi\models\xi$.
-  For any sentence $\varphi\in L$ we define
-  
-  \ceq{\hfill X_\varphi}{=}{\Big\{\xi\in I\ :\ \xi\vdash \varphi\Big\}.}
-  
-  Clearly $\varphi$ is consistent if and only if $X_\varphi\neq\varnothing$.
-  Moreover $X_{\varphi\wedge\psi}\ =\ X_\varphi\cap X_\psi$.
-  Hence, as $T$ is finitely consistent, the set $B=\big\{X_\varphi\,:\,\varphi\in T\big\}$ has the finite intersection property. Therefore $B$ extends to an ultrafilter $F$ on $I$. Define
-  
-  \ceq{\hfill N}{=}{\prod_{\xi\in I}M_\xi}.
-  
-  We claim that $N/F\models T$. By \L o\v{s} Theorem, for every sentence $\varphi\in L$
-  
-  \ceq{\hfill N/F\models \varphi}%
-  {\Leftrightarrow}%
-  {\Big\{\xi\ :\ M_\xi\models\varphi\Big\}\ \in\ F\,.}
-  
-  By the definition of $F$, for every $\varphi\in T$, the set $X_\varphi\subseteq \big\{\xi\ :\ M_\xi\models \varphi\big\}$ belongs to $F$. Therefore $N/F\models T$.
-  \end{proof}
-  
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -585,27 +575,82 @@ Finally, we prove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-Elementrarity}
 
-Needs full rewriting
-
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
-We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$
+We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-(elementary) map\/} if for every $\varphi(x)\in\mathds{L}$
 
-\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi'(fa)}\hfill for every $a\in({\rm dom }f)^{|x|}$ and every $\varphi'>\varphi$.
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(fa)}\hfill for every $a\in({\rm dom }f)^{|x|}$.
 
-The following fact is proved as in the classical case.
+A total $\mathds{L}$-map is called an \emph{$\mathds{L}$-(elementary) embedding.} 
+If natural immersion ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$
+
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $a\in M^{|x|}$,
+
+we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$. 
+The following fact follows from \L\v{o}\'s Theorem just as in the classical case.
 
 \begin{fact}
-  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-elementary embedding of ${\EuScript M}$ into ${\EuScript N}$.\hfill\qedsymbol
+  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-embedding ${\EuScript M}\hookrightarrow{\EuScript N}$.\hfill\qedsymbol
 \end{fact} 
 
-For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ is $\mathds{L}$-elementary.
-% Recall that ${\EuScript L}$ contains constants for all elements of $R$, then we never need to use parameter in $R$.
-We write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} when ${\EuScript M}\equiv^\mathds{L}_M{\EuScript N}$.
-In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$.
+% For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ and ${\rm id}_A:N\to M$ are $\mathds{L}$-elementary.
 
+We prove a version of Tarski-Vaught Test.
+A second equivalent version of this test will be proved in the sections below.
 
+\begin{proposition}[Tarski-Vaught $\mathds{L}$-Test] 
+  Let $M$ be a subset of $N$.
+  Then the following are equivalent
+  \begin{itemize}
+    \item[1.] $M$ is the domain of a structure ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$;
+    \item[2.] for every formula $\varphi(x)\in\mathds{L}(M)$
+    
+    \noindent\kern-\leftmargin
+    \ceq{\hfill{\EuScript N}\models\exists x\,\neg\varphi(x)}{\Rightarrow}
+    {\textrm{ there is an }a\in M\textrm{ such that }{\EuScript N}\models\neg\varphi(a);}
+    
+  \end{itemize}
+\end{proposition}
+
+\begin{proof}
+  (1$\Rightarrow$2) Clear.
+
+  (2$\Rightarrow$1)
+  Assume (2).
+  Then, by the classical Tarski-Vaught test $M\preceq N$. 
+  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript N}$. 
+  Therefore, form every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL} we have that ${\EuScript M}\models\varphi(a)\Leftrightarrow{\EuScript N}\models\varphi(a)$ for every $a\in M^{|x|}$
+
+  Now, assume inductively
+  
+  \ceq{\hfill{\EuScript M}\models\varphi(a,b)}{\Rightarrow}{{\EuScript N}\models\varphi(a,b)}
+
+  Using (2) and the induction hypothesis we prove by contrapposition that
+
+  \ceq{\hfill{\EuScript M}\models\forall y\,\varphi(a,y)}{\Rightarrow}{{\EuScript N}\models\forall y\,\varphi(a,y)}.
+
+  Indeed,
+
+  \ceq{\hfill{\EuScript N}\not\models\forall y\,\varphi(a,y)}
+  {\Rightarrow}{{\EuScript N}\models\exists y\,\neg\varphi(a,y)}
+  
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript N}\models\neg\varphi(a,b)\quad \textrm{ for some }b\in M^{|y|}}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\models\neg\varphi(a,b)\quad\textrm{ for some }b\in M^{|y|}}
+
+  \ceq{}
+  {\Rightarrow}
+  {{\EuScript M}\not\models\forall y\,\varphi(a,y)}
+
+  Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$ and $\forall^C$ is straightforward.
+\end{proof}
+
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -613,9 +658,6 @@ In words, we say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) subs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-compactness}
-
-
-Needs full rewriting
 
 
 \newcommand\dangersign[1][3ex]{%
@@ -676,146 +718,6 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 \begin{proof}
   By Proposition~\ref{prop_approx} and saturation.
 \end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Tarski-Vaught $\mathds{L}$-test}
-
-
-Needs full rewriting
-
-\begin{lemma}\label{lem_interpolation}
-  ($R$ compact) \ 
-  For every $\varphi'>\varphi$ there is a formula $\psi\in\mathds{L}(M)$ such that $\varphi\rightarrow\neg\psi\rightarrow\varphi'$.
-\end{lemma}
-
-\begin{proof}
-  By induction. 
-  If $\varphi\in L$ the claim is obvious.
-  Suppose $\varphi$ is of the form $t\in C$.
-  Then $\varphi'$ is $t\in C'$ for some compact neighborhood of $C$.
-  Let $O$ be an open set such that $C\subseteq O\subseteq C'$.
-  Then $\psi=(t\in R\smallsetminus O)$ is as required.
-
-  Induction is easy (conjuctions and disjuctions in $\varphi$ occur swapped in $\psi$; similarly universal and existential quantifiers). 
-\end{proof}
-
-
-The following lemma is a useful observation.
-It has its first application below, in the proof of our version of the Tarski-Vaught test.
-
-\begin{lemma}\label{lem_TVT}
-  ($R$ compact) \ 
-  Let $A\subseteq N$.
-  Then the following are equivalent 
-  \begin{itemize}
-    \item[1] for every formula $\varphi(x)\in\mathds{L}(A)$
-    
-    \noindent\kern-\leftmargin
-    \ceq{\hfill{\EuScript N}\models\exists x\,\neg\varphi(x)}{\Rightarrow}
-    {\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\neg\varphi(a);}
- 
-    \item[2.] for every formula $\varphi(x)\in\mathds{L}(A)$
-    
-    \noindent\kern-\leftmargin
-    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}
-    {\Rightarrow}
-    {\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
- 
-  \end{itemize}
-  The implication 2$\Rightarrow$1 does not require the assumption of compactness.
-\end{lemma}
-
-\begin{proof}
-  (2$\Rightarrow$1) Assume ${\EuScript N}\models\exists x\,\neg\varphi(x)$.
-  Pick any $c\in N$ such that $c\models\neg\varphi(x)$.
-  Let $p(x)=\mathds{L}\mbox{-}{\rm tp}(c/A)$.
-  Without loss of generality we can assume that ${\EuScript N}$ is saturated.
-  As $p(x)\cup\{\neg\varphi(x)\}$ is inconsistent there is is a formula $\psi(x)\in p(x)$  such that $\psi'(x)\rightarrow\neg\varphi(x)$ for some $\psi'>\psi$.
-  Then from (2) we obtain that ${\EuScript N}\models\psi'(a)$ for some $a\in A$.
-  Hence ${\EuScript N}\models\neg\varphi(a)$ follows.
-
-  
-  (1$\Rightarrow$2) follows immediately from Lemma~\ref{lem_interpolation}.
-\end{proof}
-
-\begin{proposition}[Tarski-Vaught $\mathds{L}$-Test] 
-  Let $M$ be a subset of $N$.
-  Then the following are equivalent
-  \begin{itemize}
-    \item[1.] $M$ is the domain of a structure ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$;
-    \item[2.] for every formula $\varphi(x)\in\mathds{L}(M)$
-    
-    \noindent\kern-\leftmargin
-    \ceq{\hfill{\EuScript N}\models\exists x\,\varphi(x)}
-    {\Rightarrow}
-    {\textrm{for every }\varphi'>\varphi\textrm{ there is an }a\in A\textrm{ such that }{\EuScript N}\models\varphi'(a).}
- 
-  \end{itemize}
-\end{proposition}
-
-\begin{proof}
-  Assume (2) of the lemma.
-  Then, by the classical Tarski-Vaught test $M\preceq N$. 
-  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript N}$. 
-  Therefore, form every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL} we have
-
-  \ceq{\hfill{\EuScript N}\models\varphi(a)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a)}\hfill  for every $a\in M^{|x|}$.
-
-  Assume inductively
-  
-  \ceq{\#\hfill{\EuScript N}\models\varphi(a,b)}{\Leftrightarrow}{{\EuScript M}\models\varphi(a,b)}
-
-  and prove
-
-  \ceq{\hfill{\EuScript N}\models\exists y\,\varphi(a,y)}{\Leftrightarrow}{{\EuScript M}\models\exists y\,\varphi(a,y)}.
-
-  The implication $\Leftarrow$ follows immediately from the induction hypothesis.
-  For the converse note that
-
-  \ceq{\hfill{\EuScript N}\models\exists y\,\varphi(a,y)}
-  {\Rightarrow}
-  {\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }{\EuScript N}\models\varphi'(a,b)}
-
-  \ceq{}
-  {\Rightarrow}
-  {\phantom{\textrm{for every }\varphi'>\varphi\textrm{ there is an }b\in M^{|y|}\textrm{ such that }}{\EuScript M}\phantom{\models{{text}}\varphi'(a,b)}}
-
-  \ceq{}
-  {\Rightarrow}
-  {{\EuScript M}\models\exists y\,\varphi'(a,y)\textrm{ for every }\varphi'>\varphi}
-
-  \ceq{}
-  {\Rightarrow}
-  {{\EuScript M}\models\exists y\,\varphi(a,y)}
-
-  Now, assuming (\#) we prove
-
-  \ceq{\hfill{\EuScript N}\models\forall y\,\varphi(a,y)}{\Leftrightarrow}{{\EuScript M}\models\forall y\,\varphi(a,y)}.
-
-  One implication, $\Rightarrow$, is again immediate.
-  For the converse note that by Lemma~\ref{lem_TVT}
-
-  \ceq{\hfill{\EuScript N}\not\models\forall y\,\varphi(a,y)}
-  {\Rightarrow}{{\EuScript N}\models\exists y\,\neg\varphi(a,y)}
-  
-  \ceq{}
-  {\Rightarrow}
-  {{\EuScript N}\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}
-
-  \ceq{}
-  {\Rightarrow}
-  {{\EuScript M}\phantom{\models\neg\varphi(a,b)\textrm{ for some }b\in M^{|y|}}}
-
-  \ceq{}
-  {\Rightarrow}
-  {{\EuScript M}\not\models\forall y\,\varphi(a,y)}
-\end{proof}
-
-Finally, induction for the boolean connectives and the quantifiers of sort $R$ is immediate.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
