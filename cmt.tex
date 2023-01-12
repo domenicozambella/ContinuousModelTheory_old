@@ -166,7 +166,7 @@ For later reference we remark the following which is an immediate consequence of
 
 For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ is obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact neighborhood of $C$.
 If no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
-By the normality of $R$ we also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
+We also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
 
 Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 
@@ -196,57 +196,6 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
 \end{proof}
 
 
-
-
-
-% In fact, we have the following.
-
-% \begin{proposition}[fake theorem]\label{prop_approx}
-%   For every $\varphi(x)\in\mathds{L}(M)$
-
-%   \ceq{\hfill\varphi(x)}
-%   {\leftrightarrow}
-%   {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
-
-% \end{proposition}
-
-% \begin{proof}
-%   The claim is clear for atomic formulas.
-%   Induction for conjunction and the universal quantifiers is immediate.
-  
-%   Consider disjunction.
-%   Let $\varphi=\varphi_i\vee\varphi_1$.
-%   Assume inductively
-  
-%   \ceq{\hfill\varphi_i(x)}
-%   {\leftrightarrow}
-%   {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
-
-%   Then
-
-%   \ceq{\hfill\varphi(x)}
-%   {\leftrightarrow}
-%   {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
-
-
-%   \ceq{}
-%   {\leftrightarrow}
-%   {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
-
-%   \ceq{}
-%   {\leftrightarrow}
-%   {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
-
-%   Now consider the existential quantifiers of sort $M$....
-% \end{proof}
-
-
-% The following fact is an immediate consequence.
-
-% \begin{fact}
-%   Let $a\in M^{|x|}$ be such that ${\EuScript M}\not\models\varphi(a)$
-%   Then, ${\EuScript M}\not\models\varphi'(a)$ for some $\varphi'>\varphi$.\hfill\qedsymbol
-% \end{fact}
 
 
 
@@ -294,10 +243,10 @@ The following is technical lemma that is required in the proof of \L\v o\'s Theo
   
   (\textsf{i})
   Assume $\{i:t(a_i;\alpha)\in C\}\in F$.
-  Let $O\supseteq C$ be open.
-  Then $F\mbox{-}\lim_i t(a_i;\alpha)\in O$.
-  By what noted above, $F\mbox{-}\lim_i t(a_i;\alpha_i)\in O$.
-  As $O$ is arbitrary, $\{i:t(a_i\,;\alpha_i)\in C'\}\in F$ for every compact neghborhod of $C$.
+  Then $F\mbox{-}\lim_i t(a_i;\alpha)\in C$.
+  By what noted above, $F\mbox{-}\lim_i t(a_i;\alpha_i)\in C$.
+  Then $\{i:t(a_i\,;\alpha_i)\in C\}\in F$.
+  A fortiory  for every compact neghborhod of $C$.
 
   (\textsf{ii})
   Assume $\{i:t(a_i;\alpha)\notin C\}\in F$.
@@ -588,21 +537,17 @@ If the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $a\in M^{|x|}$,
 
 we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$. 
-The following fact follows from \L\v{o}\'s Theorem just as in the classical case.
+
+We say that $f:M\to N$ is an \emph{approximatively $\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$ and every  $a\in({\rm dom }f)^{|x|}$
+
+
+\ceq{\hfill{\EuScript M}\models\varphi'(a)\textrm{ for every }\varphi'>\varphi}
+{\Leftrightarrow}
+{{\EuScript N}\models\varphi'(fa)\textrm{ for every }\varphi'>\varphi}
+
 
 \begin{fact}
-  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-embedding ${\EuScript M}\hookrightarrow{\EuScript N}$.\hfill\qedsymbol
-\end{fact} 
-
-% For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ and ${\rm id}_A:N\to M$ are $\mathds{L}$-elementary.
-
-\begin{fact}
-  If $f:M\to N$ is $\mathds{L}$-elementary then for every $\varphi(x)\in\mathds{L}$ and every  $a\in({\rm dom }f)^{|x|}$
-
-  \ceq{\hfill{\EuScript M}\models\varphi'(a)\textrm{ for every }\varphi'>\varphi}
-  {\Leftrightarrow}
-  {{\EuScript N}\models\varphi'(fa)\textrm{ for every }\varphi'>\varphi}
-
+  Every $\mathds{L}$-elementary is approximatively $\mathds{L}$-elementary
 \end{fact}
 
 \begin{proof}
@@ -623,6 +568,16 @@ The following fact follows from \L\v{o}\'s Theorem just as in the classical case
   {\Rightarrow}
   {{\EuScript N}\not\models\varphi''(fa)}
 \end{proof}
+
+
+
+The following fact follows from \L\v{o}\'s Theorem just as in the classical case.
+
+\begin{fact}
+  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-embedding ${\EuScript M}\hookrightarrow{\EuScript N}$.\hfill\qedsymbol
+\end{fact} 
+
+% For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ and ${\rm id}_A:N\to M$ are $\mathds{L}$-elementary.
 
 We prove a version of Tarski-Vaught Test.
 A second equivalent version of this test will be proved in the sections below.
@@ -715,14 +670,14 @@ The following proposition follows from \L\v o\'s Theorem by the usual argument.
 % \noindent\llap{\dangersign\kern2ex}%
 
 
-\begin{definition}
-  We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
-  \begin{itemize}
-    \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
-    \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
-  \end{itemize}
-\end{definition}
-
+% \begin{definition}
+%   We say that ${\EuScript M}$ is \emph{$\mathds{L}$-saturated\/} if for every $p(x)$ as in 1 and 2 below, ${\EuScript M}\models\exists x\, p(a)$.
+%   \begin{itemize}
+%     \item[1.] $p(x)\subseteq\mathds{L}(A)$ for some $A\subseteq  M$ of cardinality $<|M|$ and $|x|=1$;
+%     \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
+%   \end{itemize}
+% \end{definition}
+A model ${\EuScript N}$ is \emph{$\mathds{L}$-saturated\/} it realizes all types with fewer than $|{\EuScript N}|$ parameters that are finitely consistent in ${\EuScript N}$.
 The existence of $\mathds{L}$-saturated models is proved as in the classical case.
 
 \begin{proposition}
@@ -753,6 +708,103 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
   The first claim is clear.
   The second follows from the first by Lemma~\ref{lem_interpolation}.
 \end{proof}
+
+
+
+\begin{proposition}\label{prop_approx}
+  For every $\varphi(x)\in\mathds{L}(U)$
+
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+  {\leftrightarrow}
+  {\varphi(x)}
+
+\end{proposition}
+
+\begin{proof}
+  We prove $\rightarrow$, the non trivial implication.
+  The claim is clear for atomic formulas.
+  Induction for conjunction, disjunction and the universal quantifiers is immediate.
+  
+  % Consider disjunction.
+  % Let $\varphi=\varphi_i\vee\varphi_1$.
+  % Assume inductively
+  
+  % \ceq{\hfill\varphi_i(x)}
+  % {\leftrightarrow}
+  % {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
+
+  % Then
+
+  % \ceq{\hfill\varphi(x)}
+  % {\leftrightarrow}
+  % {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
+
+
+  % \ceq{}
+  % {\leftrightarrow}
+  % {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
+
+  % \ceq{}
+  % {\leftrightarrow}
+  % {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+
+  Consider the existential quantifiers of sort $U$.
+  Assume inductively
+  
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+  {\rightarrow}
+  {\varphi(x,y)}
+
+  then 
+
+  \ceq{\hfill\exists y\,\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+  {\rightarrow}
+  {\exists y\,\varphi(x,y)}
+
+  Therefore it suffices to prove
+
+  \ceq{\#\hfill\bigwedge_{\varphi'>\varphi}\exists y\,\varphi'(x,y)}
+  {\rightarrow}
+  {\exists y\,\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+
+Note that the consistency of of the type $\{\exists y\,\varphi'(x,y):\varphi'>\varphi\}$ implies the finite concistency of $\{\varphi'(x,y):\varphi'>\varphi\}$.
+This because if $\varphi_1,\varphi_2>\varphi$ then $\varphi_1\wedge\varphi_2>\varphi'$ for some $\varphi'>\varphi$.
+In words, the set of approximations of $\varphi$ is a directed set.
+Therefore \# follows by saturation.
+
+\noindent\llap{\textcolor{red}{\Large\danger}\kern1ex}\ignorespaces
+Consider the existential quantifiers of sort $R$\ldots
+\end{proof}
+
+
+The following fact is an immediate consequence.
+
+
+
+\begin{corollary}
+  If $\varphi(x),\psi(x)\in\mathds{L}(U)$ are mutually inconsistent then $\varphi'(x)$ and $\psi'(x)$ are mutually inconsistent for some $\varphi'>\varphi$ and $\psi'>\psi$.
+\end{corollary}
+
+
+
+
+
+% \begin{fact}
+%   Let $a\in M^{|x|}$ be such that ${\EuScript M}\not\models\varphi(a)$
+%   Then, ${\EuScript M}\not\models\varphi'(a)$ for some $\varphi'>\varphi$.\hfill\qedsymbol
+% \end{fact}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 % \begin{fact}
