@@ -221,12 +221,16 @@ The following is technical lemma that is required in the proof of \L\v o\'s Theo
     \item $\langle\alpha_i:i\in I\rangle$, a sequence of elements of $C\subseteq R^{|y|}$, a compact set;
     \item $\alpha=F\mbox{-}\lim_i\alpha_i$, for some ultrafilter $F$ on $I$.
   \end{itemize}
-  Then the following equivalence hold
+  Then the following implications hold
 
-  \ceq{\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha)\big\}\in F}
-  {\Leftrightarrow}
-  {\big\{i\in I:{\EuScript M}\models\varphi(a_i\,;\alpha_i)\big\}\in F}.
+  \ceq{\textsf{i.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\varphi'(a_i\,;\alpha_i)\big\}\in F} for every $\varphi'>\varphi$;
 
+  \ceq{\textsf{ii.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\varphi(a_i\,;\alpha)\big\}\in F}.
+  
 \end{lemma}
 \begin{proof}
   % \noindent\llap{\textcolor{blue}{\Large\danger}\kern7ex}\ignorespaces
@@ -237,16 +241,16 @@ The following is technical lemma that is required in the proof of \L\v o\'s Theo
 
   \ceq{\hfill F\mbox{-}\lim_i t^{\EuScript M}(a_i;\alpha)}{=}{F\mbox{-}\lim_i t^{\EuScript M}( a_i;\alpha_i).}
   
-  ($\Rightarrow$)
+  (\textsf{i})
   Assume $\{i:t(a_i;\alpha)\in C\}\in F$.
   Then $F\mbox{-}\lim_i t(a_i;\alpha)\in C$.
-  By the above, $F\mbox{-}\lim_i t(a_i;\alpha_i)\in C$.
-  Then $\{i:t(a_i\,;\alpha_i)\in C\}\in F$.
+  By what noted above, $F\mbox{-}\lim_i t(a_i;\alpha_i)\in C$.
+  Then $\{i:t(a_i\,;\alpha_i)\in C'\}\in F$ where $C'$ is any compact neghborhod of $C$.
 
-  ($\Leftarrow$)
+  (\textsf{ii})
   Assume $\{i:t(a_i;\alpha)\notin C\}\in F$.
   Then $F\mbox{-}\lim_i t(a_i;\alpha)\notin C$.
-  Hence $F\mbox{-}\lim_i t(a_i;\alpha_i)\notin C$ and  $\{i:t(a_i;\alpha_i)\notin C\}\in F$ follows.
+  Hence $F\mbox{-}\lim_i t(a_i;\alpha_i)\notin C$ and  $\{i:t(a_i;\alpha)\notin C\}\in F$ follows.
   
   This proves the basis case of the induction.
 
@@ -254,8 +258,12 @@ The following is technical lemma that is required in the proof of \L\v o\'s Theo
   To deal with the universal quantifier of sort $M$ we assume inductively that
 
   \ceq{\textsf{ih.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha)\big\}\in F}
-  {\Leftrightarrow}
-  {\big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,;\alpha_i)\big\}\in F}.
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F};
+
+  \ceq{\textsf{iih.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,;\alpha)\big\}\in F};
 
   % \ceq{\textsf{iih.}\hfill \big\{i\in I:{\EuScript M}\models\varphi(a_i,b_i\,; \alpha_i)\big\}\in F}
   % {\Rightarrow}
@@ -263,34 +271,41 @@ The following is technical lemma that is required in the proof of \L\v o\'s Theo
 
   We prove
 
-  \ceq{\forall.\hfill \big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\big\}\in F}
-  {\Leftrightarrow}
-  {\big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,;\alpha_i)\big\}\in F}.
+  \ceq{\textsf{i}\forall.\hfill \big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\forall y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}.
+
+  \ceq{\textsf{ii}\forall.\hfill \big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\forall y\,\varphi(a_i,y\,;\alpha)\big\}\in F}.
 
 
-  ($\forall\Rightarrow$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi(a_i,b_i\,;\alpha_i)\big\}\in F$. 
-  From (\textsf{ih}) we obtain $\big\{i:\neg\varphi(a_i,b_i\,; \alpha)\big\}\in F$.
-  This proves (\textsf{i}$\forall\Rightarrow$).
+  ($\textsf{i}\forall$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi'(a_i,b_i\,;\alpha_i)\big\}\in F$. 
+  If for a contradiction the antecedent of (\textsf{i}$\forall$) holds, from (\textsf{ih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)_i\big\}\in F$.
+  A fotriori  $\big\{i:\varphi'(a_i,b_i\,; \alpha_i)\big\}\in F$, which is a contradiction that proves (\textsf{i}$\forall$).
 
-  ($\forall\Leftarrow$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi(a_i,b_i\,;\alpha)\big\}\in F$. 
-  From (\textsf{ih}) we obtain $\big\{i:\neg\varphi(a_i,b_i\,; \alpha_i)\big\}\in F$.
-  This proves (\textsf{i}$\forall\Leftarrow$).
+  ($\textsf{ii}\forall$) Negate the consequent and pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\neg\varphi(a_i,b_i\,;\alpha)\big\}\in F$. 
+  If for a contradiction the antecedent of (\textsf{ii}$\forall$) holds, from (\textsf{iih}) we would obtain $\big\{i:\varphi(a_i,b_i\,; \alpha)\big\}\in F$, a contradiction that proves (\textsf{ii}$\forall$).
 
   To deal with the existential quantifier of sort $M$ we prove 
 
-  \ceq{\exists.\hfill \big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,; \alpha)\big\}\in F}
-  {\Leftrightarrow}
-  {\big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,;\alpha_i)\big\}\in F}.
+  \ceq{\textsf{i}\exists.\hfill \big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,; \alpha)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\exists y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F}.
 
+  \ceq{\textsf{ii}\exists.\hfill \big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,; \alpha_i)\big\}\in F}
+  {\Rightarrow}
+  {\big\{i\in I:{\EuScript M}\models\exists y\,\varphi(a_i,y\,;\alpha)\big\}\in F}.
 
-  ($\exists\Rightarrow$) Assume the antecedent.
-  Pick is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi(a_i,b_i\,;\alpha)\big\}\in F$.
-  By (\textsf{ih})  we obtain $\big\{ i:\exists y\,\varphi(a_i,y\,;\alpha_i)\big\}\in F$.
+  ($\textsf{i}\exists$) Assume the antecedent.
+  Pick $\varphi''$ such that $\varphi'>\varphi''>\varphi$.
+  Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi''(a_i,b_i\,;\alpha)\big\}\in F$.
+  By (\textsf{ih})  we obtain $\big\{ i:\exists y\,\varphi'(a_i,y\,;\alpha_i)\big\}\in F$.
   
 
-  ($\exists\Leftarrow$) Assume the antecedent.
-  Pick a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi(a_i,b_i\,;\alpha_i)\big\}\in F$.
-  By (\textsf{ih}) we obtain $\big\{ i:\exists y\,\varphi(a_i,y\,;\alpha)\big\}\in F$.
+  ($\textsf{ii}\exists$) Assume the antecedent.
+  Then there is a sequence $\langle b_i:i\in I\rangle$ such that $\big\{ i:\varphi(a_i,b_i\,;\alpha_i)\big\}\in F$.
+  By (\textsf{iih}) we obtain $\big\{ i:\exists y\,\varphi(a_i,y\,;\alpha)\big\}\in F$.
 
   Induction for the quantifiers $\forall^C$ and  $\exists^C$ is virtually identical.
 \end{proof}
@@ -396,6 +411,7 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
   By the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai)\in C'\big\}\in F$ where $C'$  is any neighborhood of $C$.
 
   This completes the proof of the base case of the induction.
+
   Induction for the connectives $\vee$ and $\wedge$ is clear.
   To deal with the quantifiers of sort $M$ we assume inductively that 
 
