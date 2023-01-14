@@ -390,14 +390,12 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
   
   (\textsf{i})
   Assume $\big\{ i:{\EuScript M}\models t(\hat ai)\in C\big\}\in F$.
-  Then $F\mbox{-}\lim_it(\hat ai)\in C'$ for every neighborhood of $C$.
-  By regularity, ${\EuScript N}\models t(\hat a)\in C$.
+  Then $F\mbox{-}\lim_it(\hat ai)\in C$ by regularity.
   
   (\textsf{ii}) Assume ${\EuScript N}\models t(\hat a)\in C$.
   By the definition of $F$-limit, $\big\{ i:{\EuScript M}\models t(\hat ai)\in C'\big\}\in F$ where $C'$  is any neighborhood of $C$.
 
   This completes the proof of the base case of the induction.
-
   Induction for the connectives $\vee$ and $\wedge$ is clear.
   To deal with the quantifiers of sort $M$ we assume inductively that 
 
@@ -508,27 +506,40 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\mathds{L}$-Elementrarity}
 
-\def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 Let ${\EuScript M}=\langle M,R\rangle$ and ${\EuScript N}=\langle N,R\rangle$ be two structures.
-We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$
+We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$ and every $a\in({\rm dom }f)^{|x|}$
 
-\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(fa)}\hfill for every $a\in({\rm dom }f)^{|x|}$.
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(fa)}
 
+Note that an $\mathds{L}$-elementary map is in particular $L$-elementary and therefore it is injective.
 A total $\mathds{L}$-elementary map is called an \emph{$\mathds{L}$-(elementary) embedding.} 
-If the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$
+When the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$ and every $a\in M^{|x|}$
 
-\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)}\hfill for every $a\in M^{|x|}$,
+\ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)},
 
 we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$. 
-
-We say that $f:M\to N$ is an \emph{approximatively $\mathds{L}$-elementary map\/} if for every $\varphi(x)\in\mathds{L}$ and every  $a\in({\rm dom }f)^{|x|}$
-
+We say that the map $f:M\to N$ is an \emph{approximatively $\mathds{L}$-elementary\/} if for every $\varphi(x)\in\mathds{L}$ and every  $a\in({\rm dom }f)^{|x|}$
 
 \ceq{\hfill{\EuScript M}\models\varphi'(a)\textrm{ for every }\varphi'>\varphi}
 {\Leftrightarrow}
 {{\EuScript N}\models\varphi'(fa)\textrm{ for every }\varphi'>\varphi}
 
+By the density of $>$ the equivalence above can be split into two distinct implications:
+for every $\varphi(x)\in\mathds{L}$ every $\varphi'>\varphi$ and every $a\in({\rm dom }f)^{|x|}$ 
+
+\ceq{\hfill{\EuScript M}\models\varphi(a)}
+{\Rightarrow}
+{{\EuScript N}\models\varphi'(fa)}
+
+\ceq{\hfill{\EuScript N}\models\varphi(fa)}
+{\Rightarrow}
+{{\EuScript M}\models\varphi'(a)}
+
+
+Let $A\subseteq M\cap N$. 
+If the map ${\rm id}_A:M\to N$ is approximatively $\mathds{L}$-elementary, we write \emph{${\EuScript M}\equiv^\mathds{A}{\EuScript N}$.}
 
 \begin{fact}
   Every $\mathds{L}$-elementary is approximatively $\mathds{L}$-elementary
@@ -624,7 +635,7 @@ A second equivalent version of this test will be proved in the sections below.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$\mathds{L}$-compactness}
+\section{$\mathds{L}$-saturation}
 
 
 \newcommand\dangersign[1][3ex]{%
@@ -661,7 +672,7 @@ The following proposition follows from \L\v o\'s Theorem by the usual argument.
 %     \item[2.] $p(x)$ is finitely satisfied in ${\EuScript M}$.
 %   \end{itemize}
 % \end{definition}
-A model ${\EuScript N}$ is \emph{$\mathds{L}$-saturated\/} it realizes all types with fewer than $|{\EuScript N}|$ parameters that are finitely consistent in ${\EuScript N}$.
+A model ${\EuScript N}$ is \emph{$\mathds{L}$-saturated\/} if it realizes all types with fewer than $|{\EuScript N}|$ parameters that are finitely consistent in ${\EuScript N}$.
 The existence of $\mathds{L}$-saturated models is proved as in the classical case.
 
 \begin{proposition}
@@ -696,7 +707,7 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 
 
 \begin{proposition}\label{prop_approx}
-  For every $\varphi(x)\in\mathds{L}(U)$
+  For every $\varphi(x)\in\mathds{L}(U)$ without existential quantifiers of sort $R$ 
 
   \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x)}
   {\leftrightarrow}
@@ -708,30 +719,29 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
   We prove $\rightarrow$, the non trivial implication.
   The claim is clear for atomic formulas.
   Induction for conjunction, disjunction and the universal quantifiers is immediate.
-  
+ % 
   % Consider disjunction.
   % Let $\varphi=\varphi_i\vee\varphi_1$.
   % Assume inductively
-  
+ % 
   % \ceq{\hfill\varphi_i(x)}
   % {\leftrightarrow}
   % {\bigwedge_{\varphi_i'>\varphi_i}\varphi_i'(x)}
-
+%
   % Then
-
+%
   % \ceq{\hfill\varphi(x)}
   % {\leftrightarrow}
   % {\bigwedge_{\varphi_1'>\varphi_1}\varphi_1'(x) \ \vee \bigwedge_{\varphi_2'>\varphi_2}\varphi_2'(x)}
-
-
+%
   % \ceq{}
   % {\leftrightarrow}
   % {\bigwedge_{\substack{\varphi_1'>\varphi_1\\ \varphi_2'>\varphi_2}}\varphi_1'(x) \vee\varphi_2'(x)}
-
+%
   % \ceq{}
   % {\leftrightarrow}
   % {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
-
+%
   Consider the existential quantifiers of sort $U$.
   Assume inductively
   
@@ -747,27 +757,40 @@ Below we say \emph{model\/} for $\mathds{L}$-elementariy substructure of ${\EuSc
 
   Therefore it suffices to prove
 
-  \ceq{\#\hfill\bigwedge_{\varphi'>\varphi}\exists y\,\varphi'(x,y)}
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\exists y\,\varphi'(x,y)}
   {\rightarrow}
   {\exists y\,\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
 
-Note that the consistency of of the type $\{\exists y\,\varphi'(x,y):\varphi'>\varphi\}$ implies the finite concistency of $\{\varphi'(x,y):\varphi'>\varphi\}$.
+Replace $x$ with a parameter, say $a$ and assume the antecedent.
+Note that $\{\exists y\,\varphi'(a,y):\varphi'>\varphi\}$ implies the finite concistency of the type $\{\varphi'(a,y):\varphi'>\varphi\}$.
 This because if $\varphi_1,\varphi_2>\varphi$ then $\varphi_1\wedge\varphi_2>\varphi'$ for some $\varphi'>\varphi$.
 In words, the set of approximations of $\varphi$ is a directed set.
-Therefore \# follows by saturation.
-
-\noindent\llap{\textcolor{red}{\Large\danger}\kern1ex}\ignorespaces
-Consider the existential quantifiers of sort $R$\ldots
+Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
+%
+% \noindent\llap{\textcolor{red}{\Large\danger}\kern1ex}\ignorespaces
+% Consider the existential quantifiers of sort $R$
+% Assume inductively
+%
+% \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x;y)}
+% {\rightarrow}
+% {\varphi(x;y)}
+%
+% As above, it suffices to prove
+%
+% \ceq{\#\hfill\bigwedge_{\varphi'>\varphi}\exists^C\! y\,\varphi'(x;y)}
+% {\rightarrow}
+% {\exists^C\! y\,\bigwedge_{\varphi'>\varphi}\varphi'(x;y)}
+%
 \end{proof}
 
 
-The following fact is an immediate consequence.
+% The following fact is an immediate consequence.
 
 
 
-\begin{corollary}
-  If $\varphi(x),\psi(x)\in\mathds{L}(U)$ are mutually inconsistent then $\varphi'(x)$ and $\psi'(x)$ are mutually inconsistent for some $\varphi'>\varphi$ and $\psi'>\psi$.
-\end{corollary}
+% \begin{corollary}
+%   If $\varphi(x),\psi(x)\in\mathds{L}(U)$ are mutually inconsistent then there are $\varphi'>\varphi$ and $\psi'>\psi$ that are mutually inconsistent.
+% \end{corollary}
 
 
 
@@ -804,6 +827,18 @@ The following fact is an immediate consequence.
 % \begin{proof}
 %   By Proposition~\ref{prop_approx} and saturation.
 % \end{proof}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$\mathds{L}$-homogeneity}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
