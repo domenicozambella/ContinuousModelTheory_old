@@ -49,7 +49,7 @@
 
 \newtheoremstyle{plain}% 〈name〉
 {\parskip}% 〈Space above〉1
-{\parskip}% 〈Space below 〉1
+{}% 〈Space below 〉1
 {\color{brown!20!red!40!black}}% 〈Body font〉
 {}% 〈Indent amount〉2
 {\bfseries}% 〈Theorem head font〉
@@ -114,7 +114,7 @@ These are among the most simple strucures considered in model theory.
 Now expand them with a norm.
 The norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two sorted struture.
-Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we insist as $\mathds{R}$ (or, in general $R$) should remain itself throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
+Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we are adamant that $\mathds{R}$ (or, in general $R$) should remain itself throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
@@ -340,7 +340,7 @@ Below we introduce a suitable notion of ultraproducts of some structures $\langl
 We require that the models occurring in the ultraproduct are uniformly bounded as defined below.
 
 \begin{definition}\label{def_uniformity}
-  We say that a family of models $\{{\EuScript M}_i:i\in I\}$ is uniformly bounded if there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
+  We say that a family of models $\{{\EuScript M}_i:i\in I\}$ is uniformly bounded if for every function symbol $f$ there is a compact $C\subseteq R$ that contains the range of all the functions $f^{{\EuScript M}_i}$.
 \end{definition}
 
 To keep notation tidy, we make two semplifications:
@@ -548,7 +548,7 @@ We say that $f:M\to N$, a partial map, is an \emph{$\mathds{L}$-elementary map\/
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(fa)}
 
-Note that an $\mathds{L}$-elementary map is in particular $L$-elementary and therefore it is injective.
+An $\mathds{L}$-elementary map is in particular $L$-elementary and therefore it is injective.
 An $\mathds{L}$-elementary map that is total is called an \emph{$\mathds{L}$-(elementary) embedding.} 
 When the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that is, if for every  $\varphi(x)\in\mathds{L}$ and every $a\in M^{|x|}$
 
@@ -556,7 +556,27 @@ When the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that 
 
 we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$. 
 
-The same notation is used with $\mathds{H}$ for $\mathds{L}$.
+
+The following follows from \L\v{o}\'s Theorem just as in the classical case.
+
+\begin{fact}
+  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-embedding ${\EuScript M}\hookrightarrow{\EuScript N}$.\hfill\qedsymbol
+\end{fact} 
+
+
+The definitions \emph{$\mathds{H}$-elementary\/} map/embedding/substructure is similar.
+Note that a total and surjective $\mathds{H}$-elementary map is an ${\EuScript L}$-isomorphism.
+
+
+\begin{proposition}
+  Let $f:M\to N$ be an $\mathds{L}$-elementary map.
+  Then for every $\varphi(x)\in\mathds{L}$ and every $a\in({\rm dom }f)^{|x|}$
+
+  \ceq{\hfill{\EuScript M}\models\varphi'(a)}{\Leftrightarrow}{{\EuScript N}\models\varphi'(fa)}
+  
+  for every $\varphi'>\varphi$. The same holds with $\mathds{H}$ for $\mathds{L}$
+\end{proposition}
+
 
 
 
@@ -604,11 +624,6 @@ The same notation is used with $\mathds{H}$ for $\mathds{L}$.
 %   {{\EuScript N}\not\models\varphi''(fa)}
 % \end{proof}
 
-The following fact follows from \L\v{o}\'s Theorem just as in the classical case.
-
-\begin{fact}
-  If ${\EuScript N}$ is an ultrapower of ${\EuScript M}$ then there is an $\mathds{L}$-embedding ${\EuScript M}\hookrightarrow{\EuScript N}$.\hfill\qedsymbol
-\end{fact} 
 
 % For $A\subseteq M\cap N$, we say that ${\EuScript M}$ and ${\EuScript N}$ are \emph{$\mathds{L}$-(elementary) equivalent\/} over $A$ and write \emph{${\EuScript M}\equiv^\mathds{L}_A {\EuScript N}$} if ${\rm id}_A:M\to N$ and ${\rm id}_A:N\to M$ are $\mathds{L}$-elementary.
 
@@ -677,11 +692,8 @@ The following fact follows from \L\v{o}\'s Theorem just as in the classical case
 
 
 A theory $T$ is consistent if ${\EuScript M}\models T$ for some  model  ${\EuScript M}$ satisfying Definition~\ref{def_0}.
-Also the notion of logical consequence is restricted to models in this class. 
-
-As in the classical case, a theory $T$ is said to be finitely consistent if every $\varphi$, conjunction of sentences in $T$, is consistent.
+As in the classical case, a theory $T$ is said to be finitely consistent if every conjunction of sentences in $T$ is consistent.
 We further say that $T$ is \emph{uniformly\/} finitely consistent if the finite consistency is witnessed by uniformly bounded models (see Definition~\ref{def_uniformity}).
-
 The following proposition follows from \L\v o\'s Theorem by the usual argument.
 
 \begin{proposition}[Compactness Theorem]\label{prop_compattezza}
@@ -878,16 +890,17 @@ The following are immediate consequences of the proposition above and Lemma~\ref
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-When $A\subseteq U$, we write $S_{\mathds{H},x}(A)$ for the set of types 
+When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types 
 
 \ceq{\hfill\mathds{H}\mbox{-tp}(a/A)}{=}{\big\{\varphi(x)\ :\ \varphi(x)\in\mathds{H}(A)\textrm{ such that }\varphi(a)\big\}}
 
- as $a$ ranges over the tuples in $U^{|x|}$.
+ as $a$ ranges over the tuples of elements of $U$.
+ We write  $S_{\mathds{H},x}(A)$ if we fix the tuple of variables.
  The following corollary will be strengthen by Corollary~\ref{corol_Lcomplete} below.
 
  \begin{corollary}\label{corol_Hcomplete2}
-   The types $p(x)\in S_{\mathds{H},x}(A)$ are complete.
-   That is, for every $\varphi(x)\in\mathds{H}(A)$, either $p(x)\vdash\varphi(x)$ or $p(x)\vdash\neg\varphi(x)$.\hfill\qedsymbol
+   The types $p(x)\in S_\mathds{H}(A)$ are complete.
+   That is, for every $\varphi(x)\in\mathds{H}(A)$, either $p(x)\vdash\varphi(x)$ or $p(x)\vdash\neg\varphi(x)$.
  \end{corollary}
 
  \begin{proof}
@@ -929,7 +942,7 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
 \end{proof}
 
 \begin{corollary}\label{corol_H=L}
-  For every $a,b\in U^{|x|}$, if $a\equiv^\mathds{H}b$ then  $a\equiv^\mathds{L}b$.
+  For every $a,b\in U^{|x|}$, if $a\equiv^\mathds{H}b$ then  $a\equiv^\mathds{L}b$.\hfill\qedsymbol
 \end{corollary}
 
 \begin{corollary}\label{corol_Lcomplete}
@@ -963,10 +976,17 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
   The proposition follows.
 \end{proof}
 
-\begin{proposition}\label{}
+\begin{proposition}\label{prop_negphi_approx}
   Let $\varphi(x)\in\mathds{L}(A)$ be such that $\neg\varphi(x)$ is consistent.
-  Then there is a consistent $\psi(x)\in\mathds{H}(A)$ and some $\psi'>\psi$ such that $\psi'(x)\rightarrow\neg\varphi(x)$.\hfill\qedsymbol
+  Then  $\psi'(x)\rightarrow\neg\varphi(x)$ for some consistent $\psi(x)\in\mathds{H}(A)$ and some $\psi'>\psi$.\hfill\qedsymbol
 \end{proposition}
+
+\begin{proof}
+  Let $a\in U^{|x|}$ be such that $\neg\varphi(a)$.
+  Let $p(x)=\mathds{H}\mbox{-tp}(a/A)$.
+  By Corollary~\ref{corol_Hcomplete3}, $p'(x)\rightarrow\neg\varphi(x)$. 
+  By compactness  $\psi'(x)\rightarrow\neg\varphi(x)$ for some $\psi'>\psi\in p(x)$. 
+\end{proof}
 
 \begin{proposition}[Tarski-Vaught Test] 
   Let $M$ be a subset of $U$.
@@ -976,25 +996,25 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
     \item[2.] for every formula $\varphi(x)\in\mathds{H}(M)$
     
     \noindent\kern-\leftmargin
-    \ceq{\hfill{\EuScript U}\models\exists x\,\varphi(x)}{\Rightarrow}
-    {\textrm{ for every }\varphi'>\varphi\textrm{ there is an }a\in M\textrm{ such that }{\EuScript U}\models\varphi'(a);}
+    \ceq{\hfill\exists x\,\varphi(x)}{\Rightarrow}
+    {\textrm{ for every }\varphi'>\varphi\textrm{ there is an }a\in M\textrm{ such that }\varphi'(a);}
     \item[3.] for every formula $\varphi(x)\in\mathds{L}(M)$
     
     \noindent\kern-\leftmargin
-    \ceq{\hfill{\EuScript U}\models\exists x\,\neg\varphi(x)}{\Rightarrow}
-    {\textrm{ there is an }a\in M\textrm{ such that }{\EuScript U}\models\neg\varphi(a).}
+    \ceq{\hfill\exists x\,\neg\varphi(x)}{\Rightarrow}
+    {\textrm{ there is an }a\in M\textrm{ such that }\neg\varphi(a).}
     
   \end{itemize}
 \end{proposition}
 
 \begin{proof}
-  (1$\Rightarrow$2) Assume ${\EuScript U}\models\exists x\,\varphi(x)$ and let $\varphi'>\varphi$ be given.
+  (1$\Rightarrow$2) Assume $\exists x\,\varphi(x)$ and let $\varphi'>\varphi$ be given.
   By Lemma~\ref{lem_interpolation} there is some $\tilde{\varphi}\perp\varphi$ such that  $\varphi(x)\rightarrow\neg\tilde{\varphi}(x)\rightarrow\varphi'(x)$.
-  Then ${\EuScript U}\not\models\forall x\,\tilde{\varphi}(x)$ hence, by (1), ${\EuScript M}\not\models\forall x\,\varphi(x)$.
-  Then ${\EuScript M}\models\neg\tilde{\varphi}(a)$ for some $a\in M$. Hence ${\EuScript M}\models\varphi'(a)$ and ${\EuScript U}\models\varphi'(a)$ follows from (1).
+  Then $\neg\forall x\,\tilde{\varphi}(x)$ hence, by (1), ${\EuScript M}\models\neg\forall x\,\varphi(x)$.
+  Then ${\EuScript M}\models\neg\tilde{\varphi}(a)$ for some $a\in M$. Hence ${\EuScript M}\models\varphi'(a)$ and $\varphi'(a)$ follows from (1).
 
   (2$\Rightarrow$3)
-  Assume (2) and let $\varphi(x)\in\mathds{L}(M)$ be such that ${\EuScript U}\models\exists x\,\neg\varphi(x)$.
+  Assume (2) and let $\varphi(x)\in\mathds{L}(M)$ be such that $\exists x\,\neg\varphi(x)$.
   Then, by Corollary~\ref{corol_Hcomplete3}, there are a consistent $\psi(x)\in\mathds{H}(M)$ and some $\psi'>\psi$ such that $\psi'(x)\rightarrow\neg\varphi(x)$.
   Then (3) follows.
 
@@ -1002,28 +1022,27 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
   Assume (3).
   Then, by the classical Tarski-Vaught test $M\preceq U$.
   We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript U}$.
-  Therefore ${\EuScript M}\models\varphi(a)\Leftrightarrow{\EuScript U}\models\varphi(a)$ for every $a\in M^{|x|}$ and for every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL}.
-
+  Therefore for every $a\in M^{|x|}$ and for every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL}, $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
   Now, assume inductively
   
-  \ceq{\hfill{\EuScript M}\models\varphi(a,b)}{\Rightarrow}{{\EuScript U}\models\varphi(a,b)}
+  \ceq{\hfill{\EuScript M}\models\varphi(a,b)}{\Rightarrow}{\varphi(a,b)}
 
   Using (3) and the induction hypothesis we prove by contrapposition that
 
-  \ceq{\hfill{\EuScript M}\models\forall y\,\varphi(a,y)}{\Rightarrow}{{\EuScript U}\models\forall y\,\varphi(a,y)}.
+  \ceq{\hfill{\EuScript M}\models\forall y\,\varphi(a,y)}{\Rightarrow}{\forall y\,\varphi(a,y)}.
 
   Indeed,
 
-  \ceq{\hfill{\EuScript U}\not\models\forall y\,\varphi(a,y)}
-  {\Rightarrow}{{\EuScript U}\models\exists y\,\neg\varphi(a,y)}
+  \ceq{\hfill\neg\forall y\,\varphi(a,y)}
+  {\Rightarrow}{\exists y\,\neg\varphi(a,y)}
   
   \ceq{}
   {\Rightarrow}
-  {{\EuScript U}\models\neg\varphi(a,b)\quad \textrm{ for some }b\in M^{|y|}}
+  {\neg\varphi(a,b)}\hfill for some $b\in M^{|y|}$\kern30ex
 
   \ceq{}
   {\Rightarrow}
-  {{\EuScript M}\models\neg\varphi(a,b)\quad\textrm{ for some }b\in M^{|y|}}
+  {{\EuScript M}\models\neg\varphi(a,b)}\hfill for some $b\in M^{|y|}$\kern30ex
 
   \ceq{}
   {\Rightarrow}
@@ -1031,7 +1050,6 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
 
   Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$, and $\forall^C$ is straightforward.
 \end{proof}
-
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -1095,6 +1113,7 @@ We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\ma
   As $d(a,a_n)<1/n$, the sequence $\langle a_n: n\in\omega\rangle$ converges to $a$.
 \end{proof}
 
+\end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
