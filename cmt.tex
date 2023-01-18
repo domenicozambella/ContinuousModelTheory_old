@@ -163,9 +163,9 @@ For later reference we remark the following which is an immediate consequence of
 \end{remark}
 
 \noindent\llap{\textcolor{red}{\Large\dangersign}\kern1ex}\ignorespaces
-The class $\mathds{H}$ is the immediate generalization of class of  positive bounded formulas of Henson and Iovino.
-We introduced the larger class $\mathds{L}$ because it offers some advantages. 
-For instance, it is easy to see that $\mathds{L}$ has at least the same expressive power of real valued logic (in fact, way more).
+The set $\mathds{H}$ is the immediate generalization of the set of  positive bounded formulas of Henson and Iovino.
+We also introduced the class $\mathds{L}$ because it offers some advantages. 
+For instance, it is easy to see that $\mathds{L}$ is at least as expressive as of real valued logic (in fact, way more).
 However, we will see that the two classes of formulas are closer than one might expect.
 
 \def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
@@ -185,7 +185,7 @@ Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
 
-We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact set disjoint from $C$. 
+We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in\tilde{C}$ where $\tilde{C}$ is some compact set disjoint from $C$. 
 Moreover the atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
 I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
 
@@ -195,7 +195,7 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
 
 \begin{lemma}\label{lem_interpolation}
   For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$. 
-  Vice versa, for every $\tilde{\varphi}\perp\varphi$ there is a formula $\varphi''>\varphi$ such that  $\varphi\rightarrow\varphi''\rightarrow\neg \tilde{\varphi}$.
+  Vice versa, for every $\tilde{\varphi}\perp\varphi$ there is a formula $\varphi'>\varphi$ such that  $\varphi\rightarrow\varphi'\rightarrow\neg \tilde{\varphi}$.
 \end{lemma}
 
 \begin{proof}
@@ -205,9 +205,9 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
   Let $O$ be an open set such that $C\subseteq O\subseteq C'$.
   Then $\tilde{\varphi}=(t\in C'\smallsetminus O)$ is as required.
   
-  Suppose instead that $\tilde{\varphi}$ is of the form $t\in C'$ for some compact $C'$ disjoint from $C$.
-  By the local compactness of $R$, there exist $C''$ and $O$, disjoint neighborhoods of $C$ and $C'$ respectively, where is $C''$ is compact.
-  Then  $\varphi''=t\in C''$ is as required.
+  Suppose instead that $\tilde{\varphi}$ is of the form $t\in\tilde{C}$ for some compact $\tilde{C}$ disjoint from $C$.
+  By the local compactness of $R$, there are $C'$ and $O$, disjoint neighborhoods of $C$ and $\tilde{C}$ respectively, where is $C'$ is compact.
+  Then  $\varphi'=t\in C'$ is as required.
 
   The lemma follows easily by induction.
 \end{proof}
@@ -480,11 +480,11 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
   By induction hypothesis ${\EuScript N}\models\varphi(\hat a,\hat b)$.
   Therefore ${\EuScript N}\models\exists y\,\varphi(\hat a,y)$ as required.
 
-  (\textsf{ii}$\exists$) Assume ${\EuScript N}\models\varphi(\hat a,\hat b)$ for some $\hat b$.
+  (\textsf{ii}$\exists$) Assume ${\EuScript N}\models\exists y\,\varphi(\hat a,y)$, hence ${\EuScript N}\models\varphi(\hat a,\hat b)$ for some $\hat b$.
   By induction hypothesis, $\big\{ i: {\EuScript M}\models\varphi'(\hat ai,\hat bi)\big\}\in F$.
   A fortiori $\big\{ i:{\EuScript M}\models\exists y\,\varphi'(\hat ai,y)\big\}\in F$.
   
-  To deal with the quantifiers $\forall^C$ and $\exists^C$ we assume inductively
+  To deal with the quantifiers $\forall^C$ and $\exists^C$ we assume inductively that for all $\varphi'>\varphi$ and all $\hat a\in N^{|x|}$
 
   \ceq{\textsf{ih.}\hfill \big\{i:{\EuScript M}\models\varphi(\hat ai\,;\alpha)\big\}\in F}
   {\Rightarrow}
@@ -508,9 +508,10 @@ Finally, we prove an asymmetric version of \L\v{o}\'s Theorem.
   By induction hypothesis, $\big\{ i: {\EuScript M}\not\models\varphi(\hat ai\,;\beta)\big\}\in F$.
   Therefore $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi(\hat ai\,;y)\big\}\in F$ as required.
 
-  (\textsf{ii}$\forall^C$) Assume $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$.
-  Pick $\beta_i\in C$ such that $\big\{ i:{\EuScript M}\not\models\varphi'(\hat ai\,;\beta_i)\big\}\in F$ and let $\beta=F\mbox{-}\lim_i\beta_i$.
-  Then from Lemma~\ref{lem_HIapprox} we obtain $\big\{ i:{\EuScript M}\not\models\varphi(\hat ai\,;\beta)\big\}\in F$.
+  (\textsf{ii}$\forall^C$) Let $\varphi'>\varphi''>\varphi$. Assume $\big\{ i:{\EuScript M}\not\models\forall^C\!y\,\varphi'(\hat ai\,;y)\big\}\in F$.
+  Then there are some $\beta_i\in C$ such that $\big\{ i:{\EuScript M}\not\models\varphi'(\hat ai\,;\beta_i)\big\}\in F$.
+  Let $\beta=F\mbox{-}\lim_i\beta_i$.
+  Then from Lemma~\ref{lem_HIapprox} we obtain $\big\{ i:{\EuScript M}\not\models\varphi''(\hat ai\,;\beta)\big\}\in F$.
   Finally, by  (\textsf{iih}), we conclude ${\EuScript N}\not\models\forall y^C\!\,\varphi(\hat a,y)$.
   
   Finally, we prove
@@ -675,16 +676,16 @@ The following fact follows from \L\v{o}\'s Theorem just as in the classical case
 \section{Compactness}
 
 
-We say that a teory is consistent if it has a model satisfying Definition~\ref{def_0}.
+A theory $T$ is consistent if ${\EuScript M}\models T$ for some  model  ${\EuScript M}$ satisfying Definition~\ref{def_0}.
 Also the notion of logical consequence is restricted to models in this class. 
 
-As in the classical case, a theory $T\subseteq\mathds{L}$ is said to be finitely consistent if every $\varphi$, conjunction of sentences in $T$, is consistent.
+As in the classical case, a theory $T$ is said to be finitely consistent if every $\varphi$, conjunction of sentences in $T$, is consistent.
 We further say that $T$ is \emph{uniformly\/} finitely consistent if the finite consistency is witnessed by uniformly bounded models (see Definition~\ref{def_uniformity}).
 
 The following proposition follows from \L\v o\'s Theorem by the usual argument.
 
 \begin{proposition}[Compactness Theorem]\label{prop_compattezza}
-  Let $T\subseteq\mathds{L}$ be a finitely uniformly consistent theory.
+  Let $T\subseteq\mathds{L}$ be a uniformly finitely consistent theory.
   Then $T$ is consistent.\hfill\qedsymbol
 \end{proposition}
 
