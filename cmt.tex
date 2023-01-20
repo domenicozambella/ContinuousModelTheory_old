@@ -15,6 +15,7 @@
 \usepackage{enumitem}
 \usepackage{calc}
 \usepackage{amsthm}
+\usepackage{thmtools}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage[mathcal]{euscript}
@@ -122,6 +123,7 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
   Let \emph{$L$\/} be a one-sorted (first-order) language.
   Let \emph{${\EuScript L}$\/}$\supseteq L$ be a two-sorted language.
   We consider the class of ${\EuScript L}$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
+  By \emph{model\/} we intend a structure as those descrited in this definition.
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
 
@@ -136,14 +138,15 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
   We only allow relation symbols of sorts $M^n$ and $R^n$.
 \end{definition}
 
-There might be models in the class described in Definition~\ref{def_0} that do not have a saturated elementary extension in the same class.
-As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated in the same class.
-% Our choice of $\mathds{L}$ is not the most general.
-% It is a compromise that avoids eccessive complications.
+There might be models in the class described above that do not have a saturated elementary extension in the same class.
+As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated and belongs to the same class.
+Our choice of $\mathds{L}$ may not be the most general.
+It is a compromise that avoids eccessive complications.
 
 For convenience we assume that the functions of sort $M^n\to M$ and the relations of sort $M^n$ are all in $L$.
 It is also convenient to assume that ${\EuScript L}$ contains names for all continuous bounded functions $R^n\to R$.
-There is a relation symbol for every compact subset of $R^n$ and there are no other relations of sort $R^n$.
+There are relations symbol of sort $R^n$ for all (and only the) compact subsets of $R^n$.
+Therefore, to descibe ${\EuScript L}$, we only need specify $L$ and the function symbols of sort $M^n\to R$.
 
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
@@ -189,8 +192,8 @@ We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtain
 Moreover the atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
 I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
 
-It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$ and that $\tilde{\varphi}\leftrightarrow\neg\varphi$  when $\varphi\in L$.
-We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
+It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$.
+We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$.
 
 
 \begin{lemma}\label{lem_interpolation}
@@ -201,20 +204,19 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$
 \begin{proof}
   If $\varphi\in L$ the claims are obvious.
   Suppose $\varphi$ is of the form $t\in C$.
-  Then $\varphi'$ is $t\in C'$ for some compact neighborhood of $C$.
+  Let $T$ be a compact set containing tha range of $t$.
+  Let $\varphi'$ be $t\in C'$, for some compact neighborhood of $C$.
   Let $O$ be an open set such that $C\subseteq O\subseteq C'$.
-  Then $\tilde{\varphi}=(t\in C'\smallsetminus O)$ is as required.
+  Note that $t\notin  T\smallsetminus O$ is equivalent to $t\in O$ by the choice of $T$.
+  Then $\tilde{\varphi}=(t\in T\smallsetminus O)$ is as required by the lemma.
   
   Suppose instead that $\tilde{\varphi}$ is of the form $t\in\tilde{C}$ for some compact $\tilde{C}$ disjoint from $C$.
-  By the local compactness of $R$, there are $C'$ and $O$, disjoint neighborhoods of $C$ and $\tilde{C}$ respectively, where is $C'$ is compact.
+  By the local compactness of $R$, there are $C'$ and $O$, disjoint neighborhoods of $C$ and $\tilde{C}$ respectively.
+  We can also require that $C'$ is compact.
   Then  $\varphi'=t\in C'$ is as required.
 
   The lemma follows easily by induction.
 \end{proof}
-
-
-
-
 
 We recall the standard definition of $F$-limits.
 Let $I$ be a non-empty set.
@@ -564,7 +566,7 @@ The following follows from \L\v{o}\'s Theorem just as in the classical case.
 \end{fact} 
 
 
-The definitions \emph{$\mathds{H}$-elementary\/} map/embedding/substructure is similar.
+The definitions \emph{$\mathds{H}$-elementary\/} map/embedding/substructure are similar.
 Note that a total and surjective $\mathds{H}$-elementary map is an ${\EuScript L}$-isomorphism.
 
 
@@ -882,11 +884,11 @@ Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
 %   By Proposition~\ref{prop_approx} and saturation.
 % \end{proof}
 
-The following are immediate consequences of the proposition above and Lemma~\ref{lem_interpolation}.
+% The following are immediate consequences of the proposition above and Lemma~\ref{lem_interpolation}.
 
-\begin{corollary}\label{corol_Hcomplete1}
-  For every $a\in U^{|x|}$ and $\varphi(x)\in\mathds{H}(U)$, if $\neg\varphi(a)$ then $\tilde\varphi(a)$ for some $\tilde\varphi\perp\varphi$.\hfill\qedsymbol
-\end{corollary}
+% \begin{corollary}\label{corol_Hcomplete1}
+%   For every $a\in U^{|x|}$ and $\varphi(x)\in\mathds{H}(U)$, if $\neg\varphi(a)$ then $\tilde\varphi(a)$ for some $\tilde\varphi\perp\varphi$.\hfill\qedsymbol
+% \end{corollary}
 
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
@@ -895,25 +897,36 @@ When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types
 \ceq{\hfill\mathds{H}\mbox{-tp}(a/A)}{=}{\big\{\varphi(x)\ :\ \varphi(x)\in\mathds{H}(A)\textrm{ such that }\varphi(a)\big\}}
 
  as $a$ ranges over the tuples of elements of $U$.
- We write  $S_{\mathds{H},x}(A)$ if we fix the tuple of variables.
+ We write  $S_{\mathds{H},x}(A)$ when the tuple of variables $x$ is fixed.
  The following corollary will be strengthen by Corollary~\ref{corol_Lcomplete} below.
 
  \begin{corollary}\label{corol_Hcomplete2}
    The types $p(x)\in S_\mathds{H}(A)$ are complete.
-   That is, for every $\varphi(x)\in\mathds{H}(A)$, either $p(x)\vdash\varphi(x)$ or $p(x)\vdash\neg\varphi(x)$.
+   That is, either $\varphi(x)\in p$ or $p(x)\rightarrow\neg\varphi(x)$ for every $\varphi(x)\in\mathds{H}(A)$.
  \end{corollary}
 
  \begin{proof}
-  Follows from the proposition above and Lemma~\ref{lem_interpolation}.
+  Let $p(x)=\mathds{H}\mbox{-tp}(a/A)$ and suppose $\varphi(x)\notin p$.
+  Then $\neg\varphi(a)$.
+  From Lemma~\ref{lem_interpolation} and Proposition~\ref{prop_approx} we obtain
+
+  \ceq{\hfill\neg\varphi(x)}
+  {\rightarrow}
+  {\bigvee_{\tilde{\varphi}\perp\varphi}\tilde{\varphi}(x).}
+
+  Hence $\tilde{\varphi}(a)$ holds for some $\tilde{\varphi}\perp\varphi$ and $p(x)\rightarrow\neg\varphi(x)$ follows.
  \end{proof}
 
-For $p(x)\subseteq\mathds{L}(U)$, we write $p'(x)$ for the type
+ The following will be useful below
 
-\ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
+ \begin{remark}
+  For $p(x)\subseteq\mathds{L}(U)$, we write \emph{$p'(x)$\/} for the type
 
-Note that, by the proposition above, if $p(x)\in S_{\mathds{H}}(A)$ then $p'(x)\leftrightarrow p(x)$.
-Therefore $p'(x)$ is also complete.
+  \ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
 
+  Note that, by Proposition~\ref{prop_approx}, if $p(x)\in S_{\mathds{H}}(A)$ then $p'(x)$ is equivalent to $p(x)$.
+  Therefore $p'(x)$ is also complete for formulas in $\mathds{H}(A)$.\hfill\qedsymbol
+ \end{remark}
 
 \begin{corollary}\label{corol_Hcomplete3}
   The inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.\hfill\qedsymbol
@@ -1050,7 +1063,7 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
 
   Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$, and $\forall^C$ is straightforward.
 \end{proof}
-\end{document}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -1078,7 +1091,7 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
   Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
   Let $M$ be the set the simple real valued random variables with the natural interpretation of the symbols in $L$. 
   Let $R=\mathds{R}$.
-  Assume ${\EuScript L}$ estends $L$ with all the continuous functions $\mathds{R}^n\to\mathds{R}$ and for every $n\in\mathds{N}$ the functions ${\rm E}_n$ that gives the expected value of $(X\wedge n)\vee -n$ for $n\in\mathds{N}$.
+  Assume ${\EuScript L}$ contains a symbol for the functions ${\rm E}_n$, for $n\in\mathds{N}$, that give the expected value of $(X\wedge n)\vee -n$.
   Note that the cut-off enures that the range of these functions is bounded.
 
   The relation $a\sim b$ holds in these there cases
@@ -1102,11 +1115,11 @@ We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\ma
 \end{example}
 
 \begin{proof}
-  ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence of reals that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
-  Then $d(a_i,b)\le\varepsilon_i$ for every $b\equiv_Ma$.
+  ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
+  Then $d(a_i,b)\le\varepsilon_i$ for every $b\equiv^\mathds{L}_Ma$.
   By the uniqueness of the limit $d(a,b)=0$.
 
-  ($1\Rightarrow2$) Assume that $a\equiv_M x\rightarrow a\sim x$.
+  ($1\Rightarrow2$) Assume that $a\equiv^\mathds{L}_M x\rightarrow a\sim x$.
   Then $a\equiv^\mathds{L}_M x\rightarrow d(a,x)<1/n$ for every $n>0$.
   By compactness there is a formula $\varphi_n(x)\in{\rm tp}_\mathds{L}(a/M)$ such that $\varphi_n(x)\rightarrow d(a,x)<1/n$.
   By $\mathds{L}$-elementarity there is an $a_n\in M$ such that $\varphi(a_n)$.
