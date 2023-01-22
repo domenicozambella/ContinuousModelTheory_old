@@ -110,7 +110,7 @@
 
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
-As a motivating example, consider real vector spaces.
+As a minimal motivating example, consider real vector spaces.
 These are among the most simple strucures considered in model theory.
 Now expand them with a norm.
 The norm is a function that, given vector, outputs a real number.
@@ -140,6 +140,7 @@ We elaborate on this idea generalizing it to arbitrary structures and a wider cl
 
 There might be models in the class described above that do not have a saturated elementary extension in the same class.
 As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated and belongs to the same class.
+
 Our choice of $\mathds{L}$ may not be the most general.
 It is a compromise that avoids eccessive complications.
 
@@ -167,9 +168,23 @@ For later reference we remark the following which is an immediate consequence of
 
 \noindent\llap{\textcolor{red}{\Large\dangersign}\kern1ex}\ignorespaces
 The set $\mathds{H}$ is the immediate generalization of the set of  positive bounded formulas of Henson and Iovino.
-We also introduced the class $\mathds{L}$ because it offers some advantages. 
-For instance, it is easy to see that $\mathds{L}$ is at least as expressive as of real valued logic (in fact, way more).
-However, we will see that the two classes of formulas are closer than one might expect.
+Here we also introduce the class $\mathds{L}$ because it offers some advantages. 
+For instance, it is easy to see (cf.\@ the example below) that $\mathds{L}$ has at least the same expressive power as real valued logic, and in fact way more.
+However, we will see that the two classes of formulas, $\mathds{H}$ and $\mathds{L}$, are closer than one might expect.
+
+\begin{example}
+  Let $R=[0,1]$, the unit interval of $\mathds{R}$.
+  Let $t(x)$ be a term of sort $M^{|x|}\to R$.
+  Then there is a formula in $\mathds{L}$ that says $\sup_{x} t(x)=\tau$.
+  Indeed, consider the formula
+
+  \ceq{\hfill\forall x\ \big[t(x)\dotminus\tau\in\{0\}\big]}
+  {\wedge}{\forall\varepsilon \Big[\varepsilon\in\{0\}\ \vee\ \exists x\ \big[\big(\tau\dotminus t(x)\big)\dotminus\varepsilon\in\{0\}\big]\Big]}
+
+  which, in a human readible form, becomes
+
+  \ceq{\hfill\forall x\ \big[t(x)\le\tau\big]}{\wedge}{\forall\varepsilon>0\ \exists x\ \big[\tau\le t(x)+ \varepsilon\big].}\hfill\qedsymbol
+\end{example}
 
 \def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -567,7 +582,7 @@ The following follows from \L\v{o}\'s Theorem just as in the classical case.
 
 
 The definitions \emph{$\mathds{H}$-elementary\/} map/embedding/substructure are similar.
-Note that a total and surjective $\mathds{H}$-elementary map is an ${\EuScript L}$-isomorphism.
+Note that any total and surjective $\mathds{H}$-elementary map is immediately an ${\EuScript L}$-isomorphism.
 
 
 \begin{proposition}
@@ -840,6 +855,21 @@ Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
 \end{proof}
 
 
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+% \begin{example}
+%   The equivalence in the proposition above does not extend to all formulas in $\mathds{L}$.
+%   For a counter example, let both $M$ and $R$ are the real interval $[0,1]$.
+%   The language has a function symbol ${\rm d}$ of sort $M^2\to R$.
+%   Its interpretation is ${\rm d}^{\EuScript M}(x,y)=|x-y|$.
+%   The formula 
+  
+%   \ceq{\hfill\varphi}{=}{\exists\varepsilon\big[\varepsilon\in\{0\}\ \wedge\ \exists x,y\ \ {\rm d}(x,y)\cdot\varepsilon\in\{1\}\big]}
+
+%   is false, though every $\varphi'>\varphi$ is true (in ${\EuScript M}$ and any $\mathds{L}$-extension of ${\EuScript M}$).\hfill\qedsymbol
+% \end{example}
+
+
 % The following fact is an immediate consequence.
 
 
@@ -890,7 +920,6 @@ Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
 %   For every $a\in U^{|x|}$ and $\varphi(x)\in\mathds{H}(U)$, if $\neg\varphi(a)$ then $\tilde\varphi(a)$ for some $\tilde\varphi\perp\varphi$.\hfill\qedsymbol
 % \end{corollary}
 
-\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types 
 
