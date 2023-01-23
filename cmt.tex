@@ -127,7 +127,7 @@ It would be interesting to drop the restriction on the sort of the function symb
   Let \emph{$L$\/} be a one-sorted (first-order) language.
   Let \emph{${\EuScript L}$\/}$\supseteq L$ be a two-sorted language.
   We consider the class of ${\EuScript L}$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
-  By \emph{model\/} we intend a structure as those descrited in this definition.
+  By \emph{model\/} we intend a structure as those described in this definition.
 
   We assume that $R$ is endowed with a locally compact Hausdorff topology.
 
@@ -151,7 +151,7 @@ There are relations symbol of sort $R^n$ for all (and only the) compact subsets 
 Therefore, to descibe ${\EuScript L}$, we only need specify $L$ and the function symbols of sort $M^n\to R$.
 
 \begin{definition}\label{def_LL}
-  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following two sets of formulas
+  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following sets of \emph{$\mathds{L}$-atomic\/} formulas
   \begin{itemize}
   \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in ${\EuScript L}$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
@@ -198,8 +198,8 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 \section{Henson-Iovino approximations}\label{ultrapws}
 
 
-For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ is obtained replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact neighborhood of $C$.
-If no such atomic formulas occurs in $\varphi$, then $\varphi>\varphi$.
+For $\varphi,\varphi'\in\mathds{L}(M)$ (free variables are hidden) we write \emph{$\varphi'>\varphi$\/} if $\varphi'$ is obtained replacing each atomic formula of the form $t\in C$ occurring in $\varphi$ with $t\in C'$ where $C'$ is some compact neighborhood of $C$.
+If such atomic formulas do not occur in $\varphi$, then $\varphi>\varphi$.
 We also have $\varphi>\varphi$ when $\varphi=(t\in C)$ for some clopen set $C$.
 
 Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
@@ -207,7 +207,7 @@ Note that $>$ is a dense (pre)order of $\mathds{L}(M)$.
 Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of a negation, therefore we always have that $\varphi\to\varphi'$.
 
 We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in\tilde{C}$ where $\tilde{C}$ is some compact set disjoint from $C$. 
-Moreover the atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
+Moreover the $\mathds{L}$-atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
 I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
 
 It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$.
@@ -762,6 +762,25 @@ The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by
 Below we say \emph{model\/} for $\mathds{L}$-elementary substructure of ${\EuScript U}$.
 
 
+Let $A\subseteq U$ be a small set.
+As usual, we define a topology on $U^{|x|}$ which we call the $\mathds{L}(A)$-topology.
+The closed sets of this topology are the sets defined by the types $p(x)\subseteq\mathds{L}(A)$.
+This is a compact topology.
+
+The  $\mathds{L}(A)$-topology on $U^{|x|}\times R^{|y|}$ is the product of the $\mathds{L}(A)$-topology on $U^{|x|}$ and the topology on $R^{|y|}$.
+
+\begin{lemma}
+  Let $S\subseteq R$ be a compact set.
+  For every $\varphi(x\,;y)\in\mathds{L}(A)$ the set $\varphi(U\,;S)$ is compact.
+\end{lemma}
+
+\begin{proof}
+  We can assume that $S$, or suitable power of it, contains all compact sets that occur in $\varphi(x\,;y)$ as predicate or as bounds of quantifiers.
+
+
+\end{proof}
+
+
 \begin{fact}\label{prop_compactness_imp}
   Let $p(x)\subseteq\mathds{L}(U)$ be a type of small cardinality.
   Then for every  $\varphi(x)\in\mathds{L}(U)$
@@ -1070,7 +1089,7 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
   Assume (3).
   Then, by the classical Tarski-Vaught test $M\preceq U$.
   We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript U}$.
-  Therefore for every $a\in M^{|x|}$ and for every formula $\varphi(x)$ as in (i) and (ii) of Definition~\ref{def_LL}, $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
+  Therefore for every $a\in M^{|x|}$ and for every $\mathds{L}$-atomic formula,  $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
   Now, assume inductively
   
   \ceq{\hfill{\EuScript M}\models\varphi(a,b)}{\Rightarrow}{\varphi(a,b)}
