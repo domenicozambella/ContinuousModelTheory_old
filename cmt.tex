@@ -115,57 +115,44 @@ These are among the most simple strucures considered in model theory.
 Now expand them with a norm.
 The norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two sorted struture.
-Ideally, we would like that elementary extensions of normed spaces mantain the usal notion of real numbers\footnote{Non standard standard analists have no problem in expanding $\mathds{R}$. In these notes, for a change, we are adamant that $\mathds{R}$ (or, in general $R$) should remain itself throughout.}. Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
+Ideally, we would like that elementary extensions of normed spaces to remain a normed space (hence $\mathds{R}$ shoud remain $\mathds{R}$ throughout).
+Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
+
+Let $R$ be some fixed first-order structure whose domain is endowed with a Hausdorff compact topology.
+The language $L_R$ contains relation symbols for the compact subsets $C\subseteq R^n$ and a function symbols for the continuous functions $f:R^n\to R$.
+We use $C$ and $f$ both for the symbols and their interpretation in $R$.
+% Our choice is a compromise to avoid eccessive complications.
+% It would be interesting to drop the restriction on the sort of the function symbols.
+
 Our first definition restrict the class of structure we consider in these notes.
-Our choice is a compromise to avoid eccessive complications.
-It would be interesting to drop the restriction on the sort of the function symbols. 
 
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
-  Let \emph{${\EuScript L}$\/}$\supseteq L$ be a two-sorted language.
-  We consider the class of ${\EuScript L}$-structures of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is fixed.
-  By \emph{model\/} we intend a structure as those described in this definition.
-
-  We assume that $R$ is endowed with a locally compact Hausdorff topology.
-
-  We require that function symbols only have one of these sorts
-  \begin{itemize}
-    \item[i.] $R^n\to R$;
-    \item[ii.] $M^n\to M$;
-    \item[iii.] $M^n\to R$.
-  \end{itemize}
-  The interpretation of symbols of sort $R^n\to R$ is required to be continuous and bounded, the interpretation of symbols of sort $M^n\to R$ is required to be bounded, i.e.\@ the range is contained in a compact set.
-
-  We only allow relation symbols of sorts $M^n$ and $R^n$.
+  By \emph{model\/} we intend an ${\EuScript L}$-structure of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is the structure above.
+  
+  The language ${\EuScript L}$ expands $L$ and $L_R$ with function symbols of sort $M^{n+1}\times R^m\to R$.
+  We require that $f^{\EuScript M}(a\,;\mbox{-}):R^m\to R$ is continuous for every $f$ and every $a\in M^{n+1}$. 
 \end{definition}
 
-There might be models in the class described above that do not have a saturated elementary extension in the same class.
-As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary extension that is $\mathds{L}$-saturated and belongs to the same class.
+Clearly, saturated ${\EuScript L}$-structures exit but, with the exeption of trivial cases (i.e.\@ when $R$ is finite), they not models.
+As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model as in Definition~\ref{def_0} has an $\mathds{L}$-elementary, $\mathds{L}$-saturated extension in the same class.
 
-For convenience we assume that the functions of sort $M^n\to M$ and the relations of sort $M^n$ are all in $L$.
-It is also convenient to assume that ${\EuScript L}$ contains names for all continuous bounded functions $R^n\to R$.
-There are relations symbol of sort $R^n$ for all (and only the) compact subsets of $R^n$.
-Therefore, to descibe ${\EuScript L}$, we only need specify $L$ and the function symbols of sort $M^n\to R$.
+Warning: $L$ and ${\EuScript L}$ denote both first-order languages and the set of formulas in these languages.
+The set $\mathds{L}$ defined below is only a set of first-order formulas.
 
 \begin{definition}\label{def_LL}
-  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from the following sets of \emph{$\mathds{L}$-atomic\/} formulas
+  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from two sorts of \emph{$\mathds{L}$-atomic\/} formulas
   \begin{itemize}
-  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact\footnote{We confuse the relation symbols in ${\EuScript L}$ of sort $R^m$ with their interpretation and write $t\in C$ for $C(t)$} and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
+  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
   \end{itemize}
-  We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifiers $\forall^C$, $\exists^C$, by which we mean the quantifiers of sort $R$ restricted to some (any) compact set $C\subseteq R^m$.
+  We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifiers of sort $R$ which are denoted by $\forall^R$, $\exists^R$.
 
-  We write $\mathds{H}$ for the set of formulas in $\mathds{L}$ without quantifiers of sort $R$.
+  We write \emph{$\mathds{H}$ \/} for the set of formulas in $\mathds{L}$ without quantifiers of sort $R$.
 \end{definition}
-
-For later reference we remark the following which is an immediate consequence of the restrictions we imposed on the sorts of the function symbols.
-
-\begin{remark}\label{rk_terms}
-   Each component of the tuple $t(x\,;y)$ in the definition above is either of sort $M^{|x|}\to R$ or of sort $R^{|y|}\to R$.\hfill\qedsymbol
-\end{remark}
 
 \noindent\llap{\textcolor{red}{\Large\dangersign}\kern1ex}\ignorespaces
 Formulas in $\mathds{H}$ are the immediate generalization of the positive bounded formulas of Henson and Iovino.
@@ -180,14 +167,50 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
   Indeed, consider the formula
 
   \ceq{\hfill\forall x\ \big[t(x)\dotminus\tau\in\{0\}\big]}
-  {\wedge}{\forall\varepsilon \Big[\varepsilon\in\{0\}\ \vee\ \exists x\ \big[\big(\tau\dotminus t(x)\big)\dotminus\varepsilon\in\{0\}\big]\Big]}
+  {\wedge}{\forall^R\varepsilon \Big[\varepsilon\in\{0\}\ \vee\ \exists x\ \big[\big(\tau\dotminus t(x)\big)\dotminus\varepsilon\in\{0\}\big]\Big]}
 
   which, in a human readible form, becomes
 
   \ceq{\hfill\forall x\ \big[t(x)\le\tau\big]}{\wedge}{\forall\varepsilon>0\ \exists x\ \big[\tau\le t(x)+ \varepsilon\big].}\hfill\qedsymbol
 \end{example}
 
-\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{5ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The standard part}
+Let $R\preceq{}^*\!R$.
+For $\alpha,\beta\in{}^*\!R$ we write define the equivalence relation \emph{$\alpha\sim\beta$\/} as follows
+
+\ceq{\hfill\alpha\sim\beta}{\Leftrightarrow}{S\models\alpha\in C\leftrightarrow\beta\in C}\quad for every compact $C\subseteq R$.
+
+By the compactness of $R$, every $\alpha\in{}^*\!R$ is equivalent to some element of $R$.
+By normality of $R$, this element is unique.
+We denote it by \emph{${\rm st}(\alpha)$.}
+It is easy to see that if $\alpha,\beta\in({}^*\!R)^n$ then 
+
+\ceq{\hfill\bigwedge_{i=1}^n\alpha_i\sim\beta_i}{\Leftrightarrow}{S\models\alpha\in C\leftrightarrow\beta\in C}\quad for every compact $C\subseteq R^n$.
+
+We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$. 
+
+\begin{lemma}
+  Let ${\EuScript N}=\langle N,R\rangle$.
+  Let ${}^*{\EuScript N}=\langle N,{}^*\!R\rangle$, where $R\preceq{}^*\!R$.
+  Then for every $\varphi(x\,;y)\in\mathds{L}$, every $a\in N^{|x|}$ and every $\alpha\in({}^*\!R)^{|y|}$ 
+
+
+\ceq{\hfill{}^*{\EuScript N}\models\varphi(a\,;\alpha)}{\Rightarrow}{{\EuScript N}\models\varphi\big(a\,;{\rm st}(\alpha)\big)}
+\end{lemma}
+
+\begin{proof}
+  
+\end{proof}
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
