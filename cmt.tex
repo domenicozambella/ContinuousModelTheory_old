@@ -120,7 +120,7 @@ Unfortunately, this is not possible if we insist to mantain the classical notion
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
-Let $R$ be some fixed first-order structure whose domain is the support of a Hausdorff compact topology.
+Let $R$ be some fixed first-order structure which is endowed with a Hausdorff compact topology.
 The language $L_R$ contains relation symbols for the compact subsets $C\subseteq R^n$ and a function symbols for the continuous functions $f:R^n\to R$.
 According to the context, $C$ and $f$ denote either the symbols of $L_R$ or their interpretation in $R$.
 % Our choice is a compromise to avoid eccessive complications.
@@ -142,7 +142,7 @@ The set $\mathds{L}$ defined below is only a set of first-order formulas.
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are constructed inductively from two sorts of \emph{$\mathds{L}$-atomic\/} formulas
   \begin{itemize}
-  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
+  \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact (in the product topology) and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
   \end{itemize}
   We require that $\mathds{L}$ is closed under the Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall$, $\exists$ of sort $M$; and the quantifiers of sort $R$ which are denoted by $\forall^R$, $\exists^R$.
@@ -197,7 +197,8 @@ It is easy to see that if $\alpha,\beta\in({}^*\!R)^n$ then
 We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$. 
 
 \begin{lemma}\label{lem_st}
-  Suppose ${\EuScript N}=\langle N,R\rangle$ be a substructure of ${}^*{\EuScript N}=\langle N,{}^*\!R\rangle$, and that $R\preceq{}^*\!R$.
+  Let ${}^*{\EuScript N}=\langle N,{}^*\!R\rangle$ be an ${\EuScript L}$-structure, and assume that $R\preceq{}^*\!R$.
+  Let ${\EuScript N}$ denote the substructure $\langle N,R\rangle$.
   Then for every $\varphi(x\,;y)\in\mathds{L}$, every $a\in N^{|x|}$ and every $\alpha\in({}^*\!R)^{|y|}$ 
   
   \ceq{\hfill{}^*{\EuScript N}\models\varphi(a\,;\alpha)}
@@ -209,11 +210,15 @@ We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$.
   Suppose $\varphi(x\,;y)$ is $\mathds{L}$-atomic.
   If $\varphi(x\,;y)$ is a formula of $L$ the claim is trivial. 
   Otherwise $\varphi(x\,;y)$ has the form $t(x\,;y)\in C$.
-  If ${}^*{\EuScript N}\models t(a\,;\alpha)\in C$, then ther are some compact sets $C_i\subseteq R$ such that $C_1\times\dots\times C_n\subseteq C$
-  
-  \ceq{1.\hfill{}^*{\EuScript N}}
+  Assume ${}^*{\EuScript N}\models t(a\,;\alpha)\in C$.
+  We prove that for every compact $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
+
+  \ceq{\hfill{\EuScript N}}
   {\models}
   {t_i(a\,;\alpha)\in C_i.}
+
+  By the definition of product topology, $C$ is the intersection of such product sets.
+  Hence${\EuScript N}\models t(a\,;\alpha)\in C$ follows. 
   
   By Remark~\ref{rk_terms}, the terms $t_i(a\,;\alpha)$ have either the form $t_i(a)$ or $t_i(\alpha)$.
   We can ignore the first case because ${\EuScript N}$ is a substructure of ${}^*{\EuScript N}$ hence  $t_i(a)$ has the same value in both structures.
@@ -232,7 +237,7 @@ Therefore
 
 Finally this is equivalent to ${\rm st}(\alpha)\in D$.
 
-This proves lemma for a $\mathds{L}$-atomic formula.
+This proves lemma for $\mathds{L}$-atomic formulas.
 Induction is immediate. 
 \end{proof}
 
@@ -256,9 +261,9 @@ When the map ${\rm id}_M:M\hookrightarrow N$ is an $\mathds{L}$-embedding, that 
 
 \ceq{\hfill{\EuScript M}\models\varphi(a)}{\Rightarrow}{{\EuScript N}\models\varphi(a)},
 
-we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) substructure\/} of ${\EuScript N}$. 
+we write \emph{${\EuScript M}\preceq^\mathds{L}{\EuScript N}$\/} and say that ${\EuScript M}$ is an \emph{$\mathds{L}$-(elementary) submodel\/} of ${\EuScript N}$. 
 
-The definitions of \emph{$\mathds{H}$-elementary\/} map/embedding/substructure are similar.
+The definitions of \emph{$\mathds{H}$-elementary\/} map/embedding/submodel are similar.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -273,7 +278,7 @@ We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a
 
 \begin{proposition}[$\mathds{L}$-compactness]\label{prop_compattezza}
   Let $T\subseteq\mathds{L}$ be finitely consistent.
-  Then $T$ is consistent.\hfill\qedsymbol
+  Then $T$ is consistent.
 \end{proposition}
 
 \begin{proof}
@@ -368,7 +373,7 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$.
 
 We denote by \emph{${\EuScript U}=\langle U,R\rangle$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
 The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
-Below we say \emph{model\/} for $\mathds{L}$-elementary substructure of ${\EuScript U}$.
+Below we say \emph{model\/} for $\mathds{L}$-elementary submodel of ${\EuScript U}$.
 
 
 Let $A\subseteq U$ be a small set.
@@ -383,6 +388,8 @@ The  $\mathds{L}(A)$-topology on $U^{|x|}\times R^{|y|}$ is the product of the $
 \end{lemma}
 
 \begin{proof}
+  We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ have nonempty intersection.
+  A family of closed subsets of $\varphi(U\,;R)$ has the form
 
 \end{proof}
 
@@ -694,7 +701,7 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
   (3$\Rightarrow$1)
   Assume (3).
   Then, by the classical Tarski-Vaught test $M\preceq U$.
-  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-substructure of ${\EuScript U}$.
+  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-submodel of ${\EuScript U}$.
   Therefore for every $a\in M^{|x|}$ and for every $\mathds{L}$-atomic formula,  $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
   Now, assume inductively
   
