@@ -120,8 +120,8 @@ Unfortunately, this is not possible if we insist to mantain the classical notion
 A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
 We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
 
-Let $R$ be some fixed first-order structure which is endowed with a Hausdorff compact topology.
-The language $L_R$ contains relation symbols for the compact subsets $C\subseteq R^n$ and a function symbols for the continuous functions $f:R^n\to R$.
+Let $R$ be some fixed first-order structure which is endowed with a Hausdorff compact topology (in particular, a normal topology).
+The language $L_R$ contains relation symbols for the compact subsets $C\subseteq R^n$ and a function symbol for each continuous functions $f:R^n\to R$.
 According to the context, $C$ and $f$ denote either the symbols of $L_R$ or their interpretation in $R$.
 % Our choice is a compromise to avoid eccessive complications.
 % It would be interesting to drop the restriction on the sort of the function symbols.
@@ -133,7 +133,7 @@ According to the context, $C$ and $f$ denote either the symbols of $L_R$ or thei
   The language \emph{${\EuScript L}$\/} expands both $L$ and $L_R$ but only with function symbols of sort $M^n\to R$. 
 \end{definition}
 
-Clearly, saturated ${\EuScript L}$-structures exit but, with the exeption of trivial cases (i.e.\@ when $R$ is finite), they are not models.
+Clearly, saturated ${\EuScript L}$-structures exist but, with the exception of trivial cases (i.e.\@ when $R$ is finite), they are not models.
 As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model has an $\mathds{L}$-elementary, $\mathds{L}$-saturated extension that is a model.
 
 Warning: as usual $L$ and ${\EuScript L}$ denote both first-order languages and the corresponding set of formulas.
@@ -163,13 +163,13 @@ For instance, it is easy to see (cf.\@ Example~\ref{ex_Rvlogic} for a hint) that
 Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}) that the formulas in $\mathds{L}$ can be very well approximated by formulas in $\mathds{H}$.
 
 \begin{example}\label{ex_Rvlogic}
-  Let $R=[0,1]$, the unit interval of $\mathds{R}$.
+  Let $R=[0,1]$, the unit interval in $\mathds{R}$.
   Let $t(x)$ be a term of sort $M^{|x|}\to R$.
   Then there is a formula in $\mathds{L}$ that says $\sup_{x} t(x)=\tau$.
   Indeed, consider the formula
 
   \ceq{\hfill\forall x\ \big[t(x)\dotminus\tau\in\{0\}\big]}
-  {\wedge}{\forall^R\varepsilon \Big[\varepsilon\in\{0\}\ \vee\ \exists x\ \big[\big(\tau\dotminus t(x)\big)\dotminus\varepsilon\in\{0\}\big]\Big]}
+  {\wedge}{\forall^R\varepsilon \Big[\varepsilon\in\{0\}\ \vee\ \exists x\ \big[\tau\dotminus (t(x)+\varepsilon)\in\{0\}\big]\Big]}
 
   which, in a human readible form, becomes
 
@@ -183,12 +183,12 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The standard part}
 Let $R\preceq{}^*\!R$.
-For $\alpha,\beta\in{}^*\!R$ we write define the equivalence relation \emph{$\alpha\sim\beta$\/} as follows
+For $\alpha,\beta\in{}^*\!R$ we define the equivalence relation \emph{$\alpha\sim\beta$\/} as follows
 
 \ceq{\hfill\alpha\sim\beta}{\Leftrightarrow}{{}^*\!R\ \models\ \alpha\in C\leftrightarrow\beta\in C}\quad for every compact $C\subseteq R$.
 
-By the compactness of $R$, every $\alpha\in{}^*\!R$ is equivalent to some element of $R$.
-By normality of $R$, this element is unique.
+By compactness, every $\alpha\in{}^*\!R$ is equivalent to some element of $R$.
+By normality, this element is unique.
 We denote it by \emph{${\rm st}(\alpha)$.}
 It is easy to see that if $\alpha,\beta\in({}^*\!R)^n$ then 
 
@@ -202,7 +202,7 @@ We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$.
   Then for every $\varphi(x\,;y)\in\mathds{L}$, every $a\in N^{|x|}$ and every $\alpha\in({}^*\!R)^{|y|}$ 
   
   \ceq{\hfill{}^*{\EuScript N}\models\varphi(a\,;\alpha)}
-  {\Leftrightarrow}
+  {\Rightarrow}
   {{\EuScript N}\models\varphi\big(a\,;{\rm st}(\alpha)\big)}
 \end{lemma}
 
@@ -288,8 +288,8 @@ We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a
 \end{proof}
 
 \begin{corollary}\label{prop_tipi_compattezza}
-  Let $p(x)\subseteq\mathds{L}(M)$ be finitely consistent in ${\EuScript M}$, a model.
-  Then ${\EuScript N}\models\exists x\,p(x)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.\hfill\qedsymbol
+  Let $p(x\,;y)\subseteq\mathds{L}(M)$ be finitely consistent in ${\EuScript M}$, a model.
+  Then ${\EuScript N}\models\exists x\,\exists^R y\,p(x\,;y)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.\hfill\qedsymbol
 \end{corollary}
 
 % \noindent\llap{\dangersign\kern2ex}%
@@ -381,18 +381,17 @@ As usual, we define a topology on $U^{|x|}$ which we call the $\mathds{L}(A)$-to
 The closed sets of this topology are the sets defined by the types $p(x)\subseteq\mathds{L}(A)$.
 This is a compact topology.
 
-The  $\mathds{L}(A)$-topology on $U^{|x|}\times R^{|y|}$ is the product of the $\mathds{L}(A)$-topology on $U^{|x|}$ and the topology on $R^{|y|}$.
+The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product of the $\mathds{L}(A)$-topology on $U^{|x|}$ and the topology on $R^{|y|}$.
 
 \begin{lemma}
-  For every $\varphi(x\,;y)\in\mathds{L}(A)$ the set $\varphi(U\,;R)$ is compact.
+  For every $\varphi(x\,;y)\in\mathds{L}(A)$ the set $\varphi(U\,;R)$ is a compact subset of $U^{|x|}\times R^{|y|}$.
 \end{lemma}
 
 \begin{proof}
   We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ have nonempty intersection.
-  A family of closed subsets of $\varphi(U\,;R)$ has the form
-
+  Without loss of generality we can assume that the sets in this family have the form $\psi(U)\times C_1\times\dots\times C_{|y|}$ for some compact sets $C_i\subseteq R$ and some $\psi(x)\in\mathds{L}$.
+  Then by $\mathds{L}$-compactness the intersection of the family is nonempty.
 \end{proof}
-
 
 \begin{fact}\label{prop_compactness_imp}
   Let $p(x)\subseteq\mathds{L}(U)$ be a type of small cardinality.
@@ -407,8 +406,6 @@ The  $\mathds{L}(A)$-topology on $U^{|x|}\times R^{|y|}$ is the product of the $
   The first claim is clear.
   The second follows from the first by Lemma~\ref{lem_interpolation}.
 \end{proof}
-
-
 
 \begin{proposition}\label{prop_approx}
   For every $\varphi(x)\in\mathds{H}(U)$ 
