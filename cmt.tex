@@ -16,80 +16,90 @@
 \usepackage{calc}
 \usepackage{amsthm}
 \usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage[mathcal]{euscript}
+\usepackage{fourier-orns}
+\usepackage{palatino}
+\usepackage[sc]{mathpazo} % add possibly `sc` and `osf` options
+%\usepackage{eulervm}
 %\usepackage{bbm}
 %\usepackage{latexsym}
-\usepackage{mathrsfs}
+% \usepackage{mathrsfs}
 %\usepackage{stmaryrd}
 \usepackage{stix}
 \usepackage{dsfont}
-\newcommand*{\TakeFourierOrnament}[1]{{%
-\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
-\renewcommand*{\danger}{\TakeFourierOrnament{66}}
+% \newcommand*{\TakeFourierOrnament}[1]{{%
+% \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+% \renewcommand*{\danger}{\TakeFourierOrnament{66}}
 \parindent0ex
 \parskip1.2ex
 
 \newcommand{\mylabel}[1]{{#1}\hfill}
 \renewenvironment{itemize}
   {\begin{list}{$\cdot$}{%
-   \setlength{\parskip}{0mm}
-   \setlength{\topsep}{.2\baselineskip}
-   \setlength{\rightmargin}{0mm}
-   \setlength{\listparindent}{0mm}
-   \setlength{\itemindent}{0mm}
-   \setlength{\labelwidth}{3ex}
-   \setlength{\itemsep}{.2\baselineskip}
-   \setlength{\parsep}{.2\baselineskip}
-   \setlength{\partopsep}{0mm}
-   \setlength{\labelsep}{1ex}
-   \setlength{\leftmargin}{\labelwidth+\labelsep}
-   \let\makelabel\mylabel}}{%
-   \end{list}}
+  \setlength{\parskip}{0mm}
+  \setlength{\topsep}{.2\baselineskip}
+  \setlength{\rightmargin}{0mm}
+  \setlength{\listparindent}{0mm}
+  \setlength{\itemindent}{0mm}
+  \setlength{\labelwidth}{3ex}
+  \setlength{\itemsep}{.2\baselineskip}
+  \setlength{\parsep}{.2\baselineskip}
+  \setlength{\partopsep}{0mm}
+  \setlength{\labelsep}{1ex}
+  \setlength{\leftmargin}{\labelwidth+\labelsep}
+  \let\makelabel\mylabel}}{%
+\end{list}}
 
-\newtheoremstyle{plain}% 〈name〉
-{\parskip}% 〈Space above〉1
-{}% 〈Space below 〉1
-{\color{brown!20!red!40!black}}% 〈Body font〉
-{}% 〈Indent amount〉2
-{\bfseries}% 〈Theorem head font〉
-{.}% 〈Punctuation after theorem head 〉
-{.5em}% 〈Space after theorem head 〉3
-{\llap{\thmnumber{#2}\hskip2mm}\thmname{#1}\thmnote{\kern1ex\bfseries(#3)}}% 〈Theorem head spec (can be left empty, meaning ‘normal’ )
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}%[section]
-\newtheorem{specialtheorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{fact}[theorem]{Fact}
-\newtheorem{corollary}[theorem]{Corollary}
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  notefont=\bfseries,
+  notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  mdframed={
+  outerlinewidth=2pt,
+  outerlinecolor=black,
+  roundcorner = 1ex,    
+  backgroundcolor=gray!10, 
+  hidealllines=true, 
+  innerleftmargin=1ex,
+  leftmargin=-1ex,
+  innerrightmargin=1ex,
+  rightmargin=-1ex,
+  innertopmargin=1.5ex, 
+  innerbottommargin=1ex, 
+  skipabove=2ex,
+  skipbelow=1ex}, 
+]{mystyle}
 
+\declaretheorem[style=mystyle]%
+{theorem}
+\declaretheorem[style=mystyle,sibling=theorem]%
+{lemma,proposition,fact,corollary,definition,remark,example,claim}
 
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{question}[theorem]{Question}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{definitions}[theorem]{Definitions}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{examples}[theorem]{Examples}
-\newtheorem{convention}[theorem]{Convention}
-\newtheorem{conventions}[theorem]{Conventions}
-\newtheorem{notation}[theorem]{\breve Notation}
-
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{remarks}[theorem]{Remarks}
-
-\theoremstyle{remark}
-\newtheorem*{claim}{Claim}
+\let\proof\relax
+\declaretheoremstyle[
+  spaceabove=6pt, 
+  spacebelow=6pt, 
+  headfont=\normalfont\itshape, 
+  bodyfont = \normalfont,
+  postheadspace=1em, 
+  qed=\qedsymbol, 
+  headpunct={.}]
+{myproof} %<---- change this name
+\declaretheorem[style=myproof, unnumbered]{proof}
 
 \renewcommand*{\emph}[1]{%
-   \smash{\tikz[baseline]\node[rectangle, fill=olive!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{#1};}}
+   \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{#1};}}
 
 \linespread{1.1}
 \author{C. L. C. L. Polymath}
 \begin{document}
 \title{Continuous logic for the classical logician}
-\hfill\texttt{Branch:\ master\ \DTMnow}\bigskip
+\hfill\texttt{Branch:\ semplificazione\ \DTMnow}\bigskip
 \maketitle
 \raggedbottom
 
@@ -141,7 +151,7 @@ Warning: as usual $L$ and ${\EuScript L}$ denote both first-order languages and 
 The set $\mathds{L}$ defined below is only a set of first-order formulas.
 
 \begin{definition}\label{def_LL}
-  Formulas in \emph{$\mathds{L}$\/} are constructed inductively from two sorts of \emph{$\mathds{L}$-atomic\/} formulas
+  Formulas in \emph{$\mathds{L}$\/} are defined inductively from two sorts of \emph{$\mathds{L}$-atomic\/} formulas
   \begin{itemize}
   \item[i.] formulas of the form $t(x;y)\in C$, where $C\subseteq R^n$ is compact (in the product topology) and $t(x,y)$ is a $n$-tuple of terms of sort $M^{|x|}\times R^{|y|}\to R$; 
   \item[ii.] all formulas in $L$.
@@ -151,10 +161,10 @@ The set $\mathds{L}$ defined below is only a set of first-order formulas.
   We write \emph{$\mathds{H}$ \/} for the set of formulas in $\mathds{L}$ without quantifiers of sort $R$.
 \end{definition}
 
-For later reference we remark the following which is an immediate consequence of the restrictions we imposed on the sorts of the function symbols.
+For later reference we remark the following which is an immediate consequence of the restrictions imposed on the sorts of the function symbols.
 
 \begin{remark}\label{rk_terms}
-  Each component of the tuple $t(x\,;y)$ in the definition above is either of sort $M^{|x|}\to R$ or of sort $R^{|y|}\to R$.\hfill\qedsymbol
+  Each component of the tuple $t(x\,;y)$ in the definition above is either of sort $M^{|x|}\to R$ or of sort $R^{|y|}\to R$.
 \end{remark}
 
 \noindent\llap{\textcolor{red}{\Large\dangersign}\kern1ex}\ignorespaces
@@ -174,7 +184,7 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 
   which, in a human readible form, becomes
 
-  \ceq{\hfill\forall x\ \big[t(x)\le\tau\big]}{\wedge}{\forall\varepsilon>0\ \exists x\ \big[\tau\le t(x)+ \varepsilon\big].}\hfill\qedsymbol
+  \ceq{\hfill\forall x\ \big[t(x)\le\tau\big]}{\wedge}{\forall\varepsilon>0\ \exists x\ \big[\tau\le t(x)+ \varepsilon\big].}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,12 +196,9 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 
 Let $R\preceq{}^*\!R$.
 Let $\alpha,\alpha'\in{}^*\! R$.
-For $\beta\in R$ we write $\alpha\approx\beta$ if 
-
-\ceq{\hfill{}^*\!R}{\models}{\alpha\in D}\hfill for every $D$ compact neighborhood of $\beta$
-
-and write \emph{$\alpha\approx\alpha'$\/} if $\alpha\approx\beta\approx\alpha'$ for some $\beta\in R$.
-From the following it follows that $\,\approx\,$ is an equivalence relation on ${}^*\!R$.
+For $\beta\in R$ we write $\alpha\approx\beta$ if $^*\!R\models\alpha\in D$ for every $D$ compact neighborhood of $\beta$.
+We write \emph{$\alpha\approx\alpha'$\/} if $\alpha\approx\beta\approx\alpha'$ for some $\beta\in R$.
+From the following fact it follows that $\,\approx\,$ is an equivalence relation on ${}^*\!R$.
 
 \begin{fact}
   For every $\alpha\in{}^*\!R$ there is a unique $\beta\in R$ such that $\alpha\approx\beta$.
@@ -235,15 +242,16 @@ We will denote it by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such th
   If $\varphi(x\,;y)$ is a formula of $L$ the claim is trivial. 
   Otherwise $\varphi(x\,;y)$ has the form $t(x\,;y)\in C$.
   Assume ${}^*{\EuScript N}\models t(a\,;\alpha)\in C$.
-  We claim that for every compact $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
+  We claim that for every compact sets $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
 
   \ceq{\hfill{\EuScript N}}
   {\models}
   {t_i(a\,;\alpha)\in C_i.}
 
-  By the definition of product topology, $C$ is the intersection of such products as those above.
+  By the definition of product topology, $C$ is the intersection of products as those above.
   Therefore ${\EuScript N}\models t(a\,;\alpha)\in C$ follows from the claim.
   
+  We prove the claim.
   By Remark~\ref{rk_terms}, the terms $t_i(a\,;\alpha)$ have either the form $t_i(a)$ or $t_i(\alpha)$.
   We can ignore the first case because ${\EuScript N}$ is a substructure of ${}^*{\EuScript N}$ hence  $t_i(a)$ has the same value in both structures.
   Then (1) is equivalent to  
@@ -313,7 +321,7 @@ We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a
 
 \begin{corollary}\label{prop_tipi_compattezza}
   Let $p(x\,;y)\subseteq\mathds{L}(M)$ be finitely consistent in ${\EuScript M}$, a model.
-  Then ${\EuScript N}\models\exists x\,\exists^R y\,p(x\,;y)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.\hfill\qedsymbol
+  Then ${\EuScript N}\models\exists x\,\exists^R y\,p(x\,;y)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.
 \end{corollary}
 
 % \noindent\llap{\dangersign\kern2ex}%
@@ -330,7 +338,7 @@ A model ${\EuScript N}$ is \emph{$\mathds{L}$-saturated\/} if it realizes all ty
 The existence of $\mathds{L}$-saturated models is proved as in the classical case.
 
 \begin{proposition}
-  Every model has an $\mathds{L}$-elementary extension to a saturated model (possibly of inaccessible cardinality).\hfill\qedsymbol
+  Every model has an $\mathds{L}$-elementary extension to a saturated model (possibly of inaccessible cardinality).
 \end{proposition}
 
 % Homogeneity follows from saturation by the usual back-and-forth contruction.
@@ -367,10 +375,11 @@ I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $
 It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$.
 We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$.
 
-
-\begin{lemma}\label{lem_interpolation}
-  For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$. 
-  Vice versa, for every $\tilde{\varphi}\perp\varphi$ there is a formula $\varphi'>\varphi$ such that  $\varphi\rightarrow\varphi'\rightarrow\neg \tilde{\varphi}$.
+\begin{lemma}\label{lem_interpolation}\ 
+  \begin{itemize}
+    \item[1.]For every $\varphi'>\varphi$ there is a formula $\tilde{\varphi}\perp\varphi$ such that $\varphi\rightarrow\neg \tilde{\varphi}\rightarrow\varphi'$.
+    \item[2.] For every\, $\tilde{\varphi}\perp\varphi$ there is a formula $\varphi'>\varphi$ such that  $\varphi\rightarrow\varphi'\rightarrow\neg \tilde{\varphi}$.
+  \end{itemize}
 \end{lemma}
 
 \begin{proof}
@@ -412,12 +421,12 @@ The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product 
 \end{lemma}
 
 \begin{proof}
-  We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ have nonempty intersection.
+  We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ has nonempty intersection.
   Without loss of generality we can assume that the sets in this family have the form $\psi(U)\times C_1\times\dots\times C_{|y|}$ for some compact sets $C_i\subseteq R$ and some $\psi(x)\in\mathds{L}$.
   Then by $\mathds{L}$-compactness the intersection of the family is nonempty.
 \end{proof}
 
-\begin{fact}\label{prop_compactness_imp}
+\begin{fact}\label{fact_compactness_imp}
   Let $p(x)\subseteq\mathds{L}(U)$ be a type of small cardinality.
   Then for every  $\varphi(x)\in\mathds{L}(U)$
   \begin{itemize}
@@ -432,11 +441,11 @@ The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product 
 \end{proof}
 
 \begin{proposition}\label{prop_approx}
-  For every $\varphi(x)\in\mathds{H}(U)$ 
+  For every $\varphi(x)\in\mathds{L}(U)$ 
 
-  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x)}
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x\,;y)}
   {\leftrightarrow}
-  {\varphi(x)}
+  {\varphi(x\,;y)}
 
 \end{proposition}
 
@@ -467,30 +476,31 @@ The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product 
   % {\leftrightarrow}
   % {\bigwedge_{\varphi'>\varphi}\varphi'(x)}
 %
-  Consider the existential quantifiers of sort $U$.
+  We consider case of the existential quantifiers of sort $M$.
+  The case of existential quantifiers of sort $R$ is identical.
   Assume inductively
   
-  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
   {\rightarrow}
-  {\varphi(x,y)}
+  {\varphi(x,z\,;y)}
 
   then 
 
-  \ceq{\hfill\exists y\,\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+  \ceq{\hfill\exists z\,\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
   {\rightarrow}
-  {\exists y\,\varphi(x,y)}
+  {\exists z\,\varphi(x,z\,;y)}
 
   Therefore it suffices to prove
 
-  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\exists y\,\varphi'(x,y)}
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\exists z\,\varphi'(x,z\,;y)}
   {\rightarrow}
-  {\exists y\,\bigwedge_{\varphi'>\varphi}\varphi'(x,y)}
+  {\exists z\,\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
 
-Replace $x$ with a parameter, say $a$ and assume the antecedent.
-Note that $\{\exists y\,\varphi'(a,y):\varphi'>\varphi\}$ implies the finite concistency of the type $\{\varphi'(a,y):\varphi'>\varphi\}$.
+Replace $x,y$ with parameters, say $a,\alpha$ and assume the antecedent.
+But $\{\exists z\,\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$ implies the finite concistency of the type $\{\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$.
 This because if $\varphi_1,\varphi_2>\varphi$ then $\varphi_1\wedge\varphi_2>\varphi'$ for some $\varphi'>\varphi$.
 In words, the set of approximations of $\varphi$ is a directed set.
-Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
+Therefore $\exists z\,\{\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$ follows by saturation.
 %
 % \noindent\llap{\textcolor{red}{\Large\danger}\kern1ex}\ignorespaces
 % Consider the existential quantifiers of sort $R$
@@ -575,12 +585,13 @@ Therefore $\exists y\,\{\varphi'(a,y):\varphi'>\varphi\}$ follows by saturation.
 % \end{corollary}
 
 
-When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types 
+When $A\subseteq U$, we write \emph{$S_\mathds{H}(A)$\/} for the set of types 
 
 \ceq{\hfill\mathds{H}\mbox{-tp}(a/A)}{=}{\big\{\varphi(x)\ :\ \varphi(x)\in\mathds{H}(A)\textrm{ such that }\varphi(a)\big\}}
 
  as $a$ ranges over the tuples of elements of $U$.
- We write  $S_{\mathds{H},x}(A)$ when the tuple of variables $x$ is fixed.
+ We write  \emph{$S_{\mathds{H},x}(A)$\/} when the tuple of variables $x$ is fixed.
+%  Similarly we define \emph{$S_\mathds{L}(A)$\/} and \emph{$S_{\mathds{L},x}(A)$.}
  The following corollary will be strengthen by Corollary~\ref{corol_Lcomplete} below.
 
  \begin{corollary}\label{corol_Hcomplete2}
@@ -607,12 +618,15 @@ When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types
 
   \ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
 
+  % We write \emph{$p'(x)$\/} for the type
+
+  % \ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
+
   Note that, by Proposition~\ref{prop_approx}, if $p(x)\in S_{\mathds{H}}(A)$ then $p'(x)$ is equivalent to $p(x)$.
-  Therefore $p'(x)$ is also complete for formulas in $\mathds{H}(A)$.\hfill\qedsymbol
  \end{remark}
 
 \begin{corollary}\label{corol_Hcomplete3}
-  The inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.\hfill\qedsymbol
+  The inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.
 \end{corollary}
 
 
@@ -628,24 +642,29 @@ When $A\subseteq U$, we write $S_\mathds{H}(A)$ for the set of types
 \section{Homogeneity}
 
 A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H}$-elementary map $f:{\EuScript M}\to{\EuScript M}$ of cardinality $<|{\EuScript M}|$ extends to an automorphism.
+Clearly, an automorphism is ${\EuScript L}$-elementary.
 
 \begin{proposition}
   ${\EuScript U}$ is $\mathds{H}$-homogeneous.
 \end{proposition}
 
 \begin{proof}
-  By Corollary~\ref{corol_Hcomplete3} the usual proof by back-and-forth applies.
+  By Corollary~\ref{corol_Hcomplete3}, the usual proof by back-and-forth applies.
 \end{proof}
 
 \begin{corollary}\label{corol_H=L}
-  For every $a,b\in U^{|x|}$, if $a\equiv^\mathds{H}b$ then  $a\equiv^\mathds{L}b$.\hfill\qedsymbol
+  For every $a,b\in U^{|x|}$, if $a\equiv^\mathds{H}b$ then  $a\equiv^{\EuScript L}b$.
 \end{corollary}
+
+As promized, we can now strngthen Corollary~\ref{corol_Hcomplete2}.
 
 \begin{corollary}\label{corol_Lcomplete}
   Let $p(x)\in S_\mathds{H}(A)$.
-  Then $p(x)$ is complete for formulas in $\mathds{L}_x(A)$.
-  Clearly, the same holds for $p'(x)$.\hfill\qedsymbol
+  Then $p(x)$ is complete for formulas in ${\EuScript L}_x(A)$.
+  Clearly, the same holds for $p'(x)$.
 \end{corollary}
+
+The next two propositions show that formulas in $\mathds{L}(A)$ are very well approximated by formulas in $\mathds{H}(A)$.
 
 \begin{proposition}\label{prop_LHapprox1}
   Let $\varphi(x)\in\mathds{L}(A)$.
@@ -655,31 +674,33 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
 \begin{proof}
   By Corollary~\ref{corol_Lcomplete}
 
-  \ceq{\hfill\neg\varphi(x)}{\leftrightarrow}{\bigvee_{p'(x)\rightarrow\neg\varphi(x)}p'(x)}
+  \ceq{\hfill\neg\varphi(x)}{\rightarrow}{\bigvee_{p'(x)\rightarrow\neg\varphi(x)}p'(x)}
 
   where $p(x)$ ranges over $S_{\mathds{H},x}(A)$.
-  By Fact~\ref{prop_compactness_imp}
+  By Fact~\ref{fact_compactness_imp} and Lemma~\ref{lem_interpolation}
 
-  \ceq{\hfill\neg\varphi(x)}{\leftrightarrow}{\bigvee_{\psi(x)\rightarrow\neg\varphi(x)}\psi(x)}
+  \ceq{\hfill\neg\varphi(x)}{\rightarrow}{\bigvee_{\neg\tilde{\psi}(x)\rightarrow\neg\varphi(x)}\neg\tilde{\psi}(x),}
 
-  where $\psi'(x)$ is such that $\psi'>\psi$ for some $\psi(x)\in 
-  \mathds{H}(A)$ such that $\psi(x)\rightarrow\neg\varphi(x)$.
-  By compactness
+  where $\tilde{\psi}(x)\in\mathds{H}(A)$.
+  Equivalently,
 
-  \ceq{\hfill\neg\varphi(x)}{\leftrightarrow}{\bigvee_{i=1}^n\psi'_i(x)}
- 
-  By Lemma~\ref{lem_interpolation} we can replace $\psi'_i(x)$ by $\neg\tilde{\psi}_i(x)$ for some $\tilde{\psi}_i\perp\psi_i$. 
-  The proposition follows.
+  \ceq{\hfill\varphi(x)}{\leftarrow}{\bigwedge_{\tilde{\psi}(x)\leftarrow\varphi(x)}\tilde{\psi}(x).}
+
+  By compactness, see Fact~\ref{fact_compactness_imp}, for every $\varphi'>\varphi$ there are some finitely many $\tilde{\psi}_i(x)\in\mathds{H}(A)$ such that
+
+  \ceq{\hfill\varphi'(x)}{\leftarrow}{\bigwedge_{i=1,\dots,n}\tilde{\psi}_i(x)\ \ \leftarrow\ \ \varphi(x)}
+
+ which yields the interpolant required by the proposition.
 \end{proof}
 
 \begin{proposition}\label{prop_LHapprox2}
   Let $\varphi(x)\in\mathds{L}(A)$ be such that $\neg\varphi(x)$ is consistent.
-  Then  $\psi'(x)\rightarrow\neg\varphi(x)$ for some consistent $\psi(x)\in\mathds{H}(A)$ and some $\psi'>\psi$.\hfill\qedsymbol
+  Then  $\psi'(x)\rightarrow\neg\varphi(x)$ for some consistent $\psi(x)\in\mathds{H}(A)$ and some $\psi'>\psi$.
 \end{proposition}
 
 
 % \begin{proposition}\label{prop_LHapprox2}
-%   Let $\varphi(x)\in\mathds{L}(A)$. For every given $\tilde{\varphi}\perp\varphi$ there is some $\psi(x)\in\mathds{H}(A)$ such that $\varphi(x)\rightarrow\psi(x)\rightarrow\neg\tilde{\varphi}(x)$.\hfill\qedsymbol
+%   Let $\varphi(x)\in\mathds{L}(A)$. For every given $\tilde{\varphi}\perp\varphi$ there is some $\psi(x)\in\mathds{H}(A)$ such that $\varphi(x)\rightarrow\psi(x)\rightarrow\neg\tilde{\varphi}(x)$.
 % \end{proposition}
 
 \begin{proof}
@@ -749,7 +770,7 @@ A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H
   {\Rightarrow}
   {{\EuScript M}\not\models\forall y\,\varphi(a,y)}
 
-  Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^C$, and $\forall^C$ is straightforward.
+  Induction for the connectives $\vee$, $\wedge$, $\exists$, $\exists^R$, and $\forall^R$ is straightforward.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -1000,7 +1021,7 @@ The following proposition is easily proved by induction on the syntax.
   The following are equivalent for every $a,b\in M$.
   \begin{itemize}
     \item[1.] $a\equiv_{\EuScript M}b$;
-    \item[2.] ${\EuScript M}\models t(a)=t(b)$ for every $t(x)\in\mathds{T}(M)$, with $|x|=1$.\hfill\qedsymbol
+    \item[2.] ${\EuScript M}\models t(a)=t(b)$ for every $t(x)\in\mathds{T}(M)$, with $|x|=1$.
   \end{itemize}
 \end{proposition}
 
