@@ -130,7 +130,8 @@ According to the context, $C$ and $f$ denote either the symbols of $L_R$ or thei
 \begin{definition}\label{def_0}
   Let \emph{$L$\/} be a one-sorted (first-order) language.
   By \emph{model\/} we intend an ${\EuScript L}$-structure of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is the structure above.
-  The language \emph{${\EuScript L}$\/} expands both $L$ and $L_R$ but only with function symbols of sort $M^n\to R$. 
+  The language \emph{${\EuScript L}$\/} is an expansion of both $L$ and $L_R$.
+  The new symbols are function symbols of sort $M^n\to R$. 
 \end{definition}
 
 Clearly, saturated ${\EuScript L}$-structures exist but, with the exception of trivial cases (i.e.\@ when $R$ is finite), they are not models.
@@ -182,19 +183,42 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The standard part}
+
 Let $R\preceq{}^*\!R$.
-For $\alpha,\beta\in{}^*\!R$ we define the equivalence relation \emph{$\alpha\sim\beta$\/} as follows
+Let $\alpha,\alpha'\in{}^*\! R$.
+For $\beta\in R$ we write $\alpha\approx\beta$ if 
 
-\ceq{\hfill\alpha\sim\beta}{\Leftrightarrow}{{}^*\!R\ \models\ \alpha\in C\leftrightarrow\beta\in C}\quad for every compact $C\subseteq R$.
+\ceq{\hfill{}^*\!R}{\models}{\alpha\in D}\hfill for every $D$ compact neighborhood of $\beta$
 
-By compactness, every $\alpha\in{}^*\!R$ is equivalent to some element of $R$.
-By normality, this element is unique.
-We denote it by \emph{${\rm st}(\alpha)$.}
-It is easy to see that if $\alpha,\beta\in({}^*\!R)^n$ then 
+and write \emph{$\alpha\approx\alpha'$\/} if $\alpha\approx\beta\approx\alpha'$ for some $\beta\in R$.
+From the following it follows that $\,\approx\,$ is an equivalence relation on ${}^*\!R$.
 
-\ceq{\hfill\bigwedge_{i=1}^n\alpha_i\sim\beta_i}{\Leftrightarrow}{S\models\alpha\in C\leftrightarrow\beta\in C}\quad for every compact $C\subseteq R^n$.
+\begin{fact}
+  For every $\alpha\in{}^*\!R$ there is a unique $\beta\in R$ such that $\alpha\approx\beta$.
+\end{fact}
 
-We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$. 
+\begin{proof}
+  Negate the existence of $\beta$.
+  For every $\gamma\in R$ pick some $D_\gamma$, compact neighborhood of $\gamma$, such that ${}^*\!R\ \models\ \alpha\notin D_\gamma$.
+  By compactess there is some finite $\Gamma\subseteq R$ such that $D_\gamma$, with $\gamma\in\Gamma$, cover $R$.
+  By elementarity these $D_{\gamma}$ also cover ${}^*\!R$.
+  A contradiction.
+  The uniqueness of $\beta$ follows from normality.
+\end{proof}
+
+We will denote it by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such that $\alpha\approx\beta$.
+
+\begin{fact}
+  For every $\alpha\in{}^*\! R$ and every compact $C$
+
+\ceq{\hfill{}^*\!R}{\models}{\alpha\in C\ \rightarrow\ {\rm st}(\alpha)\in C.}
+\end{fact}
+
+\begin{proof}
+  Assume ${\rm st}(\alpha)\notin C$.
+  By normality there is a $D$, compact neighborhood of ${\rm st}(\alpha)$ disjoint from $C$.
+  Then  ${}^*\!R\models\alpha\in D\subseteq\neg C$.
+\end{proof}
 
 \begin{lemma}\label{lem_st}
   Let ${}^*{\EuScript N}=\langle N,{}^*\!R\rangle$ be an ${\EuScript L}$-structure, and assume that $R\preceq{}^*\!R$.
@@ -211,14 +235,14 @@ We write ${\rm st}(\alpha)$ for the tuple with components ${\rm st}(\alpha_i)$.
   If $\varphi(x\,;y)$ is a formula of $L$ the claim is trivial. 
   Otherwise $\varphi(x\,;y)$ has the form $t(x\,;y)\in C$.
   Assume ${}^*{\EuScript N}\models t(a\,;\alpha)\in C$.
-  We prove that for every compact $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
+  We claim that for every compact $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
 
   \ceq{\hfill{\EuScript N}}
   {\models}
   {t_i(a\,;\alpha)\in C_i.}
 
-  By the definition of product topology, $C$ is the intersection of such product sets.
-  Hence${\EuScript N}\models t(a\,;\alpha)\in C$ follows. 
+  By the definition of product topology, $C$ is the intersection of such products as those above.
+  Therefore ${\EuScript N}\models t(a\,;\alpha)\in C$ follows from the claim.
   
   By Remark~\ref{rk_terms}, the terms $t_i(a\,;\alpha)$ have either the form $t_i(a)$ or $t_i(\alpha)$.
   We can ignore the first case because ${\EuScript N}$ is a substructure of ${}^*{\EuScript N}$ hence  $t_i(a)$ has the same value in both structures.
@@ -237,7 +261,7 @@ Therefore
 
 Finally this is equivalent to ${\rm st}(\alpha)\in D$.
 
-This proves lemma for $\mathds{L}$-atomic formulas.
+This proves, the claim and with it the lemma for $\mathds{L}$-atomic formulas.
 Induction is immediate. 
 \end{proof}
 
