@@ -122,8 +122,8 @@
 
 As a minimal motivating example, consider real vector spaces.
 These are among the most simple strucures considered in model theory.
-Now expand them by adding as norm.
-The norm is a function that, given vector, outputs a real number.
+Now, expand them by adding a norm.
+A norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two-sorted structure.
 
 Now, we have two conflicting aspirations
@@ -133,30 +133,29 @@ Now, we have two conflicting aspirations
   $\mathds{R}$ should remain $\mathds{R}$ throughout).
 \end{itemize}
 
-These two aspirations are blatantly incompatible, something has to give.
-Different groups made different choices.
+These two aspirations are blatantly incompatible, hence something has to give.
+Different people have made different choices.
 \begin{itemize}
-  \item[1.] Nonstandard analysts happily embraced norms that take values in some ${}^*\mathds{R}\succeq\mathds{R}$.
-  They have a tookit of tricks to transfer the results from nonstandard to standard normed spaces and vice versa.
-  Model theorists, when confronted with similar problems,  have used a similar approach (in some more generality and with different notation).
+  \item[1.] Nonstandard analysts happily embrace norms that take values in some ${}^*\mathds{R}\succeq\mathds{R}$.
+  These norms are nonstandard.
+  But there are tricks to transfer results from nonstandard to standard normed spaces and vice versa.
+  Model theorists, when confronted with similar problems,  have used similar approaches (in some more generality and with different notation).
   \item[2.] Henson and Iovino stick to the standard notion of norm but restrict the notion of elementarity and saturation to a smaller class of formulas (which we denote by $\mathds{H}$).
   They demostrate that many standard tools of model theory still apply in their setting. 
-  The work of Henson and Iovino is focussed on Banach spaces.
-  It has hardly been applied to other contexts.
+  The work of Henson and Iovino is focussed on Banach spaces and has hardly been applied to a broader context.
   \item[3.] Real valued logicians have the most radical approach.
-  They abandon classical \{true,\,false\} valued 
-  logic altogether in favour of a logic valued in the interval $[0,1]$.
+  They abandon classical true/false valued logic altogether in favour of a logic valued in the interval $[0,1]$.
   Unfortunately, this adds considerable notational burden, restricts the class of structures that can be considered, and (unnaturally) limits the expressive power of the logic.
-  Though many have been attracted by the challange, this paper aims to offering an alternative to the rest. 
+  Though many have been attracted by the challange, this paper we explore an alternative. 
 \end{itemize}
 
 We elaborate on the ideas of Henson and Iovino and generalize them to a larger class of structures.
-Just as Henson and Iovino, we restrict the notions of elementarity and saturation.
-Our class, $\mathds{L}$, is larger than their $\mathds{H}$.
-Though we prove that $\mathds{L}$ has (in a sense) approximatively the same expressive power as $\mathds{H}$ (cf. Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}), it is evident that $\mathds{L}$ is more convinent.
+Following Henson and Iovino, we restrict the notions of elementarity and saturation.
+But we use a class of formulas $\mathds{L}$ which is larger than their $\mathds{H}$.
+Though we prove that $\mathds{L}$ has, in a sense, approximatively the same expressive power as $\mathds{H}$ (cf. Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}), it is evident that $\mathds{L}$ is more convinent.
 
-When possible we use methods and resusts of nonstandard analysis (i.e.\@ classical model theory in disguise).
-This should help understanding the connection between approach (1) and (2) above.
+When possible we borrow results and intuition from nonstandard analysis (i.e.\@ classical model theory).
+This clarify the relation between approach (1) and (2) above.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -411,7 +410,7 @@ Formulas in as in (i) of Definition~\ref{def_LL} do not occur under the scope of
 
 We write \emph{$\tilde{\varphi}\perp\varphi$\/} when $\tilde{\varphi}$ is obtained by replacing each atomic formula $t\in C$ occurring in $\varphi$ with $t\in\tilde{C}$ where $\tilde{C}$ is some compact set disjoint from $C$. 
 Moreover the $\mathds{L}$-atomic formulas in $L$ are replaced with their negation and every connective is replaced with its dual.
-I.e., $\vee, \wedge, \exists, \forall, \exists^C, \forall^C$ are replaced with $\wedge,\vee,\forall,\exists,\forall^C,\exists^C$ respectively.
+I.e., $\vee, \wedge, \exists, \forall, \exists^R, \forall^R$ are replaced with $\wedge,\vee,\forall,\exists,\forall^R,\exists^R$ respectively.
 
 It is clear that $\tilde{\varphi}\rightarrow\neg\varphi$.
 We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$.
@@ -640,8 +639,8 @@ When $A\subseteq U$, we write \emph{$S_\mathds{H}(A)$\/} for the set of types
  The following corollary will be strengthen by Corollary~\ref{corol_Lcomplete} below.
 
  \begin{corollary}\label{corol_Hcomplete2}
-   The types $p(x)\in S_\mathds{H}(A)$ are complete.
-   That is, either $\varphi(x)\in p$ or $p(x)\rightarrow\neg\varphi(x)$ for every $\varphi(x)\in\mathds{H}(A)$.
+   The types $p(x)\in S_\mathds{H}(A)$ are maximally consistent subsets of $\mathds{H}_x(A)$.
+   That is, for every $\varphi(x)\in\mathds{H}(A)$, either $\varphi(x)\in p$ or $p(x)\rightarrow\neg\varphi(x)$.
  \end{corollary}
 
  \begin{proof}
@@ -694,17 +693,18 @@ Clearly, every automorphism is ${\EuScript L}$-elementary.
   Then the usual proof by back-and-forth applies.
 \end{proof}
 
-As promised, we now strengthen Corollary~\ref{corol_Hcomplete2}.
+We can now, as promised, strengthen Corollary~\ref{corol_Hcomplete2}.
 
 \begin{corollary}\label{corol_Lcomplete}
   Let $p(x)\in S_\mathds{H}(A)$.
   Then $p(x)$ is complete for formulas in ${\EuScript L}_x(A)$.
+  That is, for every $\varphi(x)\in{\EuScript L}(A)$, either $p(x)\rightarrow\varphi(x)$ or $p(x)\rightarrow\neg\varphi(x)$.
   Clearly, the same holds for $p'(x)$.
 \end{corollary}
 
 \begin{proof}
-  If $b\models p(x)=\mathds{H}\mbox{-tp}(a/A)$ then there is $\mathds{H}$-elementary map $f$vsuch that $fa=b$.
-  As $f$ exends to an automorphism, $a\equiv^{\EuScript L}b$ and the corollary follows.
+  If $b\models p(x)=\mathds{H}\mbox{-tp}(a/A)$ then there is $\mathds{H}$-elementary map $f\supseteq{\rm id}_A$ such that $fa=b$.
+  As $f$ exends to an automorphism, $a\equiv^{\EuScript L}_Ab$ and the corollary follows.
 \end{proof}
 
 The next two propositions show that formulas in $\mathds{L}(A)$ are approximated by formulas in $\mathds{H}(A)$.
@@ -749,7 +749,7 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are approximated
 \begin{proof}
   Let $a\in U^{|x|}$ be such that $\neg\varphi(a)$.
   Let $p(x)=\mathds{H}\mbox{-tp}(a/A)$.
-  By Corollary~\ref{corol_Hcomplete3}, $p'(x)\rightarrow\neg\varphi(x)$. 
+  By Corollary~\ref{corol_Lcomplete}, $p'(x)\rightarrow\neg\varphi(x)$. 
   By compactness  $\psi'(x)\rightarrow\neg\varphi(x)$ for some $\psi'>\psi\in p(x)$. 
 \end{proof}
 
