@@ -60,11 +60,10 @@
   bodyfont=\normalfont,
   postheadspace=1em,
   mdframed={
-  outerlinewidth=2pt,
-  outerlinecolor=black,
+  outerlinewidth=1pt,
+  linecolor=gray!25,
   roundcorner = 1ex,    
-  backgroundcolor=gray!10, 
-  hidealllines=true, 
+  backgroundcolor=gray!15, 
   innerleftmargin=1ex,
   leftmargin=-1ex,
   innerrightmargin=1ex,
@@ -115,20 +114,59 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{A class of structures}\label{uno}
+\section{Introduzione}\label{intro}
+
 
 
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
 As a minimal motivating example, consider real vector spaces.
 These are among the most simple strucures considered in model theory.
-Now expand them with a norm.
+Now expand them by adding as norm.
 The norm is a function that, given vector, outputs a real number.
-We may formalize this in a natural way by using a two sorted structure.
-Ideally, we would like that elementary extensions of normed spaces to remain a normed space (hence $\mathds{R}$ shoud remain $\mathds{R}$ throughout).
-Unfortunately, this is not possible if we insist to mantain the classical notion of elementary extension.
-A way out has been proposed by Henson and Iovino: restrict the notion of elementarity to a smaller class of formulas (which they call positive bounded formulas).
-We elaborate on this idea generalizing it to arbitrary structures and a wider class of formulas.
+We may formalize this in a natural way by using a two-sorted structure.
+
+Now, we have two conflicting aspirations
+\begin{itemize}
+  \item[i.] to be able to apply the basic tools of model theory (such as elementarity and saturation);
+  \item[ii.] to remain in the realm of normed spaces (and insist that 
+  $\mathds{R}$ should remain $\mathds{R}$ throughout).
+\end{itemize}
+
+These two aspirations are blatantly incompatible, something has to give.
+Different groups made different choices.
+\begin{itemize}
+  \item[1.] Nonstandard analysts happily embraced norms that take values in some ${}^*\mathds{R}\succeq\mathds{R}$.
+  They have a tookit of tricks to transfer the results from nonstandard to standard normed spaces and vice versa.
+  Model theorists, when confronted with similar problems,  have used a similar approach (in some more generality and with different notation).
+  \item[2.] Henson and Iovino stick to the standard notion of norm but restrict the notion of elementarity and saturation to a smaller class of formulas (which we denote by $\mathds{H}$).
+  They demostrate that many standard tools of model theory still apply in their setting. 
+  The work of Henson and Iovino is focussed on Banach spaces.
+  It has hardly been applied to other contexts.
+  \item[3.] Real valued logicians have the most radical approach.
+  They abandon classical \{true,\,false\} valued 
+  logic altogether in favour of a logic valued in the interval $[0,1]$.
+  Unfortunately, this adds considerable notational burden, restricts the class of structures that can be considered, and (unnaturally) limits the expressive power of the logic.
+  Though many have been attracted by the challange, this paper aims to offering an alternative to the rest. 
+\end{itemize}
+
+We elaborate on the ideas of Henson and Iovino and generalize them to a larger class of structures.
+Just as Henson and Iovino, we restrict the notions of elementarity and saturation.
+Our class, $\mathds{L}$, is larger than their $\mathds{H}$.
+Though we prove that $\mathds{L}$ has (in a sense) approximatively the same expressive power as $\mathds{H}$ (cf. Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}), it is evident that $\mathds{L}$ is more convinent.
+
+When possible we use methods and resusts of nonstandard analysis (i.e.\@ classical model theory in disguise).
+This should help understanding the connection between approach (1) and (2) above.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{A class of structures}\label{uno}
+
+
 
 Let $R$ be some fixed first-order structure which is endowed with a Hausdorff compact topology (in particular, a normal topology).
 The language $L_R$ contains relation symbols for the compact subsets $C\subseteq R^n$ and a function symbol for each continuous functions $f:R^n\to R$.
@@ -141,10 +179,12 @@ According to the context, $C$ and $f$ denote either the symbols of $L_R$ or thei
   Let \emph{$L$\/} be a one-sorted (first-order) language.
   By \emph{model\/} we intend an ${\EuScript L}$-structure of the form ${\EuScript M}=\langle  M,R\rangle$, where $M$ ranges over $L$-structures, while $R$ is the structure above.
   The language \emph{${\EuScript L}$\/} is an expansion of both $L$ and $L_R$.
-  The new symbols are function symbols of sort $M^n\to R$. 
+  The new symbols allowed in ${\EuScript L}$ are function symbols of sort $M^n\to R$. 
 \end{definition}
 
-Clearly, saturated ${\EuScript L}$-structures exist but, with the exception of trivial cases (i.e.\@ when $R$ is finite), they are not models.
+The scope of the notion of model above will be (inessentially) restricted once we introduce the monster model, in Section~\ref{monster}.
+
+Clearly, saturated ${\EuScript L}$-structures exist but, with the exception of trivial cases (i.e.\@ when $R$ is finite) they are not models.
 As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model has an $\mathds{L}$-elementary, $\mathds{L}$-saturated extension that is a model.
 
 Warning: as usual $L$ and ${\EuScript L}$ denote both first-order languages and the corresponding set of formulas.
@@ -161,7 +201,7 @@ The set $\mathds{L}$ defined below is only a set of first-order formulas.
   We write \emph{$\mathds{H}$ \/} for the set of formulas in $\mathds{L}$ without quantifiers of sort $R$.
 \end{definition}
 
-For later reference we remark the following which is an immediate consequence of the restrictions imposed on the sorts of the function symbols.
+For later reference we remark the following which is an immediate consequence of the restrictions imposed by Definition~\ref{def_0} on the sorts of the function symbols in ${\EuScript L}$.
 
 \begin{remark}\label{rk_terms}
   Each component of the tuple $t(x\,;y)$ in the definition above is either of sort $M^{|x|}\to R$ or of sort $R^{|y|}\to R$.
@@ -223,7 +263,7 @@ We will denote it by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such th
 
 \begin{proof}
   Assume ${\rm st}(\alpha)\notin C$.
-  By normality there is a $D$, compact neighborhood of ${\rm st}(\alpha)$ disjoint from $C$.
+  By normality there is a set $D$, a compact neighborhood of ${\rm st}(\alpha)$, disjoint from $C$.
   Then  ${}^*\!R\models\alpha\in D\subseteq\neg C$.
 \end{proof}
 
@@ -308,21 +348,22 @@ It is convinient to distinguish between consistency with respect to models and c
 We say that a theory $T$ is \emph{${\EuScript L}$-consistent\/} when ${\EuScript M}\models T$ for some ${\EuScript L}$-structure ${\EuScript M}$.
 We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a model.
 
-\begin{proposition}[$\mathds{L}$-compactness]\label{prop_compattezza}
+\begin{theorem}[$\mathds{L}$-compactness]\label{thm_compattezza}
   Let $T\subseteq\mathds{L}$ be finitely consistent.
   Then $T$ is consistent.
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
-  By the compactness theorem ${}^*{\EuScript M}\models T$ for some ${\EuScript L}$-structure ${}^*{\EuScript M}=\langle M,{}^*\!R\rangle$.
+  Suppose $T$ is finitely consistent (or finitely ${\EuScript L}$-consistent, for that matter).
+  By the classical compactness theorem ${}^*{\EuScript M}\models T$ for some ${\EuScript L}$-structure ${}^*{\EuScript M}=\langle M,{}^*\!R\rangle$.
   Let ${\EuScript M}$ be the model $\langle M,R\rangle$.
   Then ${\EuScript M}\models T$ by Lemma~\ref{lem_st}.
 \end{proof}
 
-\begin{corollary}\label{prop_tipi_compattezza}
-  Let $p(x\,;y)\subseteq\mathds{L}(M)$ be finitely consistent in ${\EuScript M}$, a model.
-  Then ${\EuScript N}\models\exists x\,\exists^R y\,p(x\,;y)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.
-\end{corollary}
+% \begin{corollary}\label{prop_tipi_compattezza}
+%   Let $p(x\,;y)\subseteq\mathds{L}(M)$ be finitely consistent in ${\EuScript M}$, a model.
+%   Then ${\EuScript N}\models\exists x\,\exists^R y\,p(x\,;y)$ for some model ${\EuScript N}$ such that ${\EuScript M}\preceq^\mathds{L}{\EuScript N}$.
+% \end{corollary}
 
 % \noindent\llap{\dangersign\kern2ex}%
 
@@ -335,7 +376,7 @@ We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a
 %   \end{itemize}
 % \end{definition}
 A model ${\EuScript N}$ is \emph{$\mathds{L}$-saturated\/} if it realizes all types with fewer than $|{\EuScript N}|$ parameters that are finitely consistent in ${\EuScript N}$.
-The existence of $\mathds{L}$-saturated models is proved as in the classical case.
+The existence of $\mathds{L}$-saturated models is obtained from the classical case just as for theorem above.
 
 \begin{proposition}
   Every model has an $\mathds{L}$-elementary extension to a saturated model (possibly of inaccessible cardinality).
@@ -402,29 +443,26 @@ We say that  $\tilde{\varphi}$ is a \emph{strong negation} of $\varphi$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The monster model}
+\section{The monster model}\label{monster}
 
 We denote by \emph{${\EuScript U}=\langle U,R\rangle$\/} some large $\mathds{L}$-saturated structure which we call the \emph{monster model.}
-The cardinality of ${\EuScript U}$ is an inaccessible cardinal that we denote by \emph{$\kappa$.}
+For convenience we assume that the cardinality of ${\EuScript U}$ is an inaccessible cardinal which we denote by \emph{$\kappa$.}
 Below we say \emph{model\/} for $\mathds{L}$-elementary submodel of ${\EuScript U}$.
 
-
 Let $A\subseteq U$ be a small set.
-As usual, we define a topology on $U^{|x|}$ which we call the $\mathds{L}(A)$-topology.
-The closed sets of this topology are the sets defined by the types $p(x)\subseteq\mathds{L}(A)$.
-This is a compact topology.
+We define a topology on $U^{|x|}\times R^{|y|}$ which we call the \emph{$\mathds{L}(A)$-topology.}
+The closed sets of this topology are the sets defined by the types $p(x\,;y)\subseteq\mathds{L}(A)$.
+This is a compact topology by the $\mathds{L}$-compactness Theorem~\ref{thm_compattezza}.
 
-The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product of the $\mathds{L}(A)$-topology on $U^{|x|}$ and the topology on $R^{|y|}$.
+% \begin{lemma}
+%   For every $\varphi(x\,;y)\in\mathds{L}(A)$ the set $\varphi(U\,;R)$ is a compact subset of $U^{|x|}\times R^{|y|}$.
+% \end{lemma}
 
-\begin{lemma}
-  For every $\varphi(x\,;y)\in\mathds{L}(A)$ the set $\varphi(U\,;R)$ is a compact subset of $U^{|x|}\times R^{|y|}$.
-\end{lemma}
-
-\begin{proof}
-  We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ has nonempty intersection.
-  Without loss of generality we can assume that the sets in this family have the form $\psi(U)\times C_1\times\dots\times C_{|y|}$ for some compact sets $C_i\subseteq R$ and some $\psi(x)\in\mathds{L}$.
-  Then by $\mathds{L}$-compactness the intersection of the family is nonempty.
-\end{proof}
+% \begin{proof}
+%   We prove that every finitely intersecting family of closed subsets of $\varphi(U\,;R)$ has nonempty intersection.
+%   Without loss of generality we can assume that the sets in this family have the form $\psi(U)\times C_1\times\dots\times C_{|y|}$ for some compact sets $C_i\subseteq R$ and some $\psi(x)\in\mathds{L}$.
+%   Then by $\mathds{L}$-compactness the intersection of the family is nonempty.
+% \end{proof}
 
 \begin{fact}\label{fact_compactness_imp}
   Let $p(x)\subseteq\mathds{L}(U)$ be a type of small cardinality.
@@ -480,11 +518,17 @@ The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product 
   The case of existential quantifiers of sort $R$ is identical.
   Assume inductively
   
-  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
+  \ceq{\textrm{ih.}\hfill\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
   {\rightarrow}
   {\varphi(x,z\,;y)}
 
-  then 
+  We need to prove
+
+  \ceq{\hfill\bigwedge_{\varphi'>\varphi}\exists z\,\varphi'(x,z\,;y)}
+  {\rightarrow}
+  {\exists z\,\varphi(x,z\,;y)}
+
+  From (ih) we have
 
   \ceq{\hfill\exists z\,\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
   {\rightarrow}
@@ -496,11 +540,12 @@ The \emph{$\mathds{L}(A)$-topology\/} on $U^{|x|}\times R^{|y|}$ is the product 
   {\rightarrow}
   {\exists z\,\bigwedge_{\varphi'>\varphi}\varphi'(x,z\,;y)}
 
-Replace $x,y$ with parameters, say $a,\alpha$ and assume the antecedent.
-But $\{\exists z\,\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$ implies the finite concistency of the type $\{\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$.
-This because if $\varphi_1,\varphi_2>\varphi$ then $\varphi_1\wedge\varphi_2>\varphi'$ for some $\varphi'>\varphi$.
+Replace $x,y$ with some fix but arbitrary parameters, say $a,\alpha$ and assume the antecedent, that is, the truth of the theory $\{\exists z\,\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$.
+We need to prove the consistency of the type $\{\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$.
+By the saturation of ${\EuScript U}$, finite concistency suffices.
+This is clear if we show that the antecedent is closed under conjunction.
+Indeed it is easy to verify that if $\varphi_1,\varphi_2>\varphi$ then $\varphi_1\wedge\varphi_2>\varphi'$ for some $\varphi'>\varphi$.
 In words, the set of approximations of $\varphi$ is a directed set.
-Therefore $\exists z\,\{\varphi'(a,z\,;\alpha):\varphi'>\varphi\}$ follows by saturation.
 %
 % \noindent\llap{\textcolor{red}{\Large\danger}\kern1ex}\ignorespaces
 % Consider the existential quantifiers of sort $R$
@@ -613,21 +658,17 @@ When $A\subseteq U$, we write \emph{$S_\mathds{H}(A)$\/} for the set of types
 
  The following will be useful below
 
- \begin{remark}
+ \begin{remark}\label{lem_p'p}
   For $p(x)\subseteq\mathds{L}(U)$, we write \emph{$p'(x)$\/} for the type
 
   \ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
 
-  % We write \emph{$p'(x)$\/} for the type
-
-  % \ceq{\hfill p'(x)}{=}{\big\{\varphi'(x):\varphi'>\varphi\textrm{ for some }\varphi(x)\in p\big\}.}
-
-  Note that, by Proposition~\ref{prop_approx}, if $p(x)\in S_{\mathds{H}}(A)$ then $p'(x)$ is equivalent to $p(x)$.
+  Note that $p'(x)$ is equivalent to $p(x)$ by Proposition~\ref{prop_approx}.
  \end{remark}
 
-\begin{corollary}\label{corol_Hcomplete3}
-  The inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.
-\end{corollary}
+% \begin{corollary}\label{corol_Hcomplete3}
+%   The inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.
+% \end{corollary}
 
 
 
@@ -642,21 +683,18 @@ When $A\subseteq U$, we write \emph{$S_\mathds{H}(A)$\/} for the set of types
 \section{Homogeneity}
 
 A model ${\EuScript M}$ is \emph{$\mathds{H}$-homogeneous\/} if every $\mathds{H}$-elementary map $f:{\EuScript M}\to{\EuScript M}$ of cardinality $<|{\EuScript M}|$ extends to an automorphism.
-Clearly, an automorphism is ${\EuScript L}$-elementary.
+Clearly, every automorphism is ${\EuScript L}$-elementary.
 
 \begin{proposition}
   ${\EuScript U}$ is $\mathds{H}$-homogeneous.
 \end{proposition}
 
 \begin{proof}
-  By Corollary~\ref{corol_Hcomplete3}, the usual proof by back-and-forth applies.
+  By Corollary~\ref{corol_Hcomplete2}, the inverse of an $\mathds{H}$-elementary map $f:{\EuScript U}\to{\EuScript U}$ is $\mathds{H}$-elementary.
+  Then the usual proof by back-and-forth applies.
 \end{proof}
 
-\begin{corollary}\label{corol_H=L}
-  For every $a,b\in U^{|x|}$, if $a\equiv^\mathds{H}b$ then  $a\equiv^{\EuScript L}b$.
-\end{corollary}
-
-As promized, we can now strngthen Corollary~\ref{corol_Hcomplete2}.
+As promised, we now strengthen Corollary~\ref{corol_Hcomplete2}.
 
 \begin{corollary}\label{corol_Lcomplete}
   Let $p(x)\in S_\mathds{H}(A)$.
@@ -664,7 +702,12 @@ As promized, we can now strngthen Corollary~\ref{corol_Hcomplete2}.
   Clearly, the same holds for $p'(x)$.
 \end{corollary}
 
-The next two propositions show that formulas in $\mathds{L}(A)$ are very well approximated by formulas in $\mathds{H}(A)$.
+\begin{proof}
+  If $b\models p(x)=\mathds{H}\mbox{-tp}(a/A)$ then there is $\mathds{H}$-elementary map $f$vsuch that $fa=b$.
+  As $f$ exends to an automorphism, $a\equiv^{\EuScript L}b$ and the corollary follows.
+\end{proof}
+
+The next two propositions show that formulas in $\mathds{L}(A)$ are approximated by formulas in $\mathds{H}(A)$.
 
 \begin{proposition}\label{prop_LHapprox1}
   Let $\varphi(x)\in\mathds{L}(A)$.
@@ -672,7 +715,7 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are very well ap
 \end{proposition}
 
 \begin{proof}
-  By Corollary~\ref{corol_Lcomplete}
+  By Corollary~\ref{corol_Lcomplete} and Remark~\ref{lem_p'p}
 
   \ceq{\hfill\neg\varphi(x)}{\rightarrow}{\bigvee_{p'(x)\rightarrow\neg\varphi(x)}p'(x)}
 
@@ -690,7 +733,7 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are very well ap
 
   \ceq{\hfill\varphi'(x)}{\leftarrow}{\bigwedge_{i=1,\dots,n}\tilde{\psi}_i(x)\ \ \leftarrow\ \ \varphi(x)}
 
- which yields the interpolant required by the proposition.
+  which yields the interpolant required by the proposition.
 \end{proof}
 
 \begin{proposition}\label{prop_LHapprox2}
@@ -743,7 +786,7 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are very well ap
   (3$\Rightarrow$1)
   Assume (3).
   Then, by the classical Tarski-Vaught test $M\preceq U$.
-  We also have that  ${\EuScript M}$ is an ${\EuScript L}$-submodel of ${\EuScript U}$.
+  It is clear that  ${\EuScript M}$ is an ${\EuScript L}$-subtructure of ${\EuScript U}$.
   Therefore for every $a\in M^{|x|}$ and for every $\mathds{L}$-atomic formula,  $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
   Now, assume inductively
   
@@ -782,9 +825,9 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are very well ap
 
 Needs full rewriting
 
-For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ with parameters in $U$ of sort $M\to R$. 
+For $a,b\in U$ we write \emph{$a\sim b$\/} if $\forall y\, [t(a,y)=t(b,y)]$ for every parameter free term $t(x,y)$ of ${\EuScript L}$ sort $M^{1+|y|}\to R$. 
 
-\begin{fact}
+\begin{fact}[obsoleto]
   If $\bar a=\langle a_i:i<\lambda\rangle$ and $\bar b=\langle b_i:i<\lambda\rangle$ are such that $a_i\sim b_i$ for every $i<\lambda$ then $t(\bar a)=t(\bar b)$ for every term $t(x)$ with parameters in $U$ of sort $M^\lambda\to R$.
 \end{fact}
 
@@ -795,15 +838,16 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
   For limit ordinals induction is immediate.
 \end{proof}
 
-\begin{example}[???]
-  Let $L$ be the language of $\mathds{R}$-algebras expanded with two lattice operators $\wedge$, $\vee$.
+\begin{example}
+  Let $L$ be the language of $\mathds{R}$-algebras expanded with the function symbols $\wedge$, $\vee$.
   Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
-  Let $M$ be the set the simple real valued random variables with the natural interpretation of the symbols in $L$. 
-  Let $R=\mathds{R}$.
-  Assume ${\EuScript L}$ contains a symbol for the functions ${\rm E}_n$, for $n\in\mathds{N}$, that give the expected value of $(X\wedge n)\vee -n$.
-  Note that the cut-off enures that the range of these functions is bounded.
+  Let $M$ be the set the simple, real valued, random variables with the natural interpretation of the symbols in $L$.
+  The symbols $\wedge$ and $\vee$ are interpreted as the pointwise minimum, respectively maximum, of two functions.
+  Let $R=[0,1]$.
+  Assume ${\EuScript L}$ contains a symbol for the functions ${\rm E}_1$ that gives the expected value of $(a\wedge 1)\vee -1$.
 
-  The relation $a\sim b$ holds in these there cases
+  Let $a,b$ are two random variables such that $-1\le a,b\le 1$.
+  The relation $a\sim b$ holds exactly when $a(\omega)=b(\omega)$ for almost every $\omega\in\Omega$.
 
 
 \end{example}
@@ -812,16 +856,16 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $t(a)=t(b)$ for every term $t(x)$ 
 
 We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\mathds{L}_M x\rightarrow a\sim x$
 
-\begin{example}
-  Assume that $R=\mathds{R}$ and that ${\EuScript L}$ contains a function of sort $M^2\to R$ that that is interpreted in a pseudometric.
+\begin{fact}
+  Assume that $R=[0,1]$ and that ${\EuScript L}$ contains a function of sort $M^2\to R$ which is interpreted in a pseudometric.
   Assume that all terms of sort $M^n\to R$ are continuous with rispect to this pseudometric.
-  It is easy to see that $a\sim b$ if and only if $d(a,b)=0$.
-  We claim that the following are equivalent
+  Then $a\sim b$ if and only if $d(a,b)=0$.
+  Moreover, we claim that the following are equivalent
   \begin{itemize}
     \item[1.] $a\in U$ is definable in the limit over $M$, a model;
     \item[2.] there is a sequence $\langle a_i: i\in\omega\rangle$ of elements of $M$ that converges to $a$.
   \end{itemize} 
-\end{example}
+\end{fact}
 
 \begin{proof}
   ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
