@@ -88,7 +88,7 @@
   postheadspace=1em, 
   qed=\qedsymbol, 
   headpunct={.}]
-{myproof} %<---- change this name
+{myproof} 
 \declaretheorem[style=myproof, unnumbered]{proof}
 
 \renewcommand*{\emph}[1]{%
@@ -128,13 +128,13 @@ We may formalize this in a natural way by using a two-sorted structure.
 
 Now, we have two conflicting aspirations
 \begin{itemize}
-  \item[i.] to be able to apply the basic tools of model theory (such as elementarity and saturation);
-  \item[ii.] to remain in the realm of normed spaces (and insist that 
+  \item[i.] we would like to apply the basic tools of model theory (such as elementarity and saturation);
+  \item[ii.] we want to stay in the realm of normed spaces (and insist that 
   $\mathds{R}$ should remain $\mathds{R}$ throughout).
 \end{itemize}
 
 These two aspirations are blatantly incompatible, hence something has to give.
-Different people have made different choices.
+Different people have searched different paths.
 \begin{itemize}
   \item[1.] Nonstandard analysts happily embrace norms that take values in some ${}^*\mathds{R}\succeq\mathds{R}$.
   These norms are nonstandard.
@@ -235,11 +235,11 @@ Somewhat surprisingly, we will see (cf.\@ Propositions~\ref{prop_LHapprox1} and~
 
 Let $R\preceq{}^*\!R$.
 Let $\alpha,\alpha'\in{}^*\! R$.
-For $\beta\in R$ we write $\alpha\approx\beta$ if $^*\!R\models\alpha\in D$ for every $D$ compact neighborhood of $\beta$.
+For $\beta\in R$ we write $\alpha\approx\beta$ if $^*\!R\models\alpha\in D$ for every compact neighborhood $D$ of $\beta$.
 We write \emph{$\alpha\approx\alpha'$\/} if $\alpha\approx\beta\approx\alpha'$ for some $\beta\in R$.
 From the following fact it follows that $\,\approx\,$ is an equivalence relation on ${}^*\!R$.
 
-\begin{fact}
+\begin{fact}\label{fact_uniqueness_st}
   For every $\alpha\in{}^*\!R$ there is a unique $\beta\in R$ such that $\alpha\approx\beta$.
 \end{fact}
 
@@ -252,9 +252,9 @@ From the following fact it follows that $\,\approx\,$ is an equivalence relation
   The uniqueness of $\beta$ follows from normality.
 \end{proof}
 
-We will denote it by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such that $\alpha\approx\beta$.
+We will denote by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such that $\alpha\approx\beta$.
 
-\begin{fact}
+\begin{fact}\label{fact_st1}
   For every $\alpha\in{}^*\! R$ and every compact $C$
 
 \ceq{\hfill{}^*\!R}{\models}{\alpha\in C\ \rightarrow\ {\rm st}(\alpha)\in C.}
@@ -266,50 +266,82 @@ We will denote it by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such th
   Then  ${}^*\!R\models\alpha\in D\subseteq\neg C$.
 \end{proof}
 
-\begin{lemma}\label{lem_st}
-  Let ${}^*{\EuScript N}=\langle N,{}^*\!R\rangle$ be an ${\EuScript L}$-structure, and assume that $R\preceq{}^*\!R$.
-  Let ${\EuScript N}$ denote the substructure $\langle N,R\rangle$.
-  Then for every $\varphi(x\,;y)\in\mathds{L}$, every $a\in N^{|x|}$ and every $\alpha\in({}^*\!R)^{|y|}$ 
+\begin{fact}\label{fact_terms_st}
+  For every $\alpha\in({}^*\! R)^{|x|}$ and every term $t(x)$
+
+\ceq{\hfill{}^*\!R}{\models}{{\rm st}\big(t(\alpha)\big)=t\big({\rm st}(\alpha)\big).}
+\end{fact}
+
+\begin{proof}
+  We assume that $t$ is a function symbol, say $f$, for some continuous function $f:R^{|x|}\to R$.
+  The result for general term $t$ follows easily.
+  By Fact~\ref{fact_uniqueness_st} and the definition of st(-) it suffices to prove that ${}^*\!R\models f(\alpha)\in C$ for every compact neighborhood $C$ of $f\big({\rm st}(\alpha)\big)$.
   
-  \ceq{\hfill{}^*{\EuScript N}\models\varphi(a\,;\alpha)}
+  Fix one such $C$.
+  Then ${\rm st}(\alpha)\in f^{-1}[C]$ .
+  By continuity $f^{-1}[C]$ is a compact neighborhood of ${\rm st}(\alpha)$.
+  Therefore ${}^*\!R\models \alpha\in f^{-1}[C]$ and, as $R\preceq{}^*\!R$ we obtain ${}^*\!R\models f(\alpha)\in C$.
+\end{proof}
+
+Let ${}^*{\EuScript M}=\langle M,{}^*\!R\rangle$ be an ${\EuScript L}$-structure such that $R\preceq{}^*\!R$.
+The \emph{standard part of ${}^*{\EuScript M}$\/} is the model ${\EuScript M}=\langle M,R\rangle$ that interpretes the symbols $f$ of sort $M^n\to R$ as the functions
+
+\ceq{\hfill f^{\EuScript M}(a)}{=}{{\rm st}\big(f^{{}^*\EuScript M}(a)\big)}\hfill for all $a\in M^n$.
+
+Symbols in $L$ mantain the same interpretation.
+
+\begin{fact}\label{fact_terms_st2}
+  Let ${}^*{\EuScript M}$ and ${\EuScript M}$ be as above.
+  For every $a\in M^{|x|}$ and every term $t(x)$ of sort $M^{|x|}\to R$
+
+  \ceq{\hfill t^{\EuScript M}(a)}{=}{{\rm st}\big(t^{{}^*{\EuScript M}}(a)\big)}
+\end{fact}
+\begin{proof}
+  When a function symbol the fact holds by definition.
+  For all other terms, the fact follows from Fact~\ref{fact_terms_st} 
+\end{proof}
+
+% Symbols in $L_R$ have the interpretation they have in models.
+
+\begin{lemma}\label{lem_st}
+  Let ${}^*{\EuScript M}$ and ${\EuScript M}$ be as above.
+  Then for every $\varphi(x\,;y)\in\mathds{L}$, \  $a\in M^{|x|}$ and $\alpha\in({}^*\!R)^{|y|}$ 
+  
+  \ceq{\hfill{}^*{\EuScript M}\models\varphi(a\,;\alpha)}
   {\Rightarrow}
-  {{\EuScript N}\models\varphi\big(a\,;{\rm st}(\alpha)\big)}
+  {{\EuScript M}\models\varphi\big(a\,;{\rm st}(\alpha)\big)}
 \end{lemma}
 
 \begin{proof}
   Suppose $\varphi(x\,;y)$ is $\mathds{L}$-atomic.
   If $\varphi(x\,;y)$ is a formula of $L$ the claim is trivial. 
   Otherwise $\varphi(x\,;y)$ has the form $t(x\,;y)\in C$.
-  Assume ${}^*{\EuScript N}\models t(a\,;\alpha)\in C$.
-  We claim that for every compact sets $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
+  Assume that the tuple $t(x\,;y)$ consists of a single term.
+  The general case is easily derived from this special case. 
+  By Remark~\ref{rk_terms}, we consider two cases.
 
-  \ceq{\hfill{\EuScript N}}
-  {\models}
-  {t_i(a\,;\alpha)\in C_i.}
+  Case $t(x\,;y)=t(x)$.  
+  If ${}^*{\EuScript M}\models t(a)\in C$ then ${\rm st}\big(t^{{}^*{\EuScript M}}(a)\big)\in C$ follows from Fact~\ref{fact_st1}.
+  Then $t^{\EuScript M}(a)\in C$ follows from Fact~\ref{fact_terms_st2}.
+  Therefore ${\EuScript M}\models t(a)\in C$.
 
-  By the definition of product topology, $C$ is the intersection of products as those above.
-  Therefore ${\EuScript N}\models t(a\,;\alpha)\in C$ follows from the claim.
+  Case $t(x\,;y)=t(y)$.  
+  If ${}^*{\EuScript M}\models t(\alpha)\in C$ then ${}^*\!R\models t(\alpha)\in C$.
+  By Fact~\ref{fact_st1} we obtain ${}^*\!R\models {\rm st}\big(t(\alpha)\big)\in C$.
+  Finally ${}^*\!R\models t\big({\rm st}(\alpha)\big)\in C$ follows from Fact~\ref{fact_terms_st}.
+
+  % If $t$ is a longer tuple of length longer then one.
+  % We claim that for every compact set $C_i\subseteq R$ such that $C\subseteq C_1\times\dots\times C_{|y|}$
+
+  % \ceq{\hfill{\EuScript M}}
+  % {\models}
+  % {t_i(a\,;{\rm st}(\alpha))\in C_i.}
+
+  % By the definition of product topology, $C$ is the intersection of products as those above.
+  % Therefore ${\EuScript M}\models t(a\,;{\rm st}(\alpha))\in C$ follows from the claim.
   
-  We prove the claim.
-  By Remark~\ref{rk_terms}, the terms $t_i(a\,;\alpha)$ have either the form $t_i(a)$ or $t_i(\alpha)$.
-  We can ignore the first case because ${\EuScript N}$ is a substructure of ${}^*{\EuScript N}$ hence  $t_i(a)$ has the same value in both structures.
-  Then (1) is equivalent to  
-
-  \ceq{\hfill{}^*{\EuScript N}}
-  {\models}
-  {\alpha\in\big( t_i^{\EuScript N}\big)^{-1}[C_i].}
-  
-But $\alpha\in\big(t_i^{\EuScript N}\big)^{-1}[C_i]$ is equivalent, modulo ${\rm Th}(R)$, to $\alpha\in D$ for some compact $D\subseteq R$.
-Therefore 
-
-\ceq{\hfill{}^*{\EuScript N}}
-{\models}
-{\alpha\in D.}
-
-Finally this is equivalent to ${\rm st}(\alpha)\in D$.
-
-This proves, the claim and with it the lemma for $\mathds{L}$-atomic formulas.
-Induction is immediate. 
+  This proves the lemma for $\mathds{L}$-atomic formulas.
+  Induction is immediate. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -473,7 +505,7 @@ This is a compact topology by the $\mathds{L}$-compactness Theorem~\ref{thm_comp
 \end{fact}
 
 \begin{proof}
-  The first claim is clear.
+  The first claim is immediate by saturation.
   The second follows from the first by Lemma~\ref{lem_interpolation}.
 \end{proof}
 
@@ -825,7 +857,7 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are approximated
 
 Needs full rewriting
 
-For $a,b\in U$ we write \emph{$a\sim b$\/} if $\forall y\, [t(a,y)=t(b,y)]$ for every parameter free term $t(x,y)$ of ${\EuScript L}$ sort $M^{1+|y|}\to R$. 
+For $a,b\in U$ we write \emph{$a\sim b$\/} if $\forall y\, [t(a,y)=t(b,y)]$ for every parameter free term $t(x,y)$ of sort $M^{1+|y|}\to R$. 
 
 \begin{fact}[obsoleto]
   If $\bar a=\langle a_i:i<\lambda\rangle$ and $\bar b=\langle b_i:i<\lambda\rangle$ are such that $a_i\sim b_i$ for every $i<\lambda$ then $t(\bar a)=t(\bar b)$ for every term $t(x)$ with parameters in $U$ of sort $M^\lambda\to R$.
