@@ -125,7 +125,6 @@ These are among the most simple strucures considered in model theory.
 Now, expand them by adding a norm.
 A norm is a function that, given vector, outputs a real number.
 We may formalize this in a natural way by using a two-sorted structure.
-
 Now, we have two conflicting aspirations
 \begin{itemize}
   \item[i.] we would like to apply the basic tools of model theory (such as elementarity and saturation);
@@ -133,29 +132,25 @@ Now, we have two conflicting aspirations
   $\mathds{R}$ should remain $\mathds{R}$ throughout).
 \end{itemize}
 
-These two aspirations are blatantly incompatible, hence something has to give.
-Different people have searched different paths.
+These two requests are blatantly incompatible, something has to give.
+Different people have attemped different paths.
 \begin{itemize}
   \item[1.] Nonstandard analysts happily embrace norms that take values in some ${}^*\mathds{R}\succeq\mathds{R}$.
-  These norms are nonstandard.
-  But there are tricks to transfer results from nonstandard to standard normed spaces and vice versa.
-  Model theorists, when confronted with similar problems,  have used similar approaches (in some more generality and with different notation).
-  \item[2.] Henson and Iovino stick to the standard notion of norm but restrict the notion of elementarity and saturation to a smaller class of formulas (which we denote by $\mathds{H}$).
-  They demostrate that many standard tools of model theory still apply in their setting. 
-  The work of Henson and Iovino is focussed on Banach spaces and has hardly been applied to a broader context.
+  These normed spaces are nonstandard, but there are tricks to transfer results from nonstandard to standard normed spaces and vice versa.
+  Model theorists, when confronted with similar problems, have used similar approaches (in more generality and with different notation).
+  \item[2.] Henson and Iovino propose to stick to the standard notion of norm but restrict the notion of elementarity and saturation to a smaller class of formulas (which here is denoted by $\mathds{H}$).
+  They demostrate that many standard tools of model theory apply in their setting. 
+  The work of Henson and Iovino is focussed on Banach spaces and has hardly been applied to broader contexts.
   \item[3.] Real valued logicians have the most radical approach.
   They abandon classical true/false valued logic altogether in favour of a logic valued in the interval $[0,1]$.
-  Unfortunately, this adds considerable notational burden, restricts the class of structures that can be considered, and (unnaturally) limits the expressive power of the logic.
-  Though many have been attracted by the challange, this paper we explore an alternative. 
+  Unfortunately, this adds unnecessary notational burden and restricts the class of structures that can be considered.
 \end{itemize}
 
 We elaborate on the ideas of Henson and Iovino and generalize them to a larger class of structures.
 Following Henson and Iovino, we restrict the notions of elementarity and saturation.
 But we use a class of formulas $\mathds{L}$ which is larger than their $\mathds{H}$.
-Though we prove that $\mathds{L}$ has, in a sense, approximatively the same expressive power as $\mathds{H}$ (cf. Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}), it is evident that $\mathds{L}$ is more convinent.
-
-When possible we borrow results and intuition from nonstandard analysis (i.e.\@ classical model theory).
-This clarify the relation between approach (1) and (2) above.
+Though we prove that $\mathds{L}$ has, in a sense, approximatively the same expressive power as $\mathds{H}$ (cf. Propositions~\ref{prop_LHapprox1} and~\ref{prop_LHapprox2}), it is evident that $\mathds{L}$ is more convinent to use.
+We also borrow a few intuitions and results from approach (1).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,13 +176,13 @@ According to the context, $C$ and $f$ denote either the symbols of $L_R$ or thei
   The new symbols allowed in ${\EuScript L}$ are function symbols of sort $M^n\to R$. 
 \end{definition}
 
-The scope of the notion of model above will be (inessentially) restricted once we introduce the monster model, in Section~\ref{monster}.
+The scope of the notion of model will be (inessentially) restricted once the monster model is introduced, in Section~\ref{monster}.
 
 Clearly, saturated ${\EuScript L}$-structures exist but, with the exception of trivial cases (i.e.\@ when $R$ is finite) they are not models.
 As a remedy, below we carve out a set $\mathds{L}$ of formulas, $L\subseteq\mathds{L}\subseteq {\EuScript L}$, such that every model has an $\mathds{L}$-elementary, $\mathds{L}$-saturated extension that is a model.
 
 Warning: as usual $L$ and ${\EuScript L}$ denote both first-order languages and the corresponding set of formulas.
-The set $\mathds{L}$ defined below is only a set of first-order formulas.
+The symbols $\mathds{L}$ and $\mathds{H}$ defined below denote only sets of ${\EuScript L}$-formulas.
 
 \begin{definition}\label{def_LL}
   Formulas in \emph{$\mathds{L}$\/} are defined inductively from two sorts of \emph{$\mathds{L}$-atomic\/} formulas
@@ -283,31 +278,31 @@ We will denote by \emph{${\rm st}(\alpha)$\/} the unique $\beta\in R$ such that 
   Therefore ${}^*\!R\models \alpha\in f^{-1}[C]$ and, as $R\preceq{}^*\!R$ we obtain ${}^*\!R\models f(\alpha)\in C$.
 \end{proof}
 
-Let ${}^*{\EuScript M}=\langle M,{}^*\!R\rangle$ be an ${\EuScript L}$-structure such that $R\preceq{}^*\!R$.
-The \emph{standard part of ${}^*{\EuScript M}$\/} is the model ${\EuScript M}=\langle M,R\rangle$ that interpretes the symbols $f$ of sort $M^n\to R$ as the functions
+Let ${}^*{\!\EuScript M}=\langle M,{}^*\!R\rangle$ be an ${\EuScript L}$-structure such that $R\preceq{}^*\!R$.
+The \emph{standard part of ${}^*{\!\EuScript M}$\/} is the model ${\EuScript M}=\langle M,R\rangle$ that interpretes the symbols $f$ of sort $M^n\to R$ as the functions
 
-\ceq{\hfill f^{\EuScript M}(a)}{=}{{\rm st}\big(f^{{}^*\EuScript M}(a)\big)}\hfill for all $a\in M^n$.
+\ceq{\hfill f^{\EuScript M}(a)}{=}{{\rm st}\big(f^{{}^*\!\EuScript M}(a)\big)}\hfill for all $a\in M^n$.
 
 Symbols in $L$ mantain the same interpretation.
 
 \begin{fact}\label{fact_terms_st2}
-  Let ${}^*{\EuScript M}$ and ${\EuScript M}$ be as above.
+  Let ${}^*{\!\EuScript M}$ and ${\EuScript M}$ be as above.
   For every $a\in M^{|x|}$ and every term $t(x)$ of sort $M^{|x|}\to R$
 
-  \ceq{\hfill t^{\EuScript M}(a)}{=}{{\rm st}\big(t^{{}^*{\EuScript M}}(a)\big)}
+  \ceq{\hfill t^{\EuScript M}(a)}{=}{{\rm st}\big(t^{{}^*{\!\EuScript M}}(a)\big)}
 \end{fact}
 \begin{proof}
-  When a function symbol the fact holds by definition.
-  For all other terms, the fact follows from Fact~\ref{fact_terms_st} 
+  When a $t$ is function symbol $f$, the fact holds by definition.
+  For all other terms, it follows from Fact~\ref{fact_terms_st} 
 \end{proof}
 
 % Symbols in $L_R$ have the interpretation they have in models.
 
 \begin{lemma}\label{lem_st}
-  Let ${}^*{\EuScript M}$ and ${\EuScript M}$ be as above.
+  Let ${}^*{\!\EuScript M}$ and ${\EuScript M}$ be as above.
   Then for every $\varphi(x\,;y)\in\mathds{L}$, \  $a\in M^{|x|}$ and $\alpha\in({}^*\!R)^{|y|}$ 
   
-  \ceq{\hfill{}^*{\EuScript M}\models\varphi(a\,;\alpha)}
+  \ceq{\hfill{}^*{\!\EuScript M}\models\varphi(a\,;\alpha)}
   {\Rightarrow}
   {{\EuScript M}\models\varphi\big(a\,;{\rm st}(\alpha)\big)}
 \end{lemma}
@@ -317,16 +312,16 @@ Symbols in $L$ mantain the same interpretation.
   If $\varphi(x\,;y)$ is a formula of $L$ the claim is trivial. 
   Otherwise $\varphi(x\,;y)$ has the form $t(x\,;y)\in C$.
   Assume that the tuple $t(x\,;y)$ consists of a single term.
-  The general case is easily derived from this special case. 
+  The general case is left to the reader as it easily follows from this special case. 
   By Remark~\ref{rk_terms}, we consider two cases.
 
   Case $t(x\,;y)=t(x)$.  
-  If ${}^*{\EuScript M}\models t(a)\in C$ then ${\rm st}\big(t^{{}^*{\EuScript M}}(a)\big)\in C$ follows from Fact~\ref{fact_st1}.
+  If ${}^*{\!\EuScript M}\models t(a)\in C$ then ${\rm st}\big(t^{{}^*{\!\EuScript M}}(a)\big)\in C$ follows from Fact~\ref{fact_st1}.
   Then $t^{\EuScript M}(a)\in C$ follows from Fact~\ref{fact_terms_st2}.
   Therefore ${\EuScript M}\models t(a)\in C$.
 
   Case $t(x\,;y)=t(y)$.  
-  If ${}^*{\EuScript M}\models t(\alpha)\in C$ then ${}^*\!R\models t(\alpha)\in C$.
+  If ${}^*{\!\EuScript M}\models t(\alpha)\in C$ then ${}^*\!R\models t(\alpha)\in C$.
   By Fact~\ref{fact_st1} we obtain ${}^*\!R\models {\rm st}\big(t(\alpha)\big)\in C$.
   Finally ${}^*\!R\models t\big({\rm st}(\alpha)\big)\in C$ follows from Fact~\ref{fact_terms_st}.
 
@@ -386,7 +381,7 @@ We say that $T$ is \emph{consistent\/} when ${\EuScript M}$  is required to be a
 
 \begin{proof}
   Suppose $T$ is finitely consistent (or finitely ${\EuScript L}$-consistent, for that matter).
-  By the classical compactness theorem ${}^*{\EuScript M}\models T$ for some ${\EuScript L}$-structure ${}^*{\EuScript M}=\langle M,{}^*\!R\rangle$.
+  By the classical compactness theorem ${}^*{\!\EuScript M}\models T$ for some ${\EuScript L}$-structure ${}^*{\!\EuScript M}=\langle M,{}^*\!R\rangle$.
   Let ${\EuScript M}$ be the model $\langle M,R\rangle$.
   Then ${\EuScript M}\models T$ by Lemma~\ref{lem_st}.
 \end{proof}
@@ -505,8 +500,8 @@ This is a compact topology by the $\mathds{L}$-compactness Theorem~\ref{thm_comp
 \end{fact}
 
 \begin{proof}
-  The first claim is immediate by saturation.
-  The second follows from the first by Lemma~\ref{lem_interpolation}.
+  Claim (1) is immediate by saturation.
+  Claim (2) follows from the first by Lemma~\ref{lem_interpolation}.
 \end{proof}
 
 \begin{proposition}\label{prop_approx}
@@ -812,14 +807,14 @@ The next two propositions show that formulas in $\mathds{L}(A)$ are approximated
 
   (2$\Rightarrow$3)
   Assume (2) and let $\varphi(x)\in\mathds{L}(M)$ be such that $\exists x\,\neg\varphi(x)$.
-  Then, by Corollary~\ref{prop_LHapprox2}, there are a consistent $\psi(x)\in\mathds{H}(M)$ and some $\psi'>\psi$ such that $\psi'(x)\rightarrow\neg\varphi(x)$.
+  By Corollary~\ref{prop_LHapprox2}, there are a consistent $\psi(x)\in\mathds{H}(M)$ and some $\psi'>\psi$ such that $\psi'(x)\rightarrow\neg\varphi(x)$.
   Then (3) follows.
 
   (3$\Rightarrow$1)
   Assume (3).
-  Then, by the classical Tarski-Vaught test $M\preceq U$.
-  It is clear that  ${\EuScript M}$ is an ${\EuScript L}$-subtructure of ${\EuScript U}$.
-  Therefore for every $a\in M^{|x|}$ and for every $\mathds{L}$-atomic formula,  $\varphi(a)$ if and only if ${\EuScript M}\models\varphi(a)$.
+  By the classical Tarski-Vaught test $M\preceq U$.
+  It is clear that  ${\EuScript M}$ is an ${\EuScript L}$-sub\-structure of ${\EuScript U}$.
+  Therefore  $\varphi(a)\ \Leftrightarrow\ {\EuScript M}\models\varphi(a)$ holds for every $a\in M^{|x|}$ and for every $\mathds{L}$-atomic formula $\varphi(x)$.
   Now, assume inductively
   
   \ceq{\hfill{\EuScript M}\models\varphi(a,b)}{\Rightarrow}{\varphi(a,b)}
@@ -870,29 +865,27 @@ For $a,b\in U$ we write \emph{$a\sim b$\/} if $\forall y\, [t(a,y)=t(b,y)]$ for 
   For limit ordinals induction is immediate.
 \end{proof}
 
-\begin{example}
-  Let $L$ be the language of $\mathds{R}$-algebras expanded with the function symbols $\wedge$, $\vee$.
-  Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
-  Let $M$ be the set the simple, real valued, random variables with the natural interpretation of the symbols in $L$.
-  The symbols $\wedge$ and $\vee$ are interpreted as the pointwise minimum, respectively maximum, of two functions.
-  Let $R=[0,1]$.
-  Assume ${\EuScript L}$ contains a symbol for the functions ${\rm E}_1$ that gives the expected value of $(a\wedge 1)\vee -1$.
-
-  Let $a,b$ are two random variables such that $-1\le a,b\le 1$.
-  The relation $a\sim b$ holds exactly when $a(\omega)=b(\omega)$ for almost every $\omega\in\Omega$.
-
-
-\end{example}
+% \begin{example}
+%   Let $L$ be the language of $\mathds{R}$-algebras expanded with the function symbols $\wedge$, $\vee$.
+%   Let $\langle\Omega,{\EuScript B},\Pr\rangle$ be a probability space.
+%   Let $M$ be the set the simple, real valued, random variables with the natural interpretation of the symbols in $L$.
+%   The symbols $\wedge$ and $\vee$ are interpreted as the pointwise minimum, respectively maximum, of two functions.
+%   Let $R=[0,1]$.
+%   Assume ${\EuScript L}$ contains a symbol for the functions ${\rm E}_1$ that gives the expected value of $(a\wedge 1)\vee -1$.
+%   Let $a,b$ are two random variables such that $-1\le a,b\le 1$.
+%   The relation $a\sim b$ holds exactly when $a(\omega)=b(\omega)$ for almost every $\omega\in\Omega$.
+% \end{example}
 
 
 
-We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\mathds{L}_M x\rightarrow a\sim x$
+Let $a\in U$. 
+Let $p(x)=\mathds{L}\mbox{-tp}(a/M)$.
+We say that $a$ is \emph{definable in the limit\/} over $M$ if $p(x)\rightarrow a\sim x$
 
 \begin{fact}
-  Assume that $R=[0,1]$ and that ${\EuScript L}$ contains a function of sort $M^2\to R$ which is interpreted in a pseudometric.
+  Assume that $R=[0,1]$ and that ${\EuScript L}$ contains a function $d$ of sort $M^2\to R$ which is interpreted in a pseudometric.
   Assume that all terms of sort $M^n\to R$ are continuous with rispect to this pseudometric.
-  Then $a\sim b$ if and only if $d(a,b)=0$.
-  Moreover, we claim that the following are equivalent
+  Then the following are equivalent
   \begin{itemize}
     \item[1.] $a\in U$ is definable in the limit over $M$, a model;
     \item[2.] there is a sequence $\langle a_i: i\in\omega\rangle$ of elements of $M$ that converges to $a$.
@@ -900,7 +893,9 @@ We say that $a\in U$ is \emph{definable in the limit\/} over $M$ if $a\equiv^\ma
 \end{fact}
 
 \begin{proof}
-  ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
+  First note that, the continuity of the terms ithrespect to the metric, $a\sim b$ if and only if $d(a,b)=0$.
+
+  ($2\Rightarrow1$) Let  $\langle \varepsilon_i: i\in\omega\rangle$ be a sequence in $[0,1]$ that converges to $0$ and such that $d(a_i,a)\le\varepsilon_i$ for every $i\in\omega$.
   Then $d(a_i,b)\le\varepsilon_i$ for every $b\equiv^\mathds{L}_Ma$.
   By the uniqueness of the limit $d(a,b)=0$.
 
